@@ -310,6 +310,12 @@ $else$
 \makesavenoteenv{longtable}
 $endif$
 $endif$
+$if(figurename)$
+\renewcommand{\figurename}{$figurename$}
+$endif$
+$if(tablename)$
+\renewcommand{\tablename}{$tablename$}
+$endif$
 $if(graphics)$
 \usepackage{graphicx}
 \makeatletter

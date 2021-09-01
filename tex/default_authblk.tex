@@ -390,6 +390,33 @@ $if(csl-refs)$
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
+
+$if(endfloat)$
+\usepackage[
+  tablesfirst,
+  $if(endfloat.nomarker)$
+  nomarkers,
+  $endif$
+  notablist,
+  nofiglist,
+  tabhead,
+  nofighead
+]{endfloat}
+$if(endfloat.jp)$
+\renewcommand{\figureplace}{
+\begin{center}
+[\figurename~\thepostfig\ はここに記載する。]
+\end{center}}
+\renewcommand{\tableplace}{
+\begin{center}
+[\tablename~\theposttbl\ はここに記載する。]
+\end{center}}
+\renewcommand{\tablesection}{図表一覧}
+$endif$
+\renewcommand{\tablesection}{Tabels and Figures}
+\renewcommand{\efloatseparator}{\vfill}
+$endif$
+
 $for(header-includes)$
 $header-includes$
 $endfor$

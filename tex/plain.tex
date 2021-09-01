@@ -118,6 +118,7 @@ $else$
   \ifXeTeX
     \usepackage{zxjatype} 
     \usepackage[ipaex]{zxjafont}
+    \setromanfont{Times New Roman}
   \fi
 $endif$
 $if(mathspec)$
@@ -405,11 +406,11 @@ $if(endfloat)$
 $if(endfloat.jp)$
 \renewcommand{\figureplace}{
 \begin{center}
-[\figurename~\thepostfig\ はここに記載する。]
+[\figurename~\thepostfig\ を挿入]
 \end{center}}
 \renewcommand{\tableplace}{
 \begin{center}
-[\tablename~\theposttbl\ はここに記載する。]
+[\tablename~\theposttbl\ を挿入]
 \end{center}}
 \renewcommand{\tablesection}{図表一覧}
 $endif$
@@ -471,52 +472,49 @@ $if(csquotes)$
 \usepackage{csquotes}
 $endif$
 
-$if(title)$
-\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
-$endif$
-
-$if(subtitle)$
 $if(beamer)$
+$if(title)$
+\title{$title$ $if(thanks)$ \thanks{$thanks$} $endif$ }
+$endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+$if(author)$
+\author[shortname]{$for(author)$ $author.name$ \inst{$author.number$} \and $endfor$}
+$endif$
+$if(institute)$
+\institute[shortinst]{$for(institute)$ \inst{$institute.number$} $institute.name$ \and $endfor$}
+$endif$
 $else$
+$if(thanks)$
+$else$
+\makeatletter
+\def\@fnsymbol#1{\ensuremath{\ifcase#1\or \dagger\or \ddagger\or
+   \mathsection\or \mathparagraph\or \|\or **\or \dagger\dagger
+   \or \ddagger\ddagger \else\@ctrerr\fi}}
+    \makeatother
+$endif$
+$if(title)$
+\title{$title$ $if(thanks)$ \thanks{$thanks$} $endif$ }
+$endif$
+$if(subtitle)$
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-$endif$
 \subtitle{$subtitle$}
 $endif$
-
-$if(beamer)$
-  $if(author)$
-    \author[shortname]{$for(author)$ $author.name$ \inst{$author.number$} \and $endfor$}
-  $endif$
-  $if(institute)$
-    \institute[shortinst]{$for(institute)$ \inst{$institute.number$} $institute.name$ \and $endfor$}
-  $endif$
-$else$
-  $if(author)$
-    \usepackage{authblk}
-    $for(author)$
-      $if(author.name)$
-        $if(author.number)$
-          \author[$author.number$]{$author.name$}
-        $else$
-          \author[]{$author.name$}
-        $endif$
-        $if(author.affiliation)$
-          $if(author.email)$
-            \affil{$author.affiliation$ \thanks{$author.email$}}
-          $else$
-            \affil{$author.affiliation$}
-          $endif$
-        $endif$
-      $else$  
-        \author{$author$}
-      $endif$
-    $endfor$
-  $endif$
+$if(author)$
+\author{
+  $for(author)$
+  $author.name$
+  \thanks{$author.inst$. E-mail: $author.email$ $author.note$}
+  \and
+  $endfor$
+}
+$endif$
 $endif$
 
 \date{$date$}
@@ -550,12 +548,12 @@ $if(abstract)$
     $if(keyword)$
     $if(keyword.words)$
     \noindent
-    \textbf{Keywords}: $for(keyword.words)$$keyword.words$, $endfor$
+    \textbf{Key words}: $keyword.words$
     $endif$
     
     $if(keyword.JEL)$
     \noindent
-    \textbf{JEL Codes}: $for(keyword.JEL)$$keyword.JEL$, $endfor$
+    \textbf{JEL Codes}: $keyword.JEL$
     $endif$
     $endif$
 
@@ -634,6 +632,12 @@ $if(beamer)$
 \end{frame}
 $else$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+$if(endfloat)$
+\clearpage % ensure all floats are processed
+\processdelayedfloats
+\clearpage
 $endif$
 
 $endif$

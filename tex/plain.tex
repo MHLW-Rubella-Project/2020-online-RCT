@@ -510,7 +510,7 @@ $if(author)$
 \author{
   $for(author)$
   $author.name$
-  \thanks{$author.inst$. E-mail: $author.email$ $author.note$}
+  \thanks{$author.inst$. $if(author.email)$E-mail: $author.email$ $endif$ $author.note$}
   \and
   $endfor$
 }

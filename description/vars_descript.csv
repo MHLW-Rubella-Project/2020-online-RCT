@@ -1,0 +1,25 @@
+vars,Description
+age,(Wave1) Age as of April 2019 based on year of birth and month of birth.
+coupon2019,(Wave1) Dummy variable taking one if 40 to 46 years old as of April 2019.
+married,(Wave1) Dummy variable taking one if a respondent is married.
+education,(Wave1) Years of education.
+exercise_w1,(Wave1) Dummy variable taking one if a respondent exercises or plays sports more than once a week.
+health_check,(Wave1) Dummy variable taking one if a respondent has had medical examination at his/her city or place of employment in the past year from the time of the wave 1.
+flushot,(Wave1) Dummy variable taking one if a respondent is vaccinated against influenza every year.
+generosity,"(Wave1) Five Likert scale for the question ""I am happy when I pick up trash in the park."""
+df_future,"(Wave1) We get the preferred interest rate by asking a series of questions about whether it is better to get x JPY 90 days later or y JPY 97 days later. Using it, we calculate the future time discount factor."
+p_bias,"(Wave1) We get the preferred interest rate by asking a series of questions about whether it is better to get x JPY today or y JPY seven days later. Using it, we calculate the present time discount factor. Then, we make a dummy variable taking one if the present time discount factor is smaller than the future time discount factor."
+wtp_gain,"(Wave1) Willingness-to-pay of a lottery to get 100,000 JPY with a 50% probability (unit: 10,000JPY)."
+wtp_loss,"(Wave1) Willingness-to-pay of an insurance for the risk of losing 100,000 JPY with a 50% probability (unit: 10,000JPY)."
+prob_social,(Wave1) What percentage of men in their 40s and 50s does a respondent think may be infected with rubella?
+overconf_noreason,(Wave1) Dummy variable taking one if a respondent thinks that s/he will not be infected with rubella for no particular reason.
+handicap,"(Wave1) Dummy variable taking one if a respondent believes that if a woman in early pregnancy is infected with rubella, her child may be born with a disability."
+severity,"(Wave1) Dummy variable taking one if a respondent believes that if an adult male is infected with rubella, it will become more severe."
+handwash,"(Wave2) Five Likert scale for the question ""I wash my hands and gargle frequently during the period from the end of the previous questionnaire response to today."""
+temp_check,"(Wave2) Five Likert scale for the question ""I take my tempature frequently during the period from the end of the previous questionnaire response to today."""
+eat_habit,"(Wave2) Five Likert scale for the question ""I eat every morning, day and night during the period from the end of the previous questionnaire response to today."""
+avoid_out,"(Wave2) Five Likert scale for the question ""I am refraining from going out during the end of the previous questionnaire response to today."""
+avoid_crowd,"(Wave2) Five Likert scale for the question ""I avoid crowded places when I go out from the end of the previous questionnaire response to today."""
+wear_mask,"(Wave2) Five Likert scale for the question ""I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today."""
+exercise_w2,"(Wave2) Five Likert scale for the question ""I am exercising and playing sports at least once a week from the end of the previous questionnaire response to today."""
+avoid_hospital,"(Wave2) Five Likert scale for the question ""I will not go to a hospital until I feel seriously ill during the period from the end of the previous questionnaire response to today."""

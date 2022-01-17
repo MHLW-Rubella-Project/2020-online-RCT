@@ -528,6 +528,10 @@ $if(logo)$
 $endif$
 $endif$
 
+$if(keyword.jstyle)$
+\renewcommand{\abstractname}{要旨}
+$endif$
+
 \begin{document}
 $if(has-frontmatter)$
 \frontmatter
@@ -546,6 +550,17 @@ $if(abstract)$
     $abstract$
     
     $if(keyword)$
+    $if(keyword.jstyle)$
+    $if(keyword.words)$
+    \noindent
+    \textbf{キーワード}: $keyword.words$
+    $endif$
+    
+    $if(keyword.JEL)$
+    \noindent
+    \textbf{JELコード}: $keyword.JEL$
+    $endif$
+    $else$
     $if(keyword.words)$
     \noindent
     \textbf{Key words}: $keyword.words$
@@ -554,6 +569,7 @@ $if(abstract)$
     $if(keyword.JEL)$
     \noindent
     \textbf{JEL Codes}: $keyword.JEL$
+    $endif$
     $endif$
     $endif$
 

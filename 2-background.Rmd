@@ -44,8 +44,7 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
 ```{r include = FALSE}
-library(here)
-source(here("code/_library.r"))
+spin_child(here("code/1-niid-visualize.r"))
 ```
 
 
@@ -81,118 +80,14 @@ MMRワクチンの義務接種としての定期接種は1993年4月に一旦中
 [^why]: (1)は1977年の風しんワクチンの定期接種が始まる前に中学校を卒業したグループである。
 (2)は風しんワクチンの定期接種の対象が中学生女子であり、1995年以降の経過措置の対象にならなかったグループである。
 
+```{r show-niid-antibody, ref.label="niid-antibody", fig.cap = '男女別の各年齢における風しん抗体保有率。データソース: 国立感染症研究所『2018年度感染症流行予測調査（NESVPD）』', out.extra=""}
 
-```{r NiidVaccine, fig.cap = 'Rubella vaccination rate by age and gender. Source: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseaes (NESVPD)"', out.extra="", eval = FALSE}
-vaccinedt <- read_csv(here(niid_path, "shape_vaccine.csv"))
-
-vaccinedt %>%
-  mutate(
-    age = factor(age, levels = unique(vaccinedt$age)[c(31, 1:30)]),
-    clear_total = total - others - unknown,
-    rate_shot0 = no / clear_total,
-    rate_shot1 = time1 / clear_total,
-    rate_shot2 = time2 / clear_total
-  ) %>%
-  dplyr::select(age, gender, rate_shot0, rate_shot1, rate_shot2) %>%
-  tidyr::pivot_longer(
-    - (age:gender), names_prefix = "rate_", names_to = "shot"
-  ) %>%
-  mutate(shot = factor(shot, levels = c("shot2", "shot1", "shot0"))) %>%
-  dplyr::filter(gender != "all") %>%
-  ggplot(aes(x = age, y = value * 100, group = shot)) +
-  geom_area(aes(fill = shot), color = "black") +
-  scale_fill_brewer(
-    palette = "Blues", direction = -1,
-    name = "Number of inoculations",
-    labels = c("2", "1", "0")
-  ) +
-  facet_wrap(~ gender) +
-  labs(x = "Age", y = "Fraction (%)") +
-  simplegg() +
-  theme(axis.text.x = element_text(hjust = 1, angle = 45))
 ```
-
-
-<!---
-図\@ref(fig:NiidVaccine)は国立環境研究所（NIID）の
-2018年度感染症流行予測調査の風しんワクチン接種率を示したものである。
-12歳以下の男女ともに、5歳を境目に大多数が1回接種から2回接種に変化している。
-これは2006年から始まった麻疹風しんワクチンの定期接種によるものである。
-12歳以上39歳の男女の過半数が少なくとも風しんワクチンを1回接種している。
-この年代において、若い人ほど2回接種の比率が大きくなる。
-これは2008年から2013年で行われた中学1年生および高校3年生相当の者を対象とした2回目接種の影響である。
-40歳以上55歳未満の傾向は男女で大きく異なる。
-40歳以上55歳未満の女性の多くは風しんワクチンを1回以上接種しているが、男性の多くは接種をしていない。
-この差は風しんの定期接種の対象が男女の幼児に切り替わる前の定期接種の影響を反映している。
---->
-
-
-```{r NiidAntibody, fig.cap = '男女別の各年齢における風しん抗体保有率。データソース: 国立感染症研究所『2018年度感染症流行予測調査（NESVPD）』', out.extra=""}
-niid <- read_csv(here(niid_path, "shape_prevalence.csv")) %>%
-  dplyr::filter(gender != "all") %>%
-  mutate(antibody_rate_8 =
-    (HI8 + HI16 + HI32 + HI64 + HI128 + HI256 + HI512 + HI_more1024) / total
-  )
-
-niid %>%
-  mutate(gender = factor(
-    gender, levels = c("female", "male"), labels = c("女性", "男性")
-  )) %>%
-  ggplot(aes(x = age, y = antibody_rate_8 * 100, group = gender)) +
-  geom_point(aes(shape = gender), size = 3) +
-  geom_line() +
-  geom_polygon(
-    data = tibble(x = c(39, 55, 55, 39), y = c(-Inf, -Inf, Inf, Inf)),
-    aes(x = x, y = y),
-    fill = "black", alpha = 0.1, inherit.aes = FALSE
-  ) +
-  scale_x_continuous(
-    breaks = c(0, 10, 20, 28, 30, 39, 40, 50, 55, 60, 70)
-  ) +
-  labs(x = "年齢", y = "風しん抗体保有率（%）", shape = "性別") +
-  simplegg(axis_text_size = 11, font_family = "YuGothic")
-
-over55 <- niid %>%
-  dplyr::filter(age > 55) %>%
-  group_by(gender) %>%
-  summarize(mu = mean(antibody_rate_8) * 100)
-
-age39_55 <- niid %>%
-  dplyr::filter(39 <= age & age <= 55) %>%
-  group_by(gender) %>%
-  summarize(mu = mean(antibody_rate_8) * 100)
-
-reg <- niid %>%
-  mutate(
-    age_group = case_when(
-      age < 39 ~ "under39",
-      age <= 55 ~ "b/w 39 and 55",
-      TRUE ~ "over55"
-    ),
-    age_group = factor(
-      age_group,
-      levels = c("b/w 39 and 55", "under39", "over55")
-    ),
-    gender = factor(
-      gender,
-      levels = c("male", "female")
-    )
-  ) %>%
-  lm(antibody_rate_8 ~ gender * age_group, data = .) %>%
-  tidy() %>%
-  mutate(
-    label = sprintf(
-      "%1.3f (std.error = %1.3f; p = %1.3f)",
-      estimate, std.error, p.value
-    )
-  )
-```
-
 
 風しんの抗体はワクチン接種だけでなく、自然感染でも得られる。
 高齢者を中心に、風しんが流行していた期間に育った人ほど、風しんに自然感染した比率が高くなるので、
 風しんワクチンを接種していなくても抗体を保有している可能性が高くなる。
-図\@ref(fig:NiidAntibody)は国立感染症研究所（NIID）の
+図\@ref(fig:show-niid-antibody)は国立感染症研究所（NIID）の
 2018年度感染症流行予測調査の男女別・年齢別の風しん抗体保有率をプロットしたものである。
 56歳以上の各年齢の抗体保有率の平均は、男女とも約90%である（男性：
 `r  sprintf("%1.1f%%", subset(over55, gender == "male")$mu)  `

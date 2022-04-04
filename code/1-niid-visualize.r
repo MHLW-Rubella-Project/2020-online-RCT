@@ -1,7 +1,7 @@
 #+ include = FALSE
 # library and relative paths
 library(here)
-source(here("code/_library.r"))
+source(here("code/_common.r"))
 
 #+ include = FALSE
 vaccine <- read_csv(here(niid_path, "shape_vaccine.csv"))

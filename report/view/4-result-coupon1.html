@@ -2756,16 +2756,16 @@ Yes
 利他強調メッセージ群において、
 <span class="math inline">\(\hat{P}(A|B) = 0.5\)</span>と<span class="math inline">\(\hat{P}(B) = 0.109\)</span>なので、
 <span class="math inline">\(\hat{P}(B|A) = 0.273\)</span>となる（1000個のブートストラップ標本で構築した95%信頼区間は
-[0.117, 0.469] ）。
+<code>r sprintf(&quot;[%1.3f, %1.3f]&quot;, qt_bayes1[1], qt_bayes1[2])</code> ）。
 さらに、陰性であるかどうかによって抗体検査の受検にセレクションが生じているかどうかを
 検証するために、陰性という事象と抗体検査の受検という事象が独立であるという帰無仮説を検定した。
 <span class="math inline">\(\hat{P}(B|A) - \hat{P}(B)\)</span>の95%信頼区間にゼロが含まれていないとき、
 我々は帰無仮説を5%有意水準で棄却できる。
 その結果、<span class="math inline">\(\hat{P}(B|A) - \hat{P}(B)\)</span>の95%信頼区間は
-[0.016, 0.336]
+<code>r sprintf(&quot;[%1.3f, %1.3f]&quot;, qt2_bayes1[1], qt2_bayes1[2])</code>
 なので、我々は帰無仮説を棄却できる。
 同様に、社会比較メッセージ群の<span class="math inline">\(\hat{P}(B|A) - \hat{P}(B)\)</span>の95%信頼区間は
-[0.000, 0.350]
+<code>r sprintf(&quot;[%1.3f, %1.3f]&quot;, qt_bayes2[1], qt_bayes2[2])</code>
 である。
 したがって、利他強調メッセージ群と社会比較メッセージ群では、
 陰性者が抗体検査を積極的に受検している傾向があるかもしれない。<a href="#fnref3" class="footnote-back">↩︎</a></p></li>

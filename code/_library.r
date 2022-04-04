@@ -19,3 +19,4 @@ lapply(
 
 # relative path of data
 niid_path <- "data/2018-NIID-survey"
+rct_path <- "data/2020-online-survey"

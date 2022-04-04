@@ -1,13 +1,5 @@
-rct_data <- function() {
-  read_csv("./data/survey.csv") %>%
-    mutate(nudge = factor(nudge, labels = c(
-      "厚労省", "年齢表現", "利他強調", "利己強調",
-      "社会比較", "有効期限", "低コスト"
-    )))
-}
-
-rct_data_wave1 <- function() {
-  rct_data() %>%
+rct_data_wave1 <- function(path) {
+  rct_data(path) %>%
     dplyr::filter(40 <= age & age <= 56) %>%
     dplyr::filter(exp_antibody != 1 & exp_vaccine != 1) %>%
     mutate(
@@ -16,8 +8,8 @@ rct_data_wave1 <- function() {
     )
 }
 
-rct_data_wave2 <- function(selection) {
-  dt <- rct_data() %>%
+rct_data_wave2 <- function(path, selection) {
+  dt <- rct_data(path) %>%
     dplyr::filter(40 <= age & age <= 56) %>%
     dplyr::filter(follow == 1)
 

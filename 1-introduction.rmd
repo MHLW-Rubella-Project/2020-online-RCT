@@ -43,7 +43,6 @@ data.frame(unique(system_fonts()[, "family"]))
 grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
-# はじめに {#intro}
 
 季節性インフルエンザ・新型コロナウイルス・風しんなどの感染症は、
 感染した本人の健康状態を悪化させるだけでなく、感染者本人から他者に感染させてしまう特性をもっている。

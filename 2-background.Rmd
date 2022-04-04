@@ -2,7 +2,7 @@
 title: Background of Rubella Vaccination
 subtitle: Preview
 author: Hiroki Kato
-bibliography: ../MHLW Rubella Nudge.bib
+bibliography: MHLW Rubella Nudge.bib
 output:
   bookdown::html_document2:
     toc: true
@@ -13,11 +13,11 @@ params:
 ---
 
 ```{r eval = FALSE, include = FALSE, echo = FALSE}
+library(here)
 rmarkdown::render(
-  input = "Rmarkdown/background_rubella.rmd",
+  input = here("2-background.rmd"),
   output_format = "all",
-  output_dir = "report/view/webRCT",
-  knit_root_dir = here::here()
+  output_dir = "report/view"
 )
 ```
 
@@ -43,8 +43,9 @@ data.frame(unique(system_fonts()[, "family"]))
 grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
-```{r include = FALSE, eval = params$preview}
-library(tidyverse)
+```{r include = FALSE}
+library(here)
+source(here("code/_library.r"))
 ```
 
 
@@ -82,7 +83,7 @@ MMRワクチンの義務接種としての定期接種は1993年4月に一旦中
 
 
 ```{r NiidVaccine, fig.cap = 'Rubella vaccination rate by age and gender. Source: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseaes (NESVPD)"', out.extra="", eval = FALSE}
-vaccinedt <- read_csv("data/niid_vaccine_2018.csv")
+vaccinedt <- read_csv(here(niid_path, "shape_vaccine.csv"))
 
 vaccinedt %>%
   mutate(
@@ -127,7 +128,7 @@ vaccinedt %>%
 
 
 ```{r NiidAntibody, fig.cap = '男女別の各年齢における風しん抗体保有率。データソース: 国立感染症研究所『2018年度感染症流行予測調査（NESVPD）』', out.extra=""}
-niid <- read_csv("data/niid_prevalence_2018.csv") %>%
+niid <- read_csv(here(niid_path, "shape_prevalence.csv")) %>%
   dplyr::filter(gender != "all") %>%
   mutate(antibody_rate_8 =
     (HI8 + HI16 + HI32 + HI64 + HI128 + HI256 + HI512 + HI_more1024) / total

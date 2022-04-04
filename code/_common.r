@@ -20,3 +20,9 @@ lapply(
 # relative path of data
 niid_path <- "data/2018-NIID-survey"
 rct_path <- "data/2020-online-survey"
+
+# treatment labels
+treat_labels <- c(
+  "厚労省", "年齢表現", "利他強調", "利己強調",
+  "社会比較", "有効期限", "低コスト"
+)

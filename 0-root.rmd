@@ -82,17 +82,8 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 
 # オンライン調査の概要 {#experiment}
 
-```{r child = "3-experiment.r"}
+```{r child = "3-experiment.rmd"}
 
-```
-
-```{r include=FALSE}
-source("script/webRCT/_library.r")
-web <- rct_data()
-set_optRCTtool(
-  RCTtool.plot_family = "YuGothic",
-  RCTtool.table_fontsize = 9
-)
 ```
 
 

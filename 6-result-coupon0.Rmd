@@ -1,0 +1,159 @@
+---
+title: Result(3)
+subtitle: Preview
+author: Hiroki Kato
+bibliography: MHLW Rubella Nudge.bib
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    number_sections: false
+params:
+  preview: true
+---
+
+```{r eval = FALSE, include = FALSE, echo = FALSE}
+library(here)
+rmarkdown::render(
+  input = here("6-result-coupon0.rmd"),
+  output_format = "all",
+  output_dir = "report/view"
+)
+```
+
+```{r include = FALSE, eval = params$preview}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  echo = FALSE,
+  cache = FALSE,
+  include = TRUE,
+  fig.width = 10
+)
+
+out <- "kableExtra"
+options(
+  knitr.kable.NA = " ",
+  knitr.table.format = "html",
+  modelsummary_stars_note = FALSE
+)
+
+library(systemfonts)
+data.frame(unique(system_fonts()[, "family"]))
+grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
+```
+
+```{r include = FALSE}
+spin_child(here("code/5-selection1-coupon0.r"))
+```
+
+## 2019年度クーポン券送付対象外の男性に限定したナッジ・メッセージの効果 {#coupon0}
+
+```{r show-int-coupon0-balance, ref.label="int-coupon0-balance", eval = params$preview}
+
+```
+
+```{r show-act-coupon0-balance, ref.label="act-coupon0-balance", eval = params$preview}
+
+```
+
+
+次に、2019年度には、クーポン券の自動送付対象ではないが、
+自身が手続きすることでクーポン券を受け取れる人に限定して、
+ナッジ・メッセージの効果を推定する。
+このサブグループにおいて、
+回答者の観察可能な特徴についてトリートメント間でバランスしている
+（補論\@ref(addtab)の表\@ref(tab:show-int-coupon0-balance)
+と表\@ref(tab:show-act-coupon0-balance)）。
+よって、\@ref(coupon1)と同様に、この節ではt検定の結果のみを示し、回帰分析の結果は補論に示す。
+検出力80%・有意水準5%を保つために必要な効果の規模を計算したところ、
+意向をアウトカムとした場合は
+少なくとも`r round(min_int_ef * 100, 1)`%ポイント必要であり、
+行動をアウトカムとした場合は
+少なくとも`r round(min_act_ef * 100, 1)`%ポイント必要である。
+
+```{r show-int-coupon0-ttest, ref.label="int-coupon0-ttest", fig.cap = "2019年度クーポン券配布対象外の男性に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra=""}
+
+```
+
+図\@ref(fig:show-int-coupon0-ttest)は介入群ごとの抗体検査受検とワクチン接種の意向の比率を示している。
+図\@ref(fig:show-int-coupon1-ttest)と同様に、すべての介入群について、
+抗体検査受検の意向の比率はワクチン接種の意向の比率より低い。
+2019年度にクーポン券が送付されない人に対しても、
+ワクチン接種の意向の質問文は抗体検査が陰性だったという条件付であることに注意して解釈すべきである。
+
+また、社会比較メッセージは抗体検査受検の意向に対して統計的に有意な効果を持っていないが、
+ワクチン接種の意向に対して負の効果を持っている。
+厚労省メッセージを読んだ人の抗体検査受検とワクチン接種の意向の比率はそれぞれ約27.6%と約52.8%である。
+それに対して、社会比較メッセージを読んだ人の抗体検査受検とワクチン接種の意向の比率はそれぞれ
+約23.9%と約44.6%である。
+したがって、社会比較メッセージの抗体検査受検の意向に対する効果は約-3.7%ポイントであり、
+これは統計的に有意な効果ではない。
+しかしながら、社会比較メッセージのワクチン接種の意向に対する効果は約-8.2%ポイントであり、
+これは統計的に10%水準で有意である。
+
+この負の効果の原因の一つとして、ワクチン接種のただ乗りが挙げられる。
+社会比較メッセージは「5人に1人が抗体を持っていない」ことを強調している。
+裏返せば、5人に4人が抗体を持っているということである。
+このメッセージを読んだ人は、仮に風しんの抗体を保有していないとしても、
+全体の80%が抗体を持っているので、自身が感染する機会は少ないと考えたのかもしれない。
+クーポン券がない場合、
+この信念がワクチンを接種することの価値を低め、
+ワクチン接種の意向の比率をコントロールよりも下げた可能性がある。
+
+```{r show-act-coupon0-ttest, ref.label="act-coupon0-ttest", fig.cap = "2019年度クーポン券配布対象外の男性に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra=""}
+
+```
+
+図\@ref(fig:show-act-coupon0-ttest)は各介入群の第1回調査以降の抗体検査受検比率と
+第1回調査以降のワクチン接種比率である。
+社会比較メッセージが厚労省メッセージよりも第1回調査以降の抗体検査の受検を促進しているが、
+抗体検査とワクチン接種の両方を促進していない。
+厚労省メッセージを読んだ人の約0.5%が第1回調査以降に抗体検査を受検したが、
+誰もワクチン接種をしていない。
+また、社会比較メッセージを読んだ人の約2.8%が第1回調査以降に抗体検査を受検したが、
+誰もワクチン接種をしていない。
+よって、社会比較メッセージの抗体検査受検に対する効果は約2.3%ポイントであり、
+これは統計的に10%水準で有意である。
+しかしながら、抗体検査とワクチン接種の両方に対する効果はゼロである。
+
+```{r show-int-coupon0-reg, ref.label="int-coupon0-reg"}
+
+```
+
+```{r show-act-coupon0-reg, ref.label="act-coupon0-reg"}
+
+```
+
+
+ここまでの結果は表\@ref(tab:show-covlist)で示した個人の観察可能な特徴をコントロールしても変化しない。
+補論\@ref(addtab)の表\@ref(tab:show-int-coupon0-reg)と表\@ref(tab:show-act-coupon0-reg)
+はナッジ・メッセージの線形確率モデルの推定結果である。
+奇数列はナッジ・メッセージのダミー変数のみを説明変数に加えているので、
+これらの結果は二群間のt検定の結果
+（図\@ref(fig:show-int-coupon0-ttest)と図\@ref(fig:show-act-coupon0-ttest)）に対応している。
+偶数列はナッジ・メッセージのダミー変数に加えて、表\@ref(tab:show-covlist)の変数を説明変数に加えている。
+列(4)は、これまでの結果に加えて、
+年齢表現メッセージが抗体検査の受検に負の効果を持っていることを示しており、
+これは統計的に5%水準で有意である。
+
+```{r show-tester-coupon0, ref.label="tester-coupon0"}
+
+```
+
+第\@ref(coupon1)節で示したように、
+ワクチン接種比率が抗体検査の受検比率より低い原因は、
+抗体検査の陰性比率が低いことにある。
+表\@ref(tab:show-tester-coupon0)に抗体検査受検者の動きを示した。
+各群の抗体検査の陰性比率は0%から100%の範囲にある。
+とくに、厚労省メッセージの抗体検査の陰性比率は0%（$=0/1$）である。
+抗体検査を促進した社会比較メッセージの陰性比率は17%（$=1/6$）である。
+しかしながら、フィッシャーの正確検定より、
+これらの二群の陰性比率の差は統計的に有意でない
+（第6列より、p値は1）。
+
+また、第\@ref(coupon1)節と同様に、
+抗体検査の結果が陰性である人のほとんどがワクチンを接種していることも明らかになった。
+厚労省メッセージ群と低コストメッセージ群では、陰性者がいない。
+残った介入群のうち、社会比較メッセージ群を除くすべての群において、
+抗体検査の結果が陰性である人は全員ワクチンを接種していた。

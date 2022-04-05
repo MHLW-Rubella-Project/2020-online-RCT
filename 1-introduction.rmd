@@ -10,6 +10,7 @@ output:
     number_sections: false
 params:
   preview: true
+  appendix: true
 ---
 
 ```{r eval = FALSE, include = FALSE, echo = FALSE}
@@ -43,7 +44,7 @@ data.frame(unique(system_fonts()[, "family"]))
 grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
-
+```{asis, echo = params$preview|!params$appendix}
 季節性インフルエンザ・新型コロナウイルス・風しんなどの感染症は、
 感染した本人の健康状態を悪化させるだけでなく、感染者本人から他者に感染させてしまう特性をもっている。
 ワクチンはこのような感染症の有効な対策の一つである。
@@ -194,3 +195,4 @@ COVID-19のワクチン接種以外にも、金銭的インセンティブがイ
 第 \@ref(background) 節は日本における風しん対策の背景を概観する。
 第 \@ref(experiment) 節はオンライン調査実験の内容を説明する。
 第 \@ref(result) 節で結果を示し、第 \@ref(conclusion) 節で結論を述べる。
+```

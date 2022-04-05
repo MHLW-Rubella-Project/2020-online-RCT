@@ -1,6 +1,6 @@
 #+ include = FALSE
 library(here)
-source(here("code/_common.r"))
+source(here("code/_common.r"), encoding = "utf8")
 
 #+ include = FALSE
 web <- read_csv(here(rct_path, "shape_survey.csv"))

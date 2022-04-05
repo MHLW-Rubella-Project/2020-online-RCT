@@ -1,7 +1,7 @@
 #+ include = FALSE
 # library and relative paths
 library(here)
-source(here("code/_common.r"))
+source(here("code/_common.r"), encoding = "utf8")
 
 #+ include = FALSE
 vaccine <- read_csv(here(niid_path, "shape_vaccine.csv"))
@@ -63,17 +63,17 @@ antibody %>%
   simplegg(axis_text_size = 11, font_family = "YuGothic")
 
 #+ reg-niid-antibody, include = FALSE
-over55 <- niid %>%
+over55 <- antibody %>%
   dplyr::filter(age > 55) %>%
   group_by(gender) %>%
   summarize(mu = mean(antibody_rate_8) * 100)
 
-age39_55 <- niid %>%
+age39_55 <- antibody %>%
   dplyr::filter(39 <= age & age <= 55) %>%
   group_by(gender) %>%
   summarize(mu = mean(antibody_rate_8) * 100)
 
-reg <- niid %>%
+reg <- antibody %>%
   mutate(
     age_group = case_when(
       age < 39 ~ "under39",

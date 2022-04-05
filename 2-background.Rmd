@@ -10,6 +10,7 @@ output:
     number_sections: false
 params:
   preview: true
+  appendix: true
 ---
 
 ```{r eval = FALSE, include = FALSE, echo = FALSE}
@@ -44,10 +45,10 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
 ```{r include = FALSE}
-spin_child(here("code/1-niid-visualize.r"))
+knitr::spin_child(here("code/1-niid-visualize.r"))
 ```
 
-
+```{asis, echo = params$preview|!params$appendix}
 ワクチン接種には、予防接種法で規定されている定期接種とそれ以外の任意接種がある。
 定期接種は原則として自己負担がないが、任意接種は接種料金を自己負担する必要がある。
 1994年の予防接種法の改正により、定期接種は義務接種から努力接種へと変更された。
@@ -79,8 +80,9 @@ MMRワクチンの義務接種としての定期接種は1993年4月に一旦中
 
 [^why]: (1)は1977年の風しんワクチンの定期接種が始まる前に中学校を卒業したグループである。
 (2)は風しんワクチンの定期接種の対象が中学生女子であり、1995年以降の経過措置の対象にならなかったグループである。
+```
 
-```{r show-niid-antibody, ref.label="niid-antibody", fig.cap = '男女別の各年齢における風しん抗体保有率。データソース: 国立感染症研究所『2018年度感染症流行予測調査（NESVPD）』', out.extra=""}
+```{r show-niid-antibody, ref.label="niid-antibody", fig.cap = '男女別の各年齢における風しん抗体保有率。データソース: 国立感染症研究所『2018年度感染症流行予測調査（NESVPD）』', out.extra="", eval = params$preview|!params$appendix}
 
 ```
 

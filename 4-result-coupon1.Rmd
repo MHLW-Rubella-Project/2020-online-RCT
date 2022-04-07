@@ -10,6 +10,7 @@ output:
     number_sections: false
 params:
   preview: true
+  appendix: true
 ---
 
 ```{r eval = FALSE, include = FALSE, echo = FALSE}
@@ -44,9 +45,10 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
 ```{r include = FALSE}
-spin_child(here("code/3-selection1-coupon1.r"))
+knitr::spin_child(here("code/3-selection1-coupon1.r"))
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 ## サンプルセレクションの定義 {#selection}
 
 我々の関心はナッジ・メッセージが抗体検査やワクチン接種を受けていない男性の行動を促進できるかどうかである。
@@ -71,34 +73,25 @@ spin_child(here("code/3-selection1-coupon1.r"))
 ただし、市区町村の判断や本人の希望に応じて、47歳以上56歳以下の男性もクーポン券を受け取ることはできる。
 
 ## 2019年度クーポン券配布対象者に限定したナッジ・メッセージの効果 {#coupon1}
+```
 
-```{r show-int-coupon1-balance, ref.label="int-coupon1-balance", eval = params$preview}
+```{r show-int-coupon1-balance, ref.label="int-coupon1-balance", eval = params$preview|params$appendix}
 
 ```
 
-```{r show-act-coupon1-balance, ref.label="act-coupon1-balance", eval = params$preview}
+```{r show-act-coupon1-balance, ref.label="act-coupon1-balance", eval = params$preview|params$appendix}
 
 ```
 
-始めに、2019年度にクーポン券が送付された40歳以上46歳以下の男性グループにおける、
-ナッジ・メッセージの意向と行動に対する効果を推定する。
-このサブグループにおいて、
-回答者の観察可能な特徴についてトリートメント間でバランスしている
-（補論\@ref(addtab)の表\@ref(tab:show-int-coupon1-balance)
-と表\@ref(tab:show-act-coupon1-balance)）。
-したがって、本節では、
-厚労省メッセージと各ナッジ・メッセージ間の平均値の差の検定の結果のみを示し、
-回帰分析の結果は補論に示す。
-また、検出力80%・有意水準5%を保つために必要な効果の規模を計算したところ、
-意向をアウトカムとした場合は
-少なくとも`r round(min_int_ef * 100, 1)`%ポイント必要であり、
-行動をアウトカムとした場合は
-少なくとも`r round(min_act_ef * 100, 1)`%ポイント必要である。
-
-```{r show-int-coupon1-ttest, ref.label = "int-coupon1-ttest", fig.cap = "2019年度クーポン券配布対象者に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra=""}
+```{r show-coupon1-power, ref.label="coupon1-power", results = "asis", eval = params$preview|!params$appendix}
 
 ```
 
+```{r show-int-coupon1-ttest, ref.label = "int-coupon1-ttest", fig.cap = "2019年度クーポン券配布対象者に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra="", eval = params$preview|!params$appendix}
+
+```
+
+```{asis, echo = params$preview|!params$appendix}
 図\@ref(fig:show-int-coupon1-ttest)のパネルAは
 各介入群の抗体検査受検の意向を示している。
 結果として、
@@ -120,11 +113,13 @@ spin_child(here("code/3-selection1-coupon1.r"))
 考えられる可能性の一つはワクチン接種の意向の質問文による刺激である。
 我々は抗体を持っていないという条件のもとで接種したいかどうかを質問しているので、
 質問文がワクチン接種の必要性を強く刺激した可能性がある。
+```
 
-```{r show-act-coupon1-ttest, ref.label = "act-coupon1-ttest", fig.cap = "2019年度クーポン券配布対象者に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra=""}
+```{r show-act-coupon1-ttest, ref.label = "act-coupon1-ttest", fig.cap = "2019年度クーポン券配布対象者に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra="", eval = params$preview|!params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 図\@ref(fig:show-act-coupon1-ttest)のパネルAは各介入群の第1回調査以降の抗体検査受検比率を示している。
 結果として、利他強調メッセージと利己強調メッセージでは、厚労省メッセージよりも
 第1回調査以降の抗体検査の受検比率が高い。
@@ -146,20 +141,22 @@ spin_child(here("code/3-selection1-coupon1.r"))
 よって、利他強調メッセージは3.8%ポイントコントロールよりも高く、これはt検定より統計的に10%水準で有意である。
 社会比較メッセージは4%ポイントコントロールよりも高く、これはt検定より統計的に10%水準で有意である。
 
-<!---
+<!--
 [^policy]: この効果は今回の厚生労働省の政策によって新たに抗体を獲得した人の比率を示すので、政策効果である。
 利他強調メッセージと社会比較メッセージは厚生労働省の追加政策の対象男性の抗体保有率を約4%ポイント高めていて、
 これは厚生労働省の目標である10%ポイント増加の約40%に相当する。
---->
+-->
+```
 
-```{r show-int-coupon1-reg, ref.label = "int-coupon1-reg", eval = params$preview}
+```{r show-int-coupon1-reg, ref.label = "int-coupon1-reg", eval = params$preview|params$appendix}
 
 ```
 
-```{r show-act-coupon1-reg, ref.label="act-coupon1-reg", eval = params$preview}
+```{r show-act-coupon1-reg, ref.label="act-coupon1-reg", eval = params$preview|params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 補論\@ref(addtab)の表\@ref(tab:show-int-coupon1-reg)
 と表\@ref(tab:show-act-coupon1-reg)に厚労省メッセージ群を比較対象とした
 ナッジ・メッセージの線形確率モデルの推定結果を示した。
@@ -170,15 +167,17 @@ spin_child(here("code/3-selection1-coupon1.r"))
 さらに、利己強調メッセージと社会比較メッセージは厚労省メッセージと比較して抗体検査の受検行動に
 統計的に5%水準で正の影響を与えている。
 効果の規模はそれぞれ6.7%ポイントと6.5%ポイントである。
+```
 
-```{r show-int-coupon1-altreg, ref.label="int-coupon1-altreg", eval = params$preview}
+```{r show-int-coupon1-altreg, ref.label="int-coupon1-altreg", eval = params$preview|params$appendix}
 
 ```
 
-```{r show-act-coupon1-altreg, ref.label = "act-coupon1-altreg", eval = params$preview}
+```{r show-act-coupon1-altreg, ref.label = "act-coupon1-altreg", eval = params$preview|params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 また、効果の規模が最も大きい利他強調メッセージ群を比較対象とした
 線形確率モデルの推定結果を補論\@ref(addtab)の
 表\@ref(tab:show-int-coupon1-altreg)と
@@ -192,11 +191,13 @@ spin_child(here("code/3-selection1-coupon1.r"))
 社会比較メッセージは抗体検査の受検を促進した可能性がある。
 しかしながら、抗体検査の受検比率の差は検出力を十分に保つほどの大きさではないので、
 サンプルサイズを十分に大きくして検証する必要がある。
+```
 
-```{r show-tester-coupon1, ref.label = "tester-coupon1"}
+```{r show-tester-coupon1, ref.label = "tester-coupon1", eval = params$preview|!params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 我々のサーベイには抗体検査の結果の情報があるので、
 その変数を用いて先の結果に関するメカニズムを議論しよう。
 そのために、我々は抗体検査を受検した人に限定して、
@@ -214,11 +215,12 @@ spin_child(here("code/3-selection1-coupon1.r"))
 また、サンプルをトリートメント群で分割しない場合、陰性者のワクチン接種率は87.5%であり、
 その95%信頼区間は100%を含んでいる[^bootstrap]。
 したがって、介入に関わらず抗体検査の結果が陰性である人のほとんどがワクチンを接種している。
+```
 
-[^bootstrap]: 1000個のブートストラップ標本を用いて、陰性者のワクチン接種率の95%信頼区間を計算すると、
-`r sprintf("[%1.1f%%, %1.1f%%]", vrate$ci[1] * 100, vrate$ci[2] * 100)`
-となった。
+```{r show-negative-vaccine-coupon1, ref.label="negative-vaccine-coupon1", results = "asis", eval = params$preview|!params$appendix}
+```
 
+```{asis, echo = params$preview|!params$appendix}
 第二に、各群の抗体検査の陰性比率は20%から62.5%の範囲にある。
 たとえば、利他強調メッセージを割り当てられた抗体検査受検者14人のうち、
 7人が抗体を保有していなかったので、陰性比率は50%である。
@@ -235,39 +237,7 @@ spin_child(here("code/3-selection1-coupon1.r"))
 ナッジ・メッセージの割り当てと陰性という事象が独立であるという帰無仮説を
 フィッシャーの正確検定で検証したところ、
 我々はその帰無仮説を棄却できなかった（p値=0.543）。
+```
 
-[^Bayesian]: これと対立する仮説として、
-利他強調メッセージや社会比較メッセージを読んで抗体検査を受検した人は
-自身に抗体を保有していないと信じているということが考えられる。
-そこで、陰性者の抗体検査受検率を推定することを試みる。
-しかしながら、陰性であるにも関わらず抗体検査を受検していない人がいるはずなので、
-陰性者の抗体検査受検率をデータから直接復元することはできない。
-我々は、ベイズ定理を用いて、間接的に推定した。
-陰性という事象$A$と抗体検査の受検という事象$B$の二つの事象を考える。
-このとき、抗体検査の受検比率は$P(B)$、抗体検査受検者の陰性比率は$P(A|B)$で表すことができ、
-これらの値はデータから直接推定できる。
-ベイズの定理より、抗体検査受検者の陰性比率は
-$$ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} $$
-と定義できる。
-ここで、$P(A)$は陰性比率であり、
-これは第\@ref(background)節で示したNIIDのデータより0.2となる。
-確率$P(B|A)$は陰性者で条件づけた抗体検査の受検比率であり、我々の関心のあるパラメータである。
-よって、陰性者の抗体検査の受検比率は
-$$ \hat{P}(B|A) = \frac{\hat{P}(A|B) \cdot \hat{P}(B)}{0.2} $$
-で計算できる。
-利他強調メッセージ群において、
-$\hat{P}(A|B) = 0.5$と$\hat{P}(B) = 0.109$なので、
-$\hat{P}(B|A) = 0.273$となる（1000個のブートストラップ標本で構築した95%信頼区間は
-`r sprintf("[%1.3f, %1.3f]", qt_bayes1[1], qt_bayes1[2])` ）。
-さらに、陰性であるかどうかによって抗体検査の受検にセレクションが生じているかどうかを
-検証するために、陰性という事象と抗体検査の受検という事象が独立であるという帰無仮説を検定した。
-$\hat{P}(B|A) - \hat{P}(B)$の95%信頼区間にゼロが含まれていないとき、
-我々は帰無仮説を5%有意水準で棄却できる。
-その結果、$\hat{P}(B|A) - \hat{P}(B)$の95%信頼区間は
-`r sprintf("[%1.3f, %1.3f]", qt2_bayes1[1], qt2_bayes1[2])`
-なので、我々は帰無仮説を棄却できる。
-同様に、社会比較メッセージ群の$\hat{P}(B|A) - \hat{P}(B)$の95%信頼区間は
-`r sprintf("[%1.3f, %1.3f]", qt_bayes2[1], qt_bayes2[2])`
-である。
-したがって、利他強調メッセージ群と社会比較メッセージ群では、
-陰性者が抗体検査を積極的に受検している傾向があるかもしれない。
+```{r show-bayesian-coupon1, ref.label="bayesian-coupon1", results = "asis", eval = params$preview|!params$appendix}
+```

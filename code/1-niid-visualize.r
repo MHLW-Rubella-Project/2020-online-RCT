@@ -62,16 +62,17 @@ antibody %>%
   labs(x = "年齢", y = "風しん抗体保有率（%）", shape = "性別") +
   simplegg(axis_text_size = 11, font_family = "YuGothic")
 
-#+ reg-niid-antibody, include = FALSE
-over55 <- antibody %>%
-  dplyr::filter(age > 55) %>%
-  group_by(gender) %>%
-  summarize(mu = mean(antibody_rate_8) * 100)
-
-age39_55 <- antibody %>%
-  dplyr::filter(39 <= age & age <= 55) %>%
-  group_by(gender) %>%
-  summarize(mu = mean(antibody_rate_8) * 100)
+#+ reg-niid-antibody, eval = FALSE
+cell <- antibody %>%
+  dplyr::filter(39 <= age) %>%
+  mutate(g = case_when(
+    age <= 55 ~ "<55",
+    TRUE ~ ">55"
+  )) %>%
+  group_by(gender, g) %>%
+  summarize(mu = mean(antibody_rate_8) * 100) %>%
+  mutate(mu = sprintf("%1.1f%%", mu)) %>%
+  rename(sex = gender)
 
 reg <- antibody %>%
   mutate(
@@ -97,3 +98,31 @@ reg <- antibody %>%
       estimate, std.error, p.value
     )
   )
+
+
+cat(c(
+  "風しんの抗体はワクチン接種だけでなく、自然感染でも得られる。",
+  "高齢者を中心に、風しんが流行していた期間に育った人ほど、風しんに自然感染した比率が高くなるので、",
+  "風しんワクチンを接種していなくても抗体を保有している可能性が高くなる。",
+  "図\\@ref(fig:show-niid-antibody)は国立感染症研究所（NIID）の",
+  "2018年度感染症流行予測調査の男女別・年齢別の風しん抗体保有率をプロットしたものである。",
+  "56歳以上の各年齢の抗体保有率の平均は、男女とも約90%である",
+  paste0("（男性：", subset(cell, g == ">55" & sex == "male")$mu, "、"),
+  paste0("女性：", subset(cell, g == ">55" & sex == "female")$mu, "）。"),
+  "一方、39歳以上55歳以下の（1962年4月2日から1979年4月1日生まれ）の抗体保有率の平均は、",
+  paste0("男性では、", subset(cell, g == "<55" & sex == "male")$mu, "、"),
+  paste0("女性では、", subset(cell, g == "<55" & sex == "female")$mu, "である。"),
+  "つまり、この年齢層の男性の抗体保有率は同世代の女性の抗体保有率より低い。",
+  "これは39歳以上55歳以下の男性は風しんワクチンの定期接種の対象外である一方、",
+  "39歳以上55歳以下の女性は中学生のときに風しんワクチンを接種していることを反映している。",
+  "また、39歳以上55歳以下の男性の抗体保有率は56歳以上の男性のそれよりも低い。",
+  "これは56歳以上の男性は、風しんの流行時期に育ったために風しんに自然感染する確率が高かったことを反映している[^stat_analysis]。",
+  "\n",
+  "[^stat_analysis]: このデータを用いて、3つの年齢層（38歳以下・39歳以上55歳以下・56歳以上）と",
+  "女性ダミーの飽和モデルによって抗体保有率を予測した。",
+  "その結果、39歳以上55歳以下の抗体保有率の男女差は",
+  subset(reg, term == "genderfemale")$label,
+  "である。また、39歳以上55歳以下の男性と56歳以上の男性の抗体保有率の差は",
+  subset(reg, term == "age_groupover55")$label,
+  "である。"
+), sep = "\n")

@@ -10,6 +10,7 @@ output:
     number_sections: false
 params:
   preview: true
+  appendix: true
 ---
 
 ```{r eval = FALSE, include = FALSE, echo = FALSE}
@@ -44,12 +45,14 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
 ```{r include = FALSE}
-spin_child(here("code/2-summary-experiment.r"))
+knitr::spin_child(here("code/2-summary-experiment.r"))
 ```
 
-```{r show-flowchart, ref.label="flowchart", eval = params$preview, fig.width = 25, fig.height=15, out.width="150%", fig.cap = "オンライン調査の概要"}
+```{r show-flowchart, ref.label="flowchart", eval = params$preview|params$appendix, fig.width = 25, fig.height=15, out.width="150%", fig.cap = "オンライン調査の概要"}
 ```
 
+
+```{asis, echo = params$preview|!params$appendix}
 我々はインターネット調査会社であるマイボイスコム株式会社に委託して、合計2回のオンライン調査を実施した。
 補論\@ref(addtab)の図\@ref(fig:show-flowchart)に調査の流れを示した。
 第1回調査は2020年2月15日から2020年2月17日に実施した。
@@ -60,16 +63,17 @@ spin_child(here("code/2-summary-experiment.r"))
 第2回調査は第1回調査の回答者全員を対象として、3,963名から回答を得た（脱落率=5.64%）[^attrition]。
 第2回調査の目的は第1回調査でランダムに割り当てたナッジ・メッセージが
 実際の予防行動にどのような影響を与えるかを検証することである。
+```
 
-[^attrition]: 脱落率はナッジ・メッセージの群間で統計的に有意な差はない。
-第2回調査に参加しなかったら1を取るダミー変数を被説明変数にし、
-介入群ダミーを説明変数とした線形回帰分析を行った。
-その結果、`r attr_label`となった。
+```{r show-reg-attrition, ref.label="reg-attrition", results = "asis", eval = params$preview|!params$appendix}
+```
+
+```{r show-covlist, ref.label="covlist", eval = params$preview|params$appendix}
+```
+
+```{asis, echo = params$preview|!params$appendix}
 
 ## 第1回調査 {#wave1}
-
-```{r show-covlist, ref.label="covlist", eval = params$preview}
-```
 
 第1回調査の調査は二つのパートに分けられている（便宜上、質問票Aと質問票Bとする）。
 ナッジ・メッセージを示される前に、回答者は質問票Aの質問に回答する。
@@ -79,11 +83,13 @@ spin_child(here("code/2-summary-experiment.r"))
 また、質問票Aは第1回調査時点で風しんの抗体検査やワクチン接種を受けたかどうかを調査した。
 これらの回答はナッジ・メッセージの効果を抗体検査とワクチン接種を受けていない男性に
 サンプルを限定して推定するときに使用する。
+```
 
-```{r show-nudgelist, ref.label = "nudgelist"}
+```{r show-nudgelist, ref.label = "nudgelist", eval = params$preview|!params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 質問票Aの回答終了後、回答者は7つのメッセージのうち一つをランダムに受け取る。
 サンプルサイズが均等になるように、メッセージを年齢層別にランダムに割り当てた[^svyrandom]。
 各メッセージのサンプルサイズは600人である。
@@ -166,3 +172,4 @@ spin_child(here("code/2-summary-experiment.r"))
 それが健康行動などに大きな変化を与えた可能性がある。
 この可能性をコントロールするために、日常の詳細な健康行動についても調査した。
 その回答は共変量として用いる（補論\@ref(addtab)の表 \@ref(tab:show-covlist)）。
+```

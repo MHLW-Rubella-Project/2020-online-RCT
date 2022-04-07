@@ -162,11 +162,19 @@ textdt %>%
     axis.line = element_blank()
   )
 
-#+ reg-attrition, include = FALSE
+#+ reg-attrition, eval = FALSE
 attr_f <- anova(lm(I(1 - follow) ~ nudge, data = web))[["F value"]][1]
 attr_p <- anova(lm(I(1 - follow) ~ nudge, data = web))[["Pr(>F)"]][1]
 attr_label <- sprintf("F-value = %1.3f (p-value = %1.3f)", attr_f, attr_p)
 
+cat(c(
+  "[^attrition]: 脱落率はナッジ・メッセージの群間で統計的に有意な差はない。",
+  "第2回調査に参加しなかったら1を取るダミー変数を被説明変数にし、",
+  "介入群ダミーを説明変数とした線形回帰分析を行った。",
+  "その結果、",
+  attr_label,
+  "となった。"
+), sep = "\n")
 
 #+ covlist, eval = FALSE
 cov <- c(

@@ -1,4 +1,47 @@
 ---
+title: 風しんの抗体検査とワクチン接種を促進するためのナッジ・メッセージの探求
+subtitle: ―全国規模オンライン・フィールド実験による効果検証―
+thanks: |
+  本稿は、独立行政法人経済産業研究所（RIETI）におけるプロジェクト
+  「日本におけるエビデンスに基づく政策形成の実装」の成果の一部である。
+  本稿の完成にあたり、
+  独立行政法人経済産業研究所のEBPM研究会ならびにディスカッション・ペーパー検討会の参加者から有益なコメントを頂いた。
+  本研究は、厚生労働省から厚生労働行政推進調査事業費補助金、
+  日本学術振興会から科研費（20H05632）の支援を得ている。記して感謝申し上げたい。
+  オンライン調査上でのランダム化比較試験の実施に際して、
+  本研究は、大阪大学経済学研究科の倫理委員会の承認（R020114）を事前に受けた。
+abstract: |
+  感染症予防のためのワクチン接種には正の外部性がある。そのため、
+  伝統的な経済学では、接種への追加的なインセンティブがないと
+  接種水準が社会的に効率な水準より低くなると考えられてきた。
+  現在、ワクチン接種率の向上策としては、金銭的インセンティブの提供だけなく、
+  行動経済学の知見を用いたナッジの活用が検討されている。
+  本研究は、全国規模のオンライン調査でランダム化比較試験（RCT）を実施して、
+  どのようなナッジ・メッセージが風しんの抗体検査受検・ワクチン接種を促進するのかを検証した。
+  主な結果は次の通りである。
+  第一に、2019年度に無料のクーポン券が自治体から自動的に送付された男性においては、
+  妊娠初期の女性に風しんを感染させてしまうことで胎児の健康が損なわれる可能性があることを
+  強調した利他的なメッセージは抗体検査受検の意向と行動に正の効果を持っていた。
+  第二に、ナッジ・メッセージの種類やクーポン券の送付の有無に関わらず、
+  抗体検査の結果が陰性であった（抗体を保有していない）人のほとんどはその後ワクチンを接種していることが分かった。
+  このことは、抗体保有率を高めるためには、
+  検査後の陰性者ではなく検査前の対象者に介入して検査の受検率を高めるような政策に焦点を当てるべきであり、
+  本研究の利他的なメッセージは風しんの抗体保有率を高めるために有効なメッセージであることを示唆している。
+  第三に、2019年度はクーポン券を入手するには自ら申し込む必要のあった男性においては、
+  いずれのナッジ・メッセージは統計的に有意な効果を示さなかった。
+keyword:
+  jstyle: yes
+  words: 風しん、ワクチン、抗体検査、ナッジ・メッセージ
+  JEL: D90, I12, I18
+author: 
+  - name: 加藤 大貴
+    inst: 大阪大学　経済学研究科
+    email: vge008kh\@student.econ.osaka-u.ac.jp
+  - name: 佐々木 周作
+    inst: 東北学院大学　経済学部 / 大阪大学　感染症総合教育研究拠点（CiDER）
+  - name: 大竹 文雄
+    inst: 大阪大学　経済学研究科 / 大阪大学　感染症総合教育研究拠点（CiDER）
+date: "`r format(Sys.time(), '%Y/%m/%d')`"
 csl: template/csl/elsevier-harvard.csl
 bibliography: MHLW Rubella Nudge.bib
 documentclass: article
@@ -20,18 +63,20 @@ output:
     dev: cairo_pdf
     extra_dependencies: ["float"]
     template: "template/tex/plain.tex"
-  bookdown::word_document2:
-    dev: png
+  # bookdown::word_document2:
+  #   dev: png
 params:
   preview: false
+  appendix: false
 ---
 
 ```{r render, eval = FALSE, include = FALSE, echo = FALSE}
+library(here)
 rmarkdown::render(
-  input = "webRCT.rmd",
+  input = here("0-root.rmd"),
   output_format = "all",
-  output_dir = "publish/RIETI/webRCT",
-  knit_root_dir = here::here()
+  output_file = "body",
+  output_dir = "publish"
 )
 
 # direct complie via tinytex
@@ -74,7 +119,7 @@ options(
 
 # はじめに {#intro}
 
-```{r child = "1-introduction.rmd"}
+```{r child = "1-introduction.rmd", eval = FALSE}
 
 ```
 
@@ -114,45 +159,3 @@ options(
 \newpage
 
 # 参考文献 {-}
-
-<div id="refs"></div>
-
-\newpage
-
-# (APPENDIX) Appendix {-}
-
-# 図表一覧 {#addtab}
-
-```{r flowchart, ref.label="flowchart", fig.width = 25, fig.height=15, out.extra="angle=90", out.width="150%", fig.cap = "オンライン調査の概要"}
-```
-
-```{r covlist, ref.label="covlist"}
-```
-
-```{r BalanceWave1Coupon1, ref.label="BalanceWave1Coupon1"}
-```
-
-```{r BalanceWave2Coupon1, ref.label="BalanceWave2Coupon1"}
-```
-
-```{r BalanceWave1Coupon0, ref.label="BalanceWave1Coupon0"}
-```
-
-```{r BalanceWave2Coupon0, ref.label="BalanceWave2Coupon0"}
-```
-
-```{r AprioriPowerAnalysis, ref.label = "AprioriPowerAnalysis"}
-```
-
-```{r RegCoupon1, ref.label="RegCoupon1"}
-```
-
-```{r altbase-reg-coupon1, ref.label="altbase-reg-coupon1"}
-```
-
-```{r RegCoupon0, ref.label="RegCoupon0"}
-```
-
-\clearpage
-
-# サンプルセレクションとアウトカム変数の定義を変更した分析

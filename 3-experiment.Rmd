@@ -48,7 +48,7 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 knitr::spin_child(here("code/2-summary-experiment.r"))
 ```
 
-```{r show-flowchart, ref.label="flowchart", eval = params$preview|params$appendix, fig.width = 25, fig.height=15, out.width="150%", fig.cap = "オンライン調査の概要"}
+```{r show-flowchart, ref.label="flowchart", eval = params$preview|params$appendix, fig.width = 25, fig.height=15, out.width="150%", fig.cap = "オンライン調査の概要", out.extra="angle=90"}
 ```
 
 

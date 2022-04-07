@@ -1,0 +1,103 @@
+---
+title: 補論：風しんの抗体検査とワクチン接種を促進するためのナッジ・メッセージの探求
+date: "`r format(Sys.time(), '%Y/%m/%d')`"
+csl: template/csl/elsevier-harvard.csl
+bibliography: MHLW Rubella Nudge.bib
+documentclass: article
+papersize: a4
+fontsize: 11pt
+geometry: "left=3cm,right=3cm,top=3cm,bottom=3cm"
+graphics: yes
+indent: yes
+linespace: 1.5
+figurename: 図
+tablename: 表
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    number_sections: yes
+    keep_tex: yes
+    fig_caption: yes
+    toc: false
+    dev: cairo_pdf
+    extra_dependencies: ["float"]
+    template: "template/tex/plain.tex"
+  # bookdown::word_document2:
+  #   dev: png
+params:
+  preview: false
+  appendix: true
+---
+
+```{r render, eval = FALSE, include = FALSE, echo = FALSE}
+library(here)
+rmarkdown::render(
+  input = here("0-appendix.rmd"),
+  output_format = "all",
+  output_file = "appendix",
+  output_dir = "publish"
+)
+
+# direct complie via tinytex
+# tinytex::xelatex("publish/RIETI/webRCT/webRCT.tex")
+```
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  echo = FALSE,
+  cache = FALSE,
+  include = TRUE,
+  fig.pos = "t",
+  fig.width = 10,
+  fig.height = 6
+)
+
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+out <- switch(format,
+  "latex" = "kableExtra",
+  "docx" = "flextable"
+)
+
+library(systemfonts)
+data.frame(unique(system_fonts()[, "family"]))
+grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
+
+library(RCTtoolbox)
+options(
+  knitr.kable.NA = " ",
+  knitr.table.format = "latex",
+  modelsummary_stars_note = FALSE,
+  modelsummary_format_numeric_latex = "plain",
+  RCTtoolbox.table_output = out,
+  RCTtoolbox.table_fontsize = 9,
+  RCTtoolbox.plot_family = "Yu Gothic"
+)
+```
+
+# (APPENDIX) Appendix {-}
+
+# Additional Tabels and Figures
+
+```{r child = "2-background.rmd"}
+
+```
+
+
+```{r child = "3-experiment.rmd"}
+
+```
+
+
+```{r child = "4-result-coupon1.rmd"}
+
+```
+
+```{r child = "5-result-money.rmd"}
+
+```
+
+```{r child = "6-result-coupon0.rmd"}
+
+```

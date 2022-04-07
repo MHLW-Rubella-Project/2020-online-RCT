@@ -10,6 +10,7 @@ output:
     number_sections: false
 params:
   preview: true
+  appendix: true
 ---
 
 ```{r eval = FALSE, include = FALSE, echo = FALSE}
@@ -44,38 +45,31 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 ```
 
 ```{r include = FALSE}
-spin_child(here("code/5-selection1-coupon0.r"))
+knitr::spin_child(here("code/5-selection1-coupon0.r"))
 ```
+
+```{asis, echo = params$preview|!params$appendix}
 
 ## 2019年度クーポン券送付対象外の男性に限定したナッジ・メッセージの効果 {#coupon0}
 
-```{r show-int-coupon0-balance, ref.label="int-coupon0-balance", eval = params$preview}
+```
+
+```{r show-int-coupon0-balance, ref.label="int-coupon0-balance", eval = params$preview|params$appendix}
 
 ```
 
-```{r show-act-coupon0-balance, ref.label="act-coupon0-balance", eval = params$preview}
+```{r show-act-coupon0-balance, ref.label="act-coupon0-balance", eval = params$preview|params$appendix}
 
 ```
 
+```{r show-coupon0-power, ref.label="coupon0-power", results = "asis", eval = params$preview|!params$appendix}
+```
 
-次に、2019年度には、クーポン券の自動送付対象ではないが、
-自身が手続きすることでクーポン券を受け取れる人に限定して、
-ナッジ・メッセージの効果を推定する。
-このサブグループにおいて、
-回答者の観察可能な特徴についてトリートメント間でバランスしている
-（補論\@ref(addtab)の表\@ref(tab:show-int-coupon0-balance)
-と表\@ref(tab:show-act-coupon0-balance)）。
-よって、\@ref(coupon1)と同様に、この節ではt検定の結果のみを示し、回帰分析の結果は補論に示す。
-検出力80%・有意水準5%を保つために必要な効果の規模を計算したところ、
-意向をアウトカムとした場合は
-少なくとも`r round(min_int_ef * 100, 1)`%ポイント必要であり、
-行動をアウトカムとした場合は
-少なくとも`r round(min_act_ef * 100, 1)`%ポイント必要である。
-
-```{r show-int-coupon0-ttest, ref.label="int-coupon0-ttest", fig.cap = "2019年度クーポン券配布対象外の男性に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra=""}
+```{r show-int-coupon0-ttest, ref.label="int-coupon0-ttest", fig.cap = "2019年度クーポン券配布対象外の男性に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra="", eval = params$preview|!params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 図\@ref(fig:show-int-coupon0-ttest)は介入群ごとの抗体検査受検とワクチン接種の意向の比率を示している。
 図\@ref(fig:show-int-coupon1-ttest)と同様に、すべての介入群について、
 抗体検査受検の意向の比率はワクチン接種の意向の比率より低い。
@@ -100,11 +94,13 @@ spin_child(here("code/5-selection1-coupon0.r"))
 クーポン券がない場合、
 この信念がワクチンを接種することの価値を低め、
 ワクチン接種の意向の比率をコントロールよりも下げた可能性がある。
+```
 
-```{r show-act-coupon0-ttest, ref.label="act-coupon0-ttest", fig.cap = "2019年度クーポン券配布対象外の男性に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra=""}
+```{r show-act-coupon0-ttest, ref.label="act-coupon0-ttest", fig.cap = "2019年度クーポン券配布対象外の男性に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。", out.extra="", eval = params$preview|!params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 図\@ref(fig:show-act-coupon0-ttest)は各介入群の第1回調査以降の抗体検査受検比率と
 第1回調査以降のワクチン接種比率である。
 社会比較メッセージが厚労省メッセージよりも第1回調査以降の抗体検査の受検を促進しているが、
@@ -116,16 +112,17 @@ spin_child(here("code/5-selection1-coupon0.r"))
 よって、社会比較メッセージの抗体検査受検に対する効果は約2.3%ポイントであり、
 これは統計的に10%水準で有意である。
 しかしながら、抗体検査とワクチン接種の両方に対する効果はゼロである。
+```
 
-```{r show-int-coupon0-reg, ref.label="int-coupon0-reg"}
+```{r show-int-coupon0-reg, ref.label="int-coupon0-reg", eval = params$preview|params$appendix}
 
 ```
 
-```{r show-act-coupon0-reg, ref.label="act-coupon0-reg"}
+```{r show-act-coupon0-reg, ref.label="act-coupon0-reg", eval = params$preview|params$appendix}
 
 ```
 
-
+```{asis, echo = params$preview|!params$appendix}
 ここまでの結果は表\@ref(tab:show-covlist)で示した個人の観察可能な特徴をコントロールしても変化しない。
 補論\@ref(addtab)の表\@ref(tab:show-int-coupon0-reg)と表\@ref(tab:show-act-coupon0-reg)
 はナッジ・メッセージの線形確率モデルの推定結果である。
@@ -136,11 +133,13 @@ spin_child(here("code/5-selection1-coupon0.r"))
 列(4)は、これまでの結果に加えて、
 年齢表現メッセージが抗体検査の受検に負の効果を持っていることを示しており、
 これは統計的に5%水準で有意である。
+```
 
-```{r show-tester-coupon0, ref.label="tester-coupon0"}
+```{r show-tester-coupon0, ref.label="tester-coupon0", eval = params$preview|!params$appendix}
 
 ```
 
+```{asis, echo = params$preview|!params$appendix}
 第\@ref(coupon1)節で示したように、
 ワクチン接種比率が抗体検査の受検比率より低い原因は、
 抗体検査の陰性比率が低いことにある。
@@ -157,3 +156,4 @@ spin_child(here("code/5-selection1-coupon0.r"))
 厚労省メッセージ群と低コストメッセージ群では、陰性者がいない。
 残った介入群のうち、社会比較メッセージ群を除くすべての群において、
 抗体検査の結果が陰性である人は全員ワクチンを接種していた。
+```

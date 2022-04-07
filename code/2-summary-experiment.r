@@ -9,80 +9,80 @@ web <- read_csv(here(rct_path, "shape_survey.csv"))
 textdt <- tibble::tribble(
   ~x, ~y, ~xmin, ~xmax, ~ymin, ~ymax, ~label,
   105, 225, 75, 135, 210, 240,
-  "4,200名が第1回調査に参加",
+  "4,200 males participated in wave 1",
   105, 175, 75, 135, 160, 190,
   paste(
-    "4,200名が質問票Aに回答",
+    "4,200 males answered Questionnaire A",
     sep = "\n"
   ),
   15, 125, 2, 28, 110, 140,
   paste(
-    "600名を", "厚労省メッセージ", "に割り当てた",
+    "600 males read", "MHLW message",
     sep = "\n"
   ),
   45, 125, 32, 58, 110, 140,
   paste(
-    "600名を", "年齢表現メッセージ", "に割り当てた",
+    "600 males read", "Age expression message",
     sep = "\n"
   ),
   75, 125, 62, 88, 110, 140,
   paste(
-    "600名を", "利他強調メッセージ", "に割り当てた",
+    "600 males read", "Altruistic message",
     sep = "\n"
   ),
   105, 125, 92, 118, 110, 140,
   paste(
-    "600名を", "利己強調メッセージ", "に割り当てた",
+    "600 males read", "Selfish message",
     sep = "\n"
   ),
   135, 125, 122, 148, 110, 140,
   paste(
-    "600名を", "社会比較メッセージ", "に割り当てた",
+    "600 males read", "Social comparison message",
     sep = "\n"
   ),
   165, 125, 152, 178, 110, 140,
   paste(
-    "600名を", "有効期限メッセージ", "に割り当てた",
+    "600 males read", "Valid date message",
     sep = "\n"
   ),
   195, 125, 182, 208, 110, 140,
   paste(
-    "600名を", "低コストメッセージ", "に割り当てた",
+    "600 males read", "Low-cost message",
     sep = "\n"
   ),
   15, 25, 2, 28, 10, 40,
   paste(
-    "571名が", "第2回調査に参加",
+    "571 males", "participated in wave 2",
     sep = "\n"
   ),
   45, 25, 32, 58, 10, 40,
   paste(
-    "578名が", "第2回調査に参加",
+    "578 males", "participated in wave 2",
     sep = "\n"
   ),
   75, 25, 62, 88, 10, 40,
   paste(
-    "557名が", "第2回調査に参加",
+    "557 males", "participated in wave 2",
     sep = "\n"
   ),
   105, 25, 92, 118, 10, 40,
   paste(
-    "563名が", "第2回調査に参加",
+    "563 males", "participated in wave 2",
     sep = "\n"
   ),
   135, 25, 122, 148, 10, 40,
   paste(
-    "562名が", "第2回調査に参加",
+    "562 males", "participated in wave 2",
     sep = "\n"
   ),
   165, 25, 152, 178, 10, 40,
   paste(
-    "566名が", "第2回調査に参加",
+    "566 males", "participated in wave 2",
     sep = "\n"
   ),
   195, 25, 182, 208, 10, 40,
   paste(
-    "566名が", "第2回調査に参加",
+    "566 males", "participated in wave 2",
     sep = "\n"
   )
 )
@@ -95,8 +95,7 @@ textdt <- textdt %>%
     xmax = seq(28, 208, by = 30),
     ymin = 60, ymax = 90,
     label = paste(
-      "600名が", "質問票B",
-      "に回答",
+      "600 males answered", "Questionnaire B",
       sep = "\n"
     )
   ))
@@ -147,9 +146,12 @@ textdt %>%
   scale_x_continuous(breaks = seq(0, 210, by = 30), limits = c(0, 210)) +
   ylim(c(0, 250)) +
   labs(caption = paste(
-    "質問票Aは日常の健康行動や風しんの知識・感染歴・ワクチン接種歴などを調査した。",
-    "質問票Bは風しんの抗体検査やワクチン接種の意向や個人の社会経済属性を調査した。",
-    "第2回調査は第1回調査以降の風しんの抗体検査やワクチン接種の行動を調査した。",
+    "Questionnaire A investigated daily health behaviors,",
+    "knowledge of rubella, infection history, and vaccination history.",
+    "Questionnaire B investigated the intention to be tested for antibody to",
+    "rubella and to be vaccinated, as well as socioeconomic attributes.",
+    "Wave 2 surveyed the behavior of antibody testing",
+    "and vaccination against rubella since Wave 1.",
     sep = "\n"
   )) +
   simplegg(caption_size = 20, font_family = "YuGothic") +
@@ -189,7 +191,7 @@ descript <- readr::read_csv(
   locale = locale(encoding = "cp932")
 ) %>%
   dplyr::filter(vars %in% cov) %>%
-  dplyr::select("変数の説明" = Description_ja)
+  dplyr::select(Description)
 
 attr(descript, "position") <- 2
 
@@ -201,7 +203,7 @@ tab <- paste(cov, collapse = "+") %>%
     add_columns = descript,
     align = "llcc",
     output = out,
-    title = "共変量の一覧"
+    title = "List of Covariates"
   )
 
 if (out == "kableExtra") {
@@ -220,7 +222,7 @@ if (out == "kableExtra") {
 message_list <- readr::read_csv(
   here("assets/nudge_descript.csv"),
   local = locale(encoding = "cp932")
-) %>% dplyr::select("メッセージ文" = Contents_ja)
+) %>% dplyr::select(Contents)
 
 attr(message_list, "position") <- 2
 
@@ -231,15 +233,16 @@ tab <- web %>%
     age <= 56 ~ "47-56",
     age <= 59 ~ "57-59"
   )) %>%
-  rename(`ナッジ` = nudge) %>%
+  mutate(nudge = factor(nudge, labels = treat_labels)) %>%
+  rename(Message = nudge) %>%
   modelsummary::datasummary_crosstab(
-    `ナッジ` ~ age_group,
+    Message ~ age_group,
     statistic = ~ 1 + N,
     add_columns = message_list,
     align = "llcccccc",
     data = .,
     output = out,
-    title = "ナッジ・メッセージの一覧"
+    title = "List of Text-Based Nudges"
   )
 
 if (out == "kableExtra") {
@@ -247,12 +250,12 @@ if (out == "kableExtra") {
     kableExtra::kable_styling(font_size = 9) %>%
     kableExtra::column_spec(2, width = "20em") %>%
     kableExtra::add_header_above(
-      c(" " = 3, "年齢（2019年4月時点）" = 4, " " = 1)
+      c(" " = 3, "Age (as of Apr 2019)" = 4, " " = 1)
     )
 } else {
   tab %>%
     add_header_row(
-      values = c("", "年齢（2019年4月時点）", ""),
+      values = c("", "Age (as of Apr 2019)", ""),
       colwidths = c(3, 4, 1)
     ) %>%
     width(2, width = 2.5) %>%

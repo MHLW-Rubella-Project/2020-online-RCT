@@ -33,7 +33,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={風しんの抗体検査とワクチン接種を促進するためのナッジ・メッセージの探求},
+  pdftitle={Text-Based Nudges Promoting Rubella Antibody Testing and Vaccination: Evidence from Nationwide Online Field Experiment in Japan},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -54,8 +54,6 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\renewcommand{\figurename}{図}
-\renewcommand{\tablename}{表}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -103,37 +101,35 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{風しんの抗体検査とワクチン接種を促進するためのナッジ・メッセージの探求  \thanks{本稿は、独立行政法人経済産業研究所（RIETI）におけるプロジェクト
-「日本におけるエビデンスに基づく政策形成の実装」の成果の一部である。
-本稿の完成にあたり、
-独立行政法人経済産業研究所のEBPM研究会ならびにディスカッション・ペーパー検討会の参加者から有益なコメントを頂いた。
-本研究は、厚生労働省から厚生労働行政推進調査事業費補助金、
-日本学術振興会から科研費（20H05632）の支援を得ている。記して感謝申し上げたい。
-オンライン調査上でのランダム化比較試験の実施に際して、
-本研究は、大阪大学経済学研究科の倫理委員会の承認（R020114）を事前に受けた。}  }
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{―全国規模オンライン・フィールド実験による効果検証―}
+\title{Text-Based Nudges Promoting Rubella Antibody Testing and Vaccination:
+Evidence from Nationwide Online Field Experiment in Japan  \thanks{This study is conducted as a part of the Project ``Implementation of EBPM in Japan''
+undertaken at the Research Institute of Economy, Trade and Industry (RIETI).
+In completing this paper,
+we thank participants of the EBPM Study Group and
+the Discussion Paper Study Group of RIETI for their insightful comments.
+This research is financially supported by
+the Japan Society for the Promotion of Science
+{[}JSPS Grant Number: 20H05632 (F., Ohtake){]}
+and the Ministry of Health, Labor, and Welfare.
+Prior to conducting a randomized controlled trial on an online survey,
+this study was approved by the Institutional Review Board
+of the Graduate School of Economics, Osaka University (R020114).}  }
 \author{
-    加藤 大貴
-  \thanks{大阪大学　経済学研究科. E-mail: vge008kh@student.econ.osaka-u.ac.jp  }
+    Hiroki Kato
+  \thanks{Graduate School of Economics, Osaka University. E-mail: h-kato@econ.osaka-u.ac.jp  }
   \and
-    佐々木 周作
-  \thanks{東北学院大学　経済学部 / 大阪大学　感染症総合教育研究拠点（CiDER）.  }
+    Shusaku Sasaki
+  \thanks{Center for Infectious Disease Education and Research, Osaka University.  }
   \and
-    大竹 文雄
-  \thanks{大阪大学　経済学研究科 / 大阪大学　感染症総合教育研究拠点（CiDER）.  }
+    Fumio Ohtake
+  \thanks{Graduate School of Economics, Osaka University.
+Center for Infectious Disease Education and Research, Osaka University.  }
   \and
   }
 
 \date{2022/04/07}
 
 
-\renewcommand{\abstractname}{要旨}
 
 \begin{document}
 \begin{spacing}{1}
@@ -141,30 +137,27 @@
 \end{spacing}
 \begin{spacing}{1}
   \begin{abstract}
-    感染症予防のためのワクチン接種には正の外部性がある。そのため、
-    伝統的な経済学では、接種への追加的なインセンティブがないと
-    接種水準が社会的に効率な水準より低くなると考えられてきた。
-    現在、ワクチン接種率の向上策としては、金銭的インセンティブの提供だけなく、
-    行動経済学の知見を用いたナッジの活用が検討されている。
-    本研究は、全国規模のオンライン調査でランダム化比較試験（RCT）を実施して、
-    どのようなナッジ・メッセージが風しんの抗体検査受検・ワクチン接種を促進するのかを検証した。
-    主な結果は次の通りである。
-    第一に、2019年度に無料のクーポン券が自治体から自動的に送付された男性においては、
-    妊娠初期の女性に風しんを感染させてしまうことで胎児の健康が損なわれる可能性があることを
-    強調した利他的なメッセージは抗体検査受検の意向と行動に正の効果を持っていた。
-    第二に、ナッジ・メッセージの種類やクーポン券の送付の有無に関わらず、
-    抗体検査の結果が陰性であった（抗体を保有していない）人のほとんどはその後ワクチンを接種していることが分かった。
-    このことは、抗体保有率を高めるためには、
-    検査後の陰性者ではなく検査前の対象者に介入して検査の受検率を高めるような政策に焦点を当てるべきであり、
-    本研究の利他的なメッセージは風しんの抗体保有率を高めるために有効なメッセージであることを示唆している。
-    第三に、2019年度はクーポン券を入手するには自ら申し込む必要のあった男性においては、
-    いずれのナッジ・メッセージは統計的に有意な効果を示さなかった。
+    This study conducted a randomized controlled trial (RCT) in a nationwide online survey
+    to examine which text-based nudges best promote rubella antibody testing and vaccination.
+    The main results are as follows.
+    First, the altruistic message,
+    which emphasizes that the fetus's health could be impaired by
+    infecting women in the early stages of pregnancy with rubella,
+    has a positive effect on the intention and behavior relating to the antibody test among men,
+    who had automatically received a free coupon from the local government in 2019.
+    Second, most people who test negative for antibodies (do not have antibodies),
+    regardless of the type of nudge messages or whether or not they have received the coupon,
+    have since been vaccinated.
+    This result suggests that policies to increase antibody testing of pre-test individuals
+    should be prioritized over those to increase vaccination of post-test negatives.
+    Third, text-based messages have no statistically significant effect
+    among men who had to apply for coupons themselves in 2019.
     
                 \noindent
-    \textbf{キーワード}: 風しん、ワクチン、抗体検査、ナッジ・メッセージ
+    \textbf{Key words}: Rubella, Vaccination, Antibody Test, Text-Based Nudges
         
         \noindent
-    \textbf{JELコード}: D90, I12, I18
+    \textbf{JEL Codes}: D90, I12, I18
             
   \end{abstract}
 \end{spacing}
@@ -175,9 +168,10 @@
 \hypertarget{background}{%
 \section{日本における風しんワクチンの背景}\label{background}}
 
-ワクチン接種には、予防接種法で規定されている定期接種とそれ以外の任意接種がある。
+ワクチン接種には、予防接種法（Immunization Act）で規定されている定期接種（routine vaccination）と
+それ以外の任意接種（voluntary vaccination）がある。
 定期接種は原則として自己負担がないが、任意接種は接種料金を自己負担する必要がある。
-1994年の予防接種法の改正により、定期接種は義務接種から努力接種へと変更された。
+1994年の予防接種法の改正により、定期接種は義務でなくなった。
 
 感染予防効果を持つ風しんワクチンは、
 妊婦の感染防止のために1977年8月から定期接種の対象となった。
@@ -186,9 +180,9 @@
 中学生女子を対象とした定期接種と同時に、
 生後12-72カ月の幼児が麻疹ワクチンの定期接種を受けるとき、
 親は麻しん・おたふくかぜ・風しん混合ワクチン（MMRワクチン）を選択することができた。
-しかしながら、無菌性髄膜炎の副作用の多発により、
-MMRワクチンの義務接種としての定期接種は1993年4月に一旦中止された。
-その後、1995年4月から経過措置とともに努力義務としての定期接種が再開された\footnote{1995年4月から、風しんの流行そのものを止めるために集団免疫の獲得を目的として、定期接種が再開され接種対象者が生後12-90カ月未満の男女に変わった。同時期に、経過措置として、以前に風しんワクチンもしくはMMRワクチンを接種していない人が接種の対象となった。経過措置の定期接種の対象者は(1)1995年度に小学校1-2年生と生後90カ月未満の男女、(2)1996-1999年度に小学校1年生、(3)1995年4月から2003年9月にかけて、1979年4月2日から1987年10月1日に生まれた中学生男女である。2006年から、麻疹風しん混合ワクチン（MRワクチン）を用いて、2回の定期接種が行われている。1回目は生後12-24カ月の幼児期であり、2回目は小学校入学前1年間の幼児期である。さらに、2007年から始まった10代・20代を中心とする麻疹の全国的な流行を受けて、2008年4月から2013年3月までにかけて、当時中学1年生および高校3年生相当の学生を対象に、MRワクチンの2回目接種の機会が設けられた。}。
+しかしながら、無菌性髄膜炎（aseptic meningitis）をもたらすために、
+MMRワクチンの定期接種は1993年4月に一旦中止された。
+その後、1995年4月から経過措置（transitional measures）とともに努力義務としての定期接種が再開された\footnote{1995年4月から、風しんの流行そのものを止めるために集団免疫（herd immunity）の獲得を目的として、定期接種が再開され接種対象者が生後12-90カ月未満の男女に変わった。同時期に、経過措置として、以前に風しんワクチンもしくはMMRワクチンを接種していない人が接種の対象となった。経過措置の定期接種の対象者は(1)1995年度に小学校1-2年生と生後90カ月未満の男女、(2)1996-1999年度に小学校1年生、(3)1995年4月から2003年9月にかけて、1979年4月2日から1987年10月1日に生まれた中学生男女である。2006年から、麻疹風しん混合ワクチン（MRワクチン）を用いて、2回の定期接種が行われている。1回目は生後12-24カ月の幼児期であり、2回目は小学校入学前1年間の幼児期である。さらに、2007年から始まった10代・20代を中心とする麻疹の全国的な流行を受けて、2008年4月から2013年3月までにかけて、当時中学1年生および高校3年生相当の学生を対象に、MRワクチンの2回目接種の機会が設けられた。}。
 
 その結果、日本では風しんワクチンの定期接種を受けていない2つの年齢層が生じることになった。
 定期接種を受けていない世代は、(1)1962年4月2日以前に生まれた男女と
@@ -198,7 +192,7 @@ MMRワクチンの義務接種としての定期接種は1993年4月に一旦中
 定期接種を受けていない人は自然感染による抗体保有の可能性があるだけで、ワクチン接種による風しん抗体を保有していない。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-niid-antibody-1} \caption{男女別の各年齢における風しん抗体保有率。データソース: 国立感染症研究所『2018年度感染症流行予測調査（NESVPD）』}\label{fig:show-niid-antibody}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-niid-antibody-1} \caption{Percentage of Rubella Antibody Carriers at Each Age by Gender. Data: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases (NESVPD)."}\label{fig:show-niid-antibody}
 \end{figure}
 
 風しんの抗体はワクチン接種だけでなく、自然感染でも得られる。
@@ -254,8 +248,8 @@ MMRワクチンの義務接種としての定期接種は1993年4月に一旦中
 \hypertarget{experiment}{%
 \section{オンライン調査の概要}\label{experiment}}
 
-我々はインターネット調査会社であるマイボイスコム株式会社に委託して、合計2回のオンライン調査を実施した。
-補論\ref{addtab}の図\ref{fig:show-flowchart}に調査の流れを示した。
+我々はインターネット調査会社であるマイボイスコム株式会社（MyVociceCome Co.~Ltd.）に委託して、合計2回のオンライン調査を実施した。
+補論の図1に調査の流れを示した。
 第1回調査は2020年2月15日から2020年2月17日に実施した。
 第1回調査の対象は調査会社のモニターのうち、日本全国に居住する40歳から59歳の男性の4,200名である。
 第1回調査の目的はナッジ・メッセージをランダムに割り当て、
@@ -277,29 +271,28 @@ MMRワクチンの義務接種としての定期接種は1993年4月に一旦中
 ナッジ・メッセージを示される前に、回答者は質問票Aの質問に回答する。
 質問票Aは普段の健康行動などを調査した。
 これらの回答の一部を共変量として用いる。
-補論\ref{addtab}の表\ref{tab:show-covlist}に共変量の一覧を示す。
+補論の表1に共変量の一覧を示す。
 また、質問票Aは第1回調査時点で風しんの抗体検査やワクチン接種を受けたかどうかを調査した。
-これらの回答はナッジ・メッセージの効果を抗体検査とワクチン接種を受けていない男性に
-サンプルを限定して推定するときに使用する。
+ナッジ・メッセージの効果を抗体検査とワクチン接種を受けていない男性に限定して推定するときにこの回答を使用する。
 
 \begin{table}
 
-\caption{\label{tab:show-nudgelist}ナッジ・メッセージの一覧}
+\caption{\label{tab:show-nudgelist}List of Text-Based Nudges}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{20em}cccccc}
 \toprule
-\multicolumn{3}{c}{ } & \multicolumn{4}{c}{年齢（2019年4月時点）} & \multicolumn{1}{c}{ } \\
+\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Age (as of Apr 2019)} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){4-7}
-ナッジ & メッセージ文 &   & 39 & 40-46 & 47-56 & 57-59 & All\\
+Message & Contents &   & 39 & 40-46 & 47-56 & 57-59 & All\\
 \midrule
-A & 昭和37年度～昭和53年度生まれの男性の皆様へ　あなたと、これから生まれてくる世代の子供を守るために風しんの抗体検査と予防接種を受けましょう！ & N & 20 & 210 & 321 & 49 & 600\\
-B & 40代・50代の男性の皆様へ（昭和37年度～昭和53年度生まれの男性の皆様へ）あなたと、これから生まれてくる世代の子供を守るために風しんの抗体検査と予防接種を受けましょう！ & N & 23 & 205 & 309 & 63 & 600\\
-C & 40代・50代の男性の皆様へ（昭和37年度～昭和54年度生まれの男性の皆様へ）あなたがきっかけで、妊婦さんが風しんウイルスに感染すると、障害をもった赤ちゃんが産まれてくる可能性があります！ & N & 24 & 214 & 296 & 66 & 600\\
-D & 40代・50代の男性の皆様へ（昭和37年度～昭和55年度生まれの男性の皆様へ）成人男性が風しんに感染すると、重症化して、脳炎や血小板減少性紫斑病などの合併症が発症する可能性があります！ & N & 16 & 225 & 302 & 57 & 600\\
-E & 40代・50代の男性の皆様へ（昭和37年度～昭和56年度生まれの男性の皆様へ）あなたの世代の5人に1人は、風しんの抗体を持っていません。これは、他の世代に比べて倍以上の人が風しんに感染する可能性があるということです！ & N & 18 & 204 & 321 & 57 & 600\\
-F & 40代・50代の男性の皆様へ（昭和37年度～昭和57年度生まれの男性の皆様へ）お届けした風しんの抗体検査とワクチン接種の無料クーポン券は2020年3月31日で有効期限が切れてしまいます！ & N & 18 & 216 & 299 & 67 & 600\\
-G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生まれの男性の皆様へ）風しんの抗体検査とワクチンの無料クーポン券をふだんの健康診断で使えば、何度も採血をすることなく、検査を受けることができます！ & N & 19 & 213 & 307 & 61 & 600\\
+MHLW & Dear all men born in 1962-1979. Get a rubella antibody test and vaccination to protect yourself and your upcoming generation! & N & 20 & 210 & 321 & 49 & 600\\
+Age expression & Dear men in their 40s and 50s (all men born in 1962-1979). Get a rubella antibody test and vaccination to protect yourself and your upcoming generation! & N & 23 & 205 & 309 & 63 & 600\\
+Altruistic & Dear men in their 40s and 50s (all men born in 1962-1979). If a pregnant woman becomes infected with rubella because of you, her baby may be born with a disability. Get a rubella antibody test and vaccination! & N & 24 & 214 & 296 & 66 & 600\\
+Selfish & Dear men in their 40s and 50s (all men born in 1962-1979). When an adult male is infected with rubella, it can become severe, and lead to complications such as encephalitis and thrombocytopenic purpura. Get a rubella antibody test and vaccination! & N & 16 & 225 & 302 & 57 & 600\\
+Social comparison & Dear men in their 40s and 50s (all men born in 1962-1979). One in five people in your generation does not have rubella antibodies, which means that more than twice as many people can get rubella as compared to other generations. Get a rubella antibody test and vaccination! & N & 18 & 204 & 321 & 57 & 600\\
+Valid date & Dear men in their 40s and 50s (all men born in 1962-1979). The coupon for free rubella antibody test and vaccine is valid on March 31, 2020. Get a rubella antibody test and vaccination! & N & 18 & 216 & 299 & 67 & 600\\
+Low-cost & Dear men in their 40s and 50s (all men born in 1962-1979). There is an increasing number of workplaces and local governments that you can take rubella antibody tests with your coupon in addition to your usual health examinations. Get a rubella antibody test and vaccination! & N & 19 & 213 & 307 & 61 & 600\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -342,7 +335,7 @@ G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生ま�
 
 ランダムに割り当てられたナッジ・メッセージを閲覧した後、回答者は質問票Bに移る。
 質問票Bは抗体検査の受検やワクチン接種に関する意思を調査した\footnote{質問票Bでは、教育年数や婚姻状態などの個人の社会経済変数についても調査している。
-  これらの変数は共変量として用いる（補論\ref{addtab}の表 \ref{tab:show-covlist}）。}。
+  これらの変数は共変量として用いる（補論の表1）。}。
 ナッジ・メッセージの意向に対する効果を推定するとき、この回答をアウトカム変数として用いる。
 抗体検査受検の意向は「今、あなたは、風しんの抗体検査を受けようとどのくらい思っていますか」という質問である。
 ワクチン接種の意向は「抗体検査を受けて、あなたに抗体がないと分かった場合、
@@ -357,7 +350,7 @@ G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生ま�
 第2回調査は第1回調査以降に抗体検査の受検やワクチン接種したかどうかを調査した\footnote{第2回調査の調査時期は新型コロナウイルスの流行が始まった時期と重なるので、
   それが健康行動などに大きな変化を与えた可能性がある。
   この可能性をコントロールするために、日常の詳細な健康行動についても調査した。
-  その回答は共変量として用いる（補論\ref{addtab}の表 \ref{tab:show-covlist}）。}。
+  その回答は共変量として用いる（補論の表1）。}。
 抗体検査の受検行動は
 「前回のアンケートの回答終了時から今日までの期間に、あなたは風しんの抗体検査を受診しましたか」
 という質問で得られる。
@@ -373,7 +366,7 @@ G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生ま�
 から一つ選ぶ。
 
 これらの回答を用いて、二つのアウトカム変数を作成する。
-第一のアウトカム変数は回答者が「受検した」と回答すると1を取るダミー変数である。
+第一のアウトカム変数は回答者が抗体検査を「受検した」と回答すると1を取るダミー変数である。
 このアウトカム変数を用いて、我々は第1回調査以降の抗体検査の受検に対するナッジ・メッセージの効果を推定する。
 第二のアウトカム変数は回答者が抗体検査を「受検した」と回答し、
 ワクチンを「接種した」と回答すると1を取るダミー変数である。
@@ -425,7 +418,7 @@ G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生ま�
 \%ポイント必要である。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-int-coupon1-ttest-1} \caption{2019年度クーポン券配布対象者に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-int-coupon1-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-int-coupon1-ttest-1} \caption{2019年度クーポン券配布対象者に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-int-coupon1-ttest}
 \end{figure}
 
 図\ref{fig:show-int-coupon1-ttest}のパネルAは
@@ -451,7 +444,7 @@ G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生ま�
 質問文がワクチン接種の必要性を強く刺激した可能性がある。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-act-coupon1-ttest-1} \caption{2019年度クーポン券配布対象者に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-act-coupon1-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-act-coupon1-ttest-1} \caption{2019年度クーポン券配布対象者に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-act-coupon1-ttest}
 \end{figure}
 
 図\ref{fig:show-act-coupon1-ttest}のパネルAは各介入群の第1回調査以降の抗体検査受検比率を示している。
@@ -511,13 +504,13 @@ G & 40代・50代の男性の皆様へ（昭和37年度～昭和58年度生ま�
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
 Treatments & No & Yes & No  & Yes \\
 \midrule
-厚労省 & 3 & 1 & 3 & 1\\
-年齢表現 & 6 & 2 & 6 & 2\\
-利他強調 & 7 & 7 & 8 & 6\\
-利己強調 & 7 & 3 & 7 & 3\\
-社会比較 & 4 & 5 & 4 & 5\\
-有効期限 & 4 & 1 & 4 & 1\\
-低コスト & 3 & 5 & 5 & 3\\
+MHLW & 3 & 1 & 3 & 1\\
+Age expression & 6 & 2 & 6 & 2\\
+Altruistic & 7 & 7 & 8 & 6\\
+Selfish & 7 & 3 & 7 & 3\\
+Social comparison & 4 & 5 & 4 & 5\\
+Valid date & 4 & 1 & 4 & 1\\
+Low-cost & 3 & 5 & 5 & 3\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -601,7 +594,7 @@ Treatments & No & Yes & No  & Yes \\
 \subsection{ナッジ・メッセージの金銭的価値}\label{econvalue}}
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-demand-vaccine-1} \caption{2019年度クーポン券配布対象者の風しんワクチンの需要曲線。データソース：Wave 1セレクションデータ。注）黒の三角はワクチン接種費用が無料であるときの接種割合と厚労省メッセージの抗体検査受検率を合計した割合と、それに対応するWTPを示している。}\label{fig:show-demand-vaccine}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-demand-vaccine-1} \caption{2019年度クーポン券配布対象者の風しんワクチンの需要曲線。データソース：Wave 1セレクションデータ。注）黒の三角はワクチン接種費用が無料であるときの接種割合と厚労省メッセージの抗体検査受検率を合計した割合と、それに対応するWTPを示している。}\label{fig:show-demand-vaccine}
 \end{figure}
 
 2019年度のクーポン券送付者におけるナッジ・メッセージの効果を金銭的な価値で評価することを試みる。
@@ -636,12 +629,12 @@ Treatments & No & Yes & No  & Yes \\
 \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
 ナッジ・メッセージ & 効果の規模 & ベースライン＋効果の規模 & 一人当たり & 総額 & 一人当たり  & 総額 \\
 \midrule
-年齢表現 & 0.032 & 0.732 & 367.854 & 1.946 & 3.344 & 17.690\\
-利他強調 & 0.075 & 0.774 & 2037.553 & 10.779 & 18.523 & 97.988\\
-利己強調 & 0.055 & 0.755 & 744.045 & 3.936 & 6.764 & 35.782\\
-社会比較 & 0.053 & 0.752 & 596.335 & 3.155 & 5.421 & 28.678\\
-有効期限 & 0.008 & 0.707 & 86.059 & 0.455 & 0.782 & 4.139\\
-低コスト & 0.037 & 0.737 & 422.789 & 2.237 & 3.844 & 20.332\\
+Age expression & 0.032 & 0.732 & 367.854 & 1.946 & 3.344 & 17.690\\
+Altruistic & 0.075 & 0.774 & 2037.553 & 10.779 & 18.523 & 97.988\\
+Selfish & 0.055 & 0.755 & 744.045 & 3.936 & 6.764 & 35.782\\
+Social comparison & 0.053 & 0.752 & 596.335 & 3.155 & 5.421 & 28.678\\
+Valid date & 0.008 & 0.707 & 86.059 & 0.455 & 0.782 & 4.139\\
+Low-cost & 0.037 & 0.737 & 422.789 & 2.237 & 3.844 & 20.332\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -707,7 +700,7 @@ Treatments & No & Yes & No  & Yes \\
 \%ポイント必要である。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-int-coupon0-ttest-1} \caption{2019年度クーポン券配布対象外の男性に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-int-coupon0-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-int-coupon0-ttest-1} \caption{2019年度クーポン券配布対象外の男性に限定した意向に対するナッジ・メッセージの効果。データソース：Wave 1セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-int-coupon0-ttest}
 \end{figure}
 
 図\ref{fig:show-int-coupon0-ttest}は介入群ごとの抗体検査受検とワクチン接種の意向の比率を示している。
@@ -736,7 +729,7 @@ Treatments & No & Yes & No  & Yes \\
 ワクチン接種の意向の比率をコントロールよりも下げた可能性がある。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-act-coupon0-ttest-1} \caption{2019年度クーポン券配布対象外の男性に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-act-coupon0-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/show-act-coupon0-ttest-1} \caption{2019年度クーポン券配布対象外の男性に限定した行動に対するナッジ・メッセージの効果。データソース：Wave 2セレクションデータ。注）図中の数値は各群の比率を示す。星印は厚労省メッセージ群との平均値の差のt検定の結果であり、次の規則に従う：* p < 0.1、** p < 0.05、*** p < 0.01。}\label{fig:show-act-coupon0-ttest}
 \end{figure}
 
 図\ref{fig:show-act-coupon0-ttest}は各介入群の第1回調査以降の抗体検査受検比率と
@@ -773,13 +766,13 @@ Treatments & No & Yes & No  & Yes \\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
 Treatments & No & Yes & No  & Yes \\
 \midrule
-厚労省 & 1 & 0 & 1 & 0\\
-年齢表現 & 0 & 2 & 1 & 1\\
-利他強調 & 3 & 1 & 3 & 1\\
-利己強調 & 2 & 1 & 2 & 1\\
-社会比較 & 5 & 1 & 6 & 0\\
-有効期限 & 2 & 1 & 2 & 1\\
-低コスト & 2 & 0 & 2 & 0\\
+MHLW & 1 & 0 & 1 & 0\\
+Age expression & 0 & 2 & 1 & 1\\
+Altruistic & 3 & 1 & 3 & 1\\
+Selfish & 2 & 1 & 2 & 1\\
+Social comparison & 5 & 1 & 6 & 0\\
+Valid date & 2 & 1 & 2 & 1\\
+Low-cost & 2 & 0 & 2 & 0\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}

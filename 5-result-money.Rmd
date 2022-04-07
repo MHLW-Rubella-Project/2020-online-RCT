@@ -48,13 +48,14 @@ grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
 knitr::spin_child(here("code/4-selection1-money.r"))
 ```
 
-## ナッジ・メッセージの金銭的価値 {#econvalue}
-
 ```{r show-demand-vaccine, ref.label="demand-vaccine", fig.cap = "2019年度クーポン券配布対象者の風しんワクチンの需要曲線。データソース：Wave 1セレクションデータ。注）黒の三角はワクチン接種費用が無料であるときの接種割合と厚労省メッセージの抗体検査受検率を合計した割合と、それに対応するWTPを示している。", out.extra="", eval = params$preview|!params$appendix}
 
 ```
 
 ```{asis, echo = params$preview|!params$appendix}
+
+## ナッジ・メッセージの金銭的価値 {#econvalue}
+
 2019年度のクーポン券送付者におけるナッジ・メッセージの効果を金銭的な価値で評価することを試みる。
 そのために、第1回調査のナッジ・メッセージを示す前の質問票Aで調査したワクチン接種の支払意思額を用いる。
 ワクチンの価格は5000円と仮定して、我々は、自治体の補助金額が$s_j$のとき、ワクチン接種をするかどうかを調査した。

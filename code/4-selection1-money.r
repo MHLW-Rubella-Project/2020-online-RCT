@@ -32,7 +32,7 @@ wtp <- wave2 %>%
 
 cumprop0 <- unlist(wtp[wtp$wtp_vaccine == 0, "cum_prop"])
 baseprop <- cumprop0 +
-  subset(act1, arms == "厚労省" & outcome == "aw1_test")$mean1
+  subset(act1, arms == "MHLW" & outcome == "aw1_test")$mean1
 
 demand <- with(wtp, approxfun(cum_prop, wtp_vaccine))
 basewtp <- demand(baseprop)
@@ -76,7 +76,7 @@ econval <- act1 %>%
   select(
     arms, diff, cumfraq, wtp, totalval, wtp_dollar, totalval_dollar
   ) %>%
-  mutate(arms = droplevels(arms, exclude = "厚労省"))
+  mutate(arms = droplevels(arms, exclude = "MHLW"))
 
 
 tab <- econval %>%

@@ -46,7 +46,7 @@ vaccine %>%
 antibody %>%
   mutate(gender = factor(
     gender,
-    levels = c("female", "male"), labels = c("女性", "男性")
+    levels = c("female", "male"), labels = c("Females", "Males")
   )) %>%
   ggplot(aes(x = age, y = antibody_rate_8 * 100, group = gender)) +
   geom_point(aes(shape = gender), size = 3) +
@@ -59,7 +59,11 @@ antibody %>%
   scale_x_continuous(
     breaks = c(0, 10, 20, 28, 30, 39, 40, 50, 55, 60, 70)
   ) +
-  labs(x = "年齢", y = "風しん抗体保有率（%）", shape = "性別") +
+  labs(
+    x = "Age",
+    y = "Percentage of Rubella Antibody Carries (%)",
+    shape = "Gender"
+  ) +
   simplegg(axis_text_size = 11, font_family = "YuGothic")
 
 #+ reg-niid-antibody, eval = FALSE

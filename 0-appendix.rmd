@@ -1,5 +1,8 @@
 ---
-title: 補論：風しんの抗体検査とワクチン接種を促進するためのナッジ・メッセージの探求
+title: |
+  Appendix
+  "Text-Based Nudges Promoting Rubella Antibody Testing and Vaccination:
+  Evidence from Nationwide Online Field Experiment in Japan"
 date: "`r format(Sys.time(), '%Y/%m/%d')`"
 csl: template/csl/elsevier-harvard.csl
 bibliography: MHLW Rubella Nudge.bib

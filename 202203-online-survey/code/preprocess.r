@@ -48,7 +48,9 @@ int <- raw %>%
   mutate(
     before_int_test = if_else(q0 == 1 | q0 == 2, 1, 0),
     after_int_test = if_else(is.na(q7f1), q8f1, q7f1),
-    after_int_vaccine = if_else(is.na(q7f2), q8f2, q7f2)
+    after_int_test = if_else(after_int_test %in% c(1, 2), 1, 0),
+    after_int_vaccine = if_else(is.na(q7f2), q8f2, q7f2),
+    after_int_vaccine = if_else(after_int_vaccine %in% c(1, 2), 1, 0)
   ) %>%
   dplyr::select(
     id = names(raw)[1],
@@ -64,6 +66,10 @@ emo <- raw %>%
     force_act = q9_2,
     negative_emo = q9_3,
     improve = q9_4
+  ) %>%
+  mutate_at(
+    vars(positive_act, force_act, negative_emo, improve),
+    list(~ ifelse(. %in% c(4, 5), 1, 0))
   ) %>%
   dplyr::select(
     id = names(raw)[1],

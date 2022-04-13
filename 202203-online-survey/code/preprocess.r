@@ -24,8 +24,8 @@ past <- raw %>%
     past_rubella_infect = if_else(q2 == 1, 1, 0),
     past_varicella_vaccine = if_else(q3_1 == 1, 1, 0),
     past_measles_vaccine = if_else(q3_2 == 1, 1, 0),
-    past_varicella_vaccine = if_else(q4_1 == 1, 1, 0),
-    past_measles_vaccine = if_else(q4_2 == 1, 1, 0),
+    past_varicella_infect = if_else(q4_1 == 1, 1, 0),
+    past_measles_infect = if_else(q4_2 == 1, 1, 0)
   ) %>%
   dplyr::select(id = names(raw)[1], starts_with("past"))
 
@@ -76,6 +76,12 @@ emo <- raw %>%
 # individual characteristics
 personal <- raw %>%
   dplyr::mutate(
+    birth_year = sq2_1t + 25 + 1900,
+    birth_month = sq2_2t,
+    birth_date = as.Date(sprintf("%4d/%02d/01", birth_year, birth_month)),
+    age = trunc(
+      time_length(birth_date %--% as.Date("2022/04/01"), unit = "year")
+    ),
     educ = dplyr::case_when(
       q10 %in% c(1, 2) ~ 9,
       q10 %in% c(3, 4, 6) ~ 12,
@@ -110,7 +116,7 @@ personal <- raw %>%
   ) %>%
   dplyr::select(
     id = names(raw)[1],
-    educ, married, num_member, occupation, inc,
+    age, educ, married, num_member, occupation, inc,
     starts_with("with")
   )
 

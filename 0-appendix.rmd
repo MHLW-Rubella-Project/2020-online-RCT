@@ -13,8 +13,6 @@ geometry: "left=3cm,right=3cm,top=3cm,bottom=3cm"
 graphics: yes
 indent: yes
 linespace: 1.5
-figurename: 図
-tablename: 表
 output:
   bookdown::pdf_document2:
     latex_engine: xelatex
@@ -81,26 +79,33 @@ options(
 
 # (APPENDIX) Appendix {-}
 
+# Estimation Results of Linear Probability Models
+
+```{r}
+library(here)
+knitr::spin_child(here("code", "4-selection1-intention.r"))
+```
+
 # Additional Tabels and Figures
 
-```{r child = "2-background.rmd"}
+```{r child = "2-background.rmd", eval = FALSE}
 
 ```
 
 
-```{r child = "3-experiment.rmd"}
+```{r child = "3-experiment.rmd", eval = FALSE}
 
 ```
 
 
-```{r child = "4-result-coupon1.rmd"}
+```{r child = "4-result-coupon1.rmd", eval = FALSE}
 
 ```
 
-```{r child = "5-result-money.rmd"}
+```{r child = "5-result-money.rmd", eval = FALSE}
 
 ```
 
-```{r child = "6-result-coupon0.rmd"}
+```{r child = "6-result-coupon0.rmd", eval = FALSE}
 
 ```

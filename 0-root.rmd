@@ -126,34 +126,41 @@ options(
 
 # 日本における風しんワクチンの背景 {#background}
 
-```{r child = "2-background.rmd"}
+```{r child = "2-background.rmd", eval = FALSE}
 
 ```
 
 # オンライン調査の概要 {#experiment}
 
-```{r child = "3-experiment.rmd"}
+```{r child = "3-experiment.rmd", eval = FALSE}
 
 ```
 
 
-# 分析結果 {#result}
+# Results {#result}
 
-```{r child = "4-result-coupon1.rmd"}
+## Effect of Text-Based Nudges on Intentions
+
+```{r}
+library(here)
+knitr::spin_child(here("code", "4-selection1-intention.r"))
+```
+
+```{r child = "4-result-coupon1.rmd", eval = FALSE}
 
 ```
 
-```{r child = "5-result-money.rmd"}
+```{r child = "5-result-money.rmd", eval = FALSE}
 
 ```
 
-```{r child = "6-result-coupon0.rmd"}
+```{r child = "6-result-coupon0.rmd", eval = FALSE}
 
 ```
 
 # 議論と結論 {#conclusion}
 
-```{r child = "7-conclusion.rmd"}
+```{r child = "7-conclusion.rmd", eval = FALSE}
 
 ```
 

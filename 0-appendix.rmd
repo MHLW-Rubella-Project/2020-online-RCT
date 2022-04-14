@@ -61,10 +61,6 @@ out <- switch(format,
   "docx" = "flextable"
 )
 
-library(systemfonts)
-data.frame(unique(system_fonts()[, "family"]))
-grDevices::windowsFonts(YuGothic = grDevices::windowsFont("Yu Gothic"))
-
 library(RCTtoolbox)
 options(
   knitr.kable.NA = " ",
@@ -72,8 +68,7 @@ options(
   modelsummary_stars_note = FALSE,
   modelsummary_format_numeric_latex = "plain",
   RCTtoolbox.table_output = out,
-  RCTtoolbox.table_fontsize = 9,
-  RCTtoolbox.plot_family = "Yu Gothic"
+  RCTtoolbox.table_fontsize = 9
 )
 ```
 
@@ -83,7 +78,7 @@ options(
 
 ```{r}
 library(here)
-knitr::spin_child(here("code", "4-selection1-intention.r"))
+knitr::spin_child(here("src", "4-selection1-intention.r"))
 ```
 
 # Additional Tabels and Figures

@@ -13,10 +13,10 @@
 #'
 #+ include = FALSE
 library(here)
-source(here("code/_common.r"), encoding = "utf8")
+source(here("src/_common.r"), encoding = "utf8")
 
 #+ include = FALSE, eval = params$preview
-source(here("code/_html_header.r"), encoding = "utf8")
+source(here("src/_html_header.r"), encoding = "utf8")
 
 #+ include = FALSE
 wave1 <- rct_data_wave1(here(rct_path, "shape_survey.csv"))
@@ -332,7 +332,7 @@ est_intmod %>%
 # /*
 #+
 rmarkdown::render(
-  here("code/4-selection1-intention.r"),
+  here("src/4-selection1-intention.r"),
   output_dir = here("report/view")
 )
 # */

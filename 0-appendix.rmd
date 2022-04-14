@@ -81,6 +81,11 @@ library(here)
 knitr::spin_child(here("src", "4-selection1-intention.r"))
 ```
 
+```{r}
+library(here)
+knitr::spin_child(here("src", "5-selection1-behavior.r"))
+```
+
 # Additional Tabels and Figures
 
 ```{r child = "2-background.rmd", eval = FALSE}

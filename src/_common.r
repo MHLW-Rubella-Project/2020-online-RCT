@@ -13,7 +13,7 @@ library(officer)
 library(RCTtoolbox)
 
 lapply(
-  Sys.glob(here("code/function", "*.r")),
+  Sys.glob(here("src/function", "*.r")),
   source, encoding = "UTF-8"
 )
 

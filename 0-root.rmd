@@ -141,6 +141,13 @@ library(here)
 knitr::spin_child(here("src", "4-selection1-intention.r"))
 ```
 
+## Effect of Text-Based Nudges on Behaviors
+
+```{r}
+library(here)
+knitr::spin_child(here("src", "5-selection1-behavior.r"))
+```
+
 ```{r child = "4-result-coupon1.rmd", eval = FALSE}
 
 ```

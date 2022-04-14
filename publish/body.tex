@@ -233,6 +233,86 @@ Center for Infectious Disease Education and Research, Osaka University.  }
 そして年齢を含んだ共変量である。
 意向の線形確率モデルは上述の結果と同じ結果を得られた（詳細は補論を参照せよ）。
 
+\hypertarget{effect-of-text-based-nudges-on-behaviors}{%
+\subsection{Effect of Text-Based Nudges on Behaviors}\label{effect-of-text-based-nudges-on-behaviors}}
+
+次に、我々は第1回調査以降の行動に対するナッジ・メッセージの効果を推定する。
+第1回調査時点で抗体検査やワクチン接種を受けていない男性に焦点を当てるために、
+第1回調査もしくは第2回調査で
+第1回調査以前に抗体検査とワクチン接種を受けたと回答した人を排除した
+（wave 2 selection data）\footnote{第1回調査以降に自身の接種歴を調べ直すなどによって、
+  第1回調査と第2回調査の回答に違いが生じる可能性がある。
+  そのため、
+  どちらかの調査で第1回調査以前に抗体検査を受検したもしくはワクチンを接種したと回答した人を除いた。}。
+さらに、
+取引費用の減少の有無のもとでのナッジ・メッセージの効果を推定するために、
+我々は2019年4月時点の年齢が46歳以下であるかどうかでサブサンプルを構築した。
+二つのサブサンプルにおいて、個人の観察可能な特徴はトリートメント間でバランスされている。
+
+また、検定力80\%・有意水準5\%を保つために必要な効果の規模を計算したところ、
+2019年度にクーポン券が自動で送付される男性のサブサンプルを用いる場合、少なくとも
+7.2
+\%ポイントの差が必要である。
+2019年度ではクーポン券を受け取るために手続きが必要な男性のサブサンプルを用いる場合、少なくとも
+5.3
+\%ポイントの差が必要である。
+
+\begin{figure}[t]
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/act-coupon1-ttest-1} \caption{Effect of Text-Based Nudges on Behavior among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act-coupon1-ttest}
+\end{figure}
+
+2019年度にクーポン券が自動で送付される男性のサブサンプルを用いて、
+我々は各介入群の抗体検査の受検率（パネルA）とワクチン接種率（パネルB）を
+図\ref{fig:act-coupon1-ttest}に示した\footnote{ワクチン接種は抗体検査を受検し、
+  ワクチンを接種したら1を取るダミー変数である。
+  よって、ワクチン接種率はワクチン接種を通じて新規に抗体を獲得した人の比率とみなすこともできる。}。
+その結果、利他強調メッセージと利己強調メッセージの抗体検査の受検率は厚労省メッセージよりも高い。
+厚労省メッセージ群の抗体検査の受検率は約3.5\%である。
+対して、利他強調メッセージ群と利己強調メッセージ群の抗体検査の受検率は
+それぞれ約10.9\%と約9\%である。
+したがって、厚労省メッセージと比較して、
+利他強調メッセージは抗体検査の受検率を約7.4\%ポイント引き上げていて、
+これは統計的に5\%水準で有意である。
+また、利己強調メッセージは抗体検査の受検率を約5.5\%ポイント引き上げており、
+これは統計的に10\%水準で有意である。
+
+さらに、利他強調メッセージと社会比較メッセージのワクチン接種率は厚労省メッセージよりも高い。
+厚労省メッセージ群のワクチン接種率は約0.9\%である。
+対して、利他強調メッセージと社会比較メッセージのワクチン接種率は
+それぞれ4.7\%と約4.9\%である。
+したがって、厚労省メッセージと比較して、
+利他強調メッセージと社会比較メッセージはワクチン接種率を
+それぞれ約3.8\%ポイントと4\%ポイント引き上げていて、
+これらは統計的に10\%水準で有意である。
+
+\begin{figure}[t]
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/act-coupon0-ttest-1} \caption{Effect of Text-Based Nudges on Behaviors among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act-coupon0-ttest}
+\end{figure}
+
+2019年度にクーポン券を得るためにコストのかかる手続きが必要な男性のサブサンプルを用いて、
+我々は各介入群の抗体検査の受検率（パネルA）とワクチン接種率（パネルB）を
+図\ref{fig:act-coupon0-ttest}に示した。
+その結果、厚労省メッセージと比較して、
+社会比較メッセージは抗体検査の受検率を高めているが、
+ワクチン接種率を高めていない。
+厚労省メッセージを読んだ人の0.5\%が抗体検査を受検しているが、
+誰もワクチン接種をしていない。
+同様に、社会比較メッセージを読んだ人の2.8\%が抗体検査を受検しているが、
+誰もワクチン接種をしていない。
+したがって、厚労省メッセージと比較して、
+社会比較メッセージは抗体検査の受検率を約2.3\%ポイント引き上げていて、
+これは統計的に10\%水準で有意である。
+しかしながら、ワクチン接種率に対する効果はゼロである。
+
+サブサンプルで推定されたナッジ・メッセージの効果は
+クーポン券が自動的に送付されるかどうかだけでなく、
+年齢の違いの影響を受けるので、
+我々はこの問題を排除するために線形確率モデルを推定した。
+行動の線形確率モデルは上述の結果と同じ結果を得られた。
+それに加えて、2019年度にクーポン券が自動的に送付される男性において、
+社会比較メッセージの抗体検査の受検率は厚労省メッセージよりも5.7\%ポイント高く、
+これは統計的に10\%水準で有意である。
+
 \hypertarget{conclusion}{%
 \section{議論と結論}\label{conclusion}}
 

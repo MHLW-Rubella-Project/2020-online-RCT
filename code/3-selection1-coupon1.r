@@ -12,25 +12,18 @@ covmod <- ~ age + married + education +
   prob_social + handicap + severity +
   handwash + temp_check + avoid_out + avoid_crowd + wear_mask
 
-int_coupon1 <- create_RCTtoolbox(
+int <- create_RCTtoolbox(
   test_int + vaccine_int ~ nudge,
   covmod,
-  data = subset(wave1, coupon2019 == 1),
+  data = wave1,
   treat_levels = LETTERS[1:7],
   treat_labels = treat_labels
 )
 
-act_coupon1 <- create_RCTtoolbox(
+act <- create_RCTtoolbox(
   aw1_test + aw1_testvaccine ~ nudge,
   covmod,
-  data = subset(wave2, coupon2019 == 1),
-  treat_levels = LETTERS[1:7],
-  treat_labels = treat_labels
-)
-
-tester_coupon1 <- create_RCTtoolbox(
-  aw1_testnega + aw1_testvaccine ~ nudge,
-  data = subset(wave2, coupon2019 == 1 & aw1_test == 1),
+  data = wave2,
   treat_levels = LETTERS[1:7],
   treat_labels = treat_labels
 )
@@ -40,19 +33,36 @@ tester_coupon1 <- create_RCTtoolbox(
 #' --->
 #'
 #+ int-coupon1-balance, eval = FALSE
-int_coupon1$
-  balance()$
-  table(
-    title = "Wave 1セレクションデータの共変量のバランステスト（2019年度クーポン券配布対象）"
-  )
+int$
+  balance(subset = coupon2019 == 1)$
+  table(title = paste(
+    "Balance Test of Wave 1 Selection Data",
+    "(Men who automatically received coupon in 2019)"
+  ))
+
+#+ int-coupon0-balance, eval = FALSE
+int$
+  balance(subset = coupon2019 == 0)$
+  table(title = paste(
+    "Balance Test of Wave 1 Selection Data",
+    "(Men who need to be processed to receive coupon in 2019)"
+  ))
 
 #+ act-coupon1-balance, eval = FALSE
-act_coupon1$
-  balance()$
-  table(
-    title = "Wave 1セレクションデータの共変量のバランステスト（2019年度クーポン券配布対象）"
-  )
+act$
+  balance(subset = coupon2019 == 1)$
+  table(title = paste(
+    "Balance Test of Wave 2 Selection Data",
+    "(Men who automatically received coupon in 2019)"
+  ))
 
+#+ act-coupon0-balance, eval = FALSE
+act$
+  balance(subset = coupon2019 == 1)$
+  table(title = paste(
+    "Balance Test of Wave 2 Selection Data",
+    "(Men who need to be processed to receive coupon in 2019)"
+  ))
 
 #' <!---
 #' //NOTE: 検定力分析

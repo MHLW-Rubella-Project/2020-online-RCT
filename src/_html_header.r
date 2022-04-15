@@ -6,3 +6,5 @@ knitr::opts_chunk$set(
   include = TRUE,
   fig.width = 10
 )
+
+out <- "kableExtra"

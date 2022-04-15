@@ -96,9 +96,50 @@ Evidence from Nationwide Online Field Experiment in Japan''  }
   \maketitle
 \end{spacing}
 
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
 \hypertarget{appendix-appendix}{%
 \appendix}
 
+
+\hypertarget{overview-of-online-survey-experiment}{%
+\section{Overview of Online Survey Experiment}\label{overview-of-online-survey-experiment}}
+
+\begin{figure}[t]
+\includegraphics[width=1.5\linewidth,angle=90]{C:/Users/vge00/Desktop/2020-online-RCT/publish/appendix_files/figure-latex/flowchart-1} \caption{Overview of Online Survey Experiment}\label{fig:flowchart}
+\end{figure}
+
+\begin{table}[!h]
+
+\caption{\label{tab:covlist}List of Covariates}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{30em}cc}
+\toprule
+  & Description & Mean & Std.Dev.\\
+\midrule
+age & (Wave1) Age as of April 2019 based on year of birth and month of birth. & 48.66 & 5.69\\
+coupon2019 & (Wave1) Dummy variable taking one if 40 to 46 years old as of April 2019. & 0.35 & 0.48\\
+married & (Wave1) Dummy variable taking one if a respondent is married. & 0.58 & 0.49\\
+education & (Wave1) Years of education. & 14.75 & 2.31\\
+exercise\_w1 & (Wave1) Dummy variable taking one if a respondent exercises or plays sports more than once a week. & 0.22 & 0.42\\
+health\_check & (Wave1) Dummy variable taking one if a respondent has had medical examination at his/her city or place of employment in the past year from the time of the wave 1. & 0.68 & 0.46\\
+flushot & (Wave1) Dummy variable taking one if a respondent is vaccinated against influenza every year. & 0.27 & 0.45\\
+prob\_social & (Wave1) What percentage of men in their 40s and 50s does a respondent think may be infected with rubella? & 30.38 & 19.87\\
+handicap & (Wave1) Dummy variable taking one if a respondent believes that if a woman in early pregnancy is infected with rubella, her child may be born with a disability. & 0.63 & 0.48\\
+severity & (Wave1) Dummy variable taking one if a respondent believes that if an adult male is infected with rubella, it will become more severe. & 0.92 & 0.27\\
+handwash & (Wave2) Five Likert scale for the question "I wash my hands and gargle frequently during the period from the end of the previous questionnaire response to today." & 3.91 & 1.04\\
+temp\_check & (Wave2) Five Likert scale for the question "I take my tempature frequently during the period from the end of the previous questionnaire response to today." & 2.26 & 1.22\\
+avoid\_out & (Wave2) Five Likert scale for the question "I am refraining from going out during the end of the previous questionnaire response to today." & 2.96 & 1.20\\
+avoid\_crowd & (Wave2) Five Likert scale for the question "I avoid crowded places when I go out from the end of the previous questionnaire response to today." & 3.38 & 1.10\\
+wear\_mask & (Wave2) Five Likert scale for the question "I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today." & 3.14 & 1.38\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
 
 \hypertarget{estimation-results-of-linear-probability-models}{%
 \section{Estimation Results of Linear Probability Models}\label{estimation-results-of-linear-probability-models}}
@@ -349,7 +390,6 @@ t検定の結果と一致する。
 統計的に非有意である。
 表\ref{tab:act-reg}より、この二つの効果の差は統計的に10\%水準で有意である。
 
-\hypertarget{additional-tabels-and-figures}{%
-\section{Additional Tabels and Figures}\label{additional-tabels-and-figures}}
+\clearpage
 
 \end{document}

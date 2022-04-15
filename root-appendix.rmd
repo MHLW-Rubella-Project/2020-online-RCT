@@ -19,7 +19,7 @@ output:
     number_sections: yes
     keep_tex: yes
     fig_caption: yes
-    toc: false
+    toc: yes
     dev: cairo_pdf
     extra_dependencies: ["float"]
     template: "template/tex/plain.tex"
@@ -33,7 +33,7 @@ params:
 ```{r render, eval = FALSE, include = FALSE, echo = FALSE}
 library(here)
 rmarkdown::render(
-  input = here("0-appendix.rmd"),
+  input = here("root-appendix.rmd"),
   output_format = "all",
   output_file = "appendix",
   output_dir = "publish"
@@ -81,6 +81,8 @@ library(here)
 knitr::spin_child(here("src", "2-summary-experiment.r"))
 ```
 
+\clearpage
+
 # Estimation Results of Linear Probability Models
 
 ```{r}
@@ -93,26 +95,4 @@ library(here)
 knitr::spin_child(here("src", "5-selection1-behavior.r"))
 ```
 
-# Additional Tabels and Figures
-
-```{r child = "2-background.rmd", eval = FALSE}
-
-```
-
-
-```{r child = "3-experiment.rmd", eval = FALSE}
-
-```
-
-
-```{r child = "4-result-coupon1.rmd", eval = FALSE}
-
-```
-
-```{r child = "5-result-money.rmd", eval = FALSE}
-
-```
-
-```{r child = "6-result-coupon0.rmd", eval = FALSE}
-
-```
+\clearpage

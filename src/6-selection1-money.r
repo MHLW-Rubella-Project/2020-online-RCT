@@ -13,31 +13,28 @@
 #'
 #+ include = FALSE
 library(here)
-source(here("code/_common.r"), encoding = "utf8")
+source(here("src/_common.r"), encoding = "utf8")
+
+#+ include = FALSE, eval = params$preview
+source(here("src/_html_header.r"), encoding = "utf8")
 
 #+ include = FALSE
-wave1 <- rct_data_wave1(here(rct_path, "shape_survey.csv"))
 wave2 <- rct_data_wave2(here(rct_path, "shape_survey.csv"), 1)
 
-#+ include = FALSE
-covmod <- ~ age + married + education +
-  exercise_w1 + health_check + flushot +
-  prob_social + handicap + severity +
-  handwash + temp_check + avoid_out + avoid_crowd + wear_mask
-
-act_coupon1 <- create_RCTtoolbox(
-  aw1_test + aw1_testvaccine ~ nudge,
-  covmod,
+wtp_setup <- create_RCTtoolbox(
+  aw1_test ~ nudge,
   data = subset(wave2, coupon2019 == 1),
   treat_levels = LETTERS[1:7],
   treat_labels = treat_labels
 )
 
-#+ demand-vaccine, eval = FALSE
-act1 <- act_coupon1$ttest()$result
+#+ demand-vaccine, eval = params$preview | !params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangle ................", out.extra = ""
+act1 <- wtp_setup$
+  ttest()$
+  result
 
-wtp <- wave2 %>%
-  dplyr::filter(coupon2019 == 1 & exp_antibody == 0) %>%
+wtp <- wtp_setup$data %>%
+  dplyr::filter(exp_antibody == 0) %>%
   group_by(wtp_vaccine) %>%
   summarize(N = n()) %>%
   arrange(desc(wtp_vaccine)) %>%
@@ -45,7 +42,7 @@ wtp <- wave2 %>%
 
 cumprop0 <- unlist(wtp[wtp$wtp_vaccine == 0, "cum_prop"])
 baseprop <- cumprop0 +
-  subset(act1, arms == "MHLW" & outcome == "aw1_test")$mean1
+  subset(act1, arms == "MHLW")$mean1
 
 demand <- with(wtp, approxfun(cum_prop, wtp_vaccine))
 basewtp <- demand(baseprop)
@@ -68,14 +65,42 @@ wtp %>%
   ) +
   scale_y_continuous(breaks = seq(-6000, 5000, by = 1000)) +
   scale_x_continuous(breaks = seq(0, 1, by = 0.2)) +
-  labs(y = "WTP (ワクチン接種価格＝5,000円)", x = "累積比率") +
-  simplegg(font_family = "YuGothic", axis_text_size = 12)
+  labs(
+    y = "WTP (Price of vaccination=5,000JPY)",
+    x = "Cumulative fraction"
+  ) +
+  simplegg(axis_text_size = 12)
 
-#+ economic-value, eval = FALSE
+#' ```{asis, echo = params$preview | !params$appendix}
+#' 2019年度のクーポン券送付者におけるナッジ・メッセージの効果を金銭的な価値で評価することを試みる。
+#' そのために、第1回調査のナッジ・メッセージを示す前の質問票Aで調査したワクチン接種の支払意思額を用いる。
+#' ワクチンの価格は5000円と仮定して、我々は、自治体の補助金額が$s_j$のとき、ワクチン接種をするかどうかを調査した。
+#' 補助金額は$s_j \in \{0, 1000, 2000, \ldots, 10000\}$とした。
+#' 回答者$i$が接種すると回答した最低の補助金額を$s_i^{\text{min}}$とする。
+#' 回答者$i$が接種しないと回答した最高の補助金額を$s_i^{\text{max}}$とする。
+#' このとき、回答者$i$の支払意思額は
+#' $[5000 - s_i^{\text{min}}, 5000 - s_i^{\text{max}})$の範囲内で識別される[^extreme]。
+#' したがって、追加の仮定を置かない限り、ワクチン接種の需要曲線はステップワイズな曲線となり、
+#' メッセージの金銭的価値は範囲で得られる。
+#'
+#' メッセージの金銭的価値を点推定するために、
+#' 我々は支払意思額が$[5000 - s_i^{\text{min}}, 5000 - s_i^{\text{max}})$の範囲で識別されるとき、
+#' 真の支払意思額はその範囲内で一様に分布することを仮定する。
+#' このとき、ステップワイズなワクチン接種の需要曲線は線型補間で表される。
+#' 図\@ref(fig:demand-vaccine)はこの仮定のもとで、2019年度に自動的にクーポン券を受け取る人に限定した
+#' 風しんワクチン接種の需要曲線である。
+#' 我々はこの需要曲線を用いて、メッセージの金銭的価値を算出する。
+#'
+#' [^extreme]: 回答者がすべての補助金額$s_j$のときの接種しないと回答したならば、$s_i^{\text{max}} = 10000$である。
+#' しかしながら、$s_i^{\text{min}}$はデータで定義できない。そこで、$s_i^{\text{min}} = 11000$と仮定した。
+#' ただし、後に示すが、この仮定はナッジ・メッセージの金銭的価値に影響を与えない。
+#' ```
+#'
+#+ economic-value, eval = params$preview | !params$appendix
 rawvalue <- function(x) x
 
 econval <- act1 %>%
-  dplyr::filter(outcome == "aw1_test" & arms != "厚労省") %>%
+  dplyr::filter(arms != "MHLW") %>%
   mutate(cumfraq = diff + baseprop) %>%
   mutate_at(
     vars(cumfraq),
@@ -87,23 +112,29 @@ econval <- act1 %>%
     totalval_dollar = (totalval / 110) * 1000
   ) %>%
   select(
-    arms, diff, cumfraq, wtp, totalval, wtp_dollar, totalval_dollar
+    arms,
+    diff,
+    cumfraq,
+    wtp,
+    totalval,
+    wtp_dollar,
+    totalval_dollar
   ) %>%
   mutate(arms = droplevels(arms, exclude = "MHLW"))
 
 
 tab <- econval %>%
   modelsummary::datasummary(
-    (`ナッジ・メッセージ` = arms) ~ rawvalue * (
-      (`効果の規模` = diff) +
-      (`ベースライン＋効果の規模` = cumfraq) +
-      (`一人当たり` = wtp) +
-      (`総額` = totalval) +
-      (`一人当たり` = wtp_dollar) +
-      (`総額` = totalval_dollar)
+    (`Text-based nudge` = arms) ~ rawvalue * (
+      (`Size of effect` = diff) +
+      (`Baseline + size of effect` = cumfraq) +
+      (`pp` = wtp) +
+      (`total` = totalval) +
+      (`pp` = wtp_dollar) +
+      (`total` = totalval_dollar)
     ),
     data = .,
-    title = "ナッジ・メッセージの金銭的価値の推定",
+    title = "Estimated Monetary Value of Text-Based Nudges",
     fmt = 3, align = "lcccccc",
     output = out
   )
@@ -112,35 +143,25 @@ if (out == "kableExtra") {
   tab %>%
     kableExtra::kable_styling(font_size = 9, latex_options = "scale_down") %>%
     kableExtra::add_header_above(
-      c(" " = 3, "金銭的価値（日本円）" = 2, "金銭的価値（米ドル）" = 2)
+      c(" " = 3, "Monetary value (JPY)" = 2, "Monetary value (USD)" = 2)
     ) %>%
     kableExtra::footnote(
       general_title = "",
       general = paste(
-        "注）",
-        "抗体検査の受検に対するナッジ・メッセージの効果を効果の規模として用いた。",
-        "ベースラインはワクチン接種費用が無料であるときの接種割合と",
-        "厚労省メッセージの抗体検査受検率を合計した割合である。",
-        "金銭的価値は一人当たりの価値と",
-        "それに2020年1月時点でワクチンクーポン券を利用していない人数（529万人）をかけた",
-        "総額を示している。",
-        "また、金銭的価値は日本円と米ドルで示した（1ドル＝110円）。",
-        "一人当たりの金銭的価値の単位はそれぞれ1円と1ドルである。",
-        "総額で示した金銭的価値の単位はそれぞれ10億円と100万ドルである。"
-        # "Note:",
-        # "Effect is the size of effect of each text-based nudge",
-        # "on antibody test.",
-        # "Baseline is the sum of the rate of antibody test in the control",
-        # "and the vaccination rate when the vaccine is free",
-        # "The monetary value is the amount per person (pp) and the total amount",
-        # "(total) multiplied by the number of people who received the coupon",
-        # "in 2019 but did not use it until January, 2020.",
-        # "We valued the monetary value in Japanese Yen (JPY)",
-        # "and US Dollars (USD) (1USD = 110JPY).",
-        # "The unit of monetary value per person is 1 JPY and 1 USD,",
-        # "respectively.",
-        # "The unit of total monetary value is 1 billion JPY and 1 million USD,",
-        # "respectively."
+        "Note:",
+        "Effect is the size of effect of each text-based nudge",
+        "on antibody test.",
+        "Baseline is the sum of the rate of antibody test in the control",
+        "and the vaccination rate when the vaccine is free",
+        "The monetary value is the amount per person (pp) and the total amount",
+        "(total) multiplied by the number of people who received the coupon",
+        "in 2019 but did not use it until January, 2020.",
+        "We valued the monetary value in Japanese Yen (JPY)",
+        "and US Dollars (USD) (1USD = 110JPY).",
+        "The unit of monetary value per person is 1 JPY and 1 USD,",
+        "respectively.",
+        "The unit of total monetary value is 1 billion JPY and 1 million USD,",
+        "respectively."
       ),
       threeparttable = TRUE,
       escape = FALSE
@@ -148,34 +169,74 @@ if (out == "kableExtra") {
 } else {
   tab %>%
     add_header_row(
-      values = c("", "金銭的価値（日本円）", "金銭的価値（米ドル）"),
+      values = c("", "Monetary value (JPY)", "Monetary value (USD)"),
       colwidths = c(3, 2, 2)
     ) %>%
     add_footer_lines(values = paste(
-      "注）",
-      "抗体検査の受検に対するナッジ・メッセージの効果を効果の規模として用いた。",
-      "ベースラインはワクチン接種費用が無料であるときの接種割合と",
-      "厚労省メッセージの抗体検査受検率を合計した割合である。",
-      "金銭的価値は一人当たりの価値と",
-      "それに2020年1月時点でワクチンクーポン券を利用していない人数（529万人）をかけた",
-      "総額を示している。",
-      "また、金銭的価値は日本円と米ドルで示した（1ドル＝110円）。",
-      "一人当たりの金銭的価値の単位はそれぞれ1円と1ドルである。",
-      "総額で示した金銭的価値の単位はそれぞれ10億円と100万ドルである。"
-      # "Note:",
-      # "Effect is the size of effect of each text-based nudge",
-      # "on antibody test.",
-      # "Baseline is the sum of the rate of antibody test in the control",
-      # "and the vaccination rate when the vaccine is free",
-      # "The monetary value is the amount per person (pp) and the total amount",
-      # "(total) multiplied by the number of people who received the coupon",
-      # "in 2019 but did not use it until January, 2020.",
-      # "We valued the monetary value in Japanese Yen (JPY)",
-      # "and US Dollars (USD) (1USD = 110JPY).",
-      # "The unit of monetary value per person is 1 JPY and 1 USD,",
-      # "respectively.",
-      # "The unit of total monetary value is 1 billion JPY and 1 million USD,",
-      # "respectively."
+      "Note:",
+      "Effect is the size of effect of each text-based nudge",
+      "on antibody test.",
+      "Baseline is the sum of the rate of antibody test in the control",
+      "and the vaccination rate when the vaccine is free",
+      "The monetary value is the amount per person (pp) and the total amount",
+      "(total) multiplied by the number of people who received the coupon",
+      "in 2019 but did not use it until January, 2020.",
+      "We valued the monetary value in Japanese Yen (JPY)",
+      "and US Dollars (USD) (1USD = 110JPY).",
+      "The unit of monetary value per person is 1 JPY and 1 USD,",
+      "respectively.",
+      "The unit of total monetary value is 1 billion JPY and 1 million USD,",
+      "respectively."
     )) %>%
     fontsize(size = 9, part = "all")
 }
+
+#' ```{asis, echo = params$preview | !params$appendix}
+#' ナッジ・メッセージの金銭的な価値を次のように計算する。
+#' はじめに、ベースラインの接種割合を決める。
+#' 図\@ref(fig:demand-vaccine)の需要曲線は無料クーポンが発行される人に限定しているので、
+#' ワクチンの供給曲線はゼロで水平である。
+#' このときの接種割合は約66.5%である。
+#' ベースラインの接種割合はこの割合に厚労省メッセージの抗体検査受検率を足したものとする[^assumption]。
+#' ベースラインの接種割合は約70%であり、対応する支払意思額は約-394円である。
+#'
+#' 次に、接種割合をベースラインの均衡点からナッジ・メッセージの効果分だけ増やすとき、
+#' 需要曲線上で対応する支払意思額を見つける。
+#' その支払意思額はナッジ・メッセージの効果量だけ増やすのに必要な自治体の追加的な補助金額であり、
+#' それがナッジ・メッセージの一人当たりの金銭的価値である。
+#' たとえば、ベースラインの均衡点の接種割合とナッジ・メッセージの効果の和が0.8であるとき、
+#' 需要曲線上で対応する支払意思額は約-4280円である。
+#' すなわち、ナッジ・メッセージの効果量分だけ接種割合を増やすために、
+#' 自治体は一人当たり約3886（$=4280-394$）円の追加的な補助金を支払う必要がある。
+#'
+#' [^assumption]: 抗体検査の結果が陰性である人のほとんどはワクチンを接種しているので、
+#' 抗体検査の受検率をワクチン接種率として用いる。
+#'
+#' 我々は抗体検査受検に対するナッジ・メッセージの効果を用いる。
+#' 表\@ref(tab:tester-move)で示したように、
+#' 抗体検査の結果が陰性である人のほとんどはワクチンを接種している。
+#' したがって、抗体検査受検に対するナッジ・メッセージの効果をワクチン接種に対する効果とみなせる。
+#'
+#' 表\@ref(tab:economic-value)はメッセージの金銭的価値の試算結果である。
+#' 第2列は図\@ref(fig:show-act-coupon1-ttest)のパネルAで示したメッセージの効果を示している。
+#' 第3列はベースラインの均衡点の接種割合からメッセージの効果量分だけ増やしたときの接種割合を示している。
+#' 第4列はメッセージの一人当たりの金銭的価値である。
+#' この金銭的価値をアメリカドルに換算した結果を第6列に示している。
+#' 抗体検査の受検を促進した利他強調メッセージの一人当たりの金銭的価値は約2000円（約18ドル）である。
+#'
+#' <!-- 参考：https://www.mhlw.go.jp/content/10906000/000645181.pdf -->
+#' また、メッセージ自体の金銭的価値の総額は一人当たりの金銭的価値と
+#' 2019年度に発行されたクーポン券をまだ利用していない人数の積で得られる。
+#' 厚生労働省より、2019年度にクーポン券が発行されたにもかかわらず、
+#' 1月時点で抗体検査のクーポン券を利用していない人は約529万人である。
+#' 表\@ref(tab:economic-value)の第5列はメッセージの金銭的価値の総額を示している。
+#' 第7列はそれをアメリカドルに換算した結果を示している。
+#' 利他強調メッセージの金銭的価値の総額は約100億円である。
+#' ```
+# /*
+#+
+rmarkdown::render(
+  here("src/6-selection1-money.r"),
+  output_dir = here("report/view")
+)
+# */

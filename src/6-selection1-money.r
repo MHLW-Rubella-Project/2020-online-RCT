@@ -1,3 +1,16 @@
+#' ---
+#' title: Monetary Value of Text-Based Nudges on Behavior
+#' subtitle: Preview
+#' output:
+#'   bookdown::html_document2:
+#'     toc: yes
+#'     toc_float: yes
+#'     number_sections: false
+#' params:
+#'   preview: yes
+#'   appendix: yes
+#' ---
+#'
 #+ include = FALSE
 library(here)
 source(here("code/_common.r"), encoding = "utf8")

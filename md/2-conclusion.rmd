@@ -43,7 +43,7 @@ rmarkdown::render(
 
 ```{r }
 library(here)
-source(here("code/_common.r"), encoding = "utf8")
+source(here("src/_common.r"), encoding = "utf8")
 web <- read_csv(here(rct_path, "shape_survey.csv"))
 
 prop <- web %>%

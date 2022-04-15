@@ -74,7 +74,7 @@ params:
 ```{r render, eval = FALSE, include = FALSE, echo = FALSE}
 library(here)
 rmarkdown::render(
-  input = here("0-root.rmd"),
+  input = here("root-body.rmd"),
   output_format = "all",
   output_file = "body",
   output_dir = "publish"

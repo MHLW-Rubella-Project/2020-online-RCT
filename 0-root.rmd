@@ -113,9 +113,9 @@ options(
 )
 ```
 
-# はじめに {#intro}
+# Introduction {#intro}
 
-```{r child = "1-introduction.rmd", eval = FALSE}
+```{r child = "md/1-introduction.rmd", eval = FALSE}
 
 ```
 
@@ -157,9 +157,9 @@ knitr::spin_child(here("src", "6-selection1-money.r"))
 ```
 
 
-# 議論と結論 {#conclusion}
+# Discussion and Conclusions {#conclusion}
 
-```{r child = "7-conclusion.rmd", eval = FALSE}
+```{r child = "md/2-conclusion.rmd"}
 
 ```
 

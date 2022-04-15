@@ -74,6 +74,13 @@ options(
 
 # (APPENDIX) Appendix {-}
 
+# Overview of Online Survey Experiment
+
+```{r}
+library(here)
+knitr::spin_child(here("src", "2-summary-experiment.r"))
+```
+
 # Estimation Results of Linear Probability Models
 
 ```{r}

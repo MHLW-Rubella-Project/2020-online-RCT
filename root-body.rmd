@@ -128,10 +128,10 @@ knitr::spin_child(here("src", "1-niid-visualize.r"))
 
 # オンライン調査の概要 {#experiment}
 
-```{r child = "3-experiment.rmd", eval = FALSE}
-
+```{r}
+library(here)
+knitr::spin_child(here("src", "2-summary-experiment.r"))
 ```
-
 
 # Results {#result}
 

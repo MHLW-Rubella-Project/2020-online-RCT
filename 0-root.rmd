@@ -119,10 +119,11 @@ options(
 
 ```
 
-# 日本における風しんワクチンの背景 {#background}
+# Background of Rubella Vaccination in Japan {#background}
 
-```{r child = "2-background.rmd", eval = FALSE}
-
+```{r}
+library(here)
+knitr::spin_child(here("src", "1-niid-visualize.r"))
 ```
 
 # オンライン調査の概要 {#experiment}

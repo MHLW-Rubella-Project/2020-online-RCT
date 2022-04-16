@@ -28,7 +28,7 @@ wtp_setup <- create_RCTtoolbox(
   treat_labels = treat_labels
 )
 
-#+ demand-vaccine, eval = params$preview | !params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangle ................", out.extra = ""
+#+ demand-vaccine, eval = params$preview | !params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.", out.extra = ""
 act1 <- wtp_setup$
   ttest()$
   result

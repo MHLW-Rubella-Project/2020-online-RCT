@@ -74,6 +74,7 @@
 
 
 \usepackage{float}
+\usepackage{threeparttable}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -110,7 +111,7 @@ Evidence from Nationwide Online Field Experiment in Japan''  }
 \section{Overview of Online Survey Experiment}\label{overview-of-online-survey-experiment}}
 
 \begin{figure}[t]
-\includegraphics[width=1.5\linewidth,angle=90]{C:/Users/vge00/Desktop/2020-online-RCT/publish/appendix_files/figure-latex/flowchart-1} \caption{Overview of Online Survey Experiment}\label{fig:flowchart}
+\includegraphics[width=1.5\linewidth,angle=90]{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/appendix_files/figure-latex/flowchart-1} \caption{Overview of Online Survey Experiment}\label{fig:flowchart}
 \end{figure}
 
 \begin{table}[!h]
@@ -548,5 +549,311 @@ Automatic receiving & Age expression & -0.041 & 0.036 & 0.247 & -0.030 & 0.022 &
 検出力を十分に保てるほどの差でない。
 
 \clearpage
+
+\hypertarget{analysis-to-address-recall-bias-associated-with-self-reporting-of-behavior}{%
+\section{Analysis to Address Recall Bias Associated with Self-Reporting of Behavior}\label{analysis-to-address-recall-bias-associated-with-self-reporting-of-behavior}}
+
+\begin{table}[!h]
+
+\caption{\label{tab:act2-coupon1-balance}Balance Test of New Wave 2 Selection Data (Men who automatically received coupon in 2019)}
+\centering
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{7}{c}{Treatments} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-8}
+  & MHLW & Age expression & Altruistic & Selfish & Social comparison & Valid date & Low-cost & p-value\\
+\midrule
+age & 42.869 & 43.063 & 43.099 & 43.016 & 42.948 & 42.901 & 42.893 & 0.948\\
+avoid\_crowd & 3.328 & 3.331 & 3.261 & 3.211 & 3.339 & 3.336 & 3.273 & 0.958\\
+avoid\_out & 3.082 & 3.047 & 3.028 & 2.805 & 2.896 & 3.038 & 2.926 & 0.509\\
+education & 14.598 & 14.457 & 14.592 & 14.236 & 14.130 & 14.267 & 14.603 & 0.530\\
+exercise\_w1 & 0.262 & 0.181 & 0.289 & 0.179 & 0.165 & 0.198 & 0.215 & 0.161\\
+flushot & 0.238 & 0.268 & 0.211 & 0.130 & 0.148 & 0.244 & 0.215 & 0.040\\
+handicap & 0.648 & 0.551 & 0.599 & 0.553 & 0.539 & 0.527 & 0.496 & 0.258\\
+handwash & 3.885 & 3.866 & 3.824 & 3.764 & 3.748 & 3.954 & 3.744 & 0.624\\
+health\_check & 0.656 & 0.638 & 0.683 & 0.528 & 0.617 & 0.664 & 0.620 & 0.236\\
+married & 0.402 & 0.465 & 0.408 & 0.415 & 0.452 & 0.473 & 0.479 & 0.765\\
+prob\_social & 27.623 & 30.079 & 26.901 & 30.976 & 26.870 & 28.015 & 27.851 & 0.600\\
+severity & 0.902 & 0.953 & 0.930 & 0.886 & 0.922 & 0.977 & 0.909 & 0.014\\
+temp\_check & 2.180 & 2.260 & 2.380 & 2.179 & 2.226 & 2.145 & 2.157 & 0.735\\
+wear\_mask & 2.951 & 3.063 & 3.113 & 3.033 & 2.965 & 3.115 & 3.174 & 0.852\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+
+\caption{\label{tab:act2-coupon0-balance}Balance Test of New Wave 2 Selection Data (Men who need to be processed to receive coupon in 2019)}
+\centering
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{7}{c}{Treatments} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-8}
+  & MHLW & Age expression & Altruistic & Selfish & Social comparison & Valid date & Low-cost & p-value\\
+\midrule
+age & 51.664 & 51.396 & 51.210 & 51.602 & 51.454 & 51.567 & 51.536 & 0.722\\
+avoid\_crowd & 3.307 & 3.378 & 3.429 & 3.250 & 3.306 & 3.296 & 3.455 & 0.354\\
+avoid\_out & 2.903 & 2.917 & 2.919 & 2.884 & 2.825 & 2.966 & 2.982 & 0.848\\
+education & 14.542 & 14.652 & 14.533 & 14.833 & 14.576 & 14.609 & 14.378 & 0.589\\
+exercise\_w1 & 0.160 & 0.196 & 0.248 & 0.231 & 0.188 & 0.206 & 0.216 & 0.304\\
+flushot & 0.223 & 0.243 & 0.200 & 0.264 & 0.284 & 0.223 & 0.248 & 0.453\\
+handicap & 0.597 & 0.630 & 0.624 & 0.616 & 0.568 & 0.627 & 0.604 & 0.838\\
+handwash & 3.803 & 3.883 & 3.900 & 3.778 & 3.817 & 3.833 & 3.892 & 0.827\\
+health\_check & 0.634 & 0.661 & 0.690 & 0.685 & 0.651 & 0.670 & 0.649 & 0.872\\
+married & 0.588 & 0.578 & 0.624 & 0.662 & 0.603 & 0.554 & 0.608 & 0.337\\
+prob\_social & 27.017 & 31.652 & 30.667 & 28.565 & 29.782 & 27.854 & 31.712 & 0.049\\
+severity & 0.920 & 0.930 & 0.919 & 0.968 & 0.934 & 0.927 & 0.905 & 0.081\\
+temp\_check & 2.139 & 2.248 & 2.210 & 2.083 & 2.192 & 2.086 & 2.270 & 0.490\\
+wear\_mask & 3.071 & 3.191 & 3.157 & 3.148 & 2.961 & 2.966 & 3.068 & 0.447\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ここでは、第2回調査の抗体検査の受検行動やワクチン接種行動の回答に
+想起バイアスが伴うことを考慮した分析を行う。
+第2回調査はそれぞれの行動を第1回調査以前に行ったかどうかを調査している。
+この時期の回答に想起バイアスが伴うならば、
+本論の分析のように第2回調査で第1回調査以前に行動したと回答した人を除くべきではない。
+そこで、我々は第2回調査の行動の回答に想起バイアスが伴うことを仮定して、
+第1回調査の調査ですでに抗体検査もしくはワクチン接種を受けた男性だけを除いて、
+ナッジ・メッセージの行動に対する効果を推定する（wave 1 selection dataと同じ基準）。
+したがって、
+第2回調査で第1回調査以前に抗体検査もしくはワクチン接種を受けたと回答した人はサンプルに含まれている。
+
+本論と同様に、
+我々は2019年度にクーポン券を自動的に受け取っているかどうかでサンプルを分割して、
+サブサンプルを用いてナッジ・メッセージの効果を推定する。
+表\ref{tab:act2-coupon1-balance}と
+表\ref{tab:act2-coupon0-balance}は共変量のバランステストの結果であり、
+回答者の観察可能な特徴は群間でシステマティックに異ならないことを示している。
+
+検定力80\%・有意水準5\%を保つために必要な効果の規模を計算したところ、
+2019年度にクーポン券が自動で送付される男性のサブサンプルを用いる場合、少なくとも
+6.8
+\%ポイントの差が必要である。
+2019年度ではクーポン券を受け取るために手続きが必要な男性のサブサンプルを用いる場合、少なくとも
+5.2
+\%ポイントの差が必要である。
+
+アウトカム変数の定義も本論のものから変更する。
+本論では、第1回調査以降に抗体検査を受検したら1を取るアウトカム変数と
+第1回調査以降に抗体検査を受検し、ワクチンによって抗体を新たに獲得したら1を取るダミー変数でを用いた。
+対して、この補論では、
+第2回調査で時期に関わらず抗体検査を受検したと回答したら1を取るダミー変数と
+第2回調査で時期に関わらず抗体検査を受検し、
+時期に関わらずワクチンによって抗体を獲得したら1を取るダミー変数である。
+
+\begin{figure}[t]
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/appendix_files/figure-latex/act2-coupon1-ttest-1} \caption{Effect of Text-Based Nudges on Behavior among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: new wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act2-coupon1-ttest}
+\end{figure}
+\begin{figure}[t]
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/appendix_files/figure-latex/act2-coupon0-ttest-1} \caption{Effect of Text-Based Nudges on Behaviors among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: new wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act2-coupon0-ttest}
+\end{figure}
+
+2019年度にクーポン券を自動的に受け取った男性に限定して、
+我々は各介入群の抗体検査受検率（パネルA）とワクチン接種率（パネルB）を
+図\ref{fig:act2-coupon1-ttest}に示した。
+その結果、利他強調メッセージは厚労省メッセージよりも抗体検査受検率が高い。
+厚労省メッセージの抗体検査受検率は6.6\%であるのに対し、
+利他強調メッセージの抗体検査受検率は14.1\%である。
+したがって、厚労省メッセージと比較して、
+利他強調メッセージは抗体検査の受検率を7.5\%ポイント高めていて、
+これは統計的に5\%水準で有意である。
+この効果の規模は本論の結果と一致している。
+また、利他強調メッセージのワクチン接種率に対する効果は統計的に非有意である。
+
+2019年度にクーポン券を受け取るためにはコストのかかる手続きが必要な男性に限定して、
+我々は各介入群の抗体検査受検率（パネルA）とワクチン接種率（パネルB）を
+図\ref{fig:act2-coupon0-ttest}に示した。
+その結果、利他強調メッセージと低コストメッセージは厚労省メッセージよりも抗体検査の受検率を高めていて、
+低コストメッセージのみが厚労省メッセージよりもワクチン接種率を高めている。
+厚労省メッセージの抗体検査の受検率は2.5\%であり、
+利他強調メッセージと低コストメッセージの受検率はそれぞれ5.7\%と6.8\%である。
+したがって、利他強調メッセージと低コストメッセージの抗体検査の受検率に対する効果はそれぞれ
+3.2\%ポイント・4.3\%ポイントであり、
+これらは統計的に有意である。
+また、厚労省メッセージのワクチン接種率は1.7\%であり、
+低コストメッセージの受検率は5\%である。
+したがって、低コストメッセージのワクチン接種率に対する効果は3.3\%ポイントであり、
+これは統計的に10\%水準で有意である。
+
+\begin{table}
+
+\caption{\label{tab:act2-reg}Linear Probability Model of Behaviors Using New Wave 2 Selection Data}
+\centering
+\begin{tabular}[t]{lcc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Antibody Test} & \multicolumn{1}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3}
+  & (1) & (2)\\
+\midrule
+Age expression & 0.013 & 0.014\\
+ & (0.017) & (0.014)\\
+Altruistic & 0.030 & 0.025\\
+ & (0.019) & (0.016)\\
+Selfish & 0.023 & 0.022\\
+ & (0.018) & (0.015)\\
+Social comparison & 0.021 & -0.004\\
+ & (0.018) & (0.011)\\
+Valid date & 0.014 & 0.006\\
+ & (0.016) & (0.013)\\
+Low-cost & 0.041** & 0.032*\\
+ & (0.020) & (0.017)\\
+Coupon & 0.021 & -0.014\\
+ & (0.028) & (0.021)\\
+Coupon×Age expression & 0.023 & 0.008\\
+ & (0.038) & \vphantom{1} (0.027)\\
+Coupon×Altruistic & 0.042 & -0.002\\
+ & (0.041) & (0.028)\\
+Coupon×Selfish & 0.039 & 0.012\\
+ & (0.041) & (0.029)\\
+Coupon×Social comparison & 0.029 & 0.030\\
+ & (0.041) & (0.027)\\
+Coupon×Valid date & 0.019 & 0.022\\
+ & (0.038) & (0.027)\\
+Coupon×Low-cost & -0.009 & -0.008\\
+ & (0.040) & (0.029)\\
+\midrule
+Num.Obs. & 2459 & 2459\\
+R2 & 0.095 & 0.054\\
+R2 Adj. & 0.085 & 0.043\\
+Covariates & X & X\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}
+
+\caption{\label{tab:act2-reg-ftest}Effects of Text-Based Nudges on Behaviors Using Linear Probability Model Estimates (Data: New Wave 2 Selection Data)}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}lcccccc}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Antibody Test} & \multicolumn{3}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8}
+How to get coupons & Text-based nudges & estimate & std.error & p.value & estimate  & std.error  & p.value \\
+\midrule
+Costly procedure & Age expression & 0.013 & 0.017 & 0.447 & 0.014 & 0.014 & 0.326\\
+ & Altruistic & 0.030 & 0.019 & 0.108 & 0.025 & 0.016 & 0.118\\
+ & Selfish & 0.023 & 0.018 & 0.202 & 0.022 & 0.015 & 0.157\\
+ & Social comparison & 0.021 & 0.018 & 0.236 & -0.004 & 0.011 & 0.753\\
+ & Valid date & 0.014 & 0.016 & 0.395 & 0.006 & 0.013 & 0.638\\
+ & Low-cost & 0.041 & 0.020 & 0.037 & 0.032 & 0.017 & 0.058\\
+Automatic receiving & Age expression & 0.036 & 0.034 & 0.301 & 0.022 & 0.023 & 0.340\\
+ & Altruistic & 0.073 & 0.037 & 0.047 & 0.023 & 0.023 & 0.319\\
+ & Selfish & 0.062 & 0.037 & 0.091 & 0.033 & 0.025 & 0.185\\
+ & Social comparison & 0.050 & 0.037 & 0.170 & 0.026 & 0.025 & 0.292\\
+ & Valid date & 0.033 & 0.034 & 0.336 & 0.028 & 0.024 & 0.233\\
+ & Low-cost & 0.033 & 0.035 & 0.349 & 0.024 & 0.024 & 0.328\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+サブサンプルで推定されたナッジ・メッセージの効果は
+クーポン券が自動的に送付されるかどうかだけでなく、
+年齢の違いの影響を受けるので、
+我々はこの問題を排除するために線形確率モデルを推定した。
+基本的に、二群の平均値の差の検定の結果と整合的である。
+それに加えて、表\ref{tab:act2-reg-ftest}より、
+2019年度にクーポン券を自動的に受け取った男性における
+利己強調メッセージの抗体検査受検率に対する効果は6.2\%ポイントであり、
+これは統計的に10\%水準で有意である。
+また、2019年度にクーポン券を受け取るためにはコストのかかる手続きが必要な男性における
+利他強調メッセージの抗体検査受検率に対する効果は
+効果の規模が変化していないにも関わらず、統計的に非有意である。
+さらに、表\ref{tab:act2-reg}より、
+クーポン券を自動的に送付されるかどうかによる
+ナッジ・メッセージの効果の異質性は統計的に非有意である。
+
+\begin{table}
+
+\begin{threeparttable}
+\caption{\label{tab:tester2-move}Movement of Antibody Test Takers (Data: New Wave 2 Selection Data)}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{9em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{w/ receiving coupon automatically} & \multicolumn{3}{c}{w/o receiving coupon automatically} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Text-based nudge & Antibody test & Negative test result & Vaccination & Antibody test  & Negative test result  & Vaccination \\
+\midrule
+MHLW & 8 & 3 & 3 & 6 & 4 & 4\\
+Age expression & 13 & 6 & 6 & 9 & 9 & 7\\
+Altruistic & 20 & 8 & 7 & 12 & 9 & 9\\
+Selfish & 15 & 7 & 7 & 11 & 8 & 8\\
+Social comparison & 13 & 7 & 6 & 11 & 5 & 3\\
+Valid date & 13 & 7 & 7 & 9 & 6 & 5\\
+Low-cost & 12 & 8 & 6 & 15 & 13 & 11\\
+Fisher's exact test (p-value) &  & 0.83 & 0.77 &  & 0.12 & 0.30\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item [] Note: Limiting our sample to antibody test takers, we tested the null hypothesis that the number of negative antibody tests does not differ between intervention groups with Fisher's exact test. Also, restricting the sample to negative individuals, we tested the null hypothesis that the number of vaccinations would not differ between intervention groups with a Fisher's exact test.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+表\ref{tab:tester2-move}は各介入群の抗体検査の受検者数・陰性件数・ワクチン接種件数を示した。
+本論と同様に、
+クーポン券を自動的に受け取ったかどうか・介入群に関わらず、
+抗体検査の結果が陰性である人のほとんどがワクチンを接種している。
+よって、ワクチン接種率に対するナッジ・メッセージの効果は介入群の陰性比率に強く依存している。
+事実、手続きが必要な男性に限定したとき、
+低コストメッセージの陰性比率は87\%(\(=13/15\))と非常に高い。
+その結果、低コストメッセージはワクチン接種率に統計的に有意な効果を持っている。
+しかしながら、介入群間の陰性比率のバラツキは統計的な誤差である可能性が高い。
+我々は抗体検査の受検者をクーポン券が自動的に送付されるかどうかで分割し、
+抗体検査の陰性件数が介入群間で同じであるという帰無仮説をフィッシャーの正確検定で検証した。
+その結果、二つのサブサンプルで帰無仮説を棄却できない。
+
+\begin{figure}[t]
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/appendix_files/figure-latex/demand2-vaccine-1} \caption{Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: new wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.}\label{fig:demand2-vaccine}
+\end{figure}
+
+2019年度にクーポン券を自動的に受け取る人へのナッジ・メッセージの効果を
+金銭的な価値で評価することを試みる。
+本論で示した方法を用いて、図\ref{fig:demand2-vaccine}に
+2019年度に自動的にクーポン券を受け取る人に限定した、風しんワクチン接種の需要曲線を示した。
+ワクチン接種が0円で供給されているとき、均衡接種割合は0.664である。
+
+\begin{table}
+
+\caption{\label{tab:economic-value2}Estimated Monetary Value of Text-Based Nudges}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Monetary value (JPY)} & \multicolumn{2}{c}{Monetary value (USD)} \\
+\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
+Text-based nudge & Size of effect & Baseline + size of effect & pp & total & pp  & total \\
+\midrule
+Age expression & 0.037 & 0.766 & 1528.377 & 8.085 & 13.894 & 73.501\\
+Altruistic & 0.075 & 0.805 & 3925.285 & 20.765 & 35.684 & 188.771\\
+Selfish & 0.056 & 0.786 & 3285.074 & 17.378 & 29.864 & 157.982\\
+Social comparison & 0.047 & 0.777 & 2200.534 & 11.641 & 20.005 & 105.826\\
+Valid date & 0.034 & 0.763 & 1331.690 & 7.045 & 12.106 & 64.042\\
+Low-cost & 0.034 & 0.763 & 1327.720 & 7.024 & 12.070 & 63.851\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item Note: Effect is the size of effect of each text-based nudge on antibody test. Baseline is the sum of the rate of antibody test in the control and the vaccination rate when the vaccine is free The monetary value is the amount per person (pp) and the total amount (total) multiplied by the number of people who received the coupon in 2019 but did not use it until January, 2020. We valued the monetary value in Japanese Yen (JPY) and US Dollars (USD) (1USD = 110JPY). The unit of monetary value per person is 1 JPY and 1 USD, respectively. The unit of total monetary value is 1 billion JPY and 1 million USD, respectively.
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+
+抗体検査の受検確率をナッジ・メッセージの効果量として用いて、
+表\ref{tab:economic-value2}にメッセージの金銭的価値を示した。
+第2列は図\ref{fig:act2-coupon1-ttest}のパネルAで示した比率を示している。
+第3列はベースラインの均衡接種割合からメッセージの効果分だけ増やしたときの接種割合を示している。
+第4列はそのその接種割合と対応する自治体の追加的な補助金額であり、
+これがメッセージの一人当たりの金銭的価値である。
+アメリカドルに換算した価値は第6列に示した。
+利他強調メッセージの一人当たりの金銭的価値は約3900円（約35ドル）である。
+第5列はメッセージの一人当たりの金銭的価値を
+2019年度にクーポン券が発行されたにもかかわらず、
+1月時点で抗体検査のクーポン券を利用していない人口で掛けた
+メッセージの金銭的価値の総額を示している。
+アメリカドルに換算した価値は第7列に示している。
+利他強調メッセージの金銭的価値の総額はそれぞれ200億円である。
 
 \end{document}

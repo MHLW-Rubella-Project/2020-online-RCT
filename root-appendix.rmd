@@ -99,11 +99,17 @@ knitr::spin_child(here("src", "3-selection1-balance-test.r"))
 ```{r}
 library(here)
 knitr::spin_child(here("src", "4-selection1-intention.r"))
-```
-
-```{r}
-library(here)
 knitr::spin_child(here("src", "5-selection1-behavior.r"))
 ```
 
+
 \clearpage
+
+# Analysis to Address Recall Bias Associated with Self-Reporting of Behavior
+
+```{r}
+library(here)
+knitr::spin_child(here("src", "7-selection2-balance-test.r"))
+knitr::spin_child(here("src", "8-selection2-behavior.r"))
+knitr::spin_child(here("src", "9-selection2-money.r"))
+```

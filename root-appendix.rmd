@@ -76,7 +76,7 @@ options(
 
 \clearpage
 
-# Overview of Online Survey Experiment
+# Additional Tables and Figures about Online Survey Experiment
 
 ```{r}
 library(here)

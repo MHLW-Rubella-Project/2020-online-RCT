@@ -275,8 +275,62 @@ est_intmod %>%
   ) %>%
   kableExtra::column_spec(1, width = "5em")
 
+#+ int-reg-ftest2, eval = params$preview | params$appendix
+est_intmod2 <- intmod %>%
+  lapply(function(x) {
+    lh_robust(
+      x,
+      data = int$data, se_type = "HC0",
+      linear_hypothesis = c(
+        # "- nudgeC = 0",
+        "nudgeB - nudgeC = 0",
+        "nudgeD - nudgeC = 0",
+        "nudgeE - nudgeC = 0",
+        "nudgeF - nudgeC = 0",
+        "nudgeG - nudgeC = 0",
+        # "- nudgeC:coupon2019 - nudgeC = 0",
+        "nudgeB:coupon2019 + nudgeB - nudgeC:coupon2019 - nudgeC = 0",
+        "nudgeD:coupon2019 + nudgeD - nudgeC:coupon2019 - nudgeC = 0",
+        "nudgeE:coupon2019 + nudgeE - nudgeC:coupon2019 - nudgeC = 0",
+        "nudgeF:coupon2019 + nudgeF - nudgeC:coupon2019 - nudgeC = 0",
+        "nudgeG:coupon2019 + nudgeG - nudgeC:coupon2019 - nudgeC = 0"
+      )
+    )$lh %>%
+    tidy
+  }) %>%
+  bind_rows() %>%
+  mutate(
+    coupon = if_else(str_detect(term, "coupon"), 1, 0),
+    coupon = factor(coupon,
+      labels = c("Costly procedure", "Automatic receiving")
+    ),
+    outcome = factor(outcome,
+      levels = c("test_int", "vaccine_int"),
+      labels = c("Antibody Test", "Vaccination")
+    ),
+    nudge = str_extract(term, paste(LETTERS[c(2, 4:7)], collapse = "|")),
+    # nudge = if_else(is.na(nudge), "A", nudge),
+    nudge = factor(nudge, labels = treat_labels[c(2, 4:7)])
+  )
+
+est_intmod2 %>%
+  datasummary(
+    (`How to get coupons` = coupon) *
+      (`Text-based nudges` = nudge) ~ outcome * rawvalue *
+      (estimate + std.error + p.value),
+    data = .,
+    title = paste(
+      "Effects of Text-Based Nudges on Intentions",
+      "Using Linear Probability Model Estimates",
+      "(Baseline: Altruistic Message)"
+    ),
+    fmt = 3,
+    align = "llcccccc"
+  ) %>%
+  kableExtra::column_spec(1, width = "5em")
+
 #'
-#' ```{asis, echo = params$preview | !params$appendix}
+#' ```{asis, echo = !params$preview & !params$appendix}
 #' クーポン券が自動的に送付されるかどうかは年齢で決まるので、
 #' サブサンプルを用いたナッジ・メッセージの効果は
 #' クーポン券が自動的に送付されるかどうかだけでなく、
@@ -304,33 +358,53 @@ est_intmod %>%
 #' $X$は個人の共変量ベクトルであり、年齢を含む。
 #'
 #' 関心のあるパラメータは$\beta_j$と$\gamma_j$である。
-#' クーポン券の自動送付の対象でない男性におけるナッジ・メッセージ$j$の効果は$\hat{\beta}_j$である。
-#' 一方で、クーポン券の自動送付の対象である男性におけるナッジ・メッセージ$j$の効果は
-#' $\hat{\beta}_j + \hat{\gamma}_j$である。
+#' クーポンを自動的に受け取れる男性に限定した
+#' ナッジ・メッセージ$j$の効果は$\hat{\beta}_j$である。
+#' 一方で、
+#' クーポン券を受け取るためにはコストのかかる手続きが必要な男性に限定した
+#' ナッジ・メッセージ$j$の効果は$\hat{\beta}_j + \hat{\gamma}_j$である。
 #'
 #' 表\@ref(tab:int-reg)は線形確率モデルの結果である。また、
-#' 表\@ref(tab:int-reg-ftest)は線形確率モデルの推定値を用いたナッジ・メッセージの効果である。
+#' 表\@ref(tab:int-reg-ftest)は
+#' 線形確率モデルの推定値を用いたナッジ・メッセージの効果である。
+#' 本論で示したt検定の結果と同様に、
 #' 2019年度にクーポン券が自動的に送付される男性における
-#' 利他強調メッセージの抗体検査の意向に対する効果は14%ポイントであり、
-#' t検定の結果と一致する。
-#' 対して、2019年度にクーポン券を取得するために手続きが必要な男性における
-#' 利他強調メッセージの抗体検査の意向に対する効果は5.1%ポイントであり、
-#' 統計的に非有意である。
-#' 表\@ref(tab:int-reg)より、この二つの効果の差は統計的に非有意である。
+#' 利他強調メッセージの抗体検査の意向に対する効果は統計的に有意であるが、
+#' 2019年度にクーポン券を取得するために手続きが必要な男性における
+#' 利他強調メッセージの抗体検査の意向に対する効果は統計的に非有意である。
+#' さらに、表\@ref(tab:int-reg)より、この二つの効果の差は統計的に非有意である。
 #'
-#' また、2019年度にクーポン券が自動的に送付される男性における
-#' 社会比較メッセージのワクチン接種の意向に対する効果は2.9%ポイントであり、
-#' 統計的に非有意である。
-#' 対して、2019年度にクーポン券を取得するために手続きが必要な男性における
-#' 社会比較メッセージのワクチン接種の意向に対する効果は-9.8%ポイントであり、
-#' t検定で推定された効果より若干大きくなった。
-#' 表\@ref(tab:int-reg)より、この二つの効果の差は統計的に10%水準で有意である。
+#' また、本論で示したt検定の結果と同様に、
+#' 2019年度にクーポン券が自動的に送付される男性における
+#' 社会比較メッセージのワクチン接種の意向に対する効果は統計的に非有意であるが、
+#' 2019年度にクーポン券を取得するために手続きが必要な男性における
+#' 社会比較メッセージのワクチン接種の意向に対する効果は統計的に有意に負である。
+#' その効果は-9.8%ポイントであり、二群の平均値の差より大きい。
+#' さらに、表\@ref(tab:int-reg)より、
+#' この二つの効果の差は統計的に10%水準で有意である。
 #'
-#' さらに、2019年度にクーポン券を取得するために手続きが必要な男性における
+#' 2019年度にクーポン券を取得するために手続きが必要な男性における
 #' 年齢表現メッセージのワクチン接種の意向に対する効果は-9.9%ポイントであり、
 #' 統計的に5%水準で有意である。
 #' t検定で推定された効果の規模は-6.6%ポイントであり、
 #' 共変量の有無で効果の規模が大きく異なる。
+#'
+#' 表\@ref(tab:int-reg-ftest2)は利他強調メッセージをコントロールとした
+#' 他のナッジ・メッセージの効果の推定結果である。
+#' 2019年度にクーポン券を受け取るためにはコストのかかる手続きが必要な男性における
+#' ナッジ・メッセージの効果の差は$\beta_j - \beta_{\text{Altruistic}}$
+#' で得られる。
+#' 2019年度にクーポン券を自動的に受け取った男性における
+#' ナッジ・メッセージの効果の差は$(\beta_j + \gamma_j)
+#' - (\beta_{\text{Altruistic}} + \gamma_{\text{Altruistic}})$
+#' で得られる。
+#' 2019年度にクーポン券が自動的に送付される男性に限定したとき、
+#' 利己強調メッセージ・社会比較メッセージの抗体検査の意向は
+#' 利他強調メッセージのそれと統計的に有意に異ならない。
+#' この意味で、利己強調メッセージや社会比較メッセージは
+#' 抗体検査の意向を促進している可能性がある。
+#' しかしながら、検出力を十分に保てるほどの差ではないので、
+#' サンプルサイズを大きくして再度検証すべきである。
 #' ```
 #'
 # /*

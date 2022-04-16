@@ -100,7 +100,7 @@ antibody %>%
   simplegg(axis_text_size = 11)
 
 #'
-#+ reg-niid-antibody, eval = FALSE
+#+ reg-niid-antibody, eval = params$preview | !params$appendix, results = "asis"
 cell <- antibody %>%
   dplyr::filter(39 <= age) %>%
   mutate(g = case_when(

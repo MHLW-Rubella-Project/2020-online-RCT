@@ -74,11 +74,22 @@ options(
 
 # (APPENDIX) Appendix {-}
 
+\clearpage
+
 # Overview of Online Survey Experiment
 
 ```{r}
 library(here)
 knitr::spin_child(here("src", "2-summary-experiment.r"))
+```
+
+\clearpage
+
+# Results of Balance Test
+
+```{r}
+library(here)
+knitr::spin_child(here("src", "3-selection1-balance-test.r"))
 ```
 
 \clearpage

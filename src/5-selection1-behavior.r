@@ -40,13 +40,15 @@ act <- create_RCTtoolbox(
 #' ```{asis, echo = params$preview | !params$appendix}
 #' 次に、我々は第1回調査以降の行動に対するナッジ・メッセージの効果を推定する。
 #' 第1回調査時点で抗体検査やワクチン接種を受けていない男性に焦点を当てるために、
-#' 第1回調査もしくは第2回調査で
-#' 第1回調査以前に抗体検査とワクチン接種を受けたと回答した人を排除した
+#' 第1回調査もしくは第2回調査で第1回調査以前に抗体検査とワクチン接種を受けたと回答した人を排除した
 #' （wave 2 selection data）[^reason]。
 #' さらに、
 #' 取引費用の減少の有無のもとでのナッジ・メッセージの効果を推定するために、
-#' 我々は2019年4月時点の年齢が46歳以下であるかどうかでサブサンプルを構築した。
-#' 二つのサブサンプルにおいて、個人の観察可能な特徴はトリートメント間でバランスされている。
+#' 我々は2019年4月時点の年齢が46歳以下であるかどうかでサブサンプルを構築し、
+#' 各サブサンプルにおけるナッジ・メッセージの効果を推定した。
+#' 二つのサブサンプルにおいて、
+#' 個人の観察可能な特徴はトリートメント間でバランスされているので、
+#' t検定の結果を示し、回帰分析の結果を補論Cに示す（バランステストの結果は補論Bを見よ）。
 #'
 #' [^reason]: 第1回調査以降に自身の接種歴を調べ直すなどによって、
 #' 第1回調査と第2回調査の回答に違いが生じる可能性がある。
@@ -133,9 +135,9 @@ act$
 #' また、利己強調メッセージは抗体検査の受検率を約5.5%ポイント引き上げており、
 #' これは統計的に10%水準で有意である。
 #'
-#' [^def_vaccine_rate]: ワクチン接種は抗体検査を受検し、
-#' ワクチンを接種したら1を取るダミー変数である。
+#' [^def_vaccine_rate]: ワクチン接種は抗体検査を受検し、ワクチンを接種したら1を取るダミー変数である。
 #' よって、ワクチン接種率はワクチン接種を通じて新規に抗体を獲得した人の比率とみなすこともできる。
+#' これは厚生労働省の政策目標と対応するアウトカム変数である。
 #'
 #' さらに、利他強調メッセージと社会比較メッセージのワクチン接種率は厚労省メッセージよりも高い。
 #' 厚労省メッセージ群のワクチン接種率は約0.9%である。
@@ -244,10 +246,7 @@ est_actmod <- actmod %>%
   mutate(coupon = if_else(str_detect(term, "coupon"), 1, 0)) %>%
   mutate(
     coupon = factor(coupon,
-      labels = c(
-        "w/o receiving coupon automatically",
-        "w/ receiving coupon automatically"
-      )
+      labels = c("Costly procedure", "Automatic receiving")
     ),
     outcome = factor(outcome,
       levels = c("aw1_test", "aw1_testvaccine"),
@@ -261,14 +260,18 @@ rawvalue <- function(x) x
 
 est_actmod %>%
   datasummary(
-    nudge ~ outcome * coupon * rawvalue * (estimate + std.error + p.value),
+    (`How to get coupons` = coupon) *
+      (`Text-based nudges` = nudge) ~ outcome * rawvalue *
+      (estimate + std.error + p.value),
     data = .,
     title = paste(
       "Effects of Text-Based Nudges on Behaviors",
       "Using Linear Probability Model Estimates"
     ),
-    fmt = 3
-  )
+    fmt = 3,
+    align = "llcccccc"
+  ) %>%
+  kableExtra::column_spec(1, width = "5em")
 
 #'
 #' ```{asis, echo = !params$preview | !params$appendix}

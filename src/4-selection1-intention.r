@@ -46,10 +46,13 @@ int <- create_RCTtoolbox(
 #' さらに、我々の関心は
 #' クーポン券の自動送付によってクーポン券を取得するための取引費用が減少したという意味での
 #' インセンティブの有無のもとでのナッジ・メッセージの効果である。
-#' そのために、2019年4月時点の年齢が46歳以下であるかどうかでサブサンプルを構築した。
 #' 自治体は2019年度に40歳から46歳の男性に無料クーポン券を送付し、
 #' 2020年度以降に47歳から56歳の男性にクーポン券を送付する。
-#' 二つのサブサンプルにおいて、個人の観察可能な特徴はトリートメント間でバランスされている。
+#' そのために、我々は、2019年4月時点の年齢が46歳以下であるかどうかでサブサンプルを構築し、
+#' 各サブサンプルにおけるナッジ・メッセージの効果を推定した。
+#' 二つのサブサンプルにおいて、
+#' 個人の観察可能な特徴はトリートメント間でバランスされているので、
+#' t検定の結果のみを示し、回帰分析の結果は補論Cに示す（バランステストの結果は補論Bを見よ）。
 #' ```
 #'
 #' <!---
@@ -245,10 +248,7 @@ est_intmod <- intmod %>%
   mutate(coupon = if_else(str_detect(term, "coupon"), 1, 0)) %>%
   mutate(
     coupon = factor(coupon,
-      labels = c(
-        "w/o receiving coupon automatically",
-        "w/ receiving coupon automatically"
-      )
+      labels = c("Costly procedure", "Automatic receiving")
     ),
     outcome = factor(outcome,
       levels = c("test_int", "vaccine_int"),
@@ -262,17 +262,21 @@ rawvalue <- function(x) x
 
 est_intmod %>%
   datasummary(
-    nudge ~ outcome * coupon * rawvalue * (estimate + std.error + p.value),
+    (`How to get coupons` = coupon) *
+      (`Text-based nudges` = nudge) ~ outcome * rawvalue *
+      (estimate + std.error + p.value),
     data = .,
     title = paste(
       "Effects of Text-Based Nudges on Intentions",
       "Using Linear Probability Model Estimates"
     ),
-    fmt = 3
-  )
+    fmt = 3,
+    align = "llcccccc"
+  ) %>%
+  kableExtra::column_spec(1, width = "5em")
 
 #'
-#' ```{asis, echo = !params$preview | !params$appendix}
+#' ```{asis, echo = params$preview | !params$appendix}
 #' クーポン券が自動的に送付されるかどうかは年齢で決まるので、
 #' サブサンプルを用いたナッジ・メッセージの効果は
 #' クーポン券が自動的に送付されるかどうかだけでなく、

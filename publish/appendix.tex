@@ -104,11 +104,13 @@ Evidence from Nationwide Online Field Experiment in Japan''  }
 \appendix}
 
 
+\clearpage
+
 \hypertarget{overview-of-online-survey-experiment}{%
 \section{Overview of Online Survey Experiment}\label{overview-of-online-survey-experiment}}
 
 \begin{figure}[t]
-\includegraphics[width=1.5\linewidth,angle=90]{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/appendix_files/figure-latex/flowchart-1} \caption{Overview of Online Survey Experiment}\label{fig:flowchart}
+\includegraphics[width=1.5\linewidth,angle=90]{C:/Users/vge00/Desktop/2020-online-RCT/publish/appendix_files/figure-latex/flowchart-1} \caption{Overview of Online Survey Experiment}\label{fig:flowchart}
 \end{figure}
 
 \begin{table}[!h]
@@ -135,6 +137,137 @@ temp\_check & (Wave2) Five Likert scale for the question "I take my tempature fr
 avoid\_out & (Wave2) Five Likert scale for the question "I am refraining from going out during the end of the previous questionnaire response to today." & 2.96 & 1.20\\
 avoid\_crowd & (Wave2) Five Likert scale for the question "I avoid crowded places when I go out from the end of the previous questionnaire response to today." & 3.38 & 1.10\\
 wear\_mask & (Wave2) Five Likert scale for the question "I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today." & 3.14 & 1.38\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\hypertarget{results-of-balance-test}{%
+\section{Results of Balance Test}\label{results-of-balance-test}}
+
+共変量のバランステストとして、各共変量の線形モデルを推定した。
+このモデルの説明変数は介入群ダミーであり、厚労省メッセージ群を参照群とした。
+我々は推定された線形モデルの係数すべてがゼロであるという帰無仮説をF検定によって検証した。
+そのp値を表の最右列に示した。
+表\ref{tab:int-coupon1-balance}は2019年度にクーポン券を自動的に受け取った人に限定した
+wave 1 selection dataのバランステストの結果である。
+表\ref{tab:int-coupon0-balance}は
+2019年度にクーポン券を受け取るためにコストのかかる手続きが必要な人に限定した
+wave 1 selection dataのバランステストの結果である。
+表\ref{tab:act-coupon1-balance}は2019年度にクーポン券を自動的に受け取った人に限定した
+wave 2 selection dataのバランステストの結果である。
+表\ref{tab:act-coupon0-balance}は
+2019年度にクーポン券を受け取るためにコストのかかる手続きが必要な人に限定した
+wave 2 selection dataのバランステストの結果である。
+
+\clearpage
+
+\begin{table}[!h]
+
+\caption{\label{tab:int-coupon1-balance}Balance Test of Wave 1 Selection Data (Men who automatically received coupon in 2019)}
+\centering
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{7}{c}{Treatments} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-8}
+  & MHLW & Age expression & Altruistic & Selfish & Social comparison & Valid date & Low-cost & p-value\\
+\midrule
+age & 42.862 & 43.046 & 43.135 & 43.045 & 42.909 & 42.906 & 42.866 & 0.874\\
+avoid\_crowd & 3.328 & 3.331 & 3.261 & 3.211 & 3.339 & 3.336 & 3.273 & 0.958\\
+avoid\_out & 3.082 & 3.047 & 3.028 & 2.805 & 2.896 & 3.038 & 2.926 & 0.509\\
+education & 14.654 & 14.473 & 14.595 & 14.205 & 14.099 & 14.348 & 14.575 & 0.446\\
+exercise\_w1 & 0.246 & 0.176 & 0.277 & 0.189 & 0.165 & 0.217 & 0.213 & 0.285\\
+flushot & 0.238 & 0.260 & 0.203 & 0.144 & 0.140 & 0.239 & 0.236 & 0.055\\
+handicap & 0.638 & 0.550 & 0.595 & 0.568 & 0.537 & 0.543 & 0.520 & 0.502\\
+handwash & 3.885 & 3.866 & 3.824 & 3.764 & 3.748 & 3.954 & 3.744 & 0.624\\
+health\_check & 0.654 & 0.626 & 0.696 & 0.538 & 0.603 & 0.674 & 0.614 & 0.150\\
+married & 0.408 & 0.458 & 0.412 & 0.417 & 0.455 & 0.478 & 0.480 & 0.785\\
+prob\_social & 27.231 & 30.000 & 26.689 & 30.758 & 26.529 & 28.333 & 27.795 & 0.502\\
+severity & 0.892 & 0.954 & 0.926 & 0.894 & 0.926 & 0.964 & 0.913 & 0.118\\
+temp\_check & 2.180 & 2.260 & 2.380 & 2.179 & 2.226 & 2.145 & 2.157 & 0.735\\
+wear\_mask & 2.951 & 3.063 & 3.113 & 3.033 & 2.965 & 3.115 & 3.174 & 0.852\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+
+\caption{\label{tab:int-coupon0-balance}Balance Test of Wave 1 Selection Data (Men who need to be processed to receive coupon in 2019)}
+\centering
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{7}{c}{Treatments} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-8}
+  & MHLW & Age expression & Altruistic & Selfish & Social comparison & Valid date & Low-cost & p-value\\
+\midrule
+age & 51.632 & 51.408 & 51.226 & 51.657 & 51.582 & 51.545 & 51.502 & 0.712\\
+avoid\_crowd & 3.307 & 3.378 & 3.429 & 3.250 & 3.306 & 3.296 & 3.455 & 0.354\\
+avoid\_out & 2.903 & 2.917 & 2.919 & 2.884 & 2.825 & 2.966 & 2.982 & 0.848\\
+education & 14.572 & 14.655 & 14.530 & 14.830 & 14.566 & 14.634 & 14.393 & 0.578\\
+exercise\_w1 & 0.156 & 0.193 & 0.239 & 0.230 & 0.183 & 0.203 & 0.218 & 0.252\\
+flushot & 0.228 & 0.244 & 0.197 & 0.270 & 0.275 & 0.228 & 0.251 & 0.433\\
+handicap & 0.596 & 0.630 & 0.607 & 0.617 & 0.574 & 0.626 & 0.619 & 0.881\\
+handwash & 3.803 & 3.883 & 3.900 & 3.778 & 3.817 & 3.833 & 3.892 & 0.827\\
+health\_check & 0.632 & 0.664 & 0.701 & 0.683 & 0.653 & 0.659 & 0.644 & 0.742\\
+married & 0.600 & 0.588 & 0.628 & 0.657 & 0.602 & 0.549 & 0.619 & 0.334\\
+prob\_social & 26.920 & 31.387 & 30.983 & 28.522 & 29.442 & 27.846 & 31.925 & 0.025\\
+severity & 0.920 & 0.933 & 0.919 & 0.970 & 0.940 & 0.931 & 0.908 & 0.046\\
+temp\_check & 2.139 & 2.248 & 2.210 & 2.083 & 2.192 & 2.086 & 2.270 & 0.490\\
+wear\_mask & 3.071 & 3.191 & 3.157 & 3.148 & 2.961 & 2.966 & 3.068 & 0.447\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+
+\caption{\label{tab:act-coupon1-balance}Balance Test of Wave 2 Selection Data (Men who automatically received coupon in 2019)}
+\centering
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{7}{c}{Treatments} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-8}
+  & MHLW & Age expression & Altruistic & Selfish & Social comparison & Valid date & Low-cost & p-value\\
+\midrule
+age & 42.861 & 43.059 & 43.102 & 43.036 & 42.893 & 42.898 & 42.964 & 0.953\\
+avoid\_crowd & 3.296 & 3.336 & 3.273 & 3.234 & 3.350 & 3.305 & 3.324 & 0.990\\
+avoid\_out & 3.096 & 3.034 & 3.047 & 2.793 & 2.932 & 3.025 & 2.928 & 0.544\\
+education & 14.496 & 14.471 & 14.547 & 14.126 & 14.010 & 14.407 & 14.595 & 0.474\\
+exercise\_w1 & 0.252 & 0.185 & 0.266 & 0.171 & 0.165 & 0.195 & 0.225 & 0.375\\
+flushot & 0.235 & 0.261 & 0.227 & 0.135 & 0.146 & 0.246 & 0.207 & 0.082\\
+handicap & 0.652 & 0.563 & 0.602 & 0.568 & 0.544 & 0.542 & 0.514 & 0.425\\
+handwash & 3.861 & 3.916 & 3.797 & 3.757 & 3.767 & 3.915 & 3.829 & 0.835\\
+health\_check & 0.643 & 0.639 & 0.680 & 0.532 & 0.631 & 0.661 & 0.640 & 0.391\\
+married & 0.391 & 0.454 & 0.391 & 0.360 & 0.437 & 0.466 & 0.477 & 0.467\\
+prob\_social & 27.739 & 30.504 & 27.031 & 31.982 & 26.311 & 28.729 & 28.018 & 0.341\\
+severity & 0.896 & 0.950 & 0.922 & 0.883 & 0.913 & 0.975 & 0.910 & 0.026\\
+temp\_check & 2.139 & 2.235 & 2.414 & 2.126 & 2.204 & 2.203 & 2.117 & 0.535\\
+wear\_mask & 2.930 & 3.076 & 3.109 & 3.009 & 3.010 & 3.144 & 3.207 & 0.794\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+
+\caption{\label{tab:act-coupon0-balance}Balance Test of Wave 2 Selection Data (Men who need to be processed to receive coupon in 2019)}
+\centering
+\begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{7}{c}{Treatments} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-8}
+  & MHLW & Age expression & Altruistic & Selfish & Social comparison & Valid date & Low-cost & p-value\\
+\midrule
+age & 51.695 & 51.394 & 51.179 & 51.662 & 51.421 & 51.605 & 51.512 & 0.564\\
+avoid\_crowd & 3.295 & 3.361 & 3.447 & 3.239 & 3.313 & 3.309 & 3.433 & 0.437\\
+avoid\_out & 2.886 & 2.889 & 2.932 & 2.866 & 2.855 & 2.964 & 2.941 & 0.960\\
+education & 14.505 & 14.620 & 14.553 & 14.876 & 14.593 & 14.610 & 14.345 & 0.472\\
+exercise\_w1 & 0.159 & 0.194 & 0.232 & 0.229 & 0.173 & 0.211 & 0.202 & 0.432\\
+flushot & 0.223 & 0.245 & 0.189 & 0.264 & 0.280 & 0.215 & 0.241 & 0.376\\
+handicap & 0.609 & 0.634 & 0.637 & 0.617 & 0.584 & 0.628 & 0.606 & 0.936\\
+handwash & 3.823 & 3.889 & 3.926 & 3.751 & 3.836 & 3.861 & 3.867 & 0.769\\
+health\_check & 0.632 & 0.667 & 0.684 & 0.677 & 0.645 & 0.673 & 0.631 & 0.849\\
+married & 0.591 & 0.560 & 0.611 & 0.652 & 0.598 & 0.547 & 0.596 & 0.407\\
+prob\_social & 27.409 & 31.296 & 30.368 & 29.055 & 30.187 & 28.072 & 32.118 & 0.130\\
+severity & 0.923 & 0.935 & 0.926 & 0.970 & 0.935 & 0.933 & 0.921 & 0.171\\
+temp\_check & 2.095 & 2.204 & 2.221 & 2.100 & 2.136 & 2.085 & 2.182 & 0.841\\
+wear\_mask & 3.082 & 3.176 & 3.116 & 3.144 & 2.977 & 2.942 & 3.010 & 0.533\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -192,33 +325,27 @@ Covariates & X & X\\
 
 \caption{\label{tab:int-reg-ftest}Effects of Text-Based Nudges on Intentions Using Linear Probability Model Estimates}
 \centering
-\begin{tabular}[t]{lrrrrrrrrrrrr}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}lcccccc}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{6}{c}{Antibody Test} & \multicolumn{6}{c}{Vaccination} \\
-\cmidrule(l{3pt}r{3pt}){2-7} \cmidrule(l{3pt}r{3pt}){8-13}
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{w/o receiving coupon automatically} & \multicolumn{3}{c}{w/ receiving coupon automatically} & \multicolumn{3}{c}{w/o receiving coupon automatically} & \multicolumn{3}{c}{w/ receiving coupon automatically} \\
-\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7} \cmidrule(l{3pt}r{3pt}){8-10} \cmidrule(l{3pt}r{3pt}){11-13}
-nudge & estimate & std.error & p.value & estimate  & std.error  & p.value  & estimate   & std.error   & p.value   & estimate    & std.error    & p.value   \\
+\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Antibody Test} & \multicolumn{3}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8}
+How to get coupons & Text-based nudges & estimate & std.error & p.value & estimate  & std.error  & p.value \\
 \midrule
-Age expression & -0.036 & 0.038 & 0.336 & 0.008 & 0.051 & 0.869 & -0.099 & 0.043 & 0.021 & 0.004 & 0.061 & 0.945\\
-Altruistic & 0.051 & 0.042 & 0.229 & 0.140 & 0.052 & 0.007 & -0.059 & 0.045 & 0.191 & 0.014 & 0.060 & 0.810\\
-Selfish & 0.026 & 0.040 & 0.520 & 0.085 & 0.052 & 0.101 & -0.052 & 0.043 & 0.235 & 0.048 & 0.061 & 0.435\\
-Social comparison & -0.044 & 0.038 & 0.247 & 0.078 & 0.052 & 0.134 & -0.098 & 0.042 & 0.020 & 0.029 & 0.062 & 0.641\\
-Valid date & 0.028 & 0.039 & 0.482 & 0.022 & 0.050 & 0.662 & -0.044 & 0.043 & 0.308 & -0.018 & 0.061 & 0.769\\
-Low-cost & 0.032 & 0.040 & 0.422 & 0.048 & 0.051 & 0.345 & -0.051 & 0.043 & 0.244 & 0.014 & 0.062 & 0.826\\
+Costly procedure & Age expression & -0.036 & 0.038 & 0.336 & -0.099 & 0.043 & 0.021\\
+ & Altruistic & 0.051 & 0.042 & 0.229 & -0.059 & 0.045 & 0.191\\
+ & Selfish & 0.026 & 0.040 & 0.520 & -0.052 & 0.043 & 0.235\\
+ & Social comparison & -0.044 & 0.038 & 0.247 & -0.098 & 0.042 & 0.020\\
+ & Valid date & 0.028 & 0.039 & 0.482 & -0.044 & 0.043 & 0.308\\
+ & Low-cost & 0.032 & 0.040 & 0.422 & -0.051 & 0.043 & 0.244\\
+Automatic receiving & Age expression & 0.008 & 0.051 & 0.869 & 0.004 & 0.061 & 0.945\\
+ & Altruistic & 0.140 & 0.052 & 0.007 & 0.014 & 0.060 & 0.810\\
+ & Selfish & 0.085 & 0.052 & 0.101 & 0.048 & 0.061 & 0.435\\
+ & Social comparison & 0.078 & 0.052 & 0.134 & 0.029 & 0.062 & 0.641\\
+ & Valid date & 0.022 & 0.050 & 0.662 & -0.018 & 0.061 & 0.769\\
+ & Low-cost & 0.048 & 0.051 & 0.345 & 0.014 & 0.062 & 0.826\\
 \bottomrule
 \end{tabular}
 \end{table}
-
-クーポン券が自動的に送付されるかどうかは年齢で決まるので、
-サブサンプルを用いたナッジ・メッセージの効果は
-クーポン券が自動的に送付されるかどうかだけでなく、
-二つのサブサンプルの年齢の違いの影響を受けている。
-この問題を排除するために、意向の線形確率モデルを推定した。
-説明変数はナッジ・メッセージのダミー変数、
-ナッジ・メッセージのダミー変数とクーポン券が自動的に送付されることを示すダミー変数の交差項、
-そして年齢を含んだ共変量である。
-意向の線形確率モデルは上述の結果と同じ結果を得られた（詳細は補論を参照せよ）。
 
 クーポン券が自動的に送付されるかどうかは年齢で決まるので、
 サブサンプルを用いたナッジ・メッセージの効果は
@@ -311,20 +438,24 @@ Covariates & X & X\\
 
 \caption{\label{tab:act-reg-ftest}Effects of Text-Based Nudges on Behaviors Using Linear Probability Model Estimates}
 \centering
-\begin{tabular}[t]{lrrrrrrrrrrrr}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}lcccccc}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{6}{c}{Antibody Test} & \multicolumn{6}{c}{Vaccination} \\
-\cmidrule(l{3pt}r{3pt}){2-7} \cmidrule(l{3pt}r{3pt}){8-13}
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{w/o receiving coupon automatically} & \multicolumn{3}{c}{w/ receiving coupon automatically} & \multicolumn{3}{c}{w/o receiving coupon automatically} & \multicolumn{3}{c}{w/ receiving coupon automatically} \\
-\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7} \cmidrule(l{3pt}r{3pt}){8-10} \cmidrule(l{3pt}r{3pt}){11-13}
-nudge & estimate & std.error & p.value & estimate  & std.error  & p.value  & estimate   & std.error   & p.value   & estimate    & std.error    & p.value   \\
+\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Antibody Test} & \multicolumn{3}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8}
+How to get coupons & Text-based nudges & estimate & std.error & p.value & estimate  & std.error  & p.value \\
 \midrule
-Age expression & 0.003 & 0.008 & 0.724 & 0.032 & 0.028 & 0.259 & 0.004 & 0.005 & 0.413 & 0.008 & 0.014 & 0.592\\
-Altruistic & 0.016 & 0.011 & 0.152 & 0.073 & 0.032 & 0.023 & 0.005 & 0.005 & 0.405 & 0.038 & 0.021 & 0.071\\
-Selfish & 0.008 & 0.010 & 0.448 & 0.061 & 0.032 & 0.054 & 0.005 & 0.005 & 0.324 & 0.019 & 0.017 & 0.267\\
-Social comparison & 0.021 & 0.012 & 0.084 & 0.057 & 0.032 & 0.077 & -0.001 & 0.001 & 0.538 & 0.040 & 0.023 & 0.078\\
-Valid date & 0.009 & 0.009 & 0.339 & 0.007 & 0.025 & 0.775 & 0.005 & 0.005 & 0.317 & 0.000 & 0.012 & 0.991\\
-Low-cost & 0.005 & 0.008 & 0.520 & 0.038 & 0.029 & 0.193 & -0.001 & 0.001 & 0.610 & 0.019 & 0.018 & 0.279\\
+Costly procedure & Age expression & 0.003 & 0.008 & 0.724 & 0.004 & 0.005 & 0.413\\
+ & Altruistic & 0.016 & 0.011 & 0.152 & 0.005 & 0.005 & 0.405\\
+ & Selfish & 0.008 & 0.010 & 0.448 & 0.005 & 0.005 & 0.324\\
+ & Social comparison & 0.021 & 0.012 & 0.084 & -0.001 & 0.001 & 0.538\\
+ & Valid date & 0.009 & 0.009 & 0.339 & 0.005 & 0.005 & 0.317\\
+ & Low-cost & 0.005 & 0.008 & 0.520 & -0.001 & 0.001 & 0.610\\
+Automatic receiving & Age expression & 0.032 & 0.028 & 0.259 & 0.008 & 0.014 & 0.592\\
+ & Altruistic & 0.073 & 0.032 & 0.023 & 0.038 & 0.021 & 0.071\\
+ & Selfish & 0.061 & 0.032 & 0.054 & 0.019 & 0.017 & 0.267\\
+ & Social comparison & 0.057 & 0.032 & 0.077 & 0.040 & 0.023 & 0.078\\
+ & Valid date & 0.007 & 0.025 & 0.775 & 0.000 & 0.012 & 0.991\\
+ & Low-cost & 0.038 & 0.029 & 0.193 & 0.019 & 0.018 & 0.279\\
 \bottomrule
 \end{tabular}
 \end{table}

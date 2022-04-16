@@ -73,10 +73,27 @@
 \setcounter{secnumdepth}{5}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
-\newenvironment{cslreferences}%
-  {\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
-  {\par}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 \usepackage{float}
@@ -111,7 +128,7 @@ Center for Infectious Disease Education and Research, Osaka University.  }
   \and
   }
 
-\date{2022/04/15}
+\date{2022/04/16}
 
 
 
@@ -187,7 +204,7 @@ MMRワクチンの定期接種は1993年4月に一旦中止された。
 定期接種を受けていない人は自然感染による抗体保有の可能性があるだけで、ワクチン接種による風しん抗体を保有していない。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/2020-online-RCT/publish/body_files/figure-latex/niid-antibody-1} \caption{Percentage of Rubella Antibody Carriers at Each Age by Gender. Data: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases (NESVPD)."}\label{fig:niid-antibody}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/niid-antibody-1} \caption{Percentage of Rubella Antibody Carriers at Each Age by Gender. Data: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases (NESVPD)."}\label{fig:niid-antibody}
 \end{figure}
 
 この現状を踏まえて、
@@ -375,7 +392,7 @@ Low-cost & Dear men in their 40s and 50s (all men born in 1962-1979). There is a
 \%ポイントの差が必要である。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/2020-online-RCT/publish/body_files/figure-latex/int-coupon1-ttest-1} \caption{Effect of Text-Based Nudges on Intentions among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:int-coupon1-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/int-coupon1-ttest-1} \caption{Effect of Text-Based Nudges on Intentions among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:int-coupon1-ttest}
 \end{figure}
 
 2019年度にクーポン券が自動で送付される男性のサブサンプルを用いて、
@@ -394,7 +411,7 @@ Low-cost & Dear men in their 40s and 50s (all men born in 1962-1979). There is a
   この条件がワクチン接種の必要性を強く刺激している可能性がある。}。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/2020-online-RCT/publish/body_files/figure-latex/int-coupon0-ttest-1} \caption{Effect of Text-Based Nudges on Intentions among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:int-coupon0-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/int-coupon0-ttest-1} \caption{Effect of Text-Based Nudges on Intentions among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:int-coupon0-ttest}
 \end{figure}
 
 2019年度にクーポン券を得るためにコストのかかる手続きが必要な男性のサブサンプルを用いて、
@@ -457,7 +474,7 @@ Low-cost & Dear men in their 40s and 50s (all men born in 1962-1979). There is a
 \%ポイントの差が必要である。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/2020-online-RCT/publish/body_files/figure-latex/act-coupon1-ttest-1} \caption{Effect of Text-Based Nudges on Behavior among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act-coupon1-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/act-coupon1-ttest-1} \caption{Effect of Text-Based Nudges on Behavior among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act-coupon1-ttest}
 \end{figure}
 
 2019年度にクーポン券が自動で送付される男性のサブサンプルを用いて、
@@ -485,7 +502,7 @@ Low-cost & Dear men in their 40s and 50s (all men born in 1962-1979). There is a
 これらは統計的に10\%水準で有意である。
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/2020-online-RCT/publish/body_files/figure-latex/act-coupon0-ttest-1} \caption{Effect of Text-Based Nudges on Behaviors among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act-coupon0-ttest}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/act-coupon0-ttest-1} \caption{Effect of Text-Based Nudges on Behaviors among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.}\label{fig:act-coupon0-ttest}
 \end{figure}
 
 2019年度にクーポン券を得るためにコストのかかる手続きが必要な男性のサブサンプルを用いて、
@@ -632,7 +649,7 @@ Fisher's exact test (p-value) &  & 0.54 & 0.67 &  & 0.47 & 1.00\\
 \subsection{Monetary Value of Text-Based Nudges}\label{econvalue}}
 
 \begin{figure}[t]
-\includegraphics{C:/Users/vge00/Desktop/2020-online-RCT/publish/body_files/figure-latex/demand-vaccine-1} \caption{Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangle ................}\label{fig:demand-vaccine}
+\includegraphics{C:/Users/katoo/Desktop/MHLW-Rubella-Project/2020-online-RCT/publish/body_files/figure-latex/demand-vaccine-1} \caption{Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangle ................}\label{fig:demand-vaccine}
 \end{figure}
 
 2019年度のクーポン券送付者におけるナッジ・メッセージの効果を金銭的な価値で評価することを試みる。
@@ -792,15 +809,16 @@ Wave 2でWave 1以前に抗体検査もしくはワクチン接種を受けた�
 \addcontentsline{toc}{section}{参考文献}
 
 \hypertarget{refs}{}
-\begin{cslreferences}
-\leavevmode\hypertarget{ref-Kinoshita2016}{}%
-Kinoshita, R., Nishiura, H., 2016. Assessing herd immunity against rubella in Japan: A retrospective seroepidemiological analysis of age-dependent transmission dynamics. BMJ Open 6, e009928. doi:\href{https://doi.org/10.1136/bmjopen-2015-009928}{10.1136/bmjopen-2015-009928}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-Kinoshita2016}{}}%
+Kinoshita, R., Nishiura, H., 2016. Assessing herd immunity against rubella in {Japan}: A retrospective seroepidemiological analysis of age-dependent transmission dynamics. BMJ Open 6, e009928. doi:\href{https://doi.org/10.1136/bmjopen-2015-009928}{10.1136/bmjopen-2015-009928}
 
-\leavevmode\hypertarget{ref-Nishiura2015}{}%
-Nishiura, H., Kinoshita, R., Miyamatsu, Y., Mizumoto, K., 2015. Investigating the immunizing effect of the rubella epidemic in Japan, 2012-14. International Journal of Infectious Diseases 38, 16--18. doi:\href{https://doi.org/10.1016/j.ijid.2015.07.006}{10.1016/j.ijid.2015.07.006}
+\leavevmode\vadjust pre{\hypertarget{ref-Nishiura2015}{}}%
+Nishiura, H., Kinoshita, R., Miyamatsu, Y., Mizumoto, K., 2015. Investigating the immunizing effect of the rubella epidemic in {Japan}, 2012-14. International Journal of Infectious Diseases 38, 16--18. doi:\href{https://doi.org/10.1016/j.ijid.2015.07.006}{10.1016/j.ijid.2015.07.006}
 
-\leavevmode\hypertarget{ref-Plans-Rubio2012}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Plans-Rubio2012}{}}%
 Plans-Rubió, P., 2012. Evaluation of the establishment of herd immunity in the population by means of serological surveys and vaccination coverage. Human Vaccines \& Immunotherapeutics 8, 184--188. doi:\href{https://doi.org/10.4161/hv.18444}{10.4161/hv.18444}
-\end{cslreferences}
+
+\end{CSLReferences}
 
 \end{document}

@@ -72,7 +72,16 @@ options(
 )
 ```
 
+\clearpage
+
+
 # (APPENDIX) Appendix {-}
+
+# Background on Routine Rubella Vaccination in Japan
+
+```{r child = "md/3-background.rmd"}
+
+```
 
 \clearpage
 

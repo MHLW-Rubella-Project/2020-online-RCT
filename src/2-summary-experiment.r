@@ -27,121 +27,54 @@ web <- read_csv(here(rct_path, "shape_survey.csv"))
 textdt <- tibble::tribble(
   ~x, ~y, ~xmin, ~xmax, ~ymin, ~ymax, ~label,
   105, 225, 75, 135, 210, 240,
-  "4,200 males participated in wave 1",
+  paste(nrow(web), "males participated in Wave 1"),
   105, 175, 75, 135, 160, 190,
-  paste(
-    "4,200 males answered Questionnaire A",
-    sep = "\n"
-  ),
+  paste(nrow(web), "males answered Questionnaire A"),
   15, 125, 2, 28, 110, 140,
-  paste(
-    "600 males read", "MHLW message",
-    sep = "\n"
-  ),
+  paste("600 males read", "MHLW message", sep = "\n"),
   45, 125, 32, 58, 110, 140,
-  paste(
-    "600 males read", "Age expression message",
-    sep = "\n"
-  ),
+  paste("600 males read", "Age expression message", sep = "\n"),
   75, 125, 62, 88, 110, 140,
-  paste(
-    "600 males read", "Altruistic message",
-    sep = "\n"
-  ),
+  paste("600 males read", "Altruistic message", sep = "\n"),
   105, 125, 92, 118, 110, 140,
-  paste(
-    "600 males read", "Selfish message",
-    sep = "\n"
-  ),
+  paste("600 males read", "Selfish message", sep = "\n"),
   135, 125, 122, 148, 110, 140,
-  paste(
-    "600 males read", "Social comparison message",
-    sep = "\n"
-  ),
+  paste("600 males read", "Social comparison message", sep = "\n"),
   165, 125, 152, 178, 110, 140,
-  paste(
-    "600 males read", "Valid date message",
-    sep = "\n"
-  ),
+  paste("600 males read", "Valid date message", sep = "\n"),
   195, 125, 182, 208, 110, 140,
-  paste(
-    "600 males read", "Low-cost message",
-    sep = "\n"
-  ),
-  15, 25, 2, 28, 10, 40,
-  paste(
-    "571 males", "participated in wave 2",
-    sep = "\n"
-  ),
-  45, 25, 32, 58, 10, 40,
-  paste(
-    "578 males", "participated in wave 2",
-    sep = "\n"
-  ),
-  75, 25, 62, 88, 10, 40,
-  paste(
-    "557 males", "participated in wave 2",
-    sep = "\n"
-  ),
-  105, 25, 92, 118, 10, 40,
-  paste(
-    "563 males", "participated in wave 2",
-    sep = "\n"
-  ),
-  135, 25, 122, 148, 10, 40,
-  paste(
-    "562 males", "participated in wave 2",
-    sep = "\n"
-  ),
-  165, 25, 152, 178, 10, 40,
-  paste(
-    "566 males", "participated in wave 2",
-    sep = "\n"
-  ),
-  195, 25, 182, 208, 10, 40,
-  paste(
-    "566 males", "participated in wave 2",
-    sep = "\n"
-  )
+  paste("600 males read", "Low-cost message", sep = "\n"),
+  105, 75, 75, 135, 60, 90,
+  paste(nrow(web), "males answered Questionnaire B"),
+  105, 25, 75, 135, 10, 40,
+  paste(sum(web$follow), "males participated in Wave 2"),
 )
-
-textdt <- textdt %>%
-  bind_rows(tibble::tibble(
-    x = seq(15, 195, by = 30),
-    y = 75,
-    xmin = seq(2, 182, by = 30),
-    xmax = seq(28, 208, by = 30),
-    ymin = 60, ymax = 90,
-    label = paste(
-      "600 males answered", "Questionnaire B",
-      sep = "\n"
-    )
-  ))
 
 arrowdt <- tibble::tribble(
   ~x, ~xend, ~y, ~yend,
   105, 105, 210, 190,
   15, 15, 150, 140,
-  15, 15, 110, 90,
-  15, 15, 60, 40,
   45, 45, 150, 140,
-  45, 45, 110, 90,
-  45, 45, 60, 40,
   75, 75, 150, 140,
-  75, 75, 110, 90,
-  75, 75, 60, 40,
   105, 105, 160, 140,
-  105, 105, 110, 90,
-  105, 105, 60, 40,
   135, 135, 150, 140,
-  135, 135, 110, 90,
-  135, 135, 60, 40,
   165, 165, 150, 140,
-  165, 165, 110, 90,
-  165, 165, 60, 40,
   195, 195, 150, 140,
-  195, 195, 110, 90,
-  195, 195, 60, 40
+  105, 105, 100, 90,
+  105, 105, 60, 40
+)
+
+segmentdt <- tibble::tribble(
+  ~x, ~xend, ~y, ~yend,
+  15, 195, 150, 150,
+  15, 195, 100, 100,
+  15, 15, 110, 100,
+  45, 45, 110, 100,
+  75, 75, 110, 100,
+  105, 105, 110, 100,
+  135, 135, 110, 100,
+  165, 165, 110, 100,
+  195, 195, 110, 100
 )
 
 textdt %>%
@@ -158,7 +91,8 @@ textdt %>%
     arrow = arrow(length = unit(5, "mm"), type = "closed")
   ) +
   geom_segment(
-    x = 15, xend = 195, y = 150, yend = 150,
+    data = segmentdt,
+    aes(x = x, xend = xend, y = y, yend = yend),
     linejoin = "mitre", lineend = "butt"
   ) +
   scale_x_continuous(breaks = seq(0, 210, by = 30), limits = c(0, 210)) +
@@ -172,7 +106,7 @@ textdt %>%
     "and vaccination against rubella since Wave 1.",
     sep = "\n"
   )) +
-  simplegg(caption_size = 20, font_family = "YuGothic") +
+  simplegg(caption_size = 20) +
   theme(
     panel.grid.major.y = element_blank(),
     axis.title = element_blank(),
@@ -321,8 +255,8 @@ if (out == "kableExtra") {
 #' 我々はどのような要素を強調したナッジ・メッセージが有効であるかを探るために、
 #' 厚労省メッセージに基づいた6つの異なるナッジ・メッセージを作成した。
 #' 本研究のように、ナッジ・メッセージの探索的研究は、
-#' 候補となるメッセージを複数用意し、一回の実験でその有効性を検証しているものが多い。
-#' <!-- //NOTE: citationを求む -->
+#' 候補となるメッセージを複数用意し、
+#' 一回の実験でその有効性を検証しているものが多い[e.g. @Dai2021; @Milkman2021]。
 #'
 #' [^svyage]: 表\@ref(tab:nudgelist)に示した年齢は調査によって得られた誕生年と誕生月を用いて、
 #' 2019年4月時点の年齢を計算した。

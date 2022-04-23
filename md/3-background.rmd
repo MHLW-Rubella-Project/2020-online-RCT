@@ -73,7 +73,7 @@ MMRワクチンの定期接種は1993年4月に一旦中止された。
 この追加対策の政策目標は2022年3月までに対象世代の男性の抗体保有率を80%から90%に引き上げることである。
 この目標が達成されれば、日本は風しんの集団免疫を獲得できる。
 
-```{r coupon, echo=FALSE, fig.cap = "Sample Coupon for Free Rubella Antibody Test and Vaccination"}
+```{r coupon, echo=FALSE, fig.cap = "Sample Coupon for Free Rubella Antibody Test and Vaccination", out.width = "100%"}
 library(here)
 knitr::include_graphics(here("assets/rubella-coupon.png"))
 ```

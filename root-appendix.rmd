@@ -79,7 +79,7 @@ options(
 
 # Background on Routine Rubella Vaccination in Japan
 
-```{r child = "md/3-background.rmd"}
+```{r child = "md/4-background.rmd"}
 
 ```
 
@@ -111,6 +111,14 @@ knitr::spin_child(here("src", "4-selection1-intention.r"))
 knitr::spin_child(here("src", "5-selection1-behavior.r"))
 ```
 
+\clearpage
+
+# Elicitation of WTP for Rubella Vaccination and Estimation of Demand Curve
+
+```{r}
+library(here)
+knitr::spin_child(here("src", "6-selection1-money.r"))
+```
 
 \clearpage
 

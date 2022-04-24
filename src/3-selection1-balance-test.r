@@ -23,14 +23,12 @@ wave1 <- rct_data_wave1(here(rct_path, "shape_survey.csv"))
 wave2 <- rct_data_wave2(here(rct_path, "shape_survey.csv"), 1)
 
 #+ include = FALSE
-covmod <- ~ age + married + education +
-  exercise_w1 + health_check + flushot +
-  prob_social + handicap + severity +
-  handwash + temp_check + avoid_out + avoid_crowd + wear_mask
-
 int <- create_RCTtoolbox(
   test_int + vaccine_int ~ nudge,
-  covmod,
+  ~ age + married + education +
+    exercise_w1 + health_check + flushot, #+
+    # prob_social + handicap + severity +
+    # handwash + temp_check + avoid_out + avoid_crowd + wear_mask,
   data = wave1,
   treat_levels = LETTERS[1:7],
   treat_labels = treat_labels
@@ -38,7 +36,10 @@ int <- create_RCTtoolbox(
 
 act <- create_RCTtoolbox(
   aw1_test + aw1_testvaccine ~ nudge,
-  covmod,
+  ~ age + married + education +
+    exercise_w1 + health_check + flushot +
+    # prob_social + handicap + severity +
+    handwash + temp_check + avoid_out + avoid_crowd + wear_mask,
   data = wave2,
   treat_levels = LETTERS[1:7],
   treat_labels = treat_labels

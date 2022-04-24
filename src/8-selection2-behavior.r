@@ -26,7 +26,7 @@ covmod <- ~ coupon2019 +
   coupon_f + coupon_g +
   age + married + education +
   exercise_w1 + health_check + flushot +
-  prob_social + handicap + severity +
+  # prob_social + handicap + severity +
   handwash + temp_check + avoid_out + avoid_crowd + wear_mask
 
 act2 <- create_RCTtoolbox(
@@ -128,6 +128,12 @@ act2$
     ),
     not_show_x = list(
       "Covariates" = all.vars(covmod)[8:length(all.vars(covmod))]
+    ),
+    footnote = paste(
+      "Note: * p < 0.1, ** p < 0.05, *** p < 0.01.",
+      "We use robust standard errors.",
+      "We also control for covariates obtained in wave 1 and 2.",
+      "The list of covariates is presented in Table \\@ref(tab:covlist)."
     )
   )
 

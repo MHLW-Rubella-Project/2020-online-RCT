@@ -28,6 +28,9 @@ wtp_setup <- create_RCTtoolbox(
   treat_labels = treat_labels
 )
 
+#+ wtp-question, eval = params$preview | params$appendix, fig.cap = "Elicitaiton of Willingess-to-Pay for Rubella Vaccination.", out.width = "100%", out.extra = ""
+knitr::include_graphics(here("assets", "wtp-question.png"))
+
 #+ demand-vaccine, eval = params$preview | params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.", out.extra = ""
 act1 <- wtp_setup$
   ttest()$
@@ -110,6 +113,39 @@ wtp %>%
 #' [^extreme]: 回答者がすべての補助金額$s_j$のときの接種しないと回答したならば、$s_i^{\text{max}} = 10000$である。
 #' しかしながら、$s_i^{\text{min}}$はデータで定義できない。そこで、$s_i^{\text{min}} = 11000$と仮定した。
 #' ただし、後に示すが、この仮定はナッジ・メッセージの金銭的価値に影響を与えない。
+#' ```
+#'
+#' ```{asis, echo = !params$preview | params$appendix}
+#' ナッジ・メッセージの効果を金銭的に評価するために、
+#' 我々は風しんワクチンの支払意思額を用いた。
+#' 我々は、第1回調査のナッジ・メッセージを示す前に、ワクチン接種の支払意思額を調査した。
+#' 支払意思額はMultiple price list法に基づくものである
+#' （調査画面を表\@ref(fig:wtp-question)に示した）。
+#'
+#' ワクチンの価格は5000円と仮定して、
+#' 我々は、自治体の補助金額が$s_j$のとき、ワクチン接種をするかどうかを調査した。
+#' 補助金額は$s_j \in \{0, 1000, 2000, \ldots, 10000\}$とした。
+#' 回答者$i$が接種すると回答した最低の補助金額を$s_i^{\text{min}}$とする。
+#' 回答者$i$が接種しないと回答した最高の補助金額を$s_i^{\text{max}}$とする。
+#' 回答者がすべての補助金額$s_j$のときの接種しないと回答したならば、$s_i^{\text{max}} = 10000$である。
+#' しかしながら、$s_i^{\text{min}}$はデータで定義できない。
+#' そこで、$s_i^{\text{min}} = 11000$と仮定した。
+#'
+#' このとき、回答者$i$の支払意思額は
+#' $[5000 - s_i^{\text{min}}, 5000 - s_i^{\text{max}})$の範囲内で識別される。
+#' したがって、
+#' 追加の仮定を置かない限り、ワクチン接種の需要曲線はステップワイズな曲線となり、
+#' メッセージの金銭的価値は範囲で得られる。
+#'
+#' メッセージの金銭的価値を点推定するために、
+#' 我々は支払意思額が
+#' $[5000 - s_i^{\text{min}}, 5000 - s_i^{\text{max}})$の範囲で
+#' 識別されるとき、
+#' 真の支払意思額はその範囲内で一様に分布することを仮定する。
+#' このとき、ステップワイズなワクチン接種の需要曲線は線型補間で表される。
+#' 2019年度にクーポン券が自動的に送付され、
+#' 第1回調査時点で抗体検査もしくはワクチン接種をしていない男性に限定して、
+#' 線型補間された需要曲線を図\@ref(fig:demand-vaccine)に示した。
 #' ```
 #'
 #+ economic-value, eval = params$preview | !params$appendix

@@ -24,7 +24,7 @@ wave22 <- rct_data_wave2(here(rct_path, "shape_survey.csv"), 2)
 
 covmod <- ~ age + married + education +
   exercise_w1 + health_check + flushot +
-  prob_social + handicap + severity +
+  # prob_social + handicap + severity +
   handwash + temp_check + avoid_out + avoid_crowd + wear_mask
 
 act2 <- create_RCTtoolbox(

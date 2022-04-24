@@ -53,7 +53,7 @@ fontsize: 11pt
 geometry: "left=3cm,right=3cm,top=3cm,bottom=3cm"
 graphics: yes
 indent: yes
-linespace: 1.5
+linespace: 2
 output:
   bookdown::pdf_document2:
     latex_engine: xelatex

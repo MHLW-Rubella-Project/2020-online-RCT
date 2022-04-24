@@ -37,24 +37,6 @@ act <- create_RCTtoolbox(
   treat_labels = treat_labels
 )
 
-#' ```{asis, echo = params$preview | !params$appendix}
-#' 次に、我々は第1回調査以降の行動に対するナッジ・メッセージの効果を推定する。
-#' 第1回調査時点で抗体検査やワクチン接種を受けていない男性に焦点を当てるために、
-#' 第1回調査もしくは第2回調査で第1回調査以前に抗体検査とワクチン接種を受けたと回答した人を排除した
-#' （wave 2 selection data）[^reason]。
-#' さらに、
-#' 取引費用の減少の有無のもとでのナッジ・メッセージの効果を推定するために、
-#' 我々は2019年4月時点の年齢が46歳以下であるかどうかでサブサンプルを構築し、
-#' 各サブサンプルにおけるナッジ・メッセージの効果を推定した。
-#' 二つのサブサンプルにおいて、
-#' 個人の観察可能な特徴はトリートメント間でバランスされているので、
-#' t検定の結果を示し、回帰分析の結果を補論Cに示す（バランステストの結果は補論Bを見よ）。
-#'
-#' [^reason]: 第1回調査以降に自身の接種歴を調べ直すなどによって、
-#' 第1回調査と第2回調査の回答に違いが生じる可能性がある。
-#' そのため、
-#' どちらかの調査で第1回調査以前に抗体検査を受検したもしくはワクチンを接種したと回答した人を除いた。
-#' ```
 #'
 #' <!---
 #' //NOTE: 検出力分析
@@ -92,6 +74,11 @@ for (i in LETTERS[1:7]) {
 }
 
 cat(c(
+  "次に、wave 2 selection dataを用いて、",
+  "我々は第1回調査以降の行動に対するナッジ・メッセージの効果を推定する。",
+  "クーポン券が自動的に送付されるかどうかで分割した2つのサブサンプルにおいて、",
+  "個人の観察可能な特徴はトリートメント間でバランスされているので、",
+  "t検定の結果のみを示し、回帰分析の結果は補論Cに示す（バランステストの結果は補論Bを見よ）。",
   "また、検定力80%・有意水準5%を保つために必要な効果の規模を計算したところ、",
   "2019年度にクーポン券が自動で送付される男性のサブサンプルを用いる場合、少なくとも",
   round(min_act_ef1 * 100, 1),
@@ -106,7 +93,7 @@ cat(c(
 #' //NOTE: 行動に対する効果のt検定
 #' --->
 #'
-#+ act-coupon1-ttest, eval = params$preview | !params$appendix, fig.cap = "Effect of Text-Based Nudges on Behavior among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.", out.extra = ""
+#+ act-coupon1-ttest, eval = params$preview | !params$appendix, fig.cap = "Effect of Text-Based Nudges on Behavior among Men for whom Coupons are Automatically Distributed in FY 2019 (N = 805). Data source: wave 2 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.", out.extra = ""
 act$
   ttest(subset = coupon2019 == 1)$
   plot(
@@ -149,7 +136,7 @@ act$
 #' これらは統計的に10%水準で有意である。
 #' ```
 #'
-#+ act-coupon0-ttest, eval = params$preview | !params$appendix, fig.cap = "Effect of Text-Based Nudges on Behaviors among Men Who Needed Costly Procedures to Receive Coupons in FY 2019. Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.", out.extra = ""
+#+ act-coupon0-ttest, eval = params$preview | !params$appendix, fig.cap = "Effect of Text-Based Nudges on Behaviors among Men Who Needed Costly Procedures to Receive Coupons in FY 2019 (N = 1,467). Data source: wave 1 selection data. Note: Numbers in the figure indicate the proportion of each group. Error bars indicate standard error of the mean. Asterisks are p-values for t-tests of the difference in means from the MHLW message group: * p < 0.1, ** p < 0.05, *** p < 0.01.", out.extra = ""
 act$
   ttest(subset = coupon2019 == 0)$
   plot(

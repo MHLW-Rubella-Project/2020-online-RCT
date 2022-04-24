@@ -28,7 +28,7 @@ wtp_setup <- create_RCTtoolbox(
   treat_labels = treat_labels
 )
 
-#+ demand-vaccine, eval = params$preview | !params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.", out.extra = ""
+#+ demand-vaccine, eval = params$preview | params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.", out.extra = ""
 act1 <- wtp_setup$
   ttest()$
   result
@@ -72,14 +72,22 @@ wtp %>%
   simplegg(axis_text_size = 12)
 
 #' ```{asis, echo = params$preview | !params$appendix}
-#' 2019年度にクーポン券を自動的に受け取った男性における
-#' ナッジ・メッセージの金銭的な価値で評価することを試みる。
-#' ナッジ・メッセージの金銭的な価値は
-#' 推定されたメッセージの効果と同等となる追加的な金銭的補助で得られる。
-#' そのために、我々はワクチン接種の支払意思額を知る必要がある。
+#' 厚生労働省の追加施策は風しんワクチンの価格をゼロにする金銭的インセンティブとみなせる。
+#' しかしながら、クーポン券を利用した抗体検査の受検率は18%である。
+#' 抗体検査の結果が陰性であれば、ワクチン接種を受ける必要がないので、
+#' クーポン券を利用したワクチン接種率は18%より低くなる。
+#' では、仮に、厚生労働省がナッジ・メッセージを用いずに金銭的インセンティブだけを用いて、
+#' ワクチン接種率を高めようとしているならば、
+#' 厚生労働省はあといくらの追加的な金銭的インセンティブを個人に与えればよいのだろうか。
 #'
-#' 第1回調査のナッジ・メッセージを示す前の質問票Aで、
-#' 我々はワクチン接種の支払意思額を調査した。
+#' そこで、我々はオンライン調査で得られた風しんワクチン接種の支払意思額を用いて、
+#' ナッジ・メッセージの効果を金銭的な価値を評価する。
+#' ナッジ・メッセージの効果の金銭的な価値は
+#' 推定されたメッセージの効果と同等となる追加的な金銭的補助である。
+#' 似たようなアプローチでナッジ・メッセージの金銭的な価値を推定した研究に
+#' @Bursztyn2019 や @Moriwaki2020 がある。
+#'
+#' 我々は、第1回調査のナッジ・メッセージを示す前に、ワクチン接種の支払意思額を調査した。
 #' ワクチンの価格は5000円と仮定して、
 #' 我々は、自治体の補助金額が$s_j$のとき、ワクチン接種をするかどうかを調査した。
 #' 補助金額は$s_j \in \{0, 1000, 2000, \ldots, 10000\}$とした。
@@ -97,10 +105,7 @@ wtp %>%
 #' 識別されるとき、
 #' 真の支払意思額はその範囲内で一様に分布することを仮定する。
 #' このとき、ステップワイズなワクチン接種の需要曲線は線型補間で表される。
-#' 図\@ref(fig:demand-vaccine)はこの仮定のもとで、
-#' 2019年度に自動的にクーポン券を受け取った人に限定した
-#' 風しんワクチン接種の需要曲線である。
-#' 我々はこの需要曲線を用いて、メッセージの金銭的価値を算出する。
+#' 我々は補論に支払意思額に関する調査と需要曲線を示した。
 #'
 #' [^extreme]: 回答者がすべての補助金額$s_j$のときの接種しないと回答したならば、$s_i^{\text{max}} = 10000$である。
 #' しかしながら、$s_i^{\text{min}}$はデータで定義できない。そこで、$s_i^{\text{min}} = 11000$と仮定した。
@@ -205,9 +210,9 @@ if (out == "kableExtra") {
 #' ```{asis, echo = params$preview | !params$appendix}
 #' ナッジ・メッセージの金銭的な価値を次のように計算する。
 #' はじめに、ベースラインの接種割合を決める。
-#' 図\@ref(fig:demand-vaccine)の需要曲線は
-#' 無料クーポンが発行される人に限定しているので、
-#' ワクチンの供給曲線はゼロで水平である。
+#' クーポン券が自動的に配布され、抗体検査やワクチン接種を受検していない人に限定して、
+#' 需要曲線を推定した。
+#' したがって、ワクチンの供給曲線はゼロで水平である。
 #' このときの接種割合は約66.5%である。
 #' ベースラインの接種割合はこの割合に
 #' 厚労省メッセージの抗体検査受検率を足したものである[^assumption]。

@@ -134,7 +134,7 @@ textdt %>%
 #' 我々は大阪大学経済学研究科の倫理審査委員会の認可を受けている（承認番号：R020114）。
 #' ```
 #'
-#' ```{asis, echo = !params$preview | params$appendix}
+#' ```{asis, echo = params$appendix}
 #' 本研究が実施したオンライン調査の概要を説明する。
 #' 我々はインターネット調査会社であるマイボイスコム株式会社（MyVociceCome Co. Ltd.）に委託し、
 #' 2回のオンライン調査を実施した。
@@ -200,7 +200,7 @@ if (out == "kableExtra") {
 #' ## Wave 1: Interventions and Outcome Variables on Intention {#wave1}
 #' ```
 #'
-#' ```{asis, echo = !params$preview | params$appendix}
+#' ```{asis, echo = params$appendix}
 #' 第1回調査は2020年2月15日から2020年2月17日に実施した。
 #' 第1回調査の対象は調査会社のモニターのうち、日本全国に居住する40歳から59歳の男性の4,200名である。
 #' 第1回調査の目的はナッジ・メッセージをランダムに割り当て、
@@ -353,7 +353,7 @@ if (out == "kableExtra") {
 #' したがって、このアウトカム変数は政策目標に直結している。
 #' ```
 #'
-#' ```{asis, echo = !params$preview | params$appendix}
+#' ```{asis, echo = params$appendix}
 #' 第2回調査は第1回調査の追跡調査であり、2020年3月17日から2020年3月25日に実施した。
 #' 第2回調査は第1回調査の回答者全員を対象として、3,963名から回答を得た（脱落率=5.64%）。
 #' 第2回調査の目的は第1回調査でランダムに割り当てたナッジ・メッセージが

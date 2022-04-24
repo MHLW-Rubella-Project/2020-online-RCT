@@ -164,7 +164,7 @@ knitr::spin_child(here("src", "6-selection1-money.r"))
 
 # Discussion and Conclusions {#conclusion}
 
-```{r child = "md/2-conclusion.rmd"}
+```{r child = "md/3-conclusion.rmd"}
 
 ```
 

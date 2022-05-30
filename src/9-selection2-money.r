@@ -43,7 +43,7 @@ wtp <- wtp_setup$data %>%
 
 cumprop0 <- unlist(wtp[wtp$wtp_vaccine == 0, "cum_prop"])
 baseprop <- cumprop0 +
-  subset(act1, arms == "MHLW")$mean1
+  subset(act1, arms == "MHLW (Control)")$mean1
 
 demand <- with(wtp, approxfun(cum_prop, wtp_vaccine))
 basewtp <- demand(baseprop)
@@ -83,7 +83,7 @@ wtp %>%
 rawvalue <- function(x) x
 
 econval <- act1 %>%
-  dplyr::filter(arms != "MHLW") %>%
+  dplyr::filter(arms != "MHLW (Control)") %>%
   mutate(cumfraq = diff + baseprop) %>%
   mutate_at(
     vars(cumfraq),
@@ -103,7 +103,7 @@ econval <- act1 %>%
     wtp_dollar,
     totalval_dollar
   ) %>%
-  mutate(arms = droplevels(arms, exclude = "MHLW"))
+  mutate(arms = droplevels(arms, exclude = "MHLW (Control)"))
 
 
 tab <- econval %>%

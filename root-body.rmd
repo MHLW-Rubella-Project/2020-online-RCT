@@ -135,7 +135,7 @@ knitr::spin_child(here("src", "2-summary-experiment.r"))
 
 # Results {#result}
 
-## Framework
+## Policy Target and Analysis Sample {#sample}
 
 ```{r child = "md/2-framework.rmd"}
 ```

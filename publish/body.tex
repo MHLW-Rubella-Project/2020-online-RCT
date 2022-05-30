@@ -97,19 +97,7 @@
 
 
 \usepackage{float}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
 \usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -386,19 +374,19 @@ Convenient & Dear men in their 40s and 50s (all men born in 1962-1979). There is
 \hypertarget{result}{%
 \section{Results}\label{result}}
 
-\hypertarget{framework}{%
-\subsection{Framework}\label{framework}}
+\hypertarget{sample}{%
+\subsection{Policy Target and Analysis Sample}\label{sample}}
 
 ナッジ・メッセージの政策対象は抗体検査やワクチン接種を受けていない男性である。
 そこで、第1回調査時点で抗体検査とワクチン接種を受けていない回答者に限定して、
 ナッジ・メッセージの効果を推定する。
 意向に関するアウトカム変数に対する効果を推定するとき、
 第1回調査で過去に抗体検査を受検した、もしくはワクチンを接種したと回答した人を
-除いたデータを用いる（以降、wave 1 selection dataと呼ぶ）。
+除いたデータを用いる（以降、wave 1 target dataと呼ぶ）。
 また、行動に関するアウトカム変数に対する効果を推定するとき、
 上述の基準に加えて、
 第2回調査で第1回調査以前に抗体検査を受検したもしくはワクチンを接種したと回答した人を
-除いたデータを用いる（以降、wave 2 selection dataと呼ぶ）\footnote{第1回調査以降に自身の接種歴を調べ直すなどによって、
+除いたデータを用いる（以降、wave 2 target dataと呼ぶ）\footnote{第1回調査以降に自身の接種歴を調べ直すなどによって、
   第1回調査と第2回調査の回答に違いが生じる可能性がある。
   そのため、どちらかの調査で第1回調査以前に抗体検査を受検したもしくはワクチンを接種したと回答した人を除いた。}。
 
@@ -412,7 +400,12 @@ Convenient & Dear men in their 40s and 50s (all men born in 1962-1979). There is
 各市区町村は2019年度に40歳以上46歳以下の男性のクーポン券を送付し、
 2020年度以降に47歳以上56歳以下の男性のクーポン券を送付する。
 ただし、市区町村の判断や本人の希望に応じて、
-47歳以上56歳以下の男性もクーポン券を受け取ることはできる。
+47歳以上56歳以下の男性もクーポン券を受け取ることはできるが、
+これは我々の分析に大きな影響を与えないと考えている。
+なぜなら、2019年度に47歳以上の男性にクーポン券を送付する自治体は少ないからである。
+また、我々のサーベイより、47歳以上の男性の約77\%がクーポン券制度を認知していなかった。
+仮に彼らがクーポン券制度を知っていたとしても、クーポン券を発行してもらうように依頼する必要がある。
+以上の2点の理由から、47歳以上の男性がクーポン券の取得を望んでいるとは考えにくい。
 
 \hypertarget{intention}{%
 \subsection{Effect of Text-Based Nudges on Intentions}\label{intention}}
@@ -581,7 +574,7 @@ Selfish & 10 & 3 & 3 & 3 & 1 & 1\\
 Social comparison & 9 & 5 & 5 & 6 & 1 & 0\\
 Deadline & 5 & 1 & 1 & 3 & 1 & 1\\
 Convenient & 8 & 5 & 3 & 2 & 0 & 0\\
-Fisher's exact test (p-value) &  & 0.55 & 0.67 &  & 0.46 & 1.00\\
+Fisher's exact test (p-value) &  & 0.55 & 0.67 &  & 0.47 & 1.00\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}

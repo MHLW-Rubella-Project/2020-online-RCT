@@ -245,7 +245,8 @@ tab <- web %>%
     align = "llcccccc",
     data = .,
     output = out,
-    title = "List of Text-Based Nudges"
+    title = "List of Text-Based Nudges",
+    linesep = "\\addlinespace"
   )
 
 if (out == "kableExtra") {

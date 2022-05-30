@@ -31,7 +31,7 @@ wtp_setup <- create_RCTtoolbox(
 #+ wtp-question, eval = params$preview | params$appendix, fig.cap = "Elicitaiton of Willingess-to-Pay for Rubella Vaccination.", out.width = "100%", out.extra = ""
 knitr::include_graphics(here("assets", "wtp-question.png"))
 
-#+ demand-vaccine, eval = params$preview | params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.", out.extra = ""
+#+ include = FALSE
 act1 <- wtp_setup$
   ttest()$
   result
@@ -50,6 +50,8 @@ baseprop <- cumprop0 +
 demand <- with(wtp, approxfun(cum_prop, wtp_vaccine))
 basewtp <- demand(baseprop)
 
+
+#+ demand-vaccine, eval = params$preview | params$appendix, fig.cap = "Demand Curve of Rubella Vaccination among Men for whom Coupons are Automatically Distributed in FY 2019. Data source: wave 2 selection data. Note: Black triangles indicate the sum of the percentage of vaccination when vaccination costs are free and the percentage of antibody test uptake in the MHLW message combined, and the corresponding WTP.", out.extra = ""
 wtp %>%
   ggplot(aes(x = cum_prop, y = wtp_vaccine)) +
   geom_point(

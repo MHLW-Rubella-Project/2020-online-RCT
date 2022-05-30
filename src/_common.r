@@ -23,6 +23,11 @@ rct_path <- "data/2020-online-survey"
 
 # treatment labels
 treat_labels <- c(
-  "MHLW", "Age expression", "Altruistic", "Selfish",
-  "Social comparison", "Valid date", "Low-cost"
+  "MHLW (Control)",
+  "MHLW (Age)",
+  "Altruistic",
+  "Selfish",
+  "Social comparison",
+  "Deadline",
+  "Convenient"
 )

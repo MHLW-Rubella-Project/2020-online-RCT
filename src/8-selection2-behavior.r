@@ -25,6 +25,7 @@ covmod <- ~ coupon2019 +
   coupon_b + coupon_c + coupon_d + coupon_e +
   coupon_f + coupon_g +
   age + married + education +
+  income + noinfo_income +
   exercise_w1 + health_check + flushot +
   # prob_social + handicap + severity +
   handwash + temp_check + avoid_out + avoid_crowd + wear_mask

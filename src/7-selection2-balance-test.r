@@ -23,6 +23,7 @@ source(here("src/_html_header.r"), encoding = "utf8")
 wave22 <- rct_data_wave2(here(rct_path, "shape_survey.csv"), 2)
 
 covmod <- ~ age + married + education +
+  income + noinfo_income +
   exercise_w1 + health_check + flushot +
   # prob_social + handicap + severity +
   handwash + temp_check + avoid_out + avoid_crowd + wear_mask

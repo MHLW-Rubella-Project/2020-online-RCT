@@ -161,6 +161,7 @@ cat(c(
 #+ covlist, eval = params$preview | params$appendix
 cov <- c(
   "age", "coupon2019", "married", "education",
+  "income", "noinfo_income",
   "exercise_w1", "health_check", "flushot",
   # "prob_social", "handicap", "severity",
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"

@@ -3,6 +3,8 @@ age,(Wave1) Age as of April 2019 based on year of birth and month of birth.,(Wav
 coupon2019,(Wave1) Dummy variable taking one if 40 to 46 years old as of April 2019.,(Wave1) 2019年4月時点で40歳以上46歳以下（2019年度クーポン券配布対象）ならば1を取るダミー変数
 married,(Wave1) Dummy variable taking one if a respondent is married.,(Wave1) 婚姻したら1を取るダミー変数
 education,(Wave1) Years of education.,(Wave1) 教育年数
+income,"(Wave1) Household income. For those who did not respond with household income, the overall average was substituted.",(Wave1)世帯所得。答えたくない場合は、全体平均で代替した
+noinfo_income,(Wave1) Dummy variable taking one if a respondent did not answer household income.,(Wave1)世帯所得を答えたくないと回答したら1を取るダミー変数
 exercise_w1,(Wave1) Dummy variable taking one if a respondent exercises or plays sports more than once a week.,(Wave1) 週に1度以上運動やスポーツをしていたら1を取るダミー変数
 health_check,(Wave1) Dummy variable taking one if a respondent has had medical examination at his/her city or place of employment in the past year from the time of the wave 1.,(Wave1) 調査時点から過去1年間で職場や自治体の健康診断を受けたら1を取るダミー変数
 flushot,(Wave1) Dummy variable taking one if a respondent is vaccinated against influenza every year.,(Wave1) 毎年インフルエンザワクチンを接種しているならば1を取るダミー変数

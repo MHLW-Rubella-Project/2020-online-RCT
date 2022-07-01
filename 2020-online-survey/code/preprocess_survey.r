@@ -220,6 +220,11 @@ wave1 <- wave1 %>%
     noinfo_income = if_else(q44 == 13, 1, 0)
   )
 
+wave1 <- wave1 %>%
+  mutate(
+    income = if_else(is.na(income), mean(wave1$income, na.rm = TRUE), income)
+  )
+
 wave2 <- wave2 %>%
   dplyr::rename(
     handwash = q14_1,

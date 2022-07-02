@@ -1,22 +1,12 @@
 #' ---
 #' title: Results of Balance Test
 #' subtitle: Preview
-#' output:
-#'   bookdown::html_document2:
-#'     toc: yes
-#'     toc_float: yes
-#'     number_sections: false
-#' params:
-#'   preview: yes
-#'   appendix: yes
+#' author: Hiroki Kato
 #' ---
 #'
 #+ include = FALSE
 library(here)
-source(here("src/_common.r"), encoding = "utf8")
-
-#+ include = FALSE, eval = params$preview
-source(here("src/_html_header.r"), encoding = "utf8")
+source(here("R/_common.r"), encoding = "utf8")
 
 #+ include = FALSE
 wave1 <- rct_data_wave1(here(rct_path, "shape_survey.csv"))
@@ -47,72 +37,79 @@ act <- create_RCTtoolbox(
   treat_labels = treat_labels
 )
 
-#' <!---
-#' //NOTE: バランステスト
-#' --->
-#'
-#' 共変量のバランステストとして、各共変量の線形モデルを推定した。
-#' このモデルの説明変数は介入群ダミーであり、厚労省メッセージ群を参照群とした。
-#' 我々は推定された線形モデルの係数すべてがゼロであるという帰無仮説をF検定によって検証した。
-#' そのp値を表の最右列に示した。
-#' 表\@ref(tab:int-coupon1-balance)は2019年度にクーポン券を自動的に受け取った人に限定した
-#' wave 1 selection dataのバランステストの結果である。
-#' 表\@ref(tab:int-coupon0-balance)は
-#' 2019年度にクーポン券を受け取るためにコストのかかる手続きが必要な人に限定した
-#' wave 1 selection dataのバランステストの結果である。
-#' 表\@ref(tab:act-coupon1-balance)は2019年度にクーポン券を自動的に受け取った人に限定した
-#' wave 2 selection dataのバランステストの結果である。
-#' 表\@ref(tab:act-coupon0-balance)は
-#' 2019年度にクーポン券を受け取るためにコストのかかる手続きが必要な人に限定した
-#' wave 2 selection dataのバランステストの結果である。
-#'
-#' \clearpage
-#'
 #'
 #+ int-coupon1-balance
-int$
+out.file <- file(here("tables", "int-coupon1-balance.tex"), open = "w")
+
+tab <- int$
   balance(subset = coupon2019 == 1)$
-  table(title = paste(
-    "Balance Test of Wave 1 Selection Data",
-    "(Men who automatically received coupon in 2019)"
-  )) %>%
+  table(
+    title = paste(
+      "Balance Test of Wave 1 Selection Data",
+      "(Men who automatically received coupon in 2019)",
+      "\\label{tab:int-coupon1-balance}"
+    ),
+    output = "latex"
+  ) %>%
   kableExtra::kable_styling(latex_options = "hold_position") %>%
   kableExtra::column_spec(2:8, width = "3em")
+
+writeLines(tab, out.file)
+close(out.file)
 
 #+ int-coupon0-balance
-int$
+out.file <- file(here("tables", "int-coupon0-balance.tex"), open = "w")
+
+tab <- int$
   balance(subset = coupon2019 == 0)$
-  table(title = paste(
-    "Balance Test of Wave 1 Selection Data",
-    "(Men who need to be processed to receive coupon in 2019)"
-  )) %>%
+  table(
+    title = paste(
+      "Balance Test of Wave 1 Selection Data",
+      "(Men who need to be processed to receive coupon in 2019)",
+      "\\label{tab:int-coupon0-balance}"
+    ),
+    output = "latex"
+  ) %>%
   kableExtra::kable_styling(latex_options = "hold_position") %>%
   kableExtra::column_spec(2:8, width = "3em")
+
+writeLines(tab, out.file)
+close(out.file)
 
 #+ act-coupon1-balance
-act$
+out.file <- file(here("tables", "act-coupon1-balance.tex"), open = "w")
+
+tab <- act$
   balance(subset = coupon2019 == 1)$
-  table(title = paste(
-    "Balance Test of Wave 2 Selection Data",
-    "(Men who automatically received coupon in 2019)"
-  )) %>%
+  table(
+    title = paste(
+      "Balance Test of Wave 2 Selection Data",
+      "(Men who automatically received coupon in 2019)",
+      "\\label{tab:act-coupon1-balance}"
+    ),
+    output = "latex"
+  ) %>%
   kableExtra::kable_styling(latex_options = "hold_position") %>%
   kableExtra::column_spec(2:8, width = "3em")
+
+writeLines(tab, out.file)
+close(out.file)
 
 #+ act-coupon0-balance
-act$
+out.file <- file(here("tables", "act-coupon0-balance.tex"), open = "w")
+
+tab <- act$
   balance(subset = coupon2019 == 0)$
-  table(title = paste(
-    "Balance Test of Wave 2 Selection Data",
-    "(Men who need to be processed to receive coupon in 2019)"
-  )) %>%
+  table(
+    title = paste(
+      "Balance Test of Wave 2 Selection Data",
+      "(Men who need to be processed to receive coupon in 2019)",
+      "\\label{tab:act-coupon0-balance}"
+    ),
+    output = "latex"
+  ) %>%
   kableExtra::kable_styling(latex_options = "hold_position") %>%
   kableExtra::column_spec(2:8, width = "3em")
 
-# /*
-#+
-rmarkdown::render(
-  here("src/3-selection1-balance-test.r"),
-  output_dir = here("report/view")
-)
-# */
+writeLines(tab, out.file)
+close(out.file)

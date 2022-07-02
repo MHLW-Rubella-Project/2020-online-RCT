@@ -1,0 +1,50 @@
+\begin{table}
+
+\caption{Linear Probability Model of Behaviors Using New Wave 2 Selection Data \label{tab:act2-reg}}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{lcc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{1}{c}{Antibody Test} & \multicolumn{1}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){2-2} \cmidrule(l{3pt}r{3pt}){3-3}
+  & (1) & (2)\\
+\midrule
+MHLW (Age) & \num{0.010} & \num{0.012}\\
+ & (\num{0.017}) & (\num{0.014})\\
+Altruistic & \num{0.028} & \num{0.023}\\
+ & (\num{0.019}) & (\num{0.016})\\
+Selfish & \num{0.020} & \num{0.019}\\
+ & (\num{0.018}) & (\num{0.015})\\
+Social comparison & \num{0.020} & \num{-0.005}\\
+ & (\num{0.018}) & (\num{0.011})\\
+Deadline & \num{0.013} & \num{0.005}\\
+ & (\num{0.016}) & (\num{0.013})\\
+Convenient & \num{0.041}** & \num{0.031}*\\
+ & (\num{0.020}) & (\num{0.017})\\
+Coupon & \num{0.019} & \num{-0.014}\\
+ & (\num{0.028}) & (\num{0.021})\\
+Coupon×Age expression & \num{0.025} & \num{0.010}\\
+ & (\num{0.038}) & \vphantom{1} (\num{0.027})\\
+Coupon×Altruistic & \num{0.046} & \num{0.000}\\
+ & (\num{0.041}) & (\num{0.028})\\
+Coupon×Selfish & \num{0.042} & \num{0.015}\\
+ & (\num{0.041}) & (\num{0.029})\\
+Coupon×Social comparison & \num{0.031} & \num{0.032}\\
+ & (\num{0.041}) & (\num{0.027})\\
+Coupon×Valid date & \num{0.019} & \num{0.023}\\
+ & (\num{0.038}) & (\num{0.027})\\
+Coupon×Low-cost & \num{-0.006} & \num{-0.006}\\
+ & (\num{0.040}) & (\num{0.029})\\
+\midrule
+Num.Obs. & \num{2459} & \num{2459}\\
+R2 & \num{0.096} & \num{0.052}\\
+R2 Adj. & \num{0.086} & \num{0.042}\\
+Covariates & X & X\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item Note: * p < 0.1, ** p < 0.05, *** p < 0.01. We use robust standard errors. We also control for covariates obtained in wave 1 and 2. The list of covariates is presented in Table @ref(tab:covlist).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

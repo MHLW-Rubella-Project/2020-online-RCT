@@ -138,7 +138,9 @@ descript <- readr::read_csv(
 
 attr(descript, "position") <- 2
 
-paste(cov, collapse = "+") %>%
+out.file <- file(here("tables", "covariate-list.tex"), open = "w")
+
+tab <- paste(cov, collapse = "+") %>%
   paste("~ Mean + (`Std.Dev.` = SD)") %>%
   as.formula() %>%
   modelsummary::datasummary(
@@ -146,8 +148,15 @@ paste(cov, collapse = "+") %>%
     add_columns = descript,
     align = "llcc",
     title = "List of Covariates \\label{tab:covariate-list}",
-    output = here("tables", "covariate-list.tex")
-  )
+    output = "latex"
+  ) %>%
+  kableExtra::kable_styling(
+    font_size = 9, latex_options = "hold_position"
+  ) %>%
+  kableExtra::column_spec(2, width = "30em")
+
+writeLines(tab, out.file)
+close(out.file)
 
 #'
 #+ nudge-list

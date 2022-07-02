@@ -2,19 +2,11 @@
 #' title: Online Survey Experiment
 #' subtitle: Preview
 #' author: Hiroki Kato
-#' output:
-#'   bookdown::html_document2:
-#'     toc: true
-#'     toc_float: true
-#'     number_sections: false
 #' ---
 #'
 #+ include = FALSE
 library(here)
 source(here("R/_common.r"), encoding = "utf8")
-
-#+ include = FALSE
-source(here("R/_html_header.r"), encoding = "utf8")
 
 #+ include = FALSE
 web <- read_csv(here(rct_path, "shape_survey.csv"))
@@ -154,7 +146,6 @@ paste(cov, collapse = "+") %>%
     add_columns = descript,
     align = "llcc",
     title = "List of Covariates \\label{tab:covariate-list}",
-    label = "tab:cov-list",
     output = here("tables", "covariate-list.tex")
   )
 
@@ -167,7 +158,9 @@ message_list <- readr::read_csv(
 
 attr(message_list, "position") <- 2
 
-web %>%
+out.file <- file(here("tables", "nudge-list.tex"), open = "w")
+
+tab <- web %>%
   mutate(age_group = case_when(
     age == 39 ~ "39",
     age <= 46 ~ "40-46",
@@ -184,13 +177,13 @@ web %>%
     data = .,
     title = "List of Text-Based Nudges \\label{tab:nudge-list}",
     linesep = "\\addlinespace",
-    output = here("tables", "nudge-list.tex")
+    output = "latex"
+  ) %>%
+  kableExtra::kable_styling(font_size = 9) %>%
+  kableExtra::column_spec(2, width = "20em") %>%
+  kableExtra::add_header_above(
+    c(" " = 3, "Age (as of Apr 2019)" = 4, " " = 1)
   )
 
-# /*
-#+
-rmarkdown::render(
-  here("R/2-summary-experiment.r"),
-  output_dir = here("docs/html-preview")
-)
-# */
+writeLines(tab, out.file)
+close(out.file)

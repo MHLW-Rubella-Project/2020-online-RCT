@@ -353,7 +353,7 @@ tab <- act$data %>%
       (`Negative test result` = aw1_testnega) +
       (`Vaccination` = aw1_testvaccine)
     ),
-    title = "Movement of Antibody Test Takers",
+    title = "Movement of Antibody Test Takers \\label{tab:tester-move}",
     data = .,
     fmt = 0,
     align = "lcccccc",

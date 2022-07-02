@@ -154,7 +154,7 @@ tab <- act$
     escape = FALSE
   )
 
-writeLines(tab, out.file)
+writeLines(tab, out.file, useBytes = TRUE)
 close(out.file)
 
 #+ act-reg-ftest

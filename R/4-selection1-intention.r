@@ -156,7 +156,7 @@ tab <- int$
     escape = FALSE
   )
 
-writeLines(tab, out.file)
+writeLines(tab, out.file, useBytes = TRUE)
 close(out.file)
 
 #+ int-reg-ftest

@@ -2,20 +2,12 @@
 #' title: Background of Rubella Vaccination in Japan
 #' subtitle: Preview
 #' author: Hiroki Kato
-#' output:
-#'   bookdown::html_document2:
-#'     toc: true
-#'     toc_float: true
-#'     number_sections: false
 #' ---
 #'
 #+ include = FALSE
 # library and relative paths
 library(here)
 source(here("R/_common.r"), encoding = "utf8")
-
-#+ include = FALSE
-source(here("R/_html_header.r"), encoding = "utf8")
 
 #'
 #+ include = FALSE
@@ -98,11 +90,3 @@ reg <- antibody %>%
   )
 
 reg
-
-# /*
-#+
-rmarkdown::render(
-  here("R/1-niid-visualize.r"),
-  output_dir = here("docs/html-preview")
-)
-# */

@@ -140,7 +140,7 @@ tab <- act$
   ) %>%
   kableExtra::kable_styling(font_size = 9) %>%
   kableExtra::add_header_above(c(
-    "Antibody Test" = 1, "Vaccination" = 1
+    " " = 1, "Antibody Test" = 1, "Vaccination" = 1
   )) %>%
   kableExtra::footnote(
     general_title = "",

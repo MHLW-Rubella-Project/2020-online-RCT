@@ -31,3 +31,8 @@ treat_labels <- c(
   "Deadline",
   "Convenient"
 )
+
+# options
+options(
+  modelsummary_stars_note = FALSE
+)

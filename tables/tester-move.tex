@@ -1,0 +1,28 @@
+\begin{table}
+
+\begin{threeparttable}
+\caption{Movement of Antibody Test Takers}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{9em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}>{\centering\arraybackslash}p{5em}}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{w/ receiving coupon automatically} & \multicolumn{3}{c}{w/o receiving coupon automatically} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Text-based nudge & Antibody test & Negative test result & Vaccination & Antibody test  & Negative test result  & Vaccination \\
+\midrule
+MHLW (Control) & \num{4} & \num{1} & \num{1} & \num{1} & \num{0} & \num{0}\\
+MHLW (Age) & \num{8} & \num{2} & \num{2} & \num{2} & \num{2} & \num{1}\\
+Altruistic & \num{14} & \num{7} & \num{6} & \num{4} & \num{1} & \num{1}\\
+Selfish & \num{10} & \num{3} & \num{3} & \num{3} & \num{1} & \num{1}\\
+Social comparison & \num{9} & \num{5} & \num{5} & \num{6} & \num{1} & \num{0}\\
+Deadline & \num{5} & \num{1} & \num{1} & \num{3} & \num{1} & \num{1}\\
+Convenient & \num{8} & \num{5} & \num{3} & \num{2} & \num{0} & \num{0}\\
+Fisher's exact test (p-value) &  & 0.55 & 0.68 &  & 0.47 & 1.00\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item [] Note: Limiting our sample to antibody test takers, we tested the null hypothesis that the number of negative antibody tests does not differ between intervention groups with Fisher's exact test. Also, restricting the sample to negative individuals, we tested the null hypothesis that the number of vaccinations would not differ between intervention groups with a Fisher's exact test.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

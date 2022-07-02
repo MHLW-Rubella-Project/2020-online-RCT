@@ -65,7 +65,9 @@ plot_antibody
 
 ggsave(
   here("figures", "niid-antibody.pdf"),
-  plot = plot_antibody
+  plot = plot_antibody,
+  width = 10,
+  height = 6
 )
 
 #'

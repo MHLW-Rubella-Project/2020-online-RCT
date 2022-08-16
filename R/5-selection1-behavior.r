@@ -348,7 +348,7 @@ tab <- act$data %>%
   )) %>%
   mutate(nudge = factor(nudge, labels = treat_labels)) %>%
   datasummary(
-    (`Text-based nudge` = nudge) ~ coupon2019 * sum * (
+    (`Text messages` = nudge) ~ coupon2019 * sum * (
       (`Antibody test` = aw1_test) +
       (`Negatives` = aw1_testnega) +
       (`Vaccination` = aw1_testvaccine)

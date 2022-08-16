@@ -100,7 +100,7 @@ out.file <- file(here("tables", "economic-value.tex"), open = "w")
 
 tab <- econval %>%
   modelsummary::datasummary(
-    (`Text-based nudge` = arms) ~ rawvalue * (
+    (`Text messages` = arms) ~ rawvalue * (
       (`Size of effect` = diff) +
       (`Baseline + size of effect` = cumfraq) +
       (`pp` = wtp) +
@@ -110,7 +110,7 @@ tab <- econval %>%
     ),
     data = .,
     title = paste(
-      "Estimated Monetary Value of Text-Based Nudges",
+      "Estimated Monetary Value of Text Message Reminders",
       "\\label{tab:economic-value}"
     ),
     fmt = 3, align = "lcccccc",

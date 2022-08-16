@@ -48,7 +48,7 @@ plot_antibody <- antibody %>%
   ) +
   labs(
     x = "Age",
-    y = "Percentage of Rubella Antibody Carries (%)",
+    y = "Antibody Prevalence (%)",
     shape = "Gender"
   ) +
   simplegg(axis_text_size = 11)

@@ -342,18 +342,18 @@ tab <- act$data %>%
     coupon2019,
     levels = c(1, 0),
     labels = c(
-      "w/ receiving coupon automatically",
-      "w/o receiving coupon automatically"
+      "Default Incentive Group",
+      "Opt-in Incentive Group"
     )
   )) %>%
   mutate(nudge = factor(nudge, labels = treat_labels)) %>%
   datasummary(
     (`Text-based nudge` = nudge) ~ coupon2019 * sum * (
       (`Antibody test` = aw1_test) +
-      (`Negative test result` = aw1_testnega) +
+      (`Negatives` = aw1_testnega) +
       (`Vaccination` = aw1_testvaccine)
     ),
-    title = "Movement of Antibody Test Takers \\label{tab:tester-move}",
+    title = "Classification of Antibody Test Takers \\label{tab:tester-move}",
     data = .,
     fmt = 0,
     align = "lcccccc",

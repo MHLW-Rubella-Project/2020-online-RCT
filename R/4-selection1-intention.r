@@ -128,12 +128,12 @@ tab <- int$
     title = "Linear Probability Model of Intentions \\label{tab:int-reg}",
     add_coef_map = c(
       "coupon2019" = "Coupon",
-      "coupon_b" = "Coupon\u00d7Age expression",
+      "coupon_b" = "Coupon\u00d7MHLW (Age)",
       "coupon_c" = "Coupon\u00d7Altruistic",
       "coupon_d" = "Coupon\u00d7Selfish",
-      "coupon_e" = "Coupon\u00d7Social comparison",
-      "coupon_f" = "Coupon\u00d7Valid date",
-      "coupon_g" = "Coupon\u00d7Low-cost"
+      "coupon_e" = "Coupon\u00d7Social Comparison",
+      "coupon_f" = "Coupon\u00d7Deadline",
+      "coupon_g" = "Coupon\u00d7Convenient"
     ),
     not_show_x = list(
       "Covariates" = all.vars(covmod)[8:length(all.vars(covmod))]
@@ -149,8 +149,9 @@ tab <- int$
     general = paste(
       "Note: * p < 0.1, ** p < 0.05, *** p < 0.01.",
       "We use robust standard errors.",
+      "We use the second wave analysis sample.",
       "We also control for covariates obtained in wave 1.",
-      "The list of covariates is presented in Table \\@ref(tab:covlist)."
+      "The list of covariates is presented in Table \\\\ref{tab:covlist}."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -198,11 +199,11 @@ est_intmod <- intmod %>%
   mutate(coupon = if_else(str_detect(term, "coupon"), 1, 0)) %>%
   mutate(
     coupon = factor(coupon,
-      labels = c("Costly procedure", "Automatic receiving")
+      labels = c("Opt-in incentive", "default incentive")
     ),
     outcome = factor(outcome,
       levels = c("test_int", "vaccine_int"),
-      labels = c("Antibody Test", "Vaccination")
+      labels = c("Antibody testing", "Vaccination")
     ),
     nudge = str_extract(term, paste(LETTERS[1:7], collapse = "|")),
     nudge = factor(nudge, labels = treat_labels[-1])
@@ -214,12 +215,12 @@ out.file <- file(here("tables", "int-reg-ftest.tex"), open = "w")
 
 tab <- est_intmod %>%
   datasummary(
-    (`How to get coupons` = coupon) *
-      (`Text-based nudges` = nudge) ~ outcome * rawvalue *
+    (`Group` = coupon) *
+      (`Text messages` = nudge) ~ outcome * rawvalue *
       (estimate + std.error + p.value),
     data = .,
     title = paste(
-      "Effects of Text-Based Nudges on Intentions",
+      "Effects of Text Message on Intentions for Two Groups",
       "Using Linear Probability Model Estimates",
       "\\label{tab:int-reg-ftest}"
     ),
@@ -227,7 +228,24 @@ tab <- est_intmod %>%
     align = "llcccccc",
     output = "latex"
   ) %>%
-  kableExtra::column_spec(1, width = "5em")
+  kableExtra::kable_styling(font_size = 9) %>%
+  kableExtra::column_spec(1, width = "5em") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = paste(
+      "Note: We estimate the effect for the default incentive group",
+      "(men aged 40-46) and the opt-in incentive group (men aged 47-57)",
+      "using results of the linear probability model presented in",
+      "\\\\ref{tab:int-reg}.",
+      "The effect for the opt-in incentive group is the estimate $\\\\beta_j$.",
+      "The effect for the default incentive group is a linear combination",
+      "of the estimates, $\\\\beta_j + \\\\gamma_j$.",
+      "We use the F-test for the null hypothesis of the linear combination.",
+      "We use robust standard errors."
+    ),
+    threeparttable = TRUE,
+    escape = FALSE
+  )
 
 writeLines(tab, out.file)
 close(out.file)
@@ -259,11 +277,11 @@ est_intmod2 <- intmod %>%
   mutate(
     coupon = if_else(str_detect(term, "coupon"), 1, 0),
     coupon = factor(coupon,
-      labels = c("Costly procedure", "Automatic receiving")
+      labels = c("Opt-in incentive", "default incentive")
     ),
     outcome = factor(outcome,
       levels = c("test_int", "vaccine_int"),
-      labels = c("Antibody Test", "Vaccination")
+      labels = c("Antibody testing", "Vaccination")
     ),
     nudge = str_extract(term, paste(LETTERS[c(2, 4:7)], collapse = "|")),
     # nudge = if_else(is.na(nudge), "A", nudge),
@@ -274,12 +292,12 @@ out.file <- file(here("tables", "int-reg-ftest2.tex"), open = "w")
 
 tab <- est_intmod2 %>%
   datasummary(
-    (`How to get coupons` = coupon) *
-      (`Text-based nudges` = nudge) ~ outcome * rawvalue *
+    (`Group` = coupon) *
+      (`Text messages` = nudge) ~ outcome * rawvalue *
       (estimate + std.error + p.value),
     data = .,
     title = paste(
-      "Effects of Text-Based Nudges on Intentions",
+      "Effects of Text Message on Intentions for Two Groups",
       "Using Linear Probability Model Estimates",
       "(Baseline: Altruistic Message)",
       "\\label{tab:int-reg-ftest2}"
@@ -288,7 +306,26 @@ tab <- est_intmod2 %>%
     align = "llcccccc",
     output = "latex"
   ) %>%
-  kableExtra::column_spec(1, width = "5em")
+  kableExtra::kable_styling(font_size = 9) %>%
+  kableExtra::column_spec(1, width = "5em") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = paste(
+      "Note: We estimate the effect for the default incentive group",
+      "(men aged 40-46) and the opt-in incentive group (men aged 47-57)",
+      "using results of the linear probability model presented in",
+      "\\ref{tab:int-reg}.",
+      "The effect for the opt-in incentive group is a linear combination",
+      "of the estimates, $\\\\beta_j - \\\\beta_{\\\\text{Altruistic}}$.",
+      "The effect for the default incentive group is a linear combination",
+      "of the estimates, $\\\\beta_j + \\\\gamma_j -",
+      "(\\\\beta_{\\\\text{Altruistic}} + \\\\gamma_{\\\\text{Altruistic}})$.",
+      "We use the F-test for the null hypothesis of the linear combination.",
+      "We use robust standard errors."
+    ),
+    threeparttable = TRUE,
+    escape = FALSE
+  )
 
 writeLines(tab, out.file)
 close(out.file)

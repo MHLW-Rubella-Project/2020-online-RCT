@@ -91,17 +91,16 @@ tab <- act2$
   table(
     title = paste(
       "Linear Probability Model of Behaviors",
-      "Using New Wave 2 Selection Data",
       "\\label{tab:act2-reg}"
     ),
     add_coef_map = c(
       "coupon2019" = "Coupon",
-      "coupon_b" = "Coupon\u00d7Age expression",
+      "coupon_b" = "Coupon\u00d7MHLW (Age)",
       "coupon_c" = "Coupon\u00d7Altruistic",
       "coupon_d" = "Coupon\u00d7Selfish",
-      "coupon_e" = "Coupon\u00d7Social comparison",
-      "coupon_f" = "Coupon\u00d7Valid date",
-      "coupon_g" = "Coupon\u00d7Low-cost"
+      "coupon_e" = "Coupon\u00d7Social Comparison",
+      "coupon_f" = "Coupon\u00d7Deadline",
+      "coupon_g" = "Coupon\u00d7Convenient"
     ),
     not_show_x = list(
       "Covariates" = all.vars(covmod)[8:length(all.vars(covmod))]
@@ -118,7 +117,7 @@ tab <- act2$
       "Note: * p < 0.1, ** p < 0.05, *** p < 0.01.",
       "We use robust standard errors.",
       "We also control for covariates obtained in wave 1 and 2.",
-      "The list of covariates is presented in Table \\@ref(tab:covlist)."
+      "The list of covariates is presented in Table \\\\ref{tab:covlist}."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -166,11 +165,11 @@ est_act2mod <- act2mod %>%
   mutate(coupon = if_else(str_detect(term, "coupon"), 1, 0)) %>%
   mutate(
     coupon = factor(coupon,
-      labels = c("Costly procedure", "Automatic receiving")
+      labels = c("Opt-in incentive", "Default incentive")
     ),
     outcome = factor(outcome,
       levels = c("abw1_test", "abw1_testvaccine"),
-      labels = c("Antibody Test", "Vaccination")
+      labels = c("Antibody testing", "Vaccination")
     ),
     nudge = str_extract(term, paste(LETTERS[1:7], collapse = "|")),
     nudge = factor(nudge, labels = treat_labels[-1])
@@ -187,16 +186,32 @@ tab <- est_act2mod %>%
       (estimate + std.error + p.value),
     data = .,
     title = paste(
-      "Effects of Text-Based Nudges on Behaviors",
+      "Effects of Text Messages on Behaviors for Two Groups",
       "Using Linear Probability Model Estimates",
-      "(Data: New Wave 2 Selection Data)",
       "\\label{tab:act2-reg-ftest}"
     ),
     fmt = 3,
     align = "llcccccc",
     output = "latex"
   ) %>%
-  kableExtra::column_spec(1, width = "5em")
+  kableExtra::kable_styling(font_size = 9) %>%
+  kableExtra::column_spec(1, width = "5em") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = paste(
+      "Note: We estimate the effect for the default incentive group",
+      "(men aged 40-46) and the opt-in incentive group (men aged 47-57)",
+      "using results of the linear probability model presented in",
+      "\\\\ref{tab:act2-reg}.",
+      "The effect for the opt-in incentive group is the estimate $\\\\beta_j$.",
+      "The effect for the default incentive group is a linear combination",
+      "of the estimates, $\\\\beta_j + \\\\gamma_j$.",
+      "We use the F-test for the null hypothesis of the linear combination.",
+      "We use robust standard errors."
+    ),
+    threeparttable = TRUE,
+    escape = FALSE
+  )
 
 writeLines(tab, out.file)
 close(out.file)
@@ -229,11 +244,11 @@ est_act2mod2 <- act2mod %>%
   mutate(
     coupon = if_else(str_detect(term, "coupon"), 1, 0),
     coupon = factor(coupon,
-      labels = c("Costly procedure", "Automatic receiving")
+      labels = c("Opt-in incentive", "Default incentive")
     ),
     outcome = factor(outcome,
       levels = c("abw1_test", "abw1_testvaccine"),
-      labels = c("Antibody Test", "Vaccination")
+      labels = c("Antibody testing", "Vaccination")
     ),
     nudge = str_extract(term, paste(LETTERS[c(2, 4:7)], collapse = "|")),
     # nudge = if_else(is.na(nudge), "A", nudge),
@@ -242,19 +257,38 @@ est_act2mod2 <- act2mod %>%
 
 est_act2mod2 %>%
   datasummary(
-    (`How to get coupons` = coupon) *
-      (`Text-based nudges` = nudge) ~ outcome * rawvalue *
+    (`Group` = coupon) *
+      (`Text messages` = nudge) ~ outcome * rawvalue *
       (estimate + std.error + p.value),
     data = .,
     title = paste(
-      "Effects of Text-Based Nudges on Behaviors",
+      "Effects of Text Messages on Behaviors for Two Groups",
       "Using Linear Probability Model Estimates",
-      "(Baseline: Altruistic Message, Data: New Wave 2 Selection Data)"
+      "(Baseline: Altruistic Message)"
     ),
     fmt = 3,
     align = "llcccccc"
   ) %>%
-  kableExtra::column_spec(1, width = "5em")
+  kableExtra::kable_styling(font_size = 9) %>%
+  kableExtra::column_spec(1, width = "5em") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = paste(
+      "Note: We estimate the effect for the default incentive group",
+      "(men aged 40-46) and the opt-in incentive group (men aged 47-57)",
+      "using results of the linear probability model presented in",
+      "\\\\ref{tab:act2-reg}.",
+      "The effect for the opt-in incentive group is a linear combination",
+      "of the estimates, $\\\\beta_j - \\\\beta_{\\\\text{Altruistic}}$.",
+      "The effect for the default incentive group is a linear combination",
+      "of the estimates, $\\\\beta_j + \\\\gamma_j -",
+      "(\\\\beta_{\\\\text{Altruistic}} + \\\\gamma_{\\\\text{Altruistic}})$.",
+      "We use the F-test for the null hypothesis of the linear combination.",
+      "We use robust standard errors."
+    ),
+    threeparttable = TRUE,
+    escape = FALSE
+  )
 
 #'
 #' <!--
@@ -311,20 +345,19 @@ tab2 <- act2$data %>%
     coupon2019,
     levels = c(1, 0),
     labels = c(
-      "w/ receiving coupon automatically",
-      "w/o receiving coupon automatically"
+      "Default incentive group",
+      "Opt-in incentive group"
     )
   )) %>%
   mutate(nudge = factor(nudge, labels = treat_labels)) %>%
   datasummary(
-    (`Text-based nudge` = nudge) ~ coupon2019 * sum * (
+    (`Text messages` = nudge) ~ coupon2019 * sum * (
       (`Antibody test` = abw1_test) +
-        (`Negative test result` = abw1_testnega) +
+        (`Negatives` = abw1_testnega) +
         (`Vaccination` = abw1_testvaccine)
     ),
     title = paste(
-      "Movement of Antibody Test Takers",
-      "(Data: New Wave 2 Selection Data)",
+      "Classification of Antibody Test Takers",
       "\\label{tab:tester2-move}"
     ),
     data = .,
@@ -341,11 +374,11 @@ tab2 <- act2$data %>%
       "Note: Limiting our sample to antibody test takers,",
       "we tested the null hypothesis that",
       "the number of negative antibody tests does not differ",
-      "between intervention groups with Fisher's exact test.",
-      "Also, restricting the sample to negative individuals,",
+      "among experimental arms with Fisher's exact test.",
+      "Also, restricting our sample to the negatives,",
       "we tested the null hypothesis that",
       "the number of vaccinations would not differ",
-      "between intervention groups with a Fisher's exact test."
+      "among experimental arms with a Fisher's exact test."
     ),
     notation = "none",
     threeparttable = TRUE

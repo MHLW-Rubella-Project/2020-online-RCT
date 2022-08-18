@@ -1,12 +1,14 @@
 \begin{table}
 
-\caption{Effects of Text-Based Nudges on Behaviors Using Linear Probability Model Estimates (Baseline: Altruistic Message) \label{tab:act-reg-ftest2}}
+\caption{Effects of Text-Based Nudges on Behaviors for Two Groups Using Linear Probability Model Estimates (Baseline: Altruistic Message) \label{tab:act-reg-ftest2}}
 \centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}lcccccc}
 \toprule
 \multicolumn{2}{c}{ } & \multicolumn{3}{c}{Antibody Test} & \multicolumn{3}{c}{Vaccination} \\
 \cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8}
-How to get coupons & Text-based nudges & estimate & std.error & p.value & estimate  & std.error  & p.value \\
+Group & Text messages & estimate & std.error & p.value & estimate  & std.error  & p.value \\
 \midrule
 Costly procedure & MHLW (Age) & \num{-0.013} & \num{0.012} & \num{0.287} & \num{-0.001} & \num{0.007} & \num{0.898}\\
  & Selfish & \num{-0.009} & \num{0.013} & \num{0.501} & \num{0.001} & \num{0.008} & \num{0.927}\\
@@ -20,4 +22,8 @@ Automatic receiving & MHLW (Age) & \num{-0.044} & \num{0.036} & \num{0.218} & \n
  & Convenient & \num{-0.035} & \num{0.036} & \num{0.330} & \num{-0.019} & \num{0.024} & \num{0.429}\\
 \bottomrule
 \end{tabular}
+\begin{tablenotes}
+\item Note: We estimate the effect for the default incentive group (men aged 40-46) and the opt-in incentive group (men aged 47-57) using results of the linear probability model presented in \ref{tab:act-reg}. The effect for the opt-in incentive group is a linear combination of the estimates, $\beta_j - \beta_{\text{Altruistic}}$. The effect for the default incentive group is a linear combination of the estimates, $\beta_j + \gamma_j - (\beta_{\text{Altruistic}} + \gamma_{\text{Altruistic}})$. We use the F-test for the null hypothesis of the linear combination. We use robust standard errors.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

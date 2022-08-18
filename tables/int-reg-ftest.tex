@@ -1,20 +1,22 @@
 \begin{table}
 
-\caption{Effects of Text-Based Nudges on Intentions Using Linear Probability Model Estimates \label{tab:int-reg-ftest}}
+\caption{Effects of Text Message on Intentions for Two Groups Using Linear Probability Model Estimates \label{tab:int-reg-ftest}}
 \centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}lcccccc}
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Antibody Test} & \multicolumn{3}{c}{Vaccination} \\
+\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Antibody testing} & \multicolumn{3}{c}{Vaccination} \\
 \cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8}
-How to get coupons & Text-based nudges & estimate & std.error & p.value & estimate  & std.error  & p.value \\
+Group & Text messages & estimate & std.error & p.value & estimate  & std.error  & p.value \\
 \midrule
-Costly procedure & MHLW (Age) & \num{-0.033} & \num{0.038} & \num{0.380} & \num{-0.075} & \num{0.043} & \num{0.084}\\
+Opt-in incentive & MHLW (Age) & \num{-0.033} & \num{0.038} & \num{0.380} & \num{-0.075} & \num{0.043} & \num{0.084}\\
  & Altruistic & \num{0.044} & \num{0.041} & \num{0.292} & \num{-0.040} & \num{0.044} & \num{0.360}\\
  & Selfish & \num{0.014} & \num{0.040} & \num{0.727} & \num{-0.058} & \num{0.044} & \num{0.189}\\
  & Social Comparison & \num{-0.050} & \num{0.038} & \num{0.186} & \num{-0.095} & \num{0.043} & \num{0.026}\\
  & Deadline & \num{0.024} & \num{0.039} & \num{0.536} & \num{-0.033} & \num{0.043} & \num{0.440}\\
  & Convenient & \num{0.056} & \num{0.041} & \num{0.165} & \num{-0.035} & \num{0.044} & \num{0.421}\\
-Automatic receiving & MHLW (Age) & \num{0.024} & \num{0.050} & \num{0.630} & \num{0.027} & \num{0.061} & \num{0.660}\\
+default incentive & MHLW (Age) & \num{0.024} & \num{0.050} & \num{0.630} & \num{0.027} & \num{0.061} & \num{0.660}\\
  & Altruistic & \num{0.149} & \num{0.050} & \num{0.003} & \num{0.026} & \num{0.058} & \num{0.662}\\
  & Selfish & \num{0.107} & \num{0.051} & \num{0.034} & \num{0.077} & \num{0.061} & \num{0.209}\\
  & Social Comparison & \num{0.070} & \num{0.051} & \num{0.172} & \num{0.043} & \num{0.062} & \num{0.483}\\
@@ -22,4 +24,8 @@ Automatic receiving & MHLW (Age) & \num{0.024} & \num{0.050} & \num{0.630} & \nu
  & Convenient & \num{0.055} & \num{0.050} & \num{0.272} & \num{0.024} & \num{0.060} & \num{0.688}\\
 \bottomrule
 \end{tabular}
+\begin{tablenotes}
+\item Note: We estimate the effect for the default incentive group (men aged 40-46) and the opt-in incentive group (men aged 47-57) using results of the linear probability model presented in \ref{tab:int-reg}. The effect for the opt-in incentive group is the estimate $\beta_j$. The effect for the default incentive group is a linear combination of the estimates, $\beta_j + \gamma_j$. We use the F-test for the null hypothesis of the linear combination. We use robust standard errors.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

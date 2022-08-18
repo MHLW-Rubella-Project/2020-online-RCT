@@ -46,7 +46,9 @@ tab <- act2$
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: We use men aged 40-46",
+      "Note:",
+      "Description of variables is shown in Table \\\\ref{covariate-list}.",
+      "We use men aged 40-46,",
       "who automatically received the free vouchers in FY2019.",
       "We show sample average of each variable for each experimental arm",
       "in columns 2 through 8.",
@@ -79,7 +81,9 @@ tab <- act2$
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: We use men aged 47-57",
+      "Note:",
+      "Description of variables is shown in Table \\\\ref{covariate-list}.",
+      "We use men aged 40-46,",
       "who needed costly procedures to get the free vouchers in FY2019.",
       "We show sample average of each variable for each experimental arm",
       "in columns 2 through 8.",

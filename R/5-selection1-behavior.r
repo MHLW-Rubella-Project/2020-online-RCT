@@ -149,7 +149,8 @@ tab <- act$
       "We use the second wave analysis sample.",
       "We use robust standard errors.",
       "We also control for covariates obtained in wave 1 and 2.",
-      "The list of covariates is presented in Table \\\\ref{tab:covlist}."
+      "The list of covariates is presented in",
+      "Table \\\\ref{tab:covariate-list}."
     ),
     threeparttable = TRUE,
     escape = FALSE

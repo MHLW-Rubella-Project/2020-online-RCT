@@ -59,7 +59,7 @@ tab <- int$
     general_title = "",
     general = paste(
       "Note:",
-      "Description of variables is shown in Table \\\\ref{covariate-list}.",
+      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
       "We use men aged 40-46,",
       "who automatically received the free vouchers in FY2019,",
       "in the first wave study sample.",
@@ -95,7 +95,7 @@ tab <- int$
     general_title = "",
     general = paste(
       "Note:",
-      "Description of variables is shown in Table \\\\ref{covariate-list}.",
+      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
       "We use men aged 40-46,",
       "who needed costly procedures to get the free vouchers in FY2019,",
       "in the first wave study sample.",
@@ -131,7 +131,7 @@ tab <- act$
     general_title = "",
     general = paste(
       "Note:",
-      "Description of variables is shown in Table \\\\ref{covariate-list}.",
+      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
       "We use men aged 40-46,",
       "who automatically received the free vouchers in FY2019,",
       "in the second wave study sample.",
@@ -167,7 +167,7 @@ tab <- act$
     general_title = "",
     general = paste(
       "Note:",
-      "Description of variables is shown in Table \\\\ref{covariate-list}.",
+      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
       "We use men aged 40-46,",
       "who needed costly procedures to get the free vouchers in FY2019,",
       "in the second wave study sample.",

@@ -235,7 +235,7 @@ tab <- est_intmod %>%
     general_title = "",
     general = paste(
       "Note: We estimate the effect for the default incentive group",
-      "(men aged 40-46) and the opt-in incentive group (men aged 47-57)",
+      "(men aged 40-46 years) and the opt-in incentive group (men aged 47-57 years)",
       "using results of the linear probability model presented in",
       "\\\\ref{tab:int-reg}.",
       "The effect for the opt-in incentive group is the estimate $\\\\beta_j$.",
@@ -313,7 +313,7 @@ tab <- est_intmod2 %>%
     general_title = "",
     general = paste(
       "Note: We estimate the effect for the default incentive group",
-      "(men aged 40-46) and the opt-in incentive group (men aged 47-57)",
+      "(men aged 40-46 years) and the opt-in incentive group (men aged 47-57 years)",
       "using results of the linear probability model presented in",
       "\\ref{tab:int-reg}.",
       "The effect for the opt-in incentive group is a linear combination",

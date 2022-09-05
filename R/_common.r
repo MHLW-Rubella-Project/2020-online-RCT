@@ -27,7 +27,7 @@ treat_labels <- c(
   "MHLW (Age)",
   "Altruistic",
   "Selfish",
-  "Social comparison",
+  "Social Comparison",
   "Deadline",
   "Convenient"
 )

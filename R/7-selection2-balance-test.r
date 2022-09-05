@@ -33,14 +33,30 @@ tab <- act2$
   balance(subset = coupon2019 == 1)$
   table(
     title = paste(
-      "Balance Test of New Wave 2 Selection Data",
-      "(Men who automatically received coupon in 2019)",
+      "Balance Test for Default Incentive Group",
       "\\label{tab:act2-coupon1-balance}"
     ),
     output = "latex"
   ) %>%
-  kableExtra::kable_styling(latex_options = "hold_position") %>%
-  kableExtra::column_spec(2:8, width = "3em")
+  kableExtra::kable_styling(
+    font_size = 9,
+    latex_options = "hold_position"
+  ) %>%
+  kableExtra::column_spec(2:8, width = "3em") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = paste(
+      "Note:",
+      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
+      "We use men aged 40-46,",
+      "who automatically received the free vouchers in FY2019.",
+      "We show sample average of each variable for each experimental arm",
+      "in columns 2 through 8.",
+      "We show the p-value of F-test for joint null hypothesis in column 9."
+    ),
+    threeparttable = TRUE,
+    escape = FALSE
+  )
 
 writeLines(tab, out.file)
 close(out.file)
@@ -52,14 +68,30 @@ tab <- act2$
   balance(subset = coupon2019 == 0)$
   table(
     title = paste(
-      "Balance Test of New Wave 2 Selection Data",
-      "(Men who need to be processed to receive coupon in 2019)",
+      "Balance Test for Opt-in Incentive Group",
       "\\label{tab:act2-coupon0-balance}"
     ),
     output = "latex"
   ) %>%
-  kableExtra::kable_styling(latex_options = "hold_position") %>%
-  kableExtra::column_spec(2:8, width = "3em")
+  kableExtra::kable_styling(
+    font_size = 9,
+    latex_options = "hold_position"
+  ) %>%
+  kableExtra::column_spec(2:8, width = "3em") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = paste(
+      "Note:",
+      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
+      "We use men aged 40-46,",
+      "who needed costly procedures to get the free vouchers in FY2019.",
+      "We show sample average of each variable for each experimental arm",
+      "in columns 2 through 8.",
+      "We show the p-value of F-test for joint null hypothesis in column 9."
+    ),
+    threeparttable = TRUE,
+    escape = FALSE
+  )
 
 writeLines(tab, out.file)
 close(out.file)

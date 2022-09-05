@@ -1,10 +1,12 @@
 \begin{table}[!h]
 
-\caption{Balance Test of Wave 2 Selection Data (Men who automatically received coupon in 2019) \label{tab:act-coupon1-balance}}
+\caption{Balance Test for Default Incentive Group in Second Wave Study Sample \label{tab:act-coupon1-balance}}
 \centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
 \begin{tabular}[t]{l>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}>{\centering\arraybackslash}p{3em}c}
 \toprule
-  & MHLW (Control) & MHLW (Age) & Altruistic & Selfish & Social comparison & Deadline & Convenient & p-value\\
+  & MHLW (Control) & MHLW (Age) & Altruistic & Selfish & Social Comparison & Deadline & Convenient & p-value\\
 \midrule
 age & \num{42.861} & \num{43.059} & \num{43.102} & \num{43.036} & \num{42.893} & \num{42.898} & \num{42.964} & \num{0.953}\\
 avoid\_crowd & \num{3.296} & \num{3.336} & \num{3.273} & \num{3.234} & \num{3.350} & \num{3.305} & \num{3.324} & \num{0.990}\\
@@ -21,4 +23,8 @@ temp\_check & \num{2.139} & \num{2.235} & \num{2.414} & \num{2.126} & \num{2.204
 wear\_mask & \num{2.930} & \num{3.076} & \num{3.109} & \num{3.009} & \num{3.010} & \num{3.144} & \num{3.207} & \num{0.794}\\
 \bottomrule
 \end{tabular}
+\begin{tablenotes}
+\item Note: Description of variables is shown in Table \ref{tab:covariate-list}. We use men aged 40-46, who automatically received the free vouchers in FY2019, in the second wave study sample. We show sample average of each variable for each experimental arm in columns 2 through 8. We show the p-value of F-test for joint null hypothesis in column 9.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

@@ -184,7 +184,7 @@ tab <- web %>%
     add_columns = message_list,
     align = "llcccccc",
     data = .,
-    title = "List of Text-Based Nudges \\label{tab:nudge-list}",
+    title = "List of Text Message Reminders \\label{tab:nudge-list}",
     linesep = "\\addlinespace",
     output = "latex"
   ) %>%

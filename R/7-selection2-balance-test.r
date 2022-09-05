@@ -48,7 +48,7 @@ tab <- act2$
     general = paste(
       "Note:",
       "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
-      "We use men aged 40-46,",
+      "We use men aged 40-46 years,",
       "who automatically received the free vouchers in FY2019.",
       "We show sample average of each variable for each experimental arm",
       "in columns 2 through 8.",
@@ -83,7 +83,7 @@ tab <- act2$
     general = paste(
       "Note:",
       "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
-      "We use men aged 40-46,",
+      "We use men aged 40-46 years,",
       "who needed costly procedures to get the free vouchers in FY2019.",
       "We show sample average of each variable for each experimental arm",
       "in columns 2 through 8.",

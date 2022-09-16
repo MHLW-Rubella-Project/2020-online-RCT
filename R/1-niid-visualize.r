@@ -20,9 +20,9 @@ antibody <- read_csv(here(niid_path, "shape_prevalence.csv")) %>%
 
 cell <- antibody %>%
   mutate(g = case_when(
-    age < 39 ~ "39 < age",
-    age <= 55 ~ "39 <= age <= 55",
-    TRUE ~ "55 < age"
+    age < 39 ~ "age < 39",
+    age <= 56 ~ "39 <= age <= 56",
+    TRUE ~ "56 < age"
   )) %>%
   group_by(gender, g) %>%
   summarize(mu = mean(antibody_rate_8) * 100) %>%
@@ -39,12 +39,12 @@ plot_antibody <- antibody %>%
   geom_point(aes(shape = gender), size = 3) +
   geom_line() +
   geom_polygon(
-    data = tibble(x = c(39, 55, 55, 39), y = c(-Inf, -Inf, Inf, Inf)),
+    data = tibble(x = c(39, 56, 56, 39), y = c(-Inf, -Inf, Inf, Inf)),
     aes(x = x, y = y),
     fill = "black", alpha = 0.1, inherit.aes = FALSE
   ) +
   scale_x_continuous(
-    breaks = c(0, 10, 20, 28, 30, 39, 40, 50, 55, 60, 70)
+    breaks = seq(0, 70, by = 5)
   ) +
   labs(
     x = "Age",
@@ -56,7 +56,7 @@ plot_antibody <- antibody %>%
 plot_antibody
 
 ggsave(
-  here("figures", "niid-antibody.pdf"),
+  here("export", "figures", "niid-antibody.pdf"),
   plot = plot_antibody,
   width = 10,
   height = 6
@@ -68,7 +68,7 @@ reg <- antibody %>%
   mutate(
     age_group = case_when(
       age < 39 ~ "under39",
-      age <= 55 ~ "b/w 39 and 55",
+      age <= 56 ~ "b/w 39 and 55",
       TRUE ~ "over55"
     ),
     age_group = factor(

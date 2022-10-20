@@ -63,7 +63,7 @@ plot_wtp <- wtp %>%
   simplegg(axis_text_size = 12)
 
 ggsave(
-  here("figures", "demand-vaccine.pdf"),
+  here("export/figures", "demand-vaccine.pdf"),
   plot = plot_wtp,
   width = 10,
   height = 6
@@ -96,7 +96,7 @@ econval <- act1 %>%
   ) %>%
   mutate(arms = droplevels(arms, exclude = "MHLW (Control)"))
 
-out.file <- file(here("tables", "economic-value.tex"), open = "w")
+out.file <- file(here("export/tables", "economic-value.tex"), open = "w")
 
 tab <- econval %>%
   modelsummary::datasummary(
@@ -123,20 +123,7 @@ tab <- econval %>%
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note:",
-      "We use the size of effect of each text message reminders",
-      "on antibody testing.",
-      "Baseline is the sum of the rate of antibody test in the control",
-      "and the vaccination rate when the vaccine is free.",
-      "The monetary value is the amount per person (pp) and the total amount",
-      "(total) multiplied by the number of people who received the coupon",
-      "in 2019 but did not use it until January, 2020 (5.29 million).",
-      "We valued the monetary value in Japanese Yen (JPY)",
-      "and US Dollars (USD) (1USD = 110JPY).",
-      "The unit of monetary value per person is 1 JPY and 1 USD,",
-      "respectively.",
-      "The unit of total monetary value is 1 billion JPY and 1 million USD,",
-      "respectively."
+      "Note: We use the effect size of each text message reminder on antibody testing. Baseline is the sum of the rate of antibody test in the control and the free vaccination rates. The monetary value is the amount per person multiplied by the number of people who received the coupon in 2019 but did not use it until January 2020 (5.29 million). We valued it in Japanese Yen and US Dollars (1USD = 110JPY). The unit of monetary value per person is 1 JPY and 1 USD, respectively. The unit of total monetary value is 1 billion JPY and 1 million USD, respectively."
     ),
     threeparttable = TRUE,
     escape = FALSE

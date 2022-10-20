@@ -86,7 +86,7 @@ plot_int1 <- int$
   )
 
 ggsave(
-  here("figures", "int-coupon1-ttest.pdf"),
+  here("export/figures", "int-coupon1-ttest.pdf"),
   plot = plot_int1,
   width = 10,
   height = 6
@@ -109,7 +109,7 @@ plot_int0 <- int$
 )
 
 ggsave(
-  here("figures", "int-coupon0-ttest.pdf"),
+  here("export/figures", "int-coupon0-ttest.pdf"),
   plot = plot_int0,
   width = 10,
   height = 6
@@ -120,7 +120,7 @@ ggsave(
 #' //NOTE: 意向に対する効果の回帰分析
 #' --->
 #+ int-reg
-out.file <- file(here("tables", "int-reg.tex"), open = "w")
+out.file <- file(here("export/tables", "int-reg.tex"), open = "w")
 
 tab <- int$
   lm(se_type = "HC0", only_dmod = FALSE)$
@@ -147,12 +147,7 @@ tab <- int$
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: * p < 0.1, ** p < 0.05, *** p < 0.01.",
-      "We use robust standard errors.",
-      "We use the second wave analysis sample.",
-      "We also control for covariates obtained in wave 1.",
-      "The list of covariates is presented in",
-      "Table \\\\ref{tab:covariate-list}."
+      "Note: * p < 0.1, ** p < 0.05, *** p < 0.01. Robust standard errors. We use the wave 2 study sample and control for covariates. The list of covariates is presented in Table \\\\ref{tab:covariate-list}."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -212,7 +207,7 @@ est_intmod <- intmod %>%
 
 rawvalue <- function(x) x
 
-out.file <- file(here("tables", "int-reg-ftest.tex"), open = "w")
+out.file <- file(here("export/tables", "int-reg-ftest.tex"), open = "w")
 
 tab <- est_intmod %>%
   datasummary(
@@ -234,15 +229,7 @@ tab <- est_intmod %>%
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: We estimate the effect for the default incentive group",
-      "(men aged 40-46 years) and the opt-in incentive group (men aged 47-57 years)",
-      "using results of the linear probability model presented in",
-      "\\\\ref{tab:int-reg}.",
-      "The effect for the opt-in incentive group is the estimate $\\\\beta_j$.",
-      "The effect for the default incentive group is a linear combination",
-      "of the estimates, $\\\\beta_j + \\\\gamma_j$.",
-      "We use the F-test for the null hypothesis of the linear combination.",
-      "We use robust standard errors."
+      "Note: We estimate the effect for the default incentive group (men aged 40--46) and the opt-in incentive group (men aged 47--57 years) using  Table \\\\ref{tab:int-reg}. The effect for the opt-in incentive group is the estimate $\\\\beta_j$. The effect for the default incentive group is a linear combination of the estimates, $\\\\beta_j + \\\\gamma_j$. F-test is used for linear combination null hypothesis. Robust standard errors."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -289,7 +276,7 @@ est_intmod2 <- intmod %>%
     nudge = factor(nudge, labels = treat_labels[c(2, 4:7)])
   )
 
-out.file <- file(here("tables", "int-reg-ftest2.tex"), open = "w")
+out.file <- file(here("export/tables", "int-reg-ftest2.tex"), open = "w")
 
 tab <- est_intmod2 %>%
   datasummary(
@@ -312,17 +299,7 @@ tab <- est_intmod2 %>%
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: We estimate the effect for the default incentive group",
-      "(men aged 40-46 years) and the opt-in incentive group (men aged 47-57 years)",
-      "using results of the linear probability model presented in",
-      "\\ref{tab:int-reg}.",
-      "The effect for the opt-in incentive group is a linear combination",
-      "of the estimates, $\\\\beta_j - \\\\beta_{\\\\text{Altruistic}}$.",
-      "The effect for the default incentive group is a linear combination",
-      "of the estimates, $\\\\beta_j + \\\\gamma_j -",
-      "(\\\\beta_{\\\\text{Altruistic}} + \\\\gamma_{\\\\text{Altruistic}})$.",
-      "We use the F-test for the null hypothesis of the linear combination.",
-      "We use robust standard errors."
+      "Note: We estimate the effect for the default incentive group (men aged 40--46) and the opt-in incentive group (men aged 47--57 years) using  Table \\\\ref{tab:int-reg}. The effect for the opt-in incentive group is a linear combination of the estimates, $\\\\beta_j - \\\\beta_{\\\\text{Altruistic}}$. The effect for the default incentive group is a linear combination of the estimates, $\\\\beta_j + \\\\gamma_j - (\\\\beta_{\\\\text{Altruistic}} + \\\\gamma_{\\\\text{Altruistic}})$. F-test is used for linear combination null hypothesis. Robust standard errors."
     ),
     threeparttable = TRUE,
     escape = FALSE

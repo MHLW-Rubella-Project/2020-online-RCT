@@ -107,7 +107,7 @@ plot_flowchart <- textdt %>%
 plot_flowchart
 
 ggsave(
-  here("figures", "flowchart.pdf"),
+  here("export/figures", "flowchart.pdf"),
   plot = plot_flowchart,
   width = 25,
   height = 15
@@ -138,7 +138,7 @@ descript <- readr::read_csv(
 
 attr(descript, "position") <- 2
 
-out.file <- file(here("tables", "covariate-list.tex"), open = "w")
+out.file <- file(here("export/tables", "covariate-list.tex"), open = "w")
 
 tab <- paste(cov, collapse = "+") %>%
   paste("~ Mean + (`Std.Dev.` = SD)") %>%
@@ -167,14 +167,14 @@ message_list <- readr::read_csv(
 
 attr(message_list, "position") <- 2
 
-out.file <- file(here("tables", "nudge-list.tex"), open = "w")
+out.file <- file(here("export/tables", "nudge-list.tex"), open = "w")
 
 tab <- web %>%
   mutate(age_group = case_when(
     age == 39 ~ "39",
-    age <= 46 ~ "40-46",
-    age <= 56 ~ "47-56",
-    age <= 59 ~ "57-59"
+    age <= 46 ~ "40--46",
+    age <= 56 ~ "47--56",
+    age <= 59 ~ "57--59"
   )) %>%
   mutate(nudge = factor(nudge, labels = treat_labels)) %>%
   rename(Message = nudge) %>%

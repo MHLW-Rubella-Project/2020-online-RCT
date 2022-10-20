@@ -27,7 +27,7 @@ act2 <- create_RCTtoolbox(
 )
 
 #+ act2-coupon1-balance
-out.file <- file(here("tables", "act2-coupon1-balance.tex"), open = "w")
+out.file <- file(here("export/tables", "act2-coupon1-balance.tex"), open = "w")
 
 tab <- act2$
   balance(subset = coupon2019 == 1)$
@@ -46,13 +46,7 @@ tab <- act2$
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note:",
-      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
-      "We use men aged 40-46 years,",
-      "who automatically received the free vouchers in FY2019.",
-      "We show sample average of each variable for each experimental arm",
-      "in columns 2 through 8.",
-      "We show the p-value of F-test for joint null hypothesis in column 9."
+      "Note: Description of variables is shown in Table \\\\ref{tab:covariate-list}. We use men aged 40--46 received free vouchers in FY2019. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-values of the joint null hypothesis (F-test)."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -62,7 +56,7 @@ writeLines(tab, out.file)
 close(out.file)
 
 #+ act2-coupon0-balance
-out.file <- file(here("tables", "act2-coupon0-balance.tex"), open = "w")
+out.file <- file(here("export/tables", "act2-coupon0-balance.tex"), open = "w")
 
 tab <- act2$
   balance(subset = coupon2019 == 0)$
@@ -81,13 +75,7 @@ tab <- act2$
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note:",
-      "Description of variables is shown in Table \\\\ref{tab:covariate-list}.",
-      "We use men aged 40-46 years,",
-      "who needed costly procedures to get the free vouchers in FY2019.",
-      "We show sample average of each variable for each experimental arm",
-      "in columns 2 through 8.",
-      "We show the p-value of F-test for joint null hypothesis in column 9."
+      "Note: Description of variables is shown in Table \\\\ref{tab:covariate-list}. We use men aged 40--46 years who needed expensive procedures to get free vouchers in FY2019. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-values of the joint null hypothesis (F-test)."
     ),
     threeparttable = TRUE,
     escape = FALSE

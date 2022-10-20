@@ -84,7 +84,7 @@ plot_act1 <- act$
   )
 
 ggsave(
-  here("figures", "act-coupon1-ttest.pdf"),
+  here("export/figures", "act-coupon1-ttest.pdf"),
   plot = plot_act1,
   width = 10,
   height = 6
@@ -107,7 +107,7 @@ plot_act0 <- act$
 )
 
 ggsave(
-  here("figures", "act-coupon0-ttest.pdf"),
+  here("export/figures", "act-coupon0-ttest.pdf"),
   plot = plot_act0,
   width = 10,
   height = 6
@@ -118,7 +118,7 @@ ggsave(
 #' //NOTE: 行動に対する効果の回帰分析
 #' --->
 #+ act-reg
-out.file <- file(here("tables", "act-reg.tex"), open = "w")
+out.file <- file(here("export/tables", "act-reg.tex"), open = "w")
 
 tab <- act$
   lm(se_type = "HC0", only_dmod = FALSE)$
@@ -145,12 +145,7 @@ tab <- act$
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: * p < 0.1, ** p < 0.05, *** p < 0.01.",
-      "We use the second wave analysis sample.",
-      "We use robust standard errors.",
-      "We also control for covariates obtained in wave 1 and 2.",
-      "The list of covariates is presented in",
-      "Table \\\\ref{tab:covariate-list}."
+      "Note: * p < 0.1, ** p < 0.05, *** p < 0.01. Robust Standard errors. We use the wave 2 study sample. We use waves 1 and 2 covariates. The list of covariates is presented in Table \\\\ref{tab:covariate-list}."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -210,7 +205,7 @@ est_actmod <- actmod %>%
 
 rawvalue <- function(x) x
 
-out.file <- file(here("tables", "act-reg-ftest.tex"), open = "w")
+out.file <- file(here("export/tables", "act-reg-ftest.tex"), open = "w")
 
 tab <- est_actmod %>%
   datasummary(
@@ -232,15 +227,7 @@ tab <- est_actmod %>%
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: We estimate the effect for the default incentive group",
-      "(men aged 40-46 years) and the opt-in incentive group (men aged 47-57 years)",
-      "using results of the linear probability model presented in",
-      "\\\\ref{tab:act-reg}.",
-      "The effect for the opt-in incentive group is the estimate $\\\\beta_j$.",
-      "The effect for the default incentive group is a linear combination",
-      "of the estimates, $\\\\beta_j + \\\\gamma_j$.",
-      "We use the F-test for the null hypothesis of the linear combination.",
-      "We use robust standard errors."
+      "Note: We estimate the effect for the default incentive group (men aged 40--46 years) and the opt-in incentive group (men aged 47--57) using results of the linear probability model presented in \\\\ref{tab:act-reg}. The effect for the opt-in incentive group is the estimate $\\\\beta_j$. The effect for the default incentive group is a linear combination of the estimates, $\\\\beta_j + \\\\gamma_j$. F-test is used for linear combination null hypothesis. Robust standard errors."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -287,7 +274,7 @@ est_actmod2 <- actmod %>%
     nudge = factor(nudge, labels = treat_labels[c(2, 4:7)])
   )
 
-out.file <- file(here("tables", "act-reg-ftest2.tex"), open = "w")
+out.file <- file(here("export/tables", "act-reg-ftest2.tex"), open = "w")
 
 tab <- est_actmod2 %>%
   datasummary(
@@ -310,17 +297,7 @@ tab <- est_actmod2 %>%
   kableExtra::footnote(
     general_title = "",
     general = paste(
-      "Note: We estimate the effect for the default incentive group",
-      "(men aged 40-46 years) and the opt-in incentive group (men aged 47-57 years)",
-      "using results of the linear probability model presented in",
-      "\\\\ref{tab:act-reg}.",
-      "The effect for the opt-in incentive group is a linear combination",
-      "of the estimates, $\\\\beta_j - \\\\beta_{\\\\text{Altruistic}}$.",
-      "The effect for the default incentive group is a linear combination",
-      "of the estimates, $\\\\beta_j + \\\\gamma_j -",
-      "(\\\\beta_{\\\\text{Altruistic}} + \\\\gamma_{\\\\text{Altruistic}})$.",
-      "We use the F-test for the null hypothesis of the linear combination.",
-      "We use robust standard errors."
+      "Note: We estimate the effect for the default incentive group (men aged 40--46) and the opt-in incentive group (men aged 47--57) using results of the linear probability model presented in \\\\ref{tab:act-reg}. The effect for the opt-in incentive group is a linear combination of the estimates, $\\\\beta_j - \\\\beta_{\\\\text{Altruistic}}$. The effect for the default incentive group is a linear combination of the estimates, $\\\\beta_j + \\\\gamma_j - (\\\\beta_{\\\\text{Altruistic}} + \\\\gamma_{\\\\text{Altruistic}})$.  F-test is used for linear combination null hypothesis. Robust standard errors."
     ),
     threeparttable = TRUE,
     escape = FALSE
@@ -373,7 +350,7 @@ chi2test_result_tab <- tribble(
   sprintf("%1.2f", chi2test20$result$aw1_testvaccine$p)
 )
 
-out.file <- file(here("tables", "tester-move.tex"), open = "w")
+out.file <- file(here("export/tables", "tester-move.tex"), open = "w")
 
 tab <- act$data %>%
   mutate(coupon2019 = factor(
@@ -403,14 +380,7 @@ tab <- act$data %>%
   column_spec(column = 2:7, width = "5em") %>%
   kableExtra::add_footnote(
     label = paste(
-      "Note: Limiting our sample to antibody test takers,",
-      "we tested the null hypothesis that",
-      "the number of negative antibody tests does not differ",
-      "among experimental arms with Fisher's exact test.",
-      "Also, restricting our sample to the negatives,",
-      "we tested the null hypothesis that",
-      "the number of vaccinations would not differ",
-      "among experimental arms with a Fisher's exact test."
+      "Note: Fisher's exact test was used to test the null hypothesis that the number of negative antibody tests does not differ between experimental arms. It was also used to test the null hypothesis that the number of vaccinations would not differ between experimental arms."
     ),
     notation = "none",
     threeparttable = TRUE

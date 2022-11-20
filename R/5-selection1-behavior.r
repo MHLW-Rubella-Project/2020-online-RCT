@@ -375,7 +375,7 @@ tab <- act$data %>%
     add_rows = chi2test_result_tab,
     output = "latex"
   ) %>%
-  kable_styling(font_size = 9) %>%
+  kable_styling(font_size = 9, latex_options = "HOLD_position") %>%
   column_spec(column = 1, width = "9em") %>%
   column_spec(column = 2:7, width = "5em") %>%
   kableExtra::add_footnote(

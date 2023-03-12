@@ -1,10 +1,8 @@
 library(tidyverse)
-library(foreign)
-library(readstata13)
 library(lubridate)
 library(here)
 
-pass <- "data/2020-online-survey"
+pass <- "2020-online-survey"
 
 #' ########################################
 #' # Online survey experiment (Wave 1 & 2)
@@ -30,13 +28,13 @@ wave2 <- read_csv(
 wave1 <- wave1 %>%
   dplyr::select(
     -(pref_id:gender), -(age_step:occupation),
-    -回答開始日時, -回答日時
+    -"回答開始日時", -"回答日時"
   )
 
 wave2 <- wave2 %>%
   dplyr::select(
-    -(id:職業分類), -回答開始日時, -回答日時,
-    -事前調査割付
+    -(id:"職業分類"), -"回答開始日時", -"回答日時",
+    -"事前調査割付"
   )
 
 #'
@@ -132,6 +130,7 @@ wave2 <- wave2 %>%
 #' - 風しんリスク (q11)
 #' - 一般的利他性（q17_2）
 #' - 世帯所得（q44）
+#' - 世帯構成（q37）
 #'
 #+
 wave1 <- wave1 %>%
@@ -170,6 +169,9 @@ wave1 <- wave1 %>%
       q33 == 11 ~ 21
     ),
     married = if_else(q34 == 1, 1, 0),
+
+    # households with children
+    child_family = if_else(q37 == 4, 1, 0),
 
     # daily health behavior before wave 1
     exercise_w1 = if_else(q1 < 3, 1, 0),

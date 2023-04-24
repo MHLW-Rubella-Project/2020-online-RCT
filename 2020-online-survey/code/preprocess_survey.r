@@ -131,6 +131,10 @@ wave2 <- wave2 %>%
 #' - 一般的利他性（q17_2）
 #' - 世帯所得（q44）
 #' - 世帯構成（q37）
+#' - 在宅勤務（q43.8）
+#' - 就労ダミー（q39 < 8）
+#' - 公共交通機関の利用（q43.4 + q43.5 > 0）
+#' - 官公庁or300人以上の企業規模（q42 >= 5）
 #'
 #+
 wave1 <- wave1 %>%
@@ -219,7 +223,17 @@ wave1 <- wave1 %>%
       "12" = 2000,
       .default = NA_real_
     ),
-    noinfo_income = if_else(q44 == 13, 1, 0)
+    noinfo_income = if_else(q44 == 13, 1, 0),
+
+    # working
+    work = if_else(q39 < 8, 1, 0),
+    
+    # transportation
+    wfh = if_else(is.na(q43.8) | q43.8 == 0, 0, 1),
+    public_trans = if_else(is.na(q43.4) | q43.4 + q43.5 == 0, 0, 1),
+
+    # firm size
+    big_size = if_else(is.na(q42) | q42 < 5, 0, 1)
   )
 
 wave1 <- wave1 %>%

@@ -18,7 +18,7 @@ niid1 <- niid1 %>%
   dplyr::filter(!str_detect(age, "M")) %>%
   mutate(age = dplyr::recode(age, "70-" = 70, .default = as.numeric(age))) %>%
   bind_rows(age0_niid1) %>%
-  mutate(prevalence = 100 * (HI8 + HI32 + HI64 + HI128 + HI256 + HI512 + HI_more1024) / total)
+  mutate(prevalence = 100 * (HI8 + HI16 + HI32 + HI64 + HI128 + HI256 + HI512 + HI_more1024) / total)
 
 write_csv(niid1, file = here(pass, "shape_prevalence.csv"))
 

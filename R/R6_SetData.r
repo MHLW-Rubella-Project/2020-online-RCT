@@ -3,6 +3,7 @@ library(R6)
 library(tidyverse)
 library(modelsummary)
 library(kableExtra)
+source(here("R/R6_MainAnalysis.r"))
 
 SetData <- R6::R6Class("SetData",
   public = list(
@@ -70,6 +71,9 @@ SetData <- R6::R6Class("SetData",
       f <- est[["F value"]][1]
       p <- est[["Pr(>F)"]][1]
       sprintf("F-value = %1.3f (p-value = %1.3f)", f, p)
+    },
+    main_analysis = function() {
+      MainAnalysis$new(self$data, private$treat_labels, private$covs)
     }
   ),
   private = list(
@@ -99,3 +103,4 @@ test$add_control(cov)
 test$summary_control(here("assets/vars_descript.csv"))
 test$summary_assign(here("assets/nudge_descript.csv"))
 test$balance_attrition()
+test$main_analysis()

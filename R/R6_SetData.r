@@ -88,7 +88,11 @@ SetData <- R6::R6Class("SetData",
       
       wave1 <- dt %>%
         filter(40 <= age & age <= 56) %>%
-        filter(exp_antibody != 1 & exp_vaccine != 1)
+        filter(exp_antibody != 1 & exp_vaccine != 1) %>%
+        rename(
+          outcome_test = test_int,
+          outcome_vacc = vaccine_int
+        )
       
       wave2 <- dt %>%
         filter(40 <= age & age <= 56) %>%
@@ -98,6 +102,10 @@ SetData <- R6::R6Class("SetData",
           exp_vaccine != 1 &
           act_test != 2 &
           act_vaccine != 2
+        ) %>%
+        rename(
+          outcome_test = aw1_test,
+          outcome_vacc = aw1_testvaccine
         )
       
       EstimateEffect$new(wave1, wave2, private$treat_labels, private$covs)

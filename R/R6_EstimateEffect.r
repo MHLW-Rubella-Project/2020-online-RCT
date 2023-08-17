@@ -1,5 +1,6 @@
 library(R6)
 library(estimatr)
+source("R/misc.r")
 
 EstimateEffect <- R6::R6Class("EstimateEffect",
   public = list(
@@ -80,7 +81,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       LETTERS[2:7] %>%
         sapply(function(i) {
           uniroot(
-            private$diff_power,
+            diff_power,
             c(0, 10),
             n0 = obs["A"],
             n1 = obs[i],
@@ -88,6 +89,76 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
             power = power
           )$root
         })
+    },
+    ttest = function(outcome_intention = TRUE, default_voucher = TRUE) {
+      use <- private$use_data(outcome_intention, default_voucher)
+
+      stats <- use %>%
+        group_by(nudge) %>%
+        summarize_at(
+          vars(starts_with("outcome")),
+          list(
+            mu = ~ mean(.),
+            se = ~ se(.)
+          )
+        ) %>%
+        pivot_longer(
+          -nudge,
+          names_prefix = "outcome_",
+          names_to = c("outcome", ".value"),
+          names_pattern = "(.*)_(.*)"
+        )
+
+      nudge <- use$nudge
+      test <- use$outcome_test
+      vacc <- use$outcome_vacc
+
+      t_test <- LETTERS[1:7] %>%
+        sapply(function(i) t.test(test[nudge == "A"], test[nudge == i])$p.value)
+
+      t_vacc <- LETTERS[1:7] %>%
+        sapply(function(i) t.test(vacc[nudge == "A"], vacc[nudge == i])$p.value)
+
+      t_res <- tibble(
+        nudge = c(names(t_test), names(t_vacc)),
+        outcome = c(rep("test", length(t_test)), rep("vacc", length(t_vacc))),
+        p = c(t_test, t_vacc)
+      )
+
+      outcome_labels <- if (outcome_intention) {
+        c("A. Antibody Testing (Intention)", "B. Vaccination (Intention)")
+      } else {
+        c("A. Antibody Testing (Behavior)", "B. Vaccination (Behavior)")
+      }
+
+      plot_data <- stats %>%
+        left_join(t_res, by = c("nudge", "outcome")) %>%
+        mutate(
+          nudge = factor(nudge, labels = private$treat_labels),
+          outcome = factor(
+            outcome,
+            levels = c("test", "vacc"),
+            labels = outcome_labels
+          ),
+          label = case_when(
+            p <= 0.01 ~ sprintf("%1.3f***", mu),
+            p <= 0.05 ~ sprintf("%1.3f**", mu),
+            p <= 0.1 ~ sprintf("%1.3f*", mu),
+            TRUE ~ sprintf("%1.3f", mu)
+          )
+        )
+      
+      plot_data %>%
+        ggplot(aes(x = fct_rev(nudge), y = mu, ymin = mu - se, ymax = mu + se)) +
+        geom_hline(aes(yintercept = 0)) +
+        geom_bar(stat = "identity", fill = "grey80", color = "black") +
+        geom_errorbar(width = 0.5) +
+        geom_text(aes(y = 0.6, label = label), size = 5) +
+        labs(x = "Treatments", y = "Proportion") +
+        facet_wrap(~outcome, ncol = 1, scales = "free") +
+        scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = 0.25)) +
+        coord_flip() +
+        simplegg(flip = TRUE)
     }
   ),
   private = list(
@@ -97,15 +168,6 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       val_coupon2019 <- ifelse(default_voucher, 1, 0)
       dta <- if (outcome_intention) self$wave1 else self$wave2
       subset(dta, coupon2019 == val_coupon2019)
-    },
-    diff_power = function(n0, n1, d, alpha, power) {
-      delta <- d / sqrt(1 / n1 + 1 / n0)
-      df <- n1 + n0 - 2
-      critical <- qt(alpha / 2, df = df)
-      calculated_power <- pt(-critical, df = df, ncp = delta, lower.tail = FALSE) +
-        pt(critical, df = df)
-      specified_power <- power
-      specified_power - calculated_power
     }
   )
 )
@@ -113,3 +175,4 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
 a <- test$main_analysis()
 a$balance_control()
 a$power(outcome_intention = TRUE, default_voucher = FALSE)
+a$ttest()

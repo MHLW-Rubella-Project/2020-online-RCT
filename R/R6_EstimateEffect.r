@@ -90,7 +90,12 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           )$root
         })
     },
-    ttest = function(outcome_intention = TRUE, default_voucher = TRUE) {
+    ttest = function(
+      outcome_intention = TRUE,
+      default_voucher = TRUE,
+      label_y_pos = 0.6,
+      y_lim_max = 1
+    ) {
       use <- private$use_data(outcome_intention, default_voucher)
 
       stats <- use %>%
@@ -153,10 +158,10 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         geom_hline(aes(yintercept = 0)) +
         geom_bar(stat = "identity", fill = "grey80", color = "black") +
         geom_errorbar(width = 0.5) +
-        geom_text(aes(y = 0.6, label = label), size = 5) +
+        geom_text(aes(y = label_y_pos, label = label), size = 5) +
         labs(x = "Treatments", y = "Proportion") +
         facet_wrap(~outcome, ncol = 1, scales = "free") +
-        scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = 0.25)) +
+        scale_y_continuous(limits = c(0, y_lim_max), breaks = seq(0, 1, by = 0.1)) +
         coord_flip() +
         simplegg(flip = TRUE)
     }
@@ -175,4 +180,4 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
 a <- test$main_analysis()
 a$balance_control()
 a$power(outcome_intention = TRUE, default_voucher = FALSE)
-a$ttest()
+a$ttest(outcome_intention = FALSE, y_lim_max = 0.2, label_y_pos = 0.175)

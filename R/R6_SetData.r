@@ -64,6 +64,12 @@ SetData <- R6::R6Class("SetData",
         kableExtra::add_header_above(
           c(" " = 3, "Age (as of Apr 2019)" = 4, " " = 1)
         )
+    },
+    balance_attrition = function() {
+      est <- anova(lm(I(1 - follow) ~ nudge, data = self$data))
+      f <- est[["F value"]][1]
+      p <- est[["Pr(>F)"]][1]
+      sprintf("F-value = %1.3f (p-value = %1.3f)", f, p)
     }
   ),
   private = list(
@@ -92,3 +98,4 @@ cov <- c(
 test$add_control(cov)
 test$summary_control(here("assets/vars_descript.csv"))
 test$summary_assign(here("assets/nudge_descript.csv"))
+test$balance_attrition()

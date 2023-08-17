@@ -3,7 +3,7 @@ library(R6)
 library(tidyverse)
 library(modelsummary)
 library(kableExtra)
-source(here("R/R6_MainAnalysis.r"))
+source(here("R/R6_EstimateEffect.r"))
 
 SetData <- R6::R6Class("SetData",
   public = list(
@@ -130,4 +130,3 @@ test$add_control(cov)
 test$summary_control(here("assets/vars_descript.csv"))
 test$summary_assign(here("assets/nudge_descript.csv"))
 test$balance_attrition()
-test$main_analysis()

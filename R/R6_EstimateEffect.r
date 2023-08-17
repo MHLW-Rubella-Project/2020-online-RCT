@@ -12,14 +12,12 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       private$covs <- control
     },
     balance_control = function(
-      outcome_int = TRUE,
-      default_voucher = FALSE,
+      outcome_intention = TRUE,
+      default_voucher = TRUE,
       title = "",
       notes = ""
     ) {
-      val_coupon2019 <- ifelse(default_voucher, 1, 0)
-      dta <- if (outcome_int) self$wave1 else self$wave2
-      use <- subset(dta, coupon2019 == val_coupon2019)
+      use <- private$use_data(outcome_intention, default_voucher)
 
       use_covs <- use %>%
         summarise_at(private$covs, list(~ sum(is.na(.)))) %>%
@@ -69,13 +67,49 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           threeparttable = TRUE,
           escape = FALSE
         )
+    },
+    power = function(
+      outcome_intention = TRUE,
+      default_voucher = TRUE,
+      alpha = 0.05,
+      power = 0.8
+    ) {
+      use <- private$use_data(outcome_intention, default_voucher)
+      obs <- with(use, table(nudge))
+
+      LETTERS[2:7] %>%
+        sapply(function(i) {
+          uniroot(
+            private$diff_power,
+            c(0, 10),
+            n0 = obs["A"],
+            n1 = obs[i],
+            alpha = alpha,
+            power = power
+          )$root
+        })
     }
   ),
   private = list(
     covs = c(),
-    treat_labels = c()
+    treat_labels = c(),
+    use_data = function(outcome_intention = TRUE, default_voucher = TRUE) {
+      val_coupon2019 <- ifelse(default_voucher, 1, 0)
+      dta <- if (outcome_intention) self$wave1 else self$wave2
+      subset(dta, coupon2019 == val_coupon2019)
+    },
+    diff_power = function(n0, n1, d, alpha, power) {
+      delta <- d / sqrt(1 / n1 + 1 / n0)
+      df <- n1 + n0 - 2
+      critical <- qt(alpha / 2, df = df)
+      calculated_power <- pt(-critical, df = df, ncp = delta, lower.tail = FALSE) +
+        pt(critical, df = df)
+      specified_power <- power
+      specified_power - calculated_power
+    }
   )
 )
 
 a <- test$main_analysis()
 a$balance_control()
+a$power(outcome_intention = TRUE, default_voucher = FALSE)

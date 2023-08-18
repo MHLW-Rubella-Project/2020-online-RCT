@@ -1,12 +1,12 @@
 library(R6)
-library(estimatr)
 source("R/misc.r")
+source("R/R6_Regression.r")
 
 EstimateEffect <- R6::R6Class("EstimateEffect",
   public = list(
     wave1 = NULL,
     wave2 = NULL,
-    reg = list(),
+    ttest_res = list(intention = NULL, behavior = NULL),
     initialize = function(wave1, wave2, treat_labels, control) {
       self$wave1 <- wave1
       self$wave2 <- wave2
@@ -148,6 +148,12 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           )
         )
       
+      if (outcome_intention) {
+        self$ttest_res$intention <- plot_data
+      } else {
+        self$ttest_res$behavior <- plot_data
+      }
+      
       plot_data %>%
         ggplot(aes(x = fct_rev(nudge), y = mu, ymin = mu - se, ymax = mu + se)) +
         geom_hline(aes(yintercept = 0)) +
@@ -163,96 +169,13 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
     lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
       dta <- if (outcome_intention) self$wave1 else self$wave2
       dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
-      hypo <- if (!exclude_A) private$hypo else private$hypo[-1]
-
       covariate <- private$noNA_control(private$covs, dta)
-      mod <- list(
-        "(1)" = reformulate("nudge * I(1 - coupon2019)", "outcome_test"),
-        "(2)" = reformulate(c("nudge * I(1 - coupon2019)", covariate), "outcome_test"),
-        "(3)" = reformulate("nudge * I(1 - coupon2019)", "outcome_vacc"),
-        "(4)" = reformulate(c("nudge * I(1 - coupon2019)", covariate), "outcome_vacc")
-      )
-
-      self$reg <- mod %>%
-        map(~ lh_robust(., data = dta, se_type = "stata", linear_hypothesis = hypo))
-      
-      attr(self$reg, "exclude_A") <- exclude_A
-      invisible(self$reg)
-    },
-    regtab = function(title = "", notes = "") {
-      main <- c(private$treat_labels[-1], "Opt-in")
-      names(main) <- c(paste0("nudge", LETTERS[2:7]), "I(1 - coupon2019)")
-      interaction <- paste(private$treat_labels[-1], "$\\times$ Opt-in")
-      names(interaction) <- paste0("nudge", LETTERS[2:7], ":I(1 - coupon2019)")
-
-      addtab <- tribble(
-        ~term, ~mod1, ~mod2, ~mod3, ~mod4,
-        "Covariates", "", "X", "", "X"
-      )
-
-      len <- 2 * (length(main) + length(interaction))
-      len <- if(attr(self$reg, "exclude_A")) len - 4 else len
-      attr(addtab, "position") <- c(len + 1, len + 2)
-
-      self$reg %>%
-        map(~ .$lm_robust) %>%
-        modelsummary(
-          title = title,
-          coef_map = c(main, interaction),
-          stars = c("***" = 0.01, "**" = 0.05, "*" = 0.1),
-          gof_omit = "R2 Adj.|AIC|BIC|RMSE",
-          add_rows = addtab,
-          escape = FALSE
-        ) %>%
-        kable_styling(font_size = 9) %>%
-        add_header_above(c(" " = 1, "Testing" = 2, "Vaccination" = 2)) %>%
-        kableExtra::footnote(
-          general_title = "",
-          general = notes,
-          threeparttable = TRUE,
-          escape = TRUE
-        )
-    },
-    lh_test_tab = function(title = "", notes = "") {
-      coef_map <- private$treat_labels[-1]
-      names(coef_map) <- private$hypo
-
-      addtab <- tribble(
-        ~term, ~mod1, ~mod2, ~mod3, ~mod4,
-        "Covariates", "", "X", "", "X"
-      )
-
-      self$reg %>%
-        map(~ .$lh) %>%
-        modelsummary(
-          title = title,
-          coef_map = coef_map,
-          stars = c("***" = 0.01, "**" = 0.05, "*" = 0.1),
-          gof_omit = "Num|Rows|Columns|Share",
-          add_rows = addtab,
-          escape = FALSE
-        ) %>%
-        kable_styling(font_size = 9) %>%
-        add_header_above(c(" " = 1, "Testing" = 2, "Vaccination" = 2)) %>%
-        kableExtra::footnote(
-          general_title = "",
-          general = notes,
-          threeparttable = TRUE,
-          escape = TRUE
-        )
+      Regression$new(dta, covariate, private$treat_labels)
     }
   ),
   private = list(
     covs = c(),
     treat_labels = c(),
-    hypo = c(
-      "nudgeB:I(1 - coupon2019) + nudgeB",
-      "nudgeC:I(1 - coupon2019) + nudgeC",
-      "nudgeD:I(1 - coupon2019) + nudgeD",
-      "nudgeE:I(1 - coupon2019) + nudgeE",
-      "nudgeF:I(1 - coupon2019) + nudgeF",
-      "nudgeG:I(1 - coupon2019) + nudgeG"
-    ),
     use_data = function(outcome_intention = TRUE, default_voucher = TRUE) {
       val_coupon2019 <- ifelse(default_voucher, 1, 0)
       dta <- if (outcome_intention) self$wave1 else self$wave2

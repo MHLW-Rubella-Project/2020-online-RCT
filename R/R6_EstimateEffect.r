@@ -19,12 +19,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       notes = ""
     ) {
       use <- private$use_data(outcome_intention, default_voucher)
-
-      use_covs <- use %>%
-        summarise_at(private$covs, list(~ sum(is.na(.)))) %>%
-        pivot_longer(everything()) %>%
-        dplyr::filter(value == 0) %>%
-        .$name
+      use_covs <- private$noNA_control(private$covs, use)
 
       mu_table <- use %>%
         group_by(nudge) %>%
@@ -173,11 +168,13 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       val_coupon2019 <- ifelse(default_voucher, 1, 0)
       dta <- if (outcome_intention) self$wave1 else self$wave2
       subset(dta, coupon2019 == val_coupon2019)
+    },
+    noNA_control = function(covs, data) {
+      data %>%
+        summarise_at(covs, list(~ sum(is.na(.)))) %>%
+        pivot_longer(everything()) %>%
+        dplyr::filter(value == 0) %>%
+        .$name
     }
   )
 )
-
-a <- test$main_analysis()
-a$balance_control()
-a$power(outcome_intention = TRUE, default_voucher = FALSE)
-a$ttest(outcome_intention = FALSE, y_lim_max = 0.2, label_y_pos = 0.175)

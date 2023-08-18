@@ -160,10 +160,12 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         coord_flip() +
         simplegg(flip = TRUE)
     },
-    lm = function(outcome_intention = TRUE) {
+    lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
       dta <- if (outcome_intention) self$wave1 else self$wave2
-      covariate <- private$noNA_control(private$covs, dta)
+      dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
+      hypo <- if (!exclude_A) private$hypo else private$hypo[-1]
 
+      covariate <- private$noNA_control(private$covs, dta)
       mod <- list(
         "(1)" = reformulate("nudge * I(1 - coupon2019)", "outcome_test"),
         "(2)" = reformulate(c("nudge * I(1 - coupon2019)", covariate), "outcome_test"),
@@ -172,20 +174,9 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       )
 
       self$reg <- mod %>%
-        map(~ lh_robust(
-          .,
-          data = dta,
-          se_type = "stata",
-          linear_hypothesis = c(
-            "nudgeB:I(1 - coupon2019) + nudgeB = 0",
-            "nudgeC:I(1 - coupon2019) + nudgeC = 0",
-            "nudgeD:I(1 - coupon2019) + nudgeD = 0",
-            "nudgeE:I(1 - coupon2019) + nudgeE = 0",
-            "nudgeF:I(1 - coupon2019) + nudgeF = 0",
-            "nudgeG:I(1 - coupon2019) + nudgeG = 0"
-          )
-        ))
+        map(~ lh_robust(., data = dta, se_type = "stata", linear_hypothesis = hypo))
       
+      attr(self$reg, "exclude_A") <- exclude_A
       invisible(self$reg)
     },
     regtab = function(title = "", notes = "") {
@@ -200,6 +191,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       )
 
       len <- 2 * (length(main) + length(interaction))
+      len <- if(attr(self$reg, "exclude_A")) len - 4 else len
       attr(addtab, "position") <- c(len + 1, len + 2)
 
       self$reg %>%
@@ -213,7 +205,35 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           escape = FALSE
         ) %>%
         kable_styling(font_size = 9) %>%
-        add_header_above(c(" " = 1, "Antibody testing" = 2, "Vaccination" = 2)) %>%
+        add_header_above(c(" " = 1, "Testing" = 2, "Vaccination" = 2)) %>%
+        kableExtra::footnote(
+          general_title = "",
+          general = notes,
+          threeparttable = TRUE,
+          escape = TRUE
+        )
+    },
+    lincomb = function(title = "", notes = "") {
+      coef_map <- private$treat_labels[-1]
+      names(coef_map) <- private$hypo
+
+      addtab <- tribble(
+        ~term, ~mod1, ~mod2, ~mod3, ~mod4,
+        "Covariates", "", "X", "", "X"
+      )
+
+      self$reg %>%
+        map(~ .$lh) %>%
+        modelsummary(
+          title = title,
+          coef_map = coef_map,
+          stars = c("***" = 0.01, "**" = 0.05, "*" = 0.1),
+          gof_omit = "Num|Rows|Columns|Share",
+          add_rows = addtab,
+          escape = FALSE
+        ) %>%
+        kable_styling(font_size = 9) %>%
+        add_header_above(c(" " = 1, "Testing" = 2, "Vaccination" = 2)) %>%
         kableExtra::footnote(
           general_title = "",
           general = notes,
@@ -225,6 +245,14 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
   private = list(
     covs = c(),
     treat_labels = c(),
+    hypo = c(
+      "nudgeB:I(1 - coupon2019) + nudgeB",
+      "nudgeC:I(1 - coupon2019) + nudgeC",
+      "nudgeD:I(1 - coupon2019) + nudgeD",
+      "nudgeE:I(1 - coupon2019) + nudgeE",
+      "nudgeF:I(1 - coupon2019) + nudgeF",
+      "nudgeG:I(1 - coupon2019) + nudgeG"
+    ),
     use_data = function(outcome_intention = TRUE, default_voucher = TRUE) {
       val_coupon2019 <- ifelse(default_voucher, 1, 0)
       dta <- if (outcome_intention) self$wave1 else self$wave2

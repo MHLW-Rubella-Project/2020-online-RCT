@@ -213,7 +213,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           escape = TRUE
         )
     },
-    lincomb = function(title = "", notes = "") {
+    lh_test_tab = function(title = "", notes = "") {
       coef_map <- private$treat_labels[-1]
       names(coef_map) <- private$hypo
 

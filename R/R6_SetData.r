@@ -128,7 +128,7 @@ SetData <- R6::R6Class("SetData",
 test <- SetData$new(here("data/2020-online-survey/shape_survey.csv"))
 
 cov <- c(
-  "age", "coupon2019", "married", "education",
+  "age", "married", "education",
   "income", "noinfo_income",
   "exercise_w1", "health_check", "flushot",
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
@@ -138,3 +138,10 @@ test$add_control(cov)
 test$summary_control(here("assets/vars_descript.csv"))
 test$summary_assign(here("assets/nudge_descript.csv"))
 test$balance_attrition()
+
+analysis <- test$main_analysis()
+analysis$balance_control(outcome_intention = FALSE)
+analysis$power(outcome_intention = TRUE, default_voucher = FALSE)
+analysis$ttest(outcome_intention = FALSE, y_lim_max = 0.2, label_y_pos = 0.175)
+analysis$lm()
+analysis$regtab()

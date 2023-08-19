@@ -1,12 +1,16 @@
 library(R6)
 source("R/misc.r")
 source("R/R6_Regression.r")
+source("R/R6_MonetaryValue.r")
 
 EstimateEffect <- R6::R6Class("EstimateEffect",
   public = list(
     wave1 = NULL,
     wave2 = NULL,
-    ttest_res = list(intention = NULL, behavior = NULL),
+    ttest_res = list(
+      default = list(intention = NULL, behavior = NULL),
+      optin = list(intention = NULL, behavior = NULL)
+    ),
     initialize = function(wave1, wave2, treat_labels, control) {
       self$wave1 <- wave1
       self$wave2 <- wave2
@@ -148,10 +152,18 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           )
         )
       
-      if (outcome_intention) {
-        self$ttest_res$intention <- plot_data
+      if (default_voucher) {
+        if (outcome_intention) {
+          self$ttest_res$default$intention <- plot_data
+        } else {
+          self$ttest_res$default$behavior <- plot_data
+        }
       } else {
-        self$ttest_res$behavior <- plot_data
+        if (outcome_intention) {
+          self$ttest_res$optin$intention <- plot_data
+        } else {
+          self$ttest_res$optin$behavior <- plot_data
+        }
       }
       
       plot_data %>%
@@ -171,6 +183,9 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
       covariate <- private$noNA_control(private$covs, dta)
       Regression$new(dta, covariate, private$treat_labels)
+    },
+    monetary_value = function() {
+      MonetaryValue$new(self$wave2, self$ttest_res$default$behavior)
     }
   ),
   private = list(

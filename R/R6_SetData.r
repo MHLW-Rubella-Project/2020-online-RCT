@@ -147,3 +147,6 @@ analysis$ttest(default_voucher = FALSE)
 reg <- analysis$lm(exclude_A = TRUE)
 reg$reg_tab()
 reg$lh_tab()
+
+analysis$ttest(outcome_intention = FALSE)
+analysis$monetary_value()$value_table()

@@ -50,7 +50,7 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
         mutate(
           effect = mu - mu[1],
           prop = effect + private$baseline$prop,
-          wtp = abs(demand_func(prop)) - abs(private$baseline$wtp),
+          wtp = abs(private$demand_func(prop)) - abs(private$baseline$wtp),
           total = (646 - 117) * wtp / 100000,
           wtp_usd = wtp / 100,
           total_usd = (total / 110) * 1000

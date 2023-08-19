@@ -66,7 +66,9 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
             "pp", "total", "pp", "total"
           ),
           digits = 3,
-          align = "lcccccc"
+          align = "lcccccc",
+          booktabs = TRUE,
+          linesep = ""
         ) %>%
         kable_styling(font_size = 9, latex_options = "scale_down") %>%
         add_header_above(c(" " = 3, "Monetary value (JPY)" = 2, "Monetary value (USD)" = 2)) %>%

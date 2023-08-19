@@ -54,7 +54,9 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           caption = title,
           digits = 3,
           col.names = c("", colnames(tbl)[-1]),
-          align = "lcccccccc"
+          align = "lcccccccc",
+          booktabs = TRUE,
+          linesep = ""
         ) %>%
         kableExtra::kable_styling(
           font_size = 9,

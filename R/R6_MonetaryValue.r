@@ -5,6 +5,7 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
     initialize = function(data, ttest) {
       wtp <- data %>%
         dplyr::filter(coupon2019 == 1) %>%
+        dplyr::filter(exp_antibody == 0) %>%
         group_by(wtp_vaccine) %>%
         summarize(N = n()) %>%
         arrange(desc(wtp_vaccine)) %>%

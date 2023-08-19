@@ -72,18 +72,11 @@ SetData <- R6::R6Class("SetData",
       p <- est[["Pr(>F)"]][1]
       sprintf("F-value = %1.3f (p-value = %1.3f)", f, p)
     },
-    main_analysis = function() {
+    main = function() {
       dt <- self$data %>%
         mutate(
           aw1_negative = if_else(act_vaccine != 4, 1, 0),
-          aw1_test_negative = aw1_test * aw1_negative,
-          coupon_a = coupon2019 * as.numeric(nudge == "A"),
-          coupon_b = coupon2019 * as.numeric(nudge == "B"),
-          coupon_c = coupon2019 * as.numeric(nudge == "C"),
-          coupon_d = coupon2019 * as.numeric(nudge == "D"),
-          coupon_e = coupon2019 * as.numeric(nudge == "E"),
-          coupon_f = coupon2019 * as.numeric(nudge == "F"),
-          coupon_g = coupon2019 * as.numeric(nudge == "G")
+          aw1_test_negative = aw1_test * aw1_negative
         )
       
       wave1 <- dt %>%
@@ -109,6 +102,32 @@ SetData <- R6::R6Class("SetData",
         )
       
       EstimateEffect$new(wave1, wave2, private$treat_labels, private$covs)
+    },
+    robust = function() {
+      dt <- self$data %>%
+        mutate(
+          aw1_negative = if_else(act_vaccine != 4, 1, 0),
+          abw1_test_negative = abw1_test * aw1_negative
+        )
+
+      wave1 <- dt %>%
+        filter(40 <= age & age <= 56) %>%
+        filter(exp_antibody != 1 & exp_vaccine != 1) %>%
+        rename(
+          outcome_test = test_int,
+          outcome_vacc = vaccine_int
+        )
+
+      wave2 <- dt %>%
+        filter(40 <= age & age <= 56) %>%
+        filter(follow == 1) %>%
+        filter(exp_antibody != 1 & exp_vaccine != 1) %>%
+        rename(
+          outcome_test = abw1_test,
+          outcome_vacc = abw1_testvaccine
+        )
+      
+      EstimateEffect$new(wave1, wave2, private$treat_labels, private$covs)
     }
   ),
   private = list(
@@ -124,29 +143,3 @@ SetData <- R6::R6Class("SetData",
     )
   )
 )
-
-test <- SetData$new(here("data/2020-online-survey/shape_survey.csv"))
-
-cov <- c(
-  "age", "married", "education",
-  "income", "noinfo_income",
-  "exercise_w1", "health_check", "flushot",
-  "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
-)
-
-test$add_control(cov)
-test$summary_control(here("assets/vars_descript.csv"))
-test$summary_assign(here("assets/nudge_descript.csv"))
-test$balance_attrition()
-
-analysis <- test$main_analysis()
-analysis$balance_control(outcome_intention = FALSE)
-analysis$power(outcome_intention = TRUE, default_voucher = FALSE)
-analysis$ttest(default_voucher = FALSE)
-
-reg <- analysis$lm(exclude_A = TRUE)
-reg$reg_tab()
-reg$lh_tab()
-
-analysis$ttest(outcome_intention = FALSE)
-analysis$monetary_value()$value_table()

@@ -60,7 +60,7 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
 
       tbl %>%
         knitr::kable(
-          title = title,
+          caption = title,
           col.names = c(
             "Text messages", "Effect", "Baseline + effect",
             "pp", "total", "pp", "total"

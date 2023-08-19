@@ -5,7 +5,7 @@ library(modelsummary)
 library(kableExtra)
 source(here("R/R6_EstimateEffect.r"))
 
-SetData <- R6::R6Class("SetData",
+StartAnalysis <- R6::R6Class("StartAnalysis",
   public = list(
     data = NULL,
     initialize = function(path) self$data <- read_csv(path),

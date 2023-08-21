@@ -185,8 +185,28 @@ wave1 <- wave1 %>%
     handicap = q11.2,
     exp.again = q11.3,
 
-    # generosity
+    # generosity and social norm
     generosity = q17_2,
+    norm_waiting_line = q17_5,
+    norm_priority = q17_6,
+    norm_pregnant = q17_7,
+    norm = norm_waiting_line + norm_priority + norm_pregnant,
+    
+    generosity_to_ja = q18_8,
+    
+    generosity_dictator = paste0(q20_8, q20_7, q20_6, q20_5, q20_4, q20_3, q20_2, q20_1),
+    generosity_dictator = dplyr::recode(
+      generosity_dictator,
+      "11111111" = 1,
+      "11111112" = 2,
+      "11111122" = 3,
+      "11111222" = 4,
+      "11112222" = 5,
+      "11122222" = 6,
+      "11222222" = 7,
+      "12222222" = 8,
+      "22222222" = 9
+    ),
 
     # over-confidence
     prob_me = case_when(

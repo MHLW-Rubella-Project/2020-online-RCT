@@ -71,6 +71,7 @@ Regression <- R6::R6Class("Regression",
     },
     lh_tab = function(title = "", notes = "") {
       coef_map <- private$treat_labels[-1]
+      if (attr(self$reg, "exclude_A")) coef_map <- coef_map[-1]
       names(coef_map) <- private$hypo
 
       addtab <- tribble(

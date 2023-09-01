@@ -23,7 +23,8 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       title = "",
       notes = ""
     ) {
-      use <- private$use_data(outcome_intention, default_voucher)
+      data <-private$choose_wave(outcome_intention)
+      use <- private$subset_tickets(data, !default_voucher)
       use_covs <- private$noNA_control(private$covs, use)
 
       mu_table <- use %>%
@@ -76,7 +77,8 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       alpha = 0.05,
       power = 0.8
     ) {
-      use <- private$use_data(outcome_intention, default_voucher)
+      data <- private$choose_wave(outcome_intention)
+      use <- private$subset_tickets(data, !default_voucher)
       obs <- with(use, table(nudge))
 
       LETTERS[2:7] %>%
@@ -181,7 +183,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         simplegg(flip = TRUE)
     },
     lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
-      dta <- if (outcome_intention) self$wave1 else self$wave2
+      dta <- private$choose_wave(outcome_intention)
       dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
       covariate <- private$noNA_control(private$covs, dta)
       Regression$new(dta, covariate, private$treat_labels)
@@ -193,10 +195,13 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
   private = list(
     covs = c(),
     treat_labels = c(),
-    use_data = function(outcome_intention = TRUE, default_voucher = TRUE) {
-      val_coupon2019 <- ifelse(default_voucher, 1, 0)
-      dta <- if (outcome_intention) self$wave1 else self$wave2
-      subset(dta, coupon2019 == val_coupon2019)
+    choose_wave = function(intention = TRUE) if (intention) self$wave1 else self$wave2,
+    choose_outcome = function(data, test = TRUE) {
+      if (test) with(data, outcome_test) else with(data, outcome_vacc)
+    },
+    subset_tickets = function(data, opt_in = TRUE) {
+      val_coupon2019 <- ifelse(!opt_in, 1, 0)
+      subset(data, coupon2019 == val_coupon2019)
     },
     noNA_control = function(covs, data) {
       data %>%

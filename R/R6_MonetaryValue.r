@@ -14,8 +14,8 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
       private$demand_func <- with(wtp, approxfun(cum_prop, wtp_vaccine))
       private$stats <- wtp
       private$ttest <- ttest
-      private$baseline$prop <- subset(wtp, wtp_vaccine == 0)$cum_prop +
-        subset(ttest, outcome == "A. Antibody Testing (Behavior)" & nudge == "MHLW (Control)")$mu
+      private$baseline$prop <- subset(wtp, wtp_vaccine == 0)$cum_prop + 
+        subset(ttest, nudge == "MHLW (Control)")$mu / 100
       private$baseline$wtp <- private$demand_func(private$baseline$prop)
     },
     demand_curve = function() {
@@ -36,19 +36,19 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
             linetype = 3
           ) +
           scale_y_continuous(breaks = seq(-6000, 5000, by = 1000)) +
-          scale_x_continuous(breaks = seq(0, 1, by = 0.2)) +
+          scale_x_continuous(breaks = seq(0, 1, by = 0.1)) +
           labs(
             y = "WTP (Price of vaccination=JPY 5,000)",
             x = "Cumulative fraction"
           ) +
-          simplegg(axis_text_size = 12)
+          theme_classic(base_size = 15)
     },
     value_table = function(title = "", notes = "") {
       tbl <- private$ttest %>%
-        dplyr::filter(outcome == "A. Antibody Testing (Behavior)") %>%
-        select(-outcome, -se, -p, -label) %>%
+        ungroup() %>%
+        select(nudge, mu) %>%
         mutate(
-          effect = mu - mu[1],
+          effect = (mu - mu[1]) / 100,
           prop = effect + private$baseline$prop,
           wtp = abs(private$demand_func(prop)) - abs(private$baseline$wtp),
           total = (646 - 117) * wtp / 100000,

@@ -7,10 +7,6 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
   public = list(
     wave1 = NULL,
     wave2 = NULL,
-    ttest_res = list(
-      default = list(intention = NULL, behavior = NULL),
-      optin = list(intention = NULL, behavior = NULL)
-    ),
     initialize = function(wave1, wave2, treat_labels, control) {
       self$wave1 <- wave1
       self$wave2 <- wave2
@@ -147,6 +143,10 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           )
         )
       
+      if (outcome_intention == FALSE & outcome_test == TRUE) {
+        private$ttest_for_value <- subset(plot_data, coupon2019 == levels(plot_data$coupon2019)[1])
+      }
+      
       plot_data %>%
         ggplot(aes(x = fct_rev(nudge), y = mu, ymin = mu - se, ymax = mu + se)) +
         geom_hline(aes(yintercept = 0)) +
@@ -170,12 +170,14 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       Regression$new(dta, covariate, private$treat_labels)
     },
     monetary_value = function() {
-      MonetaryValue$new(self$wave2, self$ttest_res$default$behavior)
+      if (is.null(private$ttest_for_value)) stop("Run ttest(outcome_intention = FALSE)")
+      MonetaryValue$new(self$wave2, private$ttest_for_value)
     }
   ),
   private = list(
     covs = c(),
     treat_labels = c(),
+    ttest_for_value = NULL,
     choose_wave = function(intention = TRUE) if (intention) self$wave1 else self$wave2,
     subset_tickets = function(data, opt_in = TRUE) {
       val_coupon2019 <- ifelse(!opt_in, 1, 0)

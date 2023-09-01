@@ -95,80 +95,57 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
     },
     ttest = function(
       outcome_intention = TRUE,
-      default_voucher = TRUE,
-      label_y_pos = 0.6,
-      y_lim_max = 1
+      outcome_test = TRUE,
+      label_y_pos = 60,
+      y_lim_max = label_y_pos + 10,
+      breaks_by = 10
     ) {
-      use <- private$use_data(outcome_intention, default_voucher)
+      data <- private$choose_wave(outcome_intention)
+      outcome_label <- if (outcome_test) "outcome_test" else "outcome_vacc"
+      use <- data[, c(outcome_label, "nudge", "coupon2019")]
+      names(use) <- c("outcome", "nudge", "coupon2019")
+      use$outcome <- use$outcome * 100
 
       stats <- use %>%
-        group_by(nudge) %>%
-        summarize_at(
-          vars(starts_with("outcome")),
-          list(
-            mu = ~ mean(.),
-            se = ~ se(.)
-          )
-        ) %>%
-        pivot_longer(
-          -nudge,
-          names_prefix = "outcome_",
-          names_to = c("outcome", ".value"),
-          names_pattern = "(.*)_(.*)"
+        group_by(coupon2019, nudge) %>%
+        summarize(
+          mu = mean(outcome),
+          se = se(outcome)
         )
 
-      nudge <- use$nudge
-      test <- use$outcome_test
-      vacc <- use$outcome_vacc
+      x <- use$nudge
+      y <- use$outcome
+      default <- use$coupon2019
 
-      t_test <- LETTERS[1:7] %>%
-        sapply(function(i) t.test(test[nudge == "A"], test[nudge == i])$p.value)
+      t_optin <- LETTERS[1:7] %>%
+        sapply(function(i) t.test(y[x == "A" & default == 0], y[x == i & default == 0])$p.value)
 
-      t_vacc <- LETTERS[1:7] %>%
-        sapply(function(i) t.test(vacc[nudge == "A"], vacc[nudge == i])$p.value)
+      t_default <- LETTERS[1:7] %>%
+        sapply(function(i) t.test(y[x == "A" & default == 1], y[x == i & default == 1])$p.value)
 
       t_res <- tibble(
-        nudge = c(names(t_test), names(t_vacc)),
-        outcome = c(rep("test", length(t_test)), rep("vacc", length(t_vacc))),
-        p = c(t_test, t_vacc)
+        nudge = c(names(t_optin), names(t_default)),
+        coupon2019 = c(rep(0, length(t_optin)), rep(1, length(t_default))),
+        p = c(t_optin, t_default)
       )
 
-      outcome_labels <- if (outcome_intention) {
-        c("A. Antibody Testing (Intention)", "B. Vaccination (Intention)")
-      } else {
-        c("A. Antibody Testing (Behavior)", "B. Vaccination (Behavior)")
-      }
+      coupon2019_labels <- c(
+        sprintf("A. Default incentive group (N = %1d)", sum(default == 1)),
+        sprintf("B. Opt-in incentive group (N = %1d)", sum(default == 0))
+      )
 
       plot_data <- stats %>%
-        left_join(t_res, by = c("nudge", "outcome")) %>%
+        left_join(t_res, by = c("nudge", "coupon2019")) %>%
         mutate(
           nudge = factor(nudge, labels = private$treat_labels),
-          outcome = factor(
-            outcome,
-            levels = c("test", "vacc"),
-            labels = outcome_labels
-          ),
+          coupon2019 = factor(coupon2019, levels = c(1, 0), labels = coupon2019_labels),
           label = case_when(
-            p <= 0.01 ~ sprintf("%1.3f***", mu),
-            p <= 0.05 ~ sprintf("%1.3f**", mu),
-            p <= 0.1 ~ sprintf("%1.3f*", mu),
-            TRUE ~ sprintf("%1.3f", mu)
+            p <= 0.01 ~ sprintf("%1.1f%%***", mu),
+            p <= 0.05 ~ sprintf("%1.1f%%**", mu),
+            p <= 0.1 ~ sprintf("%1.1f%%*", mu),
+            TRUE ~ sprintf("%1.1f%%", mu)
           )
         )
-      
-      if (default_voucher) {
-        if (outcome_intention) {
-          self$ttest_res$default$intention <- plot_data
-        } else {
-          self$ttest_res$default$behavior <- plot_data
-        }
-      } else {
-        if (outcome_intention) {
-          self$ttest_res$optin$intention <- plot_data
-        } else {
-          self$ttest_res$optin$behavior <- plot_data
-        }
-      }
       
       plot_data %>%
         ggplot(aes(x = fct_rev(nudge), y = mu, ymin = mu - se, ymax = mu + se)) +
@@ -176,11 +153,15 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         geom_bar(stat = "identity", fill = "grey80", color = "black") +
         geom_errorbar(width = 0.5) +
         geom_text(aes(y = label_y_pos, label = label), size = 5) +
-        labs(x = "Treatments", y = "Proportion") +
-        facet_wrap(~outcome, ncol = 1, scales = "free") +
-        scale_y_continuous(limits = c(0, y_lim_max), breaks = seq(0, 1, by = 0.1)) +
+        labs(x = "Treatments", y = "Proportion (%)") +
+        facet_wrap(~coupon2019, ncol = 1, scales = "free") +
+        scale_y_continuous(limits = c(0, y_lim_max), breaks = seq(0, 100, by = breaks_by)) +
         coord_flip() +
-        simplegg(flip = TRUE)
+        theme_classic(base_size = 15) +
+        theme(
+          strip.background = element_blank(),
+          strip.text = element_text(size = 16, hjust = 0)
+        )
     },
     lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
       dta <- private$choose_wave(outcome_intention)
@@ -196,9 +177,6 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
     covs = c(),
     treat_labels = c(),
     choose_wave = function(intention = TRUE) if (intention) self$wave1 else self$wave2,
-    choose_outcome = function(data, test = TRUE) {
-      if (test) with(data, outcome_test) else with(data, outcome_vacc)
-    },
     subset_tickets = function(data, opt_in = TRUE) {
       val_coupon2019 <- ifelse(!opt_in, 1, 0)
       subset(data, coupon2019 == val_coupon2019)

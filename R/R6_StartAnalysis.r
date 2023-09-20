@@ -27,7 +27,7 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
           data = self$data,
           add_columns = description,
           align = "llcc",
-          title = "List of Covariates \\label{tab:covariate-list}"
+          title = "List of Covariates"
         ) %>%
         kableExtra::kable_styling(
           font_size = 9, latex_options = "hold_position"

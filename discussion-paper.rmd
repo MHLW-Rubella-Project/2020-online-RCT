@@ -232,10 +232,14 @@ We find $\beta$ holding that $\tau=F(-\alpha)-F(-\beta)$. Table \@ref(tab:moneta
 # (APPENDIX) Appendix {-}
 # Tables and Figures
 
+```{r covariate-list}
+setup$summary_control(here("assets/vars_descript.csv"))
+```
+
 ```{r balance-int-default}
 main$balance_control(
   title = "Balance Tests for Default Incentive Groups (Sample for Estimating Effect on Intention)",
-  notes = "Notes: Table XX describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
 )
 ```
 
@@ -243,7 +247,7 @@ main$balance_control(
 main$balance_control(
   default_voucher = FALSE,
   title = "Balance Tests for Opt-In Incentive Group (Sample for Estimating Effect on Intention)",
-  notes = "Notes: Table XX describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
 )
 ```
 
@@ -266,7 +270,7 @@ reg_woA$lh_tab(
 main$balance_control(
   outcome_intention = FALSE,
   title = "Balance Tests for Default Incentive Group (Sample for Estimating Effect on Behavior)",
-  notes = "Notes: Table XX describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
 )
 ```
 
@@ -275,7 +279,7 @@ main$balance_control(
   outcome_intention = FALSE,
   default_voucher = FALSE,
   title = "Balance Tests for Opt-in Incentive Group (Sample for Estimating Effect on Behavior)",
-  notes = "Notes: Table XX describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
 )
 ```
 

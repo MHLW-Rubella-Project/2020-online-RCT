@@ -224,7 +224,7 @@ R2 & \num{0.009} & \num{0.112} & \num{0.005} & \num{0.118}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -257,7 +257,7 @@ Covariates &  & X &  & X\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$, ** \$p < 0.5\$, *** \$p < 0.01\$. Robust standard errors are in parentheses. Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$, ** $p < 0.5$, *** $p < 0.01$. Robust standard errors are in parentheses. Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -342,7 +342,7 @@ R2 & \num{0.030} & \num{0.047} & \num{0.019} & \num{0.029}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -375,7 +375,7 @@ Covariates &  & X &  & X\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item  Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item  Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -444,6 +444,33 @@ We find \(\beta\) holding that \(\tau=F(-\alpha)-F(-\beta)\). Table \ref{tab:mon
 
 \begin{table}[!h]
 
+\caption{\label{tab:covariate-list}List of Covariates}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{30em}cc}
+\toprule
+  & Description & Mean & Std.Dev.\\
+\midrule
+age & (Wave1) Age as of April 2019 based on year of birth and month of birth. & \num{48.66} & \num{5.69}\\
+married & (Wave1) Dummy variable taking one if a respondent is married. & \num{0.58} & \num{0.49}\\
+education & (Wave1) Years of education. & \num{14.75} & \num{2.31}\\
+income & (Wave1) Household income. For those who did not respond with household income, the overall average was substituted. & \num{684.90} & \num{375.74}\\
+noinfo\_income & (Wave1) Dummy variable taking one if a respondent did not answer household income. & \num{0.15} & \num{0.36}\\
+exercise\_w1 & (Wave1) Dummy variable taking one if a respondent exercises or plays sports more than once a week. & \num{0.22} & \num{0.42}\\
+health\_check & (Wave1) Dummy variable taking one if a respondent has had a medical examination at his/her city or place of employment in the past year from the time of the wave 1. & \num{0.68} & \num{0.46}\\
+flushot & (Wave1) Dummy variable taking one if a respondent is vaccinated against influenza every year. & \num{0.27} & \num{0.45}\\
+norm & (Wave2) Five-point Likert scale for the question "I wash my hands and gargle frequently during the period from the end of the previous questionnaire response to today." & \num{11.24} & \num{2.32}\\
+handwash & (Wave2) Five-point Likert scale for the question "I take my temperature frequently during the period from the end of the previous questionnaire response to today." & \num{3.91} & \num{1.04}\\
+temp\_check & (Wave2) Five-point Likert scale for the question "I am refraining from going out during the end of the previous questionnaire response to today." & \num{2.26} & \num{1.22}\\
+avoid\_out & (Wave2) Five-point Likert scale for the question "I avoid crowded places when I go out from the end of the previous questionnaire response to today." & \num{2.96} & \num{1.20}\\
+avoid\_crowd & (Wave2) Five-point Likert scale for the question "I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today." & \num{3.38} & \num{1.10}\\
+wear\_mask &  & \num{3.14} & \num{1.38}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+
 \caption{\label{tab:balance-int-default}Balance Tests for Default Incentive Groups (Sample for Estimating Effect on Intention)}
 \centering
 \fontsize{9}{11}\selectfont
@@ -464,7 +491,7 @@ norm & 11.100 & 10.679 & 10.649 & 10.864 & 11.165 & 10.855 & 10.945 & 0.492\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table XX describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -491,7 +518,7 @@ norm & 11.336 & 11.340 & 11.346 & 11.304 & 11.187 & 11.122 & 11.293 & 0.922\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table XX describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -537,7 +564,7 @@ R2 & \num{0.008} & \num{0.108} & \num{0.004} & \num{0.113}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -568,7 +595,7 @@ Covariates &  & X &  & X\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -600,7 +627,7 @@ wear\_mask & 2.930 & 3.076 & 3.109 & 3.009 & 3.010 & 3.144 & 3.207 & 0.794\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table XX describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2–-8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -632,7 +659,7 @@ wear\_mask & 3.082 & 3.176 & 3.116 & 3.144 & 2.977 & 2.942 & 3.010 & 0.533\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table XX describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2-–8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -678,7 +705,7 @@ R2 & \num{0.029} & \num{0.047} & \num{0.019} & \num{0.030}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -709,7 +736,7 @@ Covariates &  & X &  & X\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * \$p < 0.1\$; ** \$p < 0.05\$; *** \$p < 0.01\$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control). The reference group is MHLW (Age). Message effects are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

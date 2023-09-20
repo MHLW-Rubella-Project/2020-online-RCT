@@ -66,7 +66,7 @@ Regression <- R6::R6Class("Regression",
           general_title = "",
           general = notes,
           threeparttable = TRUE,
-          escape = TRUE
+          escape = FALSE
         )
     },
     lh_tab = function(title = "", notes = "") {
@@ -95,7 +95,7 @@ Regression <- R6::R6Class("Regression",
           general_title = "",
           general = notes,
           threeparttable = TRUE,
-          escape = TRUE
+          escape = FALSE
         )
     }
   ),

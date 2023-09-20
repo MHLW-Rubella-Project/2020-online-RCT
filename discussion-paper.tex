@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination},
+  pdfauthor={Hiroki Kato; Shusaku Sasaki; Fumio Ohtake},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination\thanks{This study is conducted as a part of the Project ``Implementation of EBPM in Japan'\,' undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank participants of the EBPM Study Group and the Discussion Paper Study Group of RIETI for their insightful comments. Prior to conducting a randomized controlled trial on an online survey, this study was approved by the Institutional Review Board of the Graduate School of Economics, Osaka University {[}approval number R020114{]}. Declarations of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science {[}grant number 20H05632 (F., Ohtake){]}; and Japan Science and Technology Agency {[}grant number JPMJPR21R4 (S., Sasaki){]}.}}
+\author{Hiroki Kato \and Shusaku Sasaki \and Fumio Ohtake}
+\date{Last updated on September 20, 2023}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We study effects of combining financial incentives with nudges to promote rubella antibody testing and vaccination. In FY2019, the Japanese government began providing vouchers for free testing and vaccination to men aged 40--57 years. Vouchers were mailed to 40--46-year-old men in FY2019. While those aged 47--57 received vouchers in FY2020, they could obtain vouchers and receive testing and vaccination in FY2019 through applying. Focusing on this policy distinction, we conduct a late-FY2019 online field experiment with Japanese 40--57-year-old men. We randomly send nudge-based reminder messages recommending antibody testing and vaccination, and track self-reported behavior until the end of FY2019. One nudge-based reminder with an altruistic message on fetal harm through infection from men to pregnant women significantly promotes antibody testing and vaccination among those who have already received vouchers as a financial incentive. For those who must apply for vouchers, nudge-based reminders have no promoting effect.
+\vskip\baselineskip   
+\noindent
+\textit{JEL classification}: D90, I12, I18
+
+\noindent
+\textit{Keywords}: Rubella; Vaccination; Antibody Test; Text Messages; Reminders; Free Vouchers.
+\end{abstract}
+
+\hypertarget{intro}{%
+\section{Introduction}\label{intro}}
+
+\hypertarget{background}{%
+\section{Background of Rubella Vaccination in Japan}\label{background}}
+
+\hypertarget{experiment}{%
+\section{Nationwide Online Survey Experiment}\label{experiment}}
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{conclusion}{%
+\section{Discussion and Conclusions}\label{conclusion}}
+
+\end{document}

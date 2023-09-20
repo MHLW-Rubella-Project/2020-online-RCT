@@ -1,0 +1,35 @@
+---
+title: |
+  Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination
+thanks: |
+  This study is conducted as a part of the Project ``Implementation of EBPM in Japan'' undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank participants of the EBPM Study Group and the Discussion Paper Study Group of RIETI for their insightful comments. Prior to conducting a randomized controlled trial on an online survey, this study was approved by the Institutional Review Board of the Graduate School of Economics, Osaka University [approval number R020114]. Declarations of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science [grant number 20H05632 (F., Ohtake)]; and Japan Science and Technology Agency [grant number JPMJPR21R4 (S., Sasaki)].
+abstract: |
+  We study effects of combining financial incentives with nudges to promote rubella antibody testing and vaccination. In FY2019, the Japanese government began providing vouchers for free testing and vaccination to men aged 40--57 years. Vouchers were mailed to 40--46-year-old men in FY2019. While those aged 47--57 received vouchers in FY2020, they could obtain vouchers and receive testing and vaccination in FY2019 through applying. Focusing on this policy distinction, we conduct a late-FY2019 online field experiment with Japanese 40--57-year-old men. We randomly send nudge-based reminder messages recommending antibody testing and vaccination, and track self-reported behavior until the end of FY2019. One nudge-based reminder with an altruistic message on fetal harm through infection from men to pregnant women significantly promotes antibody testing and vaccination among those who have already received vouchers as a financial incentive. For those who must apply for vouchers, nudge-based reminders have no promoting effect.
+  \vskip\baselineskip   
+  \noindent
+  \textit{JEL classification}: D90, I12, I18
+
+  \noindent
+  \textit{Keywords}: Rubella; Vaccination; Antibody Test; Text Messages; Reminders; Free Vouchers.
+author:
+  - Hiroki Kato
+  - Shusaku Sasaki
+  - Fumio Ohtake
+date: "Last updated on `r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  bookdown::pdf_document2:
+    latex_engine: lualatex
+    keep_tex: true
+    toc: false
+    number_sections: true
+---
+
+# Introduction {#intro}
+
+# Background of Rubella Vaccination in Japan {#background}
+
+# Nationwide Online Survey Experiment {#experiment}
+
+# Results {#results}
+
+# Discussion and Conclusions {#conclusion}

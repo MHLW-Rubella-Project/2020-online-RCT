@@ -159,6 +159,65 @@ The rest of this paper is structured as follows. Section \ref{background} provid
 \hypertarget{experiment}{%
 \section{Nationwide Online Survey Experiment}\label{experiment}}
 
+In collaboration with MHLW, we commissioned MyVoiceCome Co.\textasciitilde Ltd.~to conduct two nationwide online surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (wave 1) of 4,200 Japanese men aged 40--59 years living throughout Japan. Wave 1 randomizes seven text messages to test how they affect antibody testing and vaccination intentions.
+On March 17--25, 2020, we surveyed wave 1 respondents again for the second survey (wave 2). We received responses from 3,963 individuals (attrition rate = 5.64\%).\footnote{The seven experimental arms have similar attrition rates. We linearly regress an attrition dummy on treatment group dummies. F-test for joint null hypothesis is statistically insignificant (F-value = $1.434$; p-value = $0.197$).} Wave 2 aims to test how the randomly assigned text messages in wave 1 affect the actual uptake of antibody testing and vaccination.
+
+Online Appendix B contains detailed information about the survey. We obtained prior approval from the IRB of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
+
+\hypertarget{wave1}{%
+\subsection{Wave 1: Treatments and Outcome Variables on Intention}\label{wave1}}
+
+\begin{table}
+
+\caption{\label{tab:message-list}List of Text Message Reminders}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{20em}cccccc}
+\toprule
+\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Age (as of Apr 2019)} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){4-7}
+Message & Contents &   & 39 & 40--46 & 47--56 & 57--59 & All\\
+\midrule
+MHLW (Control) & Dear all men born between 1962 and 1979. Get rubella antibody testing and be vaccinated to protect yourself and the upcoming generation! & N & 20 & 210 & 321 & 49 & 600\\
+\addlinespace
+MHLW (Age) & Dear men in their 40s and 50s (all men born between 1962 and 1979). Get rubella antibody testing and be vaccinated to protect yourself and the upcoming generation! & N & 23 & 205 & 309 & 63 & 600\\
+\addlinespace
+Altruistic & Dear men in their 40s and 50s (all men born between 1962 and 1979). If you get a pregnant woman infected with rubella, she may give birth to a child with a serious disability. Get rubella antibody testing and be vaccinated! & N & 24 & 214 & 296 & 66 & 600\\
+\addlinespace
+Selfish & Dear men in their 40s and 50s (all men born between 1962 and 1979). Rubella infection in adult men may have serious complications such as encephalitis and thrombocytopenic purpura. Get rubella antibody testing and be vaccinated! & N & 16 & 225 & 302 & 57 & 600\\
+\addlinespace
+Social Comparison & Dear men in their 40s and 50s (all men born between 1962 and 1979). Compared to other generations, more than twice as many people in your generation can get rubella because one in five of you does not have rubella antibodies. Get rubella antibody testing and be vaccinated! & N & 18 & 204 & 321 & 57 & 600\\
+\addlinespace
+Deadline & Dear men in their 40s and 50s (all men born between 1962 and 1979). The voucher for a free rubella antibody test and vaccine is valid on March 31, 2020. Get rubella antibody testing and be vaccinated! & N & 18 & 216 & 299 & 67 & 600\\
+\addlinespace
+Convenient & Dear men in their 40s and 50s (all men born between 1962 and 1979). You can use your coupon for a rubella antibody test at a growing number of workplaces and government agencies, in addition to your usual health examinations. Get rubella antibody testing and be vaccinated! & N & 19 & 213 & 307 & 61 & 600\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We randomly sent one of the text messages in Table \ref{tab:message-list}. The \emph{MHLW (Control)} message is the control. Using this message, MHLW promotes antibody testing and rubella vaccination against rubella on its website (business-as-usual control). We developed six additional text messages based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages \citep[e.g.,][]{Dai2021, Milkman2021}, similar to this study.
+
+The six treated text messages alter the MHLW (Control) message to (1) a simple age expression and (2) behavioral economics content. In addition to the precise target age for the additional rubella measures, the \emph{MHLW (Age)} message includes the simple phrase ``men in their 40s and 50s,'' which helps the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content is identical to the control. The other five messages both add simplified age expressions and change message content based on behavioral economics.
+
+The \emph{Altruistic} message describes how one's infection can harm others, particularly pregnant women and their children. As previously stated, vaccination has positive externalities. In the case of rubella, having antibodies through vaccination prevents infection in pregnant women, thus protecting their children. The Altruistic message is the inverse of this positive externality, emphasizing the negative externality of not being vaccinated. This message is intended to help altruistic readers imagine the negative externalities caused by the infection and change their behavior.\footnote{We define an altruistic person as someone who considers social benefits, including externalities.}
+
+The \emph{Selfish} message and \emph{Social Comparison} message aim to change behavior by increasing the importance of having rubella antibodies. The Selfish one describes in detail the damage caused by the infection to the individual, making it easier for the reader to imagine it. Meanwhile, the Social Comparison informs the reader that antibody prevalence is low and reminds them that they are susceptible to infection. This message can help people avoid underestimating the likelihood of infection and undervaluing vaccination.
+
+The \emph{Deadline} message and \emph{Convenient} message describe the routine vaccination system. Deadline emphasizes that the FY2019 vouchers are valid until the end of March. This message aims to prevent people from postponing antibody testing and vaccination due to the present bias, which is one of behavioral economics' key findings. Meanwhile, Convenient states that some people can get antibody testing as part of a regular health examination and emphasizes its convenience. This message aims to reduce the subjective cost of antibody testing.
+
+We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned messages within each stratum. The sample size for each group is 1,050, with 150 for one experimental arm within each group. Thus, the sample size for one experimental group is 600.\footnote{The ages shown in Table \ref{tab:message-list} are as of April 2019, calculated using the year and month of respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive coupons for the first year. We assume that those born in April have not yet reached their birthday. Also, some men aged 39 years as of April 2019 were 40 years old at the time of the survey.}
+
+In wave 1, after viewing a randomly assigned message, participants expressed their intention to get antibody testing and vaccinated on a 5-point Likert scale (5 = definitely yes; 1 = absolutely no). The question of willingness to take antibody testing is, ``Are you willing to take an antibody test for rubella now?'' Meanwhile, the intention to get vaccinated question asks, ``If the antibody testing reveals that you have no antibodies, are you willing to get vaccinated?'' We create a binary variable taking the value of 1 if the participant responds 4 or 5 for each question and use it as the outcome variable for intentions.
+
+\hypertarget{wave2}{%
+\subsection{Wave 2: Outcome Variables on Behavior}\label{wave2}}
+
+Wave 2 investigates actual antibody testing and vaccination behavior since wave 1. We present exact questions and choices about antibody testing and vaccination in Online Appendix B. We create a binary variable taking 1 if the respondent has taken antibody testing since the end of wave 1.
+
+To receive rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we create a binary variable taking 1 if respondents have been tested and vaccinated since the end of wave 1.Then, we use it as the outcome variable on vaccination coverage.
+
+Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addresses these biases in the following two ways. First, because this study is a randomized controlled trial and if these biases exist to the same extent in each group, they are not fatal to the identification of treatment effects. Second, even if these biases are heterogeneous across groups, our analysis directly controls for respondents' psychological factors related to these biases (feeling pleasure from acting for others, accepting bad behavior in anonymous conditions) and then estimates treatment effects.
+
 \hypertarget{results}{%
 \section{Results}\label{results}}
 

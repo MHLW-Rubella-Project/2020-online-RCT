@@ -2,6 +2,7 @@ library(R6)
 source("R/misc.r")
 source("R/R6_Regression.r")
 source("R/R6_MonetaryValue.r")
+source("R/R6_Mechanism.r")
 
 EstimateEffect <- R6::R6Class("EstimateEffect",
   public = list(
@@ -89,6 +90,58 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           )$root
         })
     },
+    summary_behavior = function(
+      default_voucher = TRUE,
+      title = "",
+      notes = ""
+    ) {
+      use <- private$subset_tickets(self$wave2, !default_voucher)
+
+      summary_tbl <- use %>%
+        group_by(nudge) %>%
+        summarize(
+          n = n(),
+          test = sum(outcome_test),
+          prop_test = 100 * test / n,
+          negative = test - sum(aw1_testhave),
+          cond_prop_negative = 100 * negative / test,
+          prop_negative = 100 * negative / n,
+          vaccine = sum(outcome_vacc),
+          cond_prop_vaccine = 100 * vaccine / negative,
+          prop_vaccine = 100 * vaccine / n
+        ) %>%
+        ungroup() %>%
+        mutate(nudge = factor(nudge, labels = private$treat_labels))
+      
+      summary_tbl %>%
+        knitr::kable(
+          caption = title,
+          col.names = c(
+            "Text message",
+            "Sample size",
+            "N",
+            "% of sample",
+            "N",
+            "% of test",
+            "% of sample",
+            "N",
+            "% of negatives",
+            "% of sample"
+          ),
+          digits = 1,
+          align = "lccccccccc",
+          booktabs = TRUE,
+          linesep = ""
+        ) %>%
+        kable_styling(font_size = 9) %>%
+        add_header_above(c(" " = 2, "Anitbody test" = 2, "Negatives" = 3, "Vaccination" = 3)) %>%
+        kableExtra::footnote(
+          general_title = "",
+          general = notes,
+          threeparttable = TRUE,
+          escape = FALSE
+        )
+    },
     ttest = function(
       outcome_intention = TRUE,
       outcome_test = TRUE,
@@ -172,6 +225,12 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
     monetary_value = function() {
       if (is.null(private$ttest_for_value)) stop("Run ttest(outcome_intention = FALSE)")
       MonetaryValue$new(self$wave2, private$ttest_for_value)
+    },
+    lm_mechanism = function(outcome_intention = TRUE, default_voucher = TRUE) {
+      dta <- private$choose_wave(outcome_intention)
+      dta <- private$subset_tickets(dta, !default_voucher)
+      covariate <- private$noNA_control(private$covs, dta)
+      Mechanism$new(dta, covariate, private$treat_labels)
     }
   ),
   private = list(

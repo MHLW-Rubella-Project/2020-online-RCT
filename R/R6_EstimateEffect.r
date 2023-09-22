@@ -2,6 +2,7 @@ library(R6)
 source("R/misc.r")
 source("R/R6_Regression.r")
 source("R/R6_MonetaryValue.r")
+source("R/R6_Mechanism.r")
 
 EstimateEffect <- R6::R6Class("EstimateEffect",
   public = list(

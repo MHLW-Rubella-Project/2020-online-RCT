@@ -225,6 +225,12 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
     monetary_value = function() {
       if (is.null(private$ttest_for_value)) stop("Run ttest(outcome_intention = FALSE)")
       MonetaryValue$new(self$wave2, private$ttest_for_value)
+    },
+    lm_mechanism = function(outcome_intention = TRUE, default_voucher = TRUE) {
+      dta <- private$choose_wave(outcome_intention)
+      dta <- private$subset_tickets(dta, !default_voucher)
+      covariate <- private$noNA_control(private$covs, dta)
+      Mechanism$new(dta, covariate, private$treat_labels)
     }
   ),
   private = list(

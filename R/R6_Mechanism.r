@@ -71,7 +71,7 @@ Mechanism <- R6::R6Class("Mechanism",
           general_title = "",
           general = notes,
           threeparttable = TRUE,
-          escape = TRUE
+          escape = FALSE
         )
     }
   ),

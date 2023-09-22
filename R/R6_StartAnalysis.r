@@ -55,7 +55,7 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
           add_columns = message_list,
           align = "llcccccc",
           data = .,
-          title = "List of Text Message Reminders \\label{tab:nudge-list}",
+          title = "List of Text Message Reminders",
           linesep = "\\addlinespace"
         ) %>%
         kableExtra::kable_styling(font_size = 9) %>%

@@ -228,6 +228,32 @@ We find $\beta$ holding that $\tau=F(-\alpha)-F(-\beta)$. Table \@ref(tab:moneta
 
 # Discussion and Conclusions {#conclusion}
 
+This study uses RCTs to investigate effective messages for promoting rubella antibody testing and vaccination in two situations regarding financial incentives. Our experiment reveals that the Altruistic message, which emphasizes the negative externality of infection, increases the intention for antibody testing uptake by $14.3$ pp among men who already received free vaccination tickets in FY2019. However, this message is less effective for men who incur transaction costs to obtain the vaccination tickets. There may be a statistically significant difference in the effect of this message between the two groups.
+
+Similar results are found for the antibody test uptake. Among men who had already received vaccination vouchers in FY 2019, the Altruistic message increases the antibody test uptake by $7.5$ pp, which is equivalent to a subsidy of 40% of the vaccination price. However, this message is less effective for men who incurred the cost of obtaining the vaccination tickets. The effect between the two groups may be statistically significant.
+
+This finding suggests that text message reminders are effective when financial incentives and reminders are closely combined. In addition to the Altruistic message, the Selfish and the Social Comparison message may also raise the intention and the acutual uptake rate for the antibody testing among men who already received the vaccination tickets by default. However, these effect sizes are not large enough to maintain statistical power, requiring a re-examination with a large sample size.
+
+One potential concern is that all behavior-related outcomes were self-reported. These outcomes may contain recall bias. We believe that these biases are less problematic because Wave 2 measures behavior within the last month (the time of Wave 1). The self-reported behavioral outcomes may also be subject to the experimenter demand effect and social desirability bias. To address these biases, our regression analysis directly controls for respondents' psychological factors related to these biases (e.g., following social norm). Even if these biases cannot be eliminated perfectly, they are not fatal to the identification of message effects since this study is a RCT and if these biased exist to the same extent in each group. 
+
+Finally, we discuss three points about mechanisms. The first is the mechanism of the Altruistic messages. The effect of Altruistic message (especially on the intention to test for antibodies) is due to a change in the content of the message rather than to the addition of a simple expression of age. The Altruistic message emphasizes the possibility of disability in infants and appeals to the negative externalities of not vaccinating. We analyze the heterogeneity of the message content effect to test which individuals respond more strongly to this message content.
+
+First, in Wave 1, we examine the knowledge that infants born to infected pregnant women may have disabilities and test the heterogeneity of the effect of the altruistic message content on antibody testing intentions depending on whether respondents possessed this knowledge (see column (1) of Table \@ref(tab:reg-mechanism) in the Appendix). The results show that the effect of the altruistic message content may be more effective for those who do not possess the knowledge than for those who do. Although there are no statistically significant difference between the effects with and without knowledge, the effects of message content for those with knowledge are not statistically significant. Thus, altruistic message content may modify knowledge about the negative externalities of infection.
+
+It is also important whether a man is altruistic, caring about others' benefit (externality). We investigate whether he feels pleasure in actions for others on a 5 scale in Wave 1 and test the heterogeneous effect of the Altruistic message content by the extent to which he does (see column (2) of Table \@ref(tab:reg-mechanism) in the Appendix). The results show that the more altruistic one is, the stronger the effect of the Altruistic message content (this trend is statistically significant). Thus, the Altruistic messages may not be effective for those who do not care about others, even if they perceive negative externalities from reading messages.
+
+The second argument is the effect on vaccination rates. Our experiments reveal that the Altruism and the Social Comparison messages may increase vaccination rates among men who received free vaccination tickets by default. The message effect on vaccination is created through two channels. First, the messages increase the number of negative individuals who need to be vaccinated. Second, the messages encourage unvaccinated negative individuals to vaccinate. Our data suggest that the first channel is more important than the second.
+
+Table \@ref(tab:summary-behavior-default) in the Appendix shows the number of men who had antibody testing, who had a negative antibody test, and who were vaccinated in each experimental arm in the default incentive group. This table shows that most of those with negative antibody test results were vaccinated in all experimental arms. Furthermore, the number of negative antibody tests varied between experimental arms. Especially, the 25% ($=1/4$) antibody tests are negative in the MHLW (Control) message group. In contrast, the negative ratios of antibody tests for the Altruistic and Social Comparison messages, which may have a positive effect on vaccination, are 50% ($=7/14$) and 56% ($=5/9$), respectively.[^negative-selfish] Thus, the experimental arms with higher vaccination rates have a greater negative ratio, resulting in a positive effect on vaccination. However, the difference in the ratio of negative antibody tests is not statistically significant.
+
+[^negative-selfish]: The negative ratio of antibody testing for the Selfish message, which is only effective for antibody test uptake, is 30% ($=3/10$). This value is similar to the MHLW (control) message.
+
+A final discussion is why text messages are ineffective in groups that must incur transaction costs to obtain the free vaccination tickets. Our messages may not increase the value of antibody testing and vaccination sufficiently to outweigh their cost. In addition, another possibility is low awareness of rubella immunization campaign beginning in FY2019. Before presenting the messages, we inquire about the MHLW's policy in Wave 1. As a result, approximately 77.5% are unaware of the vaccination campaign Thus, even if they read the messages and realized the importance of rubella antibody testing and vaccination, they would believe they had to pay for these preventive actions.[^strategic-behavior]
+
+[^strategic-behavior]: The fact that many people are unaware of the additional routine rubella vaccinations precludes the possibility that they stopped getting antibody testing and were vaccinated in the first year (FY2019) because they expected to automatically receive the voucher the following year.
+
+The last two arguments are important issues outside our context. The second argument concerns the targeting of interventions [e.g., @Finkelstein2019]. That is, the question is whether marginal individuals whose behavior is changed by a policy intervention receive significant benefits from that policy. In our context, we suggest that the Altruistic message increases the number of negative individuals who receive a large benefit (vaccination) from the FY2019 vaccination campaign. The third argument relates to testing the effectiveness of vouchers [e.g., @Kacker2022]. The experimental data in this study alone do not allow us to fully explore these arguments, and they are a topic for future research.
+
 \clearpage
 # (APPENDIX) Appendix {-}
 # Tables and Figures
@@ -300,4 +326,18 @@ reg_act_woA$lh_tab(
 
 ```{r demand-function, fig.cap = "Demand Curve of Rubella Vaccination for Default Incentive Group. Notes: Black triangles indicate the baseline vaccination rate $F_0$ and the corresponding WTP."}
 value$demand_curve()
+```
+
+```{r reg-mechanism}
+mechanism <- main$lm_mechanism()
+mechanism$reg_tab(
+  title = "Heterogeneous Effects of Altruistic Message Contents",
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (control), The reference group is MHLW (Age). Covariate ``Other nudges'' is a dummy that indicating respondents are assigned to the Selfish, Social Comparison, Deadline, and Covenient message group. Covariate ``Handicap'' is a dummy that respondent knows that infants born to infected pregnant women may have disabilities. Covariates ``Generosity'' indicates on a 5-point scale the degree to which respondent feels pleasure in actionts for others. Respondents who give a score of 5 to this are the most generous. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm."
+)
+```
+
+```{r summary-behavior-default}
+main$summary_behavior(
+  title = "Number of Anitbody Testing, Negatives, and Vaccinations in Default Incentive Group"
+)
 ```

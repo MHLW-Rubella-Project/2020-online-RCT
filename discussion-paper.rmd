@@ -100,7 +100,7 @@ The rest of this paper is structured as follows. Section \@ref(background) provi
 
 Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe.[^detail-symptoms] The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization to prevent its spread. According to @Kinoshita2016, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations.[^other-research]
 
-[^detail-symptoms]: According to the NIID, subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15—30% of cases. Fever is observed in approximately 50% of patients. Adults may also experience transient arthritis (5—30%). Rarely, complications such as thrombocytopenic purpura ($0.02$—$0.03$%) and acute encephalitis ($0.01$—$0.03$%) may require hospitalization (<https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html>. Japanese. Access date: September 22, 2023).
+[^detail-symptoms]: According to the NIID, subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15--30% of cases. Fever is observed in approximately 50% of patients. Adults may also experience transient arthritis (5--30%). Rarely, complications such as thrombocytopenic purpura ($0.02$--$0.03$%) and acute encephalitis ($0.01$--$0.03$%) may require hospitalization (<https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html>. Japanese. Access date: September 22, 2023).
 
 [^other-research]: According to @Plans-Rubio2012, antibody prevalence of 83\% to 95\% achieves herd immunity against rubella. @Nishiura2015 found that the antibody prevalence for herd immunity is 83.6\%.
 
@@ -149,13 +149,13 @@ antibody %>%
   theme_classic(base_size = 15)
 ```
 
-However, due to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Thus, influx of virus of Southeast Asian origin caused rubella epidemic, mainly among males with relatively low antibody prevalence in 2013 and 2018 [@NIID2019].[^CDC] Figure \@ref(fig:antibody) plots the prevalence of rubella antibodies by age and gender from the National Institute of Infectious Diseases (NIID) "2018 Infectious Disease Epidemic Prediction Survey.” The antibody prevalence among men aged 39--56 years (as of 2018) is approximately 81.5\%, which is lower than that of women of the same generation (about 97.9\%) and other generations because they have not received routine rubella vaccination and have not had less opportunity to infect naturally.[^reg] The prevalence of antibodies in men and women aged 57 and older is 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of rubella vaccine administered as part of routine immunization.
+However, due to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Figure \@ref(fig:antibody) plots the prevalence of rubella antibodies by age and gender from the National Institute of Infectious Diseases (NIID) "2018 Infectious Disease Epidemic Prediction Survey.” The antibody prevalence among men aged 39--56 years (as of 2018) is approximately 81.5\%, which is lower than that of women of the same generation (about 97.9\%) and other generations because they have not received routine rubella vaccination and have not had less opportunity to infect naturally.[^other-generation] Thus, influx of virus of Southeast Asian origin caused rubella epidemic, mainly among males with relatively low antibody prevalence in 2013 and 2018 [@NIID2019].[^CDC] As cross-border traffic is increasing, achieving herd immunity against rubella becomes increasingly important for Japan.
 
 [^CDC]: In the 2018 epidemic, U.S. CDC advised pregnant women to travel to Japan (The Japan Times, October 24, 2018. <https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/>. Access date: 2023/9/22).
 
-[^reg]: Using this data, we predict antibody prevalence by a saturated model for three age groups (38 years and younger, 39--56 years, and 57 years and older) and a female dummy. The difference in antibody prevalence between men and women in the 39--56 age group is $0.164$ ($\text{se} = 0.034$; $p < 0.01$). The difference in antibody prevalence between men aged 39 to 56 years and men aged 57 years and older is $0.96$ ($\text{se} = 0.036$; $p < 0.01$).
+[^other-generation]: The prevalence of antibodies in men and women aged 57 and older is 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of rubella vaccine administered as part of routine immunization.
 
-To achieve herd immunity against rubella, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, MHLW has provided the rubella vaccine as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022.[^exact-born][^strategy] For efficient utilization of vaccination, eligible men must first get antibody testing. Men who have a negative test can then be vaccinated against rubella.
+To achieve herd immunity, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, MHLW has provided the rubella vaccine as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022.[^exact-born][^strategy] For efficient utilization of vaccination, eligible men must first get antibody testing. Men who have a negative test can then be vaccinated against rubella.
 
 [^exact-born]: More precisely, eligible men were born between April 2, 1962, and April 1, 1979.
 
@@ -166,20 +166,19 @@ Following the Immunization Act, eligible men can receive free antibody testing a
 1. 40--46 years old: they automatically received the free voucher in FY2019;
 1. 47--57 years old: they automatically received the free voucher after FY2020 but had to apply to obtain it in FY2019.
 
-Thus, transaction costs for the monetary incentives in FY2019 differ between the two age groups. In particular, 40-to-46-year-old men have no transaction costs because they obtained monetary incentives by default in the form of free vouchers in FY2019. However, 47-to-57-year-old men have high transaction costs because they must contact their local government to obtain the free vouchers in FY2019 such as travering cost to a city hall (opt-in incentives).[^example-procedure]
+Thus, transaction costs for the monetary incentives in FY2019 differ between the two age groups. In particular, 40-to-46-year-old men have no transaction costs because they obtained monetary incentives by default in the form of free vouchers in FY2019 (*default incentive group*). However, 47-to-57-year-old men have high transaction costs such as travering cost to a city hall because they must contact their local government to obtain the free vouchers in FY2019 (*opt-in incentive group*).[^example-procedure]
 
-[^example-procedure]: One local government has posted the application forms on its website. To obtain a vaccination ticket, eligible men must download the forms from the website, complete them, and either mail them to the local government or visit the city hall in person. The cost of obtaining the documents and traveling to the city hall is considered significant.
+[^example-procedure]: One local government has posted the application forms on its website. To obtain a vaccination ticket, eligible men must download the forms from the website, complete them, and either mail them to the local government or visit the city hall in person. The cost of obtaining the documents and traveling to the city hall seems to be significant.
 
-Although men aged 40--46 years automatically received monetary incentives, the uptake rate of antibody testing with vouchers remained as low as 18\% as of January 2020.[^calc] Given adequate financial incentives, non-monetary interventions should be considered to increase antibody testing. Therefore, we developed reminders with behavioral science-based text messages for those who were not tested and vaccinated. Using a nationwide online survey, we tested how well those reminders improve antibody testing and vaccination rates among default voucher recipients (and the effect on those who incur a transaction cost to obtain them).
+Although men aged 40--46 years automatically received monetary incentives, the uptake rate of antibody testing with vouchers remained as low as 18\% as of January 2020.[^calc] Given adequate financial incentives, non-monetary interventions should be considered to increase antibody testing. Therefore, we developed reminders with nudge-based text messages for those who were not tested and vaccinated. Using a nationwide online survey, we tested how well those reminders improve antibody testing and vaccination rates among default voucher recipients (and the effect on those who incur a transaction cost to obtain them).
 
 [^calc]: More than half of eligible men are 40--46 years old (6.46 million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96\% of local governments planned to send them by October 2019. The cumulative number of antibody tests using vouchers through January 2019 was 1.17 million. We calculate antibody testing uptake by dividing the cumulative number of antibody tests using vouchers up to January 2019 (1.17 million) by the population of 40-to-46-year-old men (6.46 million).
 
 # Nationwide Online Survey Experiment {#experiment}
 
-In collaboration with MHLW, we commissioned MyVoiceCome Co.~Ltd. to conduct two nationwide online surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (wave 1) of 4,200 Japanese men aged 40--59 years living throughout Japan. Wave 1 randomizes seven text messages to test how they affect antibody testing and vaccination intentions.
-On  March 17--25, 2020, we surveyed wave 1 respondents again for the second survey (wave 2). We received responses from 3,963 individuals (attrition rate = 5.64\%).\footnote{The seven experimental arms have similar attrition rates. We linearly regress an attrition dummy on treatment group dummies. F-test for joint null hypothesis is statistically insignificant (F-value = $1.434$; p-value = $0.197$).} Wave 2 aims to test how the randomly assigned text messages in wave 1 affect the actual uptake of antibody testing and vaccination.
+In collaboration with MHLW, we commissioned MyVoiceCome Co. Ltd. to conduct two nationwide online surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (wave 1) of 4,200 Japanese men aged 40--59 years living throughout Japan. Wave 1 randomizes seven text messages to test how they affect antibody testing and vaccination intentions. On March 17--25, 2020, we surveyed wave 1 respondents again for the second survey (wave 2). We received responses from 3,963 individuals (attrition rate = 5.64\%).[^f-test-attrition] Wave 2 aims to test how the randomly assigned text messages in wave 1 affect the actual uptake of antibody testing and vaccination. We obtained prior approval from the IRB of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
 
-Online Appendix B contains detailed information about the survey. We obtained prior approval from the IRB of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
+[^f-test-attrition]: The seven experimental arms have similar attrition rates. We linearly regress an attrition dummy on treatment group dummies. F-test for joint null hypothesis is statistically insignificant (F-value = $1.434$; p-value = $0.197$).
 
 ## Wave 1: Treatments and Outcome Variables on Intention {#wave1}
 
@@ -187,7 +186,7 @@ Online Appendix B contains detailed information about the survey. We obtained pr
 ctrl <- c(
   "age", "married", "education",
   "income", "noinfo_income",
-  "exercise_w1", "health_check", "flushot", "norm",
+  "exercise_w1", "health_check", "flushot", "norm_waiting_line", "selfish_anonymous",
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
 )
 
@@ -202,7 +201,7 @@ setup$summary_assign(here("assets/nudge_descript.csv"))
 
 We randomly sent one of the text messages in Table \@ref(tab:message-list). The *MHLW (Control)* message is the control. Using this message, MHLW promotes antibody testing and rubella vaccination against rubella on its website (business-as-usual control). We developed six additional text messages based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages [e.g., @Dai2021; @Milkman2021], similar to this study.
 
-The six treated text messages alter the MHLW (Control) message to (1) a simple age expression and (2) behavioral economics content. In addition to the precise target age for the additional rubella measures, the *MHLW (Age)* message includes the simple phrase "men in their 40s and 50s," which helps the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content is identical to the control. The other five messages both add simplified age expressions and change message content based on behavioral economics.
+The six treated text messages alter the MHLW (Control) message to (1) a simple age expression (first sentence) and (2) message content (following sentences). In addition to the precise target age for the additional rubella measures, the *MHLW (Age)* message includes the simple phrase "men in their 40s and 50s," which helps the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content is identical to the control. The other five messages both add simplified age expressions and change message content based on behavioral economics.
 
 The *Altruistic* message describes how one's infection can harm others, particularly pregnant women and their children. As previously stated, vaccination has positive externalities. In the case of rubella, having antibodies through vaccination prevents infection in pregnant women, thus protecting their children. The Altruistic message is the inverse of this positive externality, emphasizing the negative externality of not being vaccinated. This message is intended to help altruistic readers imagine the negative externalities caused by the infection and change their behavior.[^def-altruistic]
 
@@ -210,7 +209,7 @@ The *Altruistic* message describes how one's infection can harm others, particul
 
 The *Selfish* message and *Social Comparison* message aim to change behavior by increasing the importance of having rubella antibodies. The Selfish one describes in detail the damage caused by the infection to the individual, making it easier for the reader to imagine it. Meanwhile, the Social Comparison informs the reader that antibody prevalence is low and reminds them that they are susceptible to infection. This message can help people avoid underestimating the likelihood of infection and undervaluing vaccination.
 
-The *Deadline* message and *Convenient* message describe the routine vaccination system. Deadline emphasizes that the FY2019 vouchers are valid until the end of March. This message aims to prevent people from postponing antibody testing and vaccination due to the present bias, which is one of behavioral economics' key findings. Meanwhile, Convenient states that some people can get antibody testing as part of a regular health examination and emphasizes its convenience. This message aims to reduce the subjective cost of antibody testing.
+The *Deadline* message and *Convenient* message describe detail system of the 2019 vaccination campaign. Deadline emphasizes that the FY2019 vouchers are valid until the end of March. This message aims to prevent people from postponing antibody testing and vaccination due to the present bias, which is one of behavioral economics' key findings. Meanwhile, Convenient states that some people can get antibody testing as part of a regular health examination and emphasizes its convenience. This message aims to reduce the subjective cost of antibody testing.
 
 We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned messages within each stratum. The sample size for each group is 1,050, with 150 for one experimental arm within each group. Thus, the sample size for one experimental group is 600.[^age]
 
@@ -218,13 +217,15 @@ We employed stratified randomization. The survey firm divided respondents into f
 
 In wave 1, after viewing a randomly assigned message, participants expressed their intention to get antibody testing and vaccinated on a 5-point Likert scale (5 = definitely yes; 1 = absolutely no). The question of willingness to take antibody testing is, "Are you willing to take an antibody test for rubella now?" Meanwhile, the intention to get vaccinated question asks, "If the antibody testing reveals that you have no antibodies, are you willing to get vaccinated?" We create a binary variable taking the value of 1 if the participant responds 4 or 5 for each question and use it as the outcome variable for intentions.
 
+Note that, before reading a randomly assigned message, participants were asked about economic preferences such as altruistic preference, daily health behaviors, rubella knowledge, and the willingness to pay for the rubella vaccination. At the end of survey, they were asked about socio-economic status. We use these variables to perform regressions and balance checks and to study mechanisms. See Table \@ref(tab:covariate-list) in Appendix \@ref(fig-tab) for variables used in regression analysis and balance checks.
+
 ## Wave 2: Outcome Variables on Behavior {#wave2}
 
-Wave 2 investigates actual antibody testing and vaccination behavior since wave 1. We present exact questions and choices about antibody testing and vaccination in Online Appendix B. We create a binary variable taking 1 if the respondent has taken antibody testing since the end of wave 1.
+Wave 2 investigates actual antibody testing and vaccination behavior since wave 1. We present exact questions and choices about antibody testing and vaccination in Appendix \@ref(question). We create a binary variable taking 1 if the respondent has taken antibody testing since the end of wave 1.
 
-To receive rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we create a binary variable taking 1 if respondents have been tested and vaccinated since the end of wave 1.Then, we use it as the outcome variable on vaccination coverage.
+To receive rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we create a binary variable taking 1 if respondents have been tested and vaccinated since the end of wave 1. Then, we use it as the outcome variable on vaccination coverage.
 
-Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addresses these biases in the following two ways. First, because this study is a randomized controlled trial and if these biases exist to the same extent in each group, they are not fatal to the identification of treatment effects. Second, even if these biases are heterogeneous across groups, our analysis directly controls for respondents' psychological factors related to these biases (feeling pleasure from acting for others, accepting bad behavior in anonymous conditions) and then estimates treatment effects.
+Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addresses these biases in the following two ways. First, because this study is a randomized controlled trial and if these biases exist to the same extent in each group, they are not fatal to the identification of treatment effects. Second, even if these biases are heterogeneous across groups, our analysis directly controls for respondents' psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions) and then estimates treatment effects.
 
 # Results {#results}
 ## Study Population {#sample}
@@ -411,7 +412,27 @@ The last two arguments are important issues outside our context. The second argu
 
 \clearpage
 # (APPENDIX) Appendix {-}
-# Tables and Figures
+
+# Antibody Testing and Vaccination Questions {#question}
+
+In wave 2, participants are asked if they have had antibody testing and vaccination since wave 1. The antibody testing question asks, "Have you had rubella antibody testing since the end of the last survey?"
+Participants were given the following choices:
+
+- (a) Yes, I have taken antibody testing;
+- (b) No, I have not taken antibody testing;
+- (c) I have taken antibody testing before the last survey.
+
+We create a binary variable taking 1 if the respondent chooses option (a) and use it as an outcome variable for the uptake rate of antibody testing. Meanwhile, the vaccination question is "Have you been vaccinated against rubella since the end of the last survey?" Respondents were given one of five options:
+
+- (a) I have been vaccinated; 
+- (b) I do not need the vaccine due to a positive test or infection experience;
+- (c) I have taken antibody testing but have not been vaccinated yet;
+- (d) I have not taken antibody testing or gotten vaccinated;
+- (e) I have been vaccinated before the last survey.
+
+We create a binary variable taking 1 if the participant chooses option (a) for both the antibody testing and vaccination questions. Then, we use it as the outcome variable on vaccination.
+
+# Tables and Figures {#fig-tab}
 
 ```{r covariate-list}
 setup$summary_control(here("assets/vars_descript.csv"))

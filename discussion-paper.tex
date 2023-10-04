@@ -104,7 +104,7 @@
 
 \title{Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination\thanks{This study is conducted as a part of the Project ``Implementation of EBPM in Japan'' undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank participants of the EBPM Study Group and the Discussion Paper Study Group of RIETI for their insightful comments. Prior to conducting a randomized controlled trial on an online survey, this study was approved by the Institutional Review Board of the Graduate School of Economics, Osaka University {[}approval number R020114{]}. Declarations of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science {[}grant number 20H05632 (F., Ohtake){]}; and Japan Science and Technology Agency {[}grant number JPMJPR21R4 (S., Sasaki){]}.}}
 \author{Hiroki Kato \and Shusaku Sasaki \and Fumio Ohtake}
-\date{Last updated on September 22, 2023}
+\date{Last updated on October 04, 2023}
 
 \begin{document}
 \maketitle
@@ -156,15 +156,15 @@ The rest of this paper is structured as follows. Section \ref{background} provid
 \hypertarget{background}{%
 \section{Background of Rubella Vaccination in Japan}\label{background}}
 
-Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe.\footnote{According to the NIID, subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15---30\% of cases. Fever is observed in approximately 50\% of patients. Adults may also experience transient arthritis (5---30\%). Rarely, complications such as thrombocytopenic purpura (\(0.02\)---\(0.03\)\%) and acute encephalitis (\(0.01\)---\(0.03\)\%) may require hospitalization (\url{https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html}. Japanese. Access date: September 22, 2023).} The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization to prevent its spread. According to \citet{Kinoshita2016}, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations.\footnote{According to \citet{Plans-Rubio2012}, antibody prevalence of 83\% to 95\% achieves herd immunity against rubella. \citet{Nishiura2015} found that the antibody prevalence for herd immunity is 83.6\%.}
+Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe.\footnote{According to the NIID, subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15--30\% of cases. Fever is observed in approximately 50\% of patients. Adults may also experience transient arthritis (5--30\%). Rarely, complications such as thrombocytopenic purpura (\(0.02\)--\(0.03\)\%) and acute encephalitis (\(0.01\)--\(0.03\)\%) may require hospitalization (\url{https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html}. Japanese. Access date: September 22, 2023).} The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization to prevent its spread. According to \citet{Kinoshita2016}, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations.\footnote{According to \citet{Plans-Rubio2012}, antibody prevalence of 83\% to 95\% achieves herd immunity against rubella. \citet{Nishiura2015} found that the antibody prevalence for herd immunity is 83.6\%.}
 
 \begin{figure}[t]
 \includegraphics{discussion-paper_files/figure-latex/antibody-1} \caption{Percentage of Rubella Antibody Carriers at Each Age by Gender. Data: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases (NESVPD)."}\label{fig:antibody}
 \end{figure}
 
-However, due to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Thus, influx of virus of Southeast Asian origin caused rubella epidemic, mainly among males with relatively low antibody prevalence in 2013 and 2018 \citep{NIID2019}.\footnote{In the 2018 epidemic, U.S. CDC advised pregnant women to travel to Japan (The Japan Times, October 24, 2018. \url{https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/}. Access date: 2023/9/22).} Figure \ref{fig:antibody} plots the prevalence of rubella antibodies by age and gender from the National Institute of Infectious Diseases (NIID) ``2018 Infectious Disease Epidemic Prediction Survey.'' The antibody prevalence among men aged 39--56 years (as of 2018) is approximately 81.5\%, which is lower than that of women of the same generation (about 97.9\%) and other generations because they have not received routine rubella vaccination and have not had less opportunity to infect naturally.\footnote{Using this data, we predict antibody prevalence by a saturated model for three age groups (38 years and younger, 39--56 years, and 57 years and older) and a female dummy. The difference in antibody prevalence between men and women in the 39--56 age group is \(0.164\) (\(\text{se} = 0.034\); \(p < 0.01\)). The difference in antibody prevalence between men aged 39 to 56 years and men aged 57 years and older is \(0.96\) (\(\text{se} = 0.036\); \(p < 0.01\)).} The prevalence of antibodies in men and women aged 57 and older is 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of rubella vaccine administered as part of routine immunization.
+However, due to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Figure \ref{fig:antibody} plots the prevalence of rubella antibodies by age and gender from the National Institute of Infectious Diseases (NIID) ``2018 Infectious Disease Epidemic Prediction Survey.'' The antibody prevalence among men aged 39--56 years (as of 2018) is approximately 81.5\%, which is lower than that of women of the same generation (about 97.9\%) and other generations because they have not received routine rubella vaccination and have not had less opportunity to infect naturally.\footnote{The prevalence of antibodies in men and women aged 57 and older is 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of rubella vaccine administered as part of routine immunization.} Thus, influx of virus of Southeast Asian origin caused rubella epidemic, mainly among males with relatively low antibody prevalence in 2013 and 2018 \citep{NIID2019}.\footnote{In the 2018 epidemic, U.S. CDC advised pregnant women to travel to Japan (The Japan Times, October 24, 2018. \url{https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/}. Access date: 2023/9/22).} As cross-border traffic is increasing, achieving herd immunity against rubella becomes increasingly important for Japan.
 
-To achieve herd immunity against rubella, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, MHLW has provided the rubella vaccine as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022.\footnote{More precisely, eligible men were born between April 2, 1962, and April 1, 1979.}\footnote{If transmission to pregnant women is the most important issue, one might think that vaccinating pregnant women would be the optimal strategy. However, Japan has already implemented measures for pregnant women in advance of the 2019 vaccination campaign. Pregnant women (average age 30) have received at least one vaccination. In addition, since 2014, pregnant women and women who want to become pregnant, including their partners, have been offered free antibody testing. However, during the 2013 and 2018 epidemics, some infants were affected by CRS. Therefore, to eradicate CRS, interventions for pregnant women alone are not sufficient; interventions to achieve hard immunity are needed.} For efficient utilization of vaccination, eligible men must first get antibody testing. Men who have a negative test can then be vaccinated against rubella.
+To achieve herd immunity, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, MHLW has provided the rubella vaccine as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022.\footnote{More precisely, eligible men were born between April 2, 1962, and April 1, 1979.}\footnote{If transmission to pregnant women is the most important issue, one might think that vaccinating pregnant women would be the optimal strategy. However, Japan has already implemented measures for pregnant women in advance of the 2019 vaccination campaign. Pregnant women (average age 30) have received at least one vaccination. In addition, since 2014, pregnant women and women who want to become pregnant, including their partners, have been offered free antibody testing. However, during the 2013 and 2018 epidemics, some infants were affected by CRS. Therefore, to eradicate CRS, interventions for pregnant women alone are not sufficient; interventions to achieve hard immunity are needed.} For efficient utilization of vaccination, eligible men must first get antibody testing. Men who have a negative test can then be vaccinated against rubella.
 
 Following the Immunization Act, eligible men can receive free antibody testing and vaccinations. MHLW requested local governments to send free vouchers for a rubella antibody test and vaccine to eligible men over a three-year period. Concerning whether they automatically receive the voucher in FY2019, we can divide eligible men into the following two age groups:
 
@@ -177,17 +177,14 @@ Following the Immunization Act, eligible men can receive free antibody testing a
   47--57 years old: they automatically received the free voucher after FY2020 but had to apply to obtain it in FY2019.
 \end{enumerate}
 
-Thus, transaction costs for the monetary incentives in FY2019 differ between the two age groups. In particular, 40-to-46-year-old men have no transaction costs because they obtained monetary incentives by default in the form of free vouchers in FY2019. However, 47-to-57-year-old men have high transaction costs because they must contact their local government to obtain the free vouchers in FY2019 such as travering cost to a city hall (opt-in incentives).\footnote{One local government has posted the application forms on its website. To obtain a vaccination ticket, eligible men must download the forms from the website, complete them, and either mail them to the local government or visit the city hall in person. The cost of obtaining the documents and traveling to the city hall is considered significant.}
+Thus, transaction costs for the monetary incentives in FY2019 differ between the two age groups. In particular, 40-to-46-year-old men have no transaction costs because they obtained monetary incentives by default in the form of free vouchers in FY2019 (\emph{default incentive group}). However, 47-to-57-year-old men have high transaction costs such as travering cost to a city hall because they must contact their local government to obtain the free vouchers in FY2019 (\emph{opt-in incentive group}).\footnote{One local government has posted the application forms on its website. To obtain a vaccination ticket, eligible men must download the forms from the website, complete them, and either mail them to the local government or visit the city hall in person. The cost of obtaining the documents and traveling to the city hall seems to be significant.}
 
-Although men aged 40--46 years automatically received monetary incentives, the uptake rate of antibody testing with vouchers remained as low as 18\% as of January 2020.\footnote{More than half of eligible men are 40--46 years old (6.46 million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96\% of local governments planned to send them by October 2019. The cumulative number of antibody tests using vouchers through January 2019 was 1.17 million. We calculate antibody testing uptake by dividing the cumulative number of antibody tests using vouchers up to January 2019 (1.17 million) by the population of 40-to-46-year-old men (6.46 million).} Given adequate financial incentives, non-monetary interventions should be considered to increase antibody testing. Therefore, we developed reminders with behavioral science-based text messages for those who were not tested and vaccinated. Using a nationwide online survey, we tested how well those reminders improve antibody testing and vaccination rates among default voucher recipients (and the effect on those who incur a transaction cost to obtain them).
+Although men aged 40--46 years automatically received monetary incentives, the uptake rate of antibody testing with vouchers remained as low as 18\% as of January 2020.\footnote{More than half of eligible men are 40--46 years old (6.46 million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96\% of local governments planned to send them by October 2019. The cumulative number of antibody tests using vouchers through January 2019 was 1.17 million. We calculate antibody testing uptake by dividing the cumulative number of antibody tests using vouchers up to January 2019 (1.17 million) by the population of 40-to-46-year-old men (6.46 million).} Given adequate financial incentives, non-monetary interventions should be considered to increase antibody testing. Therefore, we developed reminders with nudge-based text messages for those who were not tested and vaccinated. Using a nationwide online survey, we tested how well those reminders improve antibody testing and vaccination rates among default voucher recipients (and the effect on those who incur a transaction cost to obtain them).
 
 \hypertarget{experiment}{%
 \section{Nationwide Online Survey Experiment}\label{experiment}}
 
-In collaboration with MHLW, we commissioned MyVoiceCome Co.\textasciitilde Ltd.~to conduct two nationwide online surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (wave 1) of 4,200 Japanese men aged 40--59 years living throughout Japan. Wave 1 randomizes seven text messages to test how they affect antibody testing and vaccination intentions.
-On March 17--25, 2020, we surveyed wave 1 respondents again for the second survey (wave 2). We received responses from 3,963 individuals (attrition rate = 5.64\%).\footnote{The seven experimental arms have similar attrition rates. We linearly regress an attrition dummy on treatment group dummies. F-test for joint null hypothesis is statistically insignificant (F-value = $1.434$; p-value = $0.197$).} Wave 2 aims to test how the randomly assigned text messages in wave 1 affect the actual uptake of antibody testing and vaccination.
-
-Online Appendix B contains detailed information about the survey. We obtained prior approval from the IRB of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
+In collaboration with MHLW, we commissioned MyVoiceCome Co.~Ltd.~to conduct two nationwide online surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (wave 1) of 4,200 Japanese men aged 40--59 years living throughout Japan. Wave 1 randomizes seven text messages to test how they affect antibody testing and vaccination intentions. On March 17--25, 2020, we surveyed wave 1 respondents again for the second survey (wave 2). We received responses from 3,963 individuals (attrition rate = 5.64\%).\footnote{The seven experimental arms have similar attrition rates. We linearly regress an attrition dummy on treatment group dummies. F-test for joint null hypothesis is statistically insignificant (F-value = \(1.434\); p-value = \(0.197\)).} Wave 2 aims to test how the randomly assigned text messages in wave 1 affect the actual uptake of antibody testing and vaccination. We obtained prior approval from the IRB of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
 
 \hypertarget{wave1}{%
 \subsection{Wave 1: Treatments and Outcome Variables on Intention}\label{wave1}}
@@ -222,26 +219,28 @@ Convenient & Dear men in their 40s and 50s (all men born between 1962 and 1979).
 
 We randomly sent one of the text messages in Table \ref{tab:message-list}. The \emph{MHLW (Control)} message is the control. Using this message, MHLW promotes antibody testing and rubella vaccination against rubella on its website (business-as-usual control). We developed six additional text messages based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages \citep[e.g.,][]{Dai2021, Milkman2021}, similar to this study.
 
-The six treated text messages alter the MHLW (Control) message to (1) a simple age expression and (2) behavioral economics content. In addition to the precise target age for the additional rubella measures, the \emph{MHLW (Age)} message includes the simple phrase ``men in their 40s and 50s,'' which helps the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content is identical to the control. The other five messages both add simplified age expressions and change message content based on behavioral economics.
+The six treated text messages alter the MHLW (Control) message to (1) a simple age expression (first sentence) and (2) message content (following sentences). In addition to the precise target age for the additional rubella measures, the \emph{MHLW (Age)} message includes the simple phrase ``men in their 40s and 50s,'' which helps the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content is identical to the control. The other five messages both add simplified age expressions and change message content based on behavioral economics.
 
 The \emph{Altruistic} message describes how one's infection can harm others, particularly pregnant women and their children. As previously stated, vaccination has positive externalities. In the case of rubella, having antibodies through vaccination prevents infection in pregnant women, thus protecting their children. The Altruistic message is the inverse of this positive externality, emphasizing the negative externality of not being vaccinated. This message is intended to help altruistic readers imagine the negative externalities caused by the infection and change their behavior.\footnote{We define an altruistic person as someone who considers social benefits, including externalities.}
 
 The \emph{Selfish} message and \emph{Social Comparison} message aim to change behavior by increasing the importance of having rubella antibodies. The Selfish one describes in detail the damage caused by the infection to the individual, making it easier for the reader to imagine it. Meanwhile, the Social Comparison informs the reader that antibody prevalence is low and reminds them that they are susceptible to infection. This message can help people avoid underestimating the likelihood of infection and undervaluing vaccination.
 
-The \emph{Deadline} message and \emph{Convenient} message describe the routine vaccination system. Deadline emphasizes that the FY2019 vouchers are valid until the end of March. This message aims to prevent people from postponing antibody testing and vaccination due to the present bias, which is one of behavioral economics' key findings. Meanwhile, Convenient states that some people can get antibody testing as part of a regular health examination and emphasizes its convenience. This message aims to reduce the subjective cost of antibody testing.
+The \emph{Deadline} message and \emph{Convenient} message describe detail system of the 2019 vaccination campaign. Deadline emphasizes that the FY2019 vouchers are valid until the end of March. This message aims to prevent people from postponing antibody testing and vaccination due to the present bias, which is one of behavioral economics' key findings. Meanwhile, Convenient states that some people can get antibody testing as part of a regular health examination and emphasizes its convenience. This message aims to reduce the subjective cost of antibody testing.
 
 We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned messages within each stratum. The sample size for each group is 1,050, with 150 for one experimental arm within each group. Thus, the sample size for one experimental group is 600.\footnote{The ages shown in Table \ref{tab:message-list} are as of April 2019, calculated using the year and month of respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive coupons for the first year. We assume that those born in April have not yet reached their birthday. Also, some men aged 39 years as of April 2019 were 40 years old at the time of the survey.}
 
 In wave 1, after viewing a randomly assigned message, participants expressed their intention to get antibody testing and vaccinated on a 5-point Likert scale (5 = definitely yes; 1 = absolutely no). The question of willingness to take antibody testing is, ``Are you willing to take an antibody test for rubella now?'' Meanwhile, the intention to get vaccinated question asks, ``If the antibody testing reveals that you have no antibodies, are you willing to get vaccinated?'' We create a binary variable taking the value of 1 if the participant responds 4 or 5 for each question and use it as the outcome variable for intentions.
 
+Note that, before reading a randomly assigned message, participants were asked about economic preferences such as altruistic preference, daily health behaviors, rubella knowledge, and the willingness to pay for the rubella vaccination. At the end of survey, they were asked about socio-economic status. We use these variables to perform regressions and balance checks and to study mechanisms. See Table \ref{tab:covariate-list} in Appendix \ref{fig-tab} for variables used in regression analysis and balance checks.
+
 \hypertarget{wave2}{%
 \subsection{Wave 2: Outcome Variables on Behavior}\label{wave2}}
 
-Wave 2 investigates actual antibody testing and vaccination behavior since wave 1. We present exact questions and choices about antibody testing and vaccination in Online Appendix B. We create a binary variable taking 1 if the respondent has taken antibody testing since the end of wave 1.
+Wave 2 investigates actual antibody testing and vaccination behavior since wave 1. We present exact questions and choices about antibody testing and vaccination in Appendix \ref{question}. We create a binary variable taking 1 if the respondent has taken antibody testing since the end of wave 1.
 
-To receive rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we create a binary variable taking 1 if respondents have been tested and vaccinated since the end of wave 1.Then, we use it as the outcome variable on vaccination coverage.
+To receive rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we create a binary variable taking 1 if respondents have been tested and vaccinated since the end of wave 1. Then, we use it as the outcome variable on vaccination coverage.
 
-Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addresses these biases in the following two ways. First, because this study is a randomized controlled trial and if these biases exist to the same extent in each group, they are not fatal to the identification of treatment effects. Second, even if these biases are heterogeneous across groups, our analysis directly controls for respondents' psychological factors related to these biases (feeling pleasure from acting for others, accepting bad behavior in anonymous conditions) and then estimates treatment effects.
+Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addresses these biases in the following two ways. First, because this study is a randomized controlled trial and if these biases exist to the same extent in each group, they are not fatal to the identification of treatment effects. Second, even if these biases are heterogeneous across groups, our analysis directly controls for respondents' psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions) and then estimates treatment effects.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -303,36 +302,36 @@ where \(\text{Message}_j\) is a treatment dummy (the reference group is MHLW (co
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-MHLW (Age) & \num{0.021} & \num{0.039} & \num{0.020} & \num{0.047}\\
- & (\num{0.051}) & (\num{0.049}) & (\num{0.061}) & (\num{0.059})\\
-Altruistic & \num{0.144}*** & \num{0.166}*** & \num{0.024} & \num{0.050}\\
- & (\num{0.053}) & (\num{0.049}) & (\num{0.060}) & (\num{0.056})\\
-Selfish & \num{0.073} & \num{0.115}** & \num{0.039} & \num{0.087}\\
- & (\num{0.053}) & (\num{0.050}) & (\num{0.061}) & (\num{0.058})\\
-Social Comparison & \num{0.040} & \num{0.067} & \num{0.014} & \num{0.039}\\
- & (\num{0.053}) & (\num{0.050}) & (\num{0.063}) & (\num{0.059})\\
-Deadline & \num{0.031} & \num{0.039} & \num{-0.010} & \num{0.003}\\
- & (\num{0.051}) & (\num{0.048}) & (\num{0.060}) & (\num{0.058})\\
-Convenient & \num{0.052} & \num{0.060} & \num{0.018} & \num{0.032}\\
+MHLW (Age) & \num{0.021} & \num{0.038} & \num{0.020} & \num{0.049}\\
+ & (\num{0.051}) & (\num{0.048}) & (\num{0.061}) & (\num{0.058})\\
+Altruistic & \num{0.144}*** & \num{0.161}*** & \num{0.024} & \num{0.048}\\
+ & (\num{0.053}) & (\num{0.050}) & (\num{0.060}) & (\num{0.057})\\
+Selfish & \num{0.073} & \num{0.115}** & \num{0.039} & \num{0.091}\\
+ & (\num{0.053}) & (\num{0.050}) & (\num{0.061}) & (\num{0.057})\\
+Social Comparison & \num{0.040} & \num{0.075} & \num{0.014} & \num{0.052}\\
+ & (\num{0.053}) & (\num{0.050}) & (\num{0.063}) & (\num{0.058})\\
+Deadline & \num{0.031} & \num{0.041} & \num{-0.010} & \num{0.010}\\
+ & (\num{0.051}) & (\num{0.048}) & (\num{0.060}) & (\num{0.057})\\
+Convenient & \num{0.052} & \num{0.060} & \num{0.018} & \num{0.034}\\
  & (\num{0.053}) & (\num{0.050}) & (\num{0.062}) & (\num{0.058})\\
-Opt-in & \num{0.068} & \num{0.081} & \num{0.113}** & \num{0.077}\\
+Opt-in & \num{0.068} & \num{0.083}* & \num{0.113}** & \num{0.081}\\
  & (\num{0.046}) & (\num{0.050}) & (\num{0.054}) & (\num{0.059})\\
-MHLW (Age) $\times$ Opt-in & \num{-0.045} & \num{-0.072} & \num{-0.086} & \num{-0.122}*\\
- & (\num{0.065}) & (\num{0.061}) & (\num{0.076}) & (\num{0.072})\\
-Altruistic $\times$ Opt-in & \num{-0.091} & \num{-0.121}* & \num{-0.052} & \num{-0.088}\\
+MHLW (Age) $\times$ Opt-in & \num{-0.045} & \num{-0.078} & \num{-0.086} & \num{-0.132}*\\
+ & (\num{0.065}) & (\num{0.061}) & (\num{0.076}) & (\num{0.071})\\
+Altruistic $\times$ Opt-in & \num{-0.091} & \num{-0.120}* & \num{-0.052} & \num{-0.091}\\
  & (\num{0.068}) & (\num{0.064}) & (\num{0.075}) & (\num{0.071})\\
-Selfish $\times$ Opt-in & \num{-0.031} & \num{-0.097} & \num{-0.067} & \num{-0.141}*\\
- & (\num{0.068}) & (\num{0.064}) & (\num{0.077}) & (\num{0.073})\\
-Social Comparison $\times$ Opt-in & \num{-0.077} & \num{-0.111}* & \num{-0.096} & \num{-0.126}*\\
+Selfish $\times$ Opt-in & \num{-0.031} & \num{-0.098} & \num{-0.067} & \num{-0.143}**\\
+ & (\num{0.068}) & (\num{0.063}) & (\num{0.077}) & (\num{0.072})\\
+Social Comparison $\times$ Opt-in & \num{-0.077} & \num{-0.124}** & \num{-0.096} & \num{-0.141}**\\
  & (\num{0.066}) & (\num{0.062}) & (\num{0.077}) & (\num{0.072})\\
-Deadline $\times$ Opt-in & \num{-0.003} & \num{-0.006} & \num{-0.018} & \num{-0.024}\\
+Deadline $\times$ Opt-in & \num{-0.003} & \num{-0.012} & \num{-0.018} & \num{-0.033}\\
  & (\num{0.065}) & (\num{0.062}) & (\num{0.075}) & (\num{0.071})\\
-Convenient $\times$ Opt-in & \num{0.011} & \num{-0.001} & \num{-0.048} & \num{-0.063}\\
- & (\num{0.067}) & (\num{0.064}) & (\num{0.077}) & (\num{0.072})\\
+Convenient $\times$ Opt-in & \num{0.011} & \num{-0.001} & \num{-0.048} & \num{-0.062}\\
+ & (\num{0.067}) & (\num{0.064}) & (\num{0.077}) & (\num{0.071})\\
 \midrule
 Covariates &  & X &  & X\\
 Num.Obs. & \num{2615} & \num{2615} & \num{2615} & \num{2615}\\
-R2 & \num{0.009} & \num{0.112} & \num{0.005} & \num{0.118}\\
+R2 & \num{0.009} & \num{0.109} & \num{0.005} & \num{0.128}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -353,18 +352,18 @@ R2 & \num{0.009} & \num{0.112} & \num{0.005} & \num{0.118}\\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-MHLW (Age) & \num{-0.024} & \num{-0.033} & \num{-0.066} & \num{-0.074}*\\
- & (\num{0.040}) & (\num{0.037}) & (\num{0.045}) & (\num{0.042})\\
-Altruistic & \num{0.053} & \num{0.045} & \num{-0.028} & \num{-0.038}\\
- & (\num{0.042}) & (\num{0.040}) & (\num{0.046}) & (\num{0.043})\\
-Selfish & \num{0.041} & \num{0.017} & \num{-0.028} & \num{-0.054}\\
+MHLW (Age) & \num{-0.024} & \num{-0.040} & \num{-0.066} & \num{-0.083}**\\
+ & (\num{0.040}) & (\num{0.037}) & (\num{0.045}) & (\num{0.041})\\
+Altruistic & \num{0.053} & \num{0.041} & \num{-0.028} & \num{-0.043}\\
+ & (\num{0.042}) & (\num{0.041}) & (\num{0.046}) & (\num{0.043})\\
+Selfish & \num{0.041} & \num{0.017} & \num{-0.028} & \num{-0.053}\\
  & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
-Social Comparison & \num{-0.037} & \num{-0.044} & \num{-0.082}* & \num{-0.087}**\\
+Social Comparison & \num{-0.037} & \num{-0.049} & \num{-0.082}* & \num{-0.089}**\\
  & (\num{0.039}) & (\num{0.037}) & (\num{0.045}) & (\num{0.041})\\
-Deadline & \num{0.029} & \num{0.033} & \num{-0.028} & \num{-0.021}\\
+Deadline & \num{0.029} & \num{0.029} & \num{-0.028} & \num{-0.023}\\
  & (\num{0.041}) & (\num{0.039}) & (\num{0.045}) & (\num{0.042})\\
-Convenient & \num{0.063} & \num{0.059} & \num{-0.030} & \num{-0.031}\\
- & (\num{0.042}) & (\num{0.040}) & (\num{0.045}) & (\num{0.043})\\
+Convenient & \num{0.063} & \num{0.060} & \num{-0.030} & \num{-0.028}\\
+ & (\num{0.042}) & (\num{0.040}) & (\num{0.045}) & (\num{0.042})\\
 Covariates &  & X &  & X\\
 \bottomrule
 \end{tabular}
@@ -417,21 +416,21 @@ Figure \ref{fig:ttest-act-vacc} shows the vaccination rates in each experimental
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-MHLW (Age) & \num{0.032} & \num{0.029} & \num{0.008} & \num{0.005}\\
+MHLW (Age) & \num{0.032} & \num{0.028} & \num{0.008} & \num{0.005}\\
  & (\num{0.029}) & (\num{0.028}) & (\num{0.015}) & (\num{0.015})\\
-Altruistic & \num{0.075}** & \num{0.073}** & \num{0.038}* & \num{0.037}*\\
- & (\num{0.033}) & (\num{0.032}) & (\num{0.021}) & (\num{0.021})\\
-Selfish & \num{0.055}* & \num{0.061}* & \num{0.018} & \num{0.018}\\
- & (\num{0.032}) & (\num{0.032}) & (\num{0.018}) & (\num{0.018})\\
-Social Comparison & \num{0.053} & \num{0.056}* & \num{0.040}* & \num{0.040}*\\
+Altruistic & \num{0.075}** & \num{0.072}** & \num{0.038}* & \num{0.037}*\\
+ & (\num{0.033}) & (\num{0.032}) & (\num{0.021}) & (\num{0.020})\\
+Selfish & \num{0.055}* & \num{0.060}* & \num{0.018} & \num{0.018}\\
+ & (\num{0.032}) & (\num{0.032}) & (\num{0.018}) & (\num{0.017})\\
+Social Comparison & \num{0.053} & \num{0.056}* & \num{0.040}* & \num{0.039}*\\
  & (\num{0.033}) & (\num{0.033}) & (\num{0.023}) & (\num{0.023})\\
 Deadline & \num{0.008} & \num{0.005} & \num{0.000} & \num{-0.002}\\
  & (\num{0.025}) & (\num{0.025}) & (\num{0.012}) & (\num{0.012})\\
-Convenient & \num{0.037} & \num{0.038} & \num{0.018} & \num{0.018}\\
+Convenient & \num{0.037} & \num{0.037} & \num{0.018} & \num{0.017}\\
  & (\num{0.030}) & (\num{0.030}) & (\num{0.018}) & (\num{0.018})\\
-Opt-in & \num{-0.030}* & \num{-0.018} & \num{-0.009} & \num{-0.003}\\
+Opt-in & \num{-0.030}* & \num{-0.019} & \num{-0.009} & \num{-0.004}\\
  & (\num{0.018}) & (\num{0.020}) & (\num{0.009}) & (\num{0.012})\\
-MHLW (Age) $\times$ Opt-in & \num{-0.028} & \num{-0.026} & \num{-0.003} & \num{-0.002}\\
+MHLW (Age) $\times$ Opt-in & \num{-0.028} & \num{-0.026} & \num{-0.003} & \num{-0.001}\\
  & (\num{0.030}) & (\num{0.030}) & (\num{0.015}) & (\num{0.016})\\
 Altruistic $\times$ Opt-in & \num{-0.058}* & \num{-0.057}* & \num{-0.033} & \num{-0.032}\\
  & (\num{0.034}) & (\num{0.034}) & (\num{0.021}) & (\num{0.021})\\
@@ -439,7 +438,7 @@ Selfish $\times$ Opt-in & \num{-0.045} & \num{-0.054} & \num{-0.013} & \num{-0.0
  & (\num{0.034}) & (\num{0.033}) & (\num{0.018}) & (\num{0.018})\\
 Social Comparison $\times$ Opt-in & \num{-0.029} & \num{-0.034} & \num{-0.040}* & \num{-0.039}*\\
  & (\num{0.035}) & (\num{0.035}) & (\num{0.023}) & (\num{0.023})\\
-Deadline $\times$ Opt-in & \num{0.001} & \num{0.003} & \num{0.005} & \num{0.006}\\
+Deadline $\times$ Opt-in & \num{0.001} & \num{0.004} & \num{0.005} & \num{0.007}\\
  & (\num{0.027}) & (\num{0.026}) & (\num{0.013}) & (\num{0.013})\\
 Convenient $\times$ Opt-in & \num{-0.032} & \num{-0.031} & \num{-0.018} & \num{-0.018}\\
  & (\num{0.031}) & (\num{0.031}) & (\num{0.018}) & (\num{0.018})\\
@@ -468,14 +467,14 @@ R2 & \num{0.030} & \num{0.047} & \num{0.019} & \num{0.029}\\
   & (1) & (2) & (3) & (4)\\
 \midrule
 MHLW (Age) & \num{0.005} & \num{0.003} & \num{0.005} & \num{0.004}\\
- & (\num{0.008}) & (\num{0.008}) & (\num{0.005}) & (\num{0.005})\\
+ & (\num{0.008}) & (\num{0.009}) & (\num{0.005}) & (\num{0.005})\\
 Altruistic & \num{0.017} & \num{0.016} & \num{0.005} & \num{0.005}\\
  & (\num{0.011}) & (\num{0.011}) & (\num{0.005}) & (\num{0.005})\\
 Selfish & \num{0.010} & \num{0.007} & \num{0.005} & \num{0.005}\\
  & (\num{0.010}) & (\num{0.010}) & (\num{0.005}) & (\num{0.005})\\
-Social Comparison & \num{0.023}* & \num{0.022}* & \num{0.000} & \num{0.000}\\
+Social Comparison & \num{0.023}* & \num{0.021}* & \num{0.000} & \num{0.000}\\
  & (\num{0.012}) & (\num{0.013}) &  & (\num{0.001})\\
-Deadline & \num{0.009} & \num{0.009} & \num{0.004} & \num{0.005}\\
+Deadline & \num{0.009} & \num{0.008} & \num{0.004} & \num{0.005}\\
  & (\num{0.009}) & (\num{0.009}) & (\num{0.004}) & (\num{0.005})\\
 Convenient & \num{0.005} & \num{0.007} & \num{0.000} & \num{0.000}\\
  & (\num{0.008}) & (\num{0.009}) & (\num{0.000}) & (\num{0.001})\\
@@ -569,8 +568,86 @@ The last two arguments are important issues outside our context. The second argu
 \appendix}
 
 
-\hypertarget{tables-and-figures}{%
-\section{Tables and Figures}\label{tables-and-figures}}
+\hypertarget{question}{%
+\section{Antibody Testing and Vaccination Questions}\label{question}}
+
+In wave 2, participants are asked if they have had antibody testing and vaccination since wave 1. The antibody testing question asks, ``Have you had rubella antibody testing since the end of the last survey?''
+Participants were given the following choices:
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    Yes, I have taken antibody testing;
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    No, I have not taken antibody testing;
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    I have taken antibody testing before the last survey.
+  \end{enumerate}
+\end{itemize}
+
+We create a binary variable taking 1 if the respondent chooses option (a) and use it as an outcome variable for the uptake rate of antibody testing. Meanwhile, the vaccination question is ``Have you been vaccinated against rubella since the end of the last survey?'' Respondents were given one of five options:
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    I have been vaccinated;
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    I do not need the vaccine due to a positive test or infection experience;
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    I have taken antibody testing but have not been vaccinated yet;
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    I have not taken antibody testing or gotten vaccinated;
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{4}
+  \tightlist
+  \item
+    I have been vaccinated before the last survey.
+  \end{enumerate}
+\end{itemize}
+
+We create a binary variable taking 1 if the participant chooses option (a) for both the antibody testing and vaccination questions. Then, we use it as the outcome variable on vaccination.
+
+\hypertarget{fig-tab}{%
+\section{Tables and Figures}\label{fig-tab}}
 
 \begin{table}[!h]
 
@@ -589,12 +666,13 @@ noinfo\_income & (Wave1) Dummy variable taking one if a respondent did not answe
 exercise\_w1 & (Wave1) Dummy variable taking one if a respondent exercises or plays sports more than once a week. & \num{0.22} & \num{0.42}\\
 health\_check & (Wave1) Dummy variable taking one if a respondent has had a medical examination at his/her city or place of employment in the past year from the time of the wave 1. & \num{0.68} & \num{0.46}\\
 flushot & (Wave1) Dummy variable taking one if a respondent is vaccinated against influenza every year. & \num{0.27} & \num{0.45}\\
-norm & (Wave2) Five-point Likert scale for the question "I wash my hands and gargle frequently during the period from the end of the previous questionnaire response to today." & \num{11.24} & \num{2.32}\\
-handwash & (Wave2) Five-point Likert scale for the question "I take my temperature frequently during the period from the end of the previous questionnaire response to today." & \num{3.91} & \num{1.04}\\
-temp\_check & (Wave2) Five-point Likert scale for the question "I am refraining from going out during the end of the previous questionnaire response to today." & \num{2.26} & \num{1.22}\\
-avoid\_out & (Wave2) Five-point Likert scale for the question "I avoid crowded places when I go out from the end of the previous questionnaire response to today." & \num{2.96} & \num{1.20}\\
-avoid\_crowd & (Wave2) Five-point Likert scale for the question "I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today." & \num{3.38} & \num{1.10}\\
-wear\_mask &  & \num{3.14} & \num{1.38}\\
+norm\_waiting\_line & (Wave2) Five-point Likert scale for the question "I wash my hands and gargle frequently during the period from the end of the previous questionnaire response to today." & \num{4.07} & \num{0.96}\\
+selfish\_anonymous & (Wave2) Five-point Likert scale for the question "I take my temperature frequently during the period from the end of the previous questionnaire response to today." & \num{2.33} & \num{0.98}\\
+handwash & (Wave2) Five-point Likert scale for the question "I am refraining from going out during the end of the previous questionnaire response to today." & \num{3.91} & \num{1.04}\\
+temp\_check & (Wave2) Five-point Likert scale for the question "I avoid crowded places when I go out from the end of the previous questionnaire response to today." & \num{2.26} & \num{1.22}\\
+avoid\_out & (Wave2) Five-point Likert scale for the question "I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today." & \num{2.96} & \num{1.20}\\
+avoid\_crowd & (Wave1) Five-point Likert scale for the question "I never interrupt someone in line." & \num{3.38} & \num{1.10}\\
+wear\_mask & (Wave1) Five-point Likert scale for the question "If I can never find it, I can do bad things (littering, parking tickets, etc.)." & \num{3.14} & \num{1.38}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -617,7 +695,8 @@ noinfo\_income & 0.162 & 0.168 & 0.203 & 0.197 & 0.157 & 0.130 & 0.181 & 0.706\\
 exercise\_w1 & 0.246 & 0.176 & 0.277 & 0.189 & 0.165 & 0.217 & 0.213 & 0.285\\
 health\_check & 0.654 & 0.626 & 0.696 & 0.538 & 0.603 & 0.674 & 0.614 & 0.150\\
 flushot & 0.238 & 0.260 & 0.203 & 0.144 & 0.140 & 0.239 & 0.236 & 0.055\\
-norm & 11.100 & 10.679 & 10.649 & 10.864 & 11.165 & 10.855 & 10.945 & 0.492\\
+norm\_waiting\_line & 4.100 & 3.908 & 3.892 & 3.970 & 4.050 & 3.906 & 4.024 & 0.447\\
+selfish\_anonymous & 2.377 & 2.435 & 2.331 & 2.371 & 2.446 & 2.355 & 2.425 & 0.945\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -644,7 +723,8 @@ noinfo\_income & 0.184 & 0.164 & 0.145 & 0.117 & 0.155 & 0.163 & 0.205 & 0.211\\
 exercise\_w1 & 0.156 & 0.193 & 0.239 & 0.230 & 0.183 & 0.203 & 0.218 & 0.252\\
 health\_check & 0.632 & 0.664 & 0.701 & 0.683 & 0.653 & 0.659 & 0.644 & 0.742\\
 flushot & 0.228 & 0.244 & 0.197 & 0.270 & 0.275 & 0.228 & 0.251 & 0.433\\
-norm & 11.336 & 11.340 & 11.346 & 11.304 & 11.187 & 11.122 & 11.293 & 0.922\\
+norm\_waiting\_line & 4.136 & 4.134 & 4.137 & 4.078 & 4.004 & 4.028 & 4.063 & 0.590\\
+selfish\_anonymous & 2.416 & 2.231 & 2.325 & 2.374 & 2.223 & 2.337 & 2.368 & 0.201\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -665,32 +745,32 @@ norm & 11.336 & 11.340 & 11.346 & 11.304 & 11.187 & 11.122 & 11.293 & 0.922\\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-Altruistic & \num{0.122}** & \num{0.128}** & \num{0.004} & \num{0.004}\\
+Altruistic & \num{0.122}** & \num{0.124}** & \num{0.004} & \num{-0.001}\\
  & (\num{0.054}) & (\num{0.051}) & (\num{0.060}) & (\num{0.057})\\
-Selfish & \num{0.051} & \num{0.075} & \num{0.019} & \num{0.040}\\
- & (\num{0.054}) & (\num{0.052}) & (\num{0.061}) & (\num{0.059})\\
-Social Comparison & \num{0.019} & \num{0.028} & \num{-0.005} & \num{-0.007}\\
+Selfish & \num{0.051} & \num{0.077} & \num{0.019} & \num{0.041}\\
+ & (\num{0.054}) & (\num{0.051}) & (\num{0.061}) & (\num{0.058})\\
+Social Comparison & \num{0.019} & \num{0.037} & \num{-0.005} & \num{0.004}\\
  & (\num{0.054}) & (\num{0.052}) & (\num{0.063}) & (\num{0.059})\\
-Deadline & \num{0.010} & \num{0.000} & \num{-0.029} & \num{-0.045}\\
- & (\num{0.052}) & (\num{0.050}) & (\num{0.060}) & (\num{0.058})\\
-Convenient & \num{0.031} & \num{0.021} & \num{-0.002} & \num{-0.016}\\
+Deadline & \num{0.010} & \num{0.003} & \num{-0.029} & \num{-0.041}\\
+ & (\num{0.052}) & (\num{0.049}) & (\num{0.060}) & (\num{0.058})\\
+Convenient & \num{0.031} & \num{0.022} & \num{-0.002} & \num{-0.015}\\
  & (\num{0.054}) & (\num{0.051}) & (\num{0.062}) & (\num{0.058})\\
-Opt-in & \num{0.023} & \num{0.023} & \num{0.027} & \num{-0.031}\\
+Opt-in & \num{0.023} & \num{0.019} & \num{0.027} & \num{-0.038}\\
  & (\num{0.046}) & (\num{0.052}) & (\num{0.054}) & (\num{0.060})\\
-Altruistic $\times$ Opt-in & \num{-0.045} & \num{-0.050} & \num{0.034} & \num{0.032}\\
+Altruistic $\times$ Opt-in & \num{-0.045} & \num{-0.044} & \num{0.034} & \num{0.040}\\
  & (\num{0.068}) & (\num{0.065}) & (\num{0.075}) & (\num{0.071})\\
-Selfish $\times$ Opt-in & \num{0.014} & \num{-0.026} & \num{0.018} & \num{-0.020}\\
- & (\num{0.068}) & (\num{0.065}) & (\num{0.077}) & \vphantom{1} (\num{0.073})\\
-Social Comparison $\times$ Opt-in & \num{-0.032} & \num{-0.039} & \num{-0.011} & \num{-0.006}\\
- & (\num{0.067}) & (\num{0.063}) & (\num{0.077}) & (\num{0.073})\\
-Deadline $\times$ Opt-in & \num{0.043} & \num{0.065} & \num{0.067} & \num{0.097}\\
- & (\num{0.066}) & (\num{0.063}) & (\num{0.076}) & (\num{0.072})\\
-Convenient $\times$ Opt-in & \num{0.056} & \num{0.071} & \num{0.038} & \num{0.059}\\
- & (\num{0.068}) & (\num{0.065}) & (\num{0.077}) & (\num{0.073})\\
+Selfish $\times$ Opt-in & \num{0.014} & \num{-0.022} & \num{0.018} & \num{-0.012}\\
+ & (\num{0.068}) & (\num{0.064}) & (\num{0.077}) & (\num{0.072})\\
+Social Comparison $\times$ Opt-in & \num{-0.032} & \num{-0.046} & \num{-0.011} & \num{-0.011}\\
+ & (\num{0.067}) & (\num{0.063}) & (\num{0.077}) & (\num{0.072})\\
+Deadline $\times$ Opt-in & \num{0.043} & \num{0.066} & \num{0.067} & \num{0.100}\\
+ & (\num{0.066}) & (\num{0.063}) & (\num{0.076}) & (\num{0.071})\\
+Convenient $\times$ Opt-in & \num{0.056} & \num{0.077} & \num{0.038} & \num{0.069}\\
+ & (\num{0.068}) & (\num{0.065}) & (\num{0.077}) & (\num{0.072})\\
 \midrule
 Covariates &  & X &  & X\\
 Num.Obs. & \num{2235} & \num{2235} & \num{2235} & \num{2235}\\
-R2 & \num{0.008} & \num{0.108} & \num{0.004} & \num{0.113}\\
+R2 & \num{0.008} & \num{0.105} & \num{0.004} & \num{0.121}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -711,16 +791,16 @@ R2 & \num{0.008} & \num{0.108} & \num{0.004} & \num{0.113}\\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-Altruistic & \num{0.077}* & \num{0.077}* & \num{0.038} & \num{0.036}\\
+Altruistic & \num{0.077}* & \num{0.080}** & \num{0.038} & \num{0.040}\\
  & (\num{0.042}) & (\num{0.040}) & (\num{0.046}) & (\num{0.043})\\
-Selfish & \num{0.065} & \num{0.049} & \num{0.038} & \num{0.020}\\
- & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.044})\\
-Social Comparison & \num{-0.013} & \num{-0.011} & \num{-0.016} & \num{-0.013}\\
- & (\num{0.039}) & (\num{0.036}) & (\num{0.045}) & (\num{0.042})\\
-Deadline & \num{0.053} & \num{0.065}* & \num{0.038} & \num{0.053}\\
- & (\num{0.041}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
-Convenient & \num{0.087}** & \num{0.092}** & \num{0.036} & \num{0.043}\\
+Selfish & \num{0.065} & \num{0.055} & \num{0.038} & \num{0.029}\\
  & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
+Social Comparison & \num{-0.013} & \num{-0.008} & \num{-0.016} & \num{-0.007}\\
+ & (\num{0.039}) & (\num{0.036}) & (\num{0.045}) & (\num{0.042})\\
+Deadline & \num{0.053} & \num{0.068}* & \num{0.038} & \num{0.059}\\
+ & (\num{0.041}) & (\num{0.038}) & (\num{0.046}) & (\num{0.042})\\
+Convenient & \num{0.087}** & \num{0.099}** & \num{0.036} & \num{0.054}\\
+ & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.042})\\
 Covariates &  & X &  & X\\
 \bottomrule
 \end{tabular}
@@ -748,7 +828,8 @@ noinfo\_income & 0.174 & 0.126 & 0.203 & 0.207 & 0.146 & 0.136 & 0.171 & 0.522\\
 exercise\_w1 & 0.252 & 0.185 & 0.266 & 0.171 & 0.165 & 0.195 & 0.225 & 0.375\\
 health\_check & 0.643 & 0.639 & 0.680 & 0.532 & 0.631 & 0.661 & 0.640 & 0.391\\
 flushot & 0.235 & 0.261 & 0.227 & 0.135 & 0.146 & 0.246 & 0.207 & 0.082\\
-norm & 11.174 & 10.706 & 10.758 & 11.063 & 11.204 & 10.831 & 10.982 & 0.523\\
+norm\_waiting\_line & 4.174 & 3.933 & 3.922 & 4.036 & 4.078 & 3.898 & 4.063 & 0.219\\
+selfish\_anonymous & 2.339 & 2.412 & 2.367 & 2.333 & 2.447 & 2.373 & 2.414 & 0.977\\
 handwash & 3.861 & 3.916 & 3.797 & 3.757 & 3.767 & 3.915 & 3.829 & 0.835\\
 temp\_check & 2.139 & 2.235 & 2.414 & 2.126 & 2.204 & 2.203 & 2.117 & 0.535\\
 avoid\_out & 3.096 & 3.034 & 3.047 & 2.793 & 2.932 & 3.025 & 2.928 & 0.544\\
@@ -780,7 +861,8 @@ noinfo\_income & 0.173 & 0.157 & 0.137 & 0.114 & 0.159 & 0.166 & 0.222 & 0.142\\
 exercise\_w1 & 0.159 & 0.194 & 0.232 & 0.229 & 0.173 & 0.211 & 0.202 & 0.432\\
 health\_check & 0.632 & 0.667 & 0.684 & 0.677 & 0.645 & 0.673 & 0.631 & 0.849\\
 flushot & 0.223 & 0.245 & 0.189 & 0.264 & 0.280 & 0.215 & 0.241 & 0.376\\
-norm & 11.355 & 11.329 & 11.384 & 11.189 & 11.220 & 11.224 & 11.222 & 0.964\\
+norm\_waiting\_line & 4.159 & 4.162 & 4.126 & 4.065 & 3.991 & 4.063 & 4.030 & 0.431\\
+selfish\_anonymous & 2.436 & 2.227 & 2.311 & 2.343 & 2.234 & 2.300 & 2.379 & 0.240\\
 handwash & 3.823 & 3.889 & 3.926 & 3.751 & 3.836 & 3.861 & 3.867 & 0.769\\
 temp\_check & 2.095 & 2.204 & 2.221 & 2.100 & 2.136 & 2.085 & 2.182 & 0.841\\
 avoid\_out & 2.886 & 2.889 & 2.932 & 2.866 & 2.855 & 2.964 & 2.941 & 0.960\\
@@ -808,30 +890,30 @@ wear\_mask & 3.082 & 3.176 & 3.116 & 3.144 & 2.977 & 2.942 & 3.010 & 0.533\\
 \midrule
 Altruistic & \num{0.042} & \num{0.045} & \num{0.030} & \num{0.032}\\
  & (\num{0.036}) & (\num{0.036}) & (\num{0.022}) & (\num{0.022})\\
-Selfish & \num{0.023} & \num{0.032} & \num{0.010} & \num{0.013}\\
- & (\num{0.036}) & (\num{0.035}) & (\num{0.019}) & (\num{0.020})\\
-Social Comparison & \num{0.020} & \num{0.027} & \num{0.032} & \num{0.034}\\
+Selfish & \num{0.023} & \num{0.032} & \num{0.010} & \num{0.014}\\
+ & (\num{0.036}) & (\num{0.035}) & (\num{0.019}) & (\num{0.019})\\
+Social Comparison & \num{0.020} & \num{0.028} & \num{0.032} & \num{0.035}\\
  & (\num{0.036}) & (\num{0.036}) & (\num{0.024}) & (\num{0.025})\\
 Deadline & \num{-0.025} & \num{-0.024} & \num{-0.008} & \num{-0.007}\\
  & (\num{0.030}) & (\num{0.029}) & (\num{0.015}) & (\num{0.014})\\
-Convenient & \num{0.005} & \num{0.009} & \num{0.010} & \num{0.013}\\
- & (\num{0.034}) & (\num{0.034}) & (\num{0.019}) & (\num{0.019})\\
-Opt-in & \num{-0.058}** & \num{-0.046}* & \num{-0.012} & \num{-0.002}\\
- & (\num{0.024}) & (\num{0.026}) & (\num{0.013}) & (\num{0.015})\\
-Altruistic $\times$ Opt-in & \num{-0.030} & \num{-0.031} & \num{-0.029} & \num{-0.031}\\
+Convenient & \num{0.005} & \num{0.010} & \num{0.010} & \num{0.013}\\
+ & (\num{0.034}) & (\num{0.034}) & (\num{0.019}) & (\num{0.020})\\
+Opt-in & \num{-0.058}** & \num{-0.045}* & \num{-0.012} & \num{-0.001}\\
+ & (\num{0.024}) & (\num{0.027}) & (\num{0.013}) & (\num{0.015})\\
+Altruistic $\times$ Opt-in & \num{-0.030} & \num{-0.032} & \num{-0.029} & \num{-0.031}\\
  & (\num{0.038}) & (\num{0.038}) & (\num{0.023}) & (\num{0.024})\\
-Selfish $\times$ Opt-in & \num{-0.017} & \num{-0.027} & \num{-0.010} & \num{-0.012}\\
+Selfish $\times$ Opt-in & \num{-0.017} & \num{-0.028} & \num{-0.010} & \num{-0.012}\\
  & (\num{0.037}) & (\num{0.037}) & (\num{0.021}) & (\num{0.021})\\
-Social Comparison $\times$ Opt-in & \num{-0.001} & \num{-0.008} & \num{-0.036} & \num{-0.038}\\
+Social Comparison $\times$ Opt-in & \num{-0.001} & \num{-0.009} & \num{-0.036} & \num{-0.039}\\
  & (\num{0.038}) & (\num{0.039}) & (\num{0.025}) & (\num{0.025})\\
 Deadline $\times$ Opt-in & \num{0.029} & \num{0.030} & \num{0.008} & \num{0.008}\\
  & (\num{0.031}) & (\num{0.031}) & (\num{0.016}) & (\num{0.016})\\
-Convenient $\times$ Opt-in & \num{-0.004} & \num{-0.004} & \num{-0.015} & \num{-0.017}\\
+Convenient $\times$ Opt-in & \num{-0.004} & \num{-0.005} & \num{-0.015} & \num{-0.017}\\
  & (\num{0.035}) & (\num{0.035}) & (\num{0.020}) & (\num{0.020})\\
 \midrule
 Covariates &  & X &  & X\\
 Num.Obs. & \num{1937} & \num{1937} & \num{1937} & \num{1937}\\
-R2 & \num{0.029} & \num{0.047} & \num{0.019} & \num{0.030}\\
+R2 & \num{0.029} & \num{0.047} & \num{0.019} & \num{0.031}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -852,15 +934,15 @@ R2 & \num{0.029} & \num{0.047} & \num{0.019} & \num{0.030}\\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-Altruistic & \num{0.012} & \num{0.014} & \num{0.001} & \num{0.001}\\
+Altruistic & \num{0.012} & \num{0.013} & \num{0.001} & \num{0.001}\\
  & (\num{0.012}) & (\num{0.013}) & (\num{0.007}) & (\num{0.007})\\
-Selfish & \num{0.006} & \num{0.004} & \num{0.000} & \num{0.002}\\
+Selfish & \num{0.006} & \num{0.004} & \num{0.000} & \num{0.001}\\
  & (\num{0.011}) & (\num{0.011}) & (\num{0.007}) & (\num{0.007})\\
 Social Comparison & \num{0.019} & \num{0.019} & \num{-0.005} & \num{-0.004}\\
  & (\num{0.013}) & (\num{0.013}) & (\num{0.005}) & (\num{0.005})\\
 Deadline & \num{0.004} & \num{0.006} & \num{0.000} & \num{0.001}\\
  & (\num{0.010}) & (\num{0.010}) & (\num{0.006}) & (\num{0.007})\\
-Convenient & \num{0.001} & \num{0.005} & \num{-0.005} & \num{-0.004}\\
+Convenient & \num{0.001} & \num{0.004} & \num{-0.005} & \num{-0.005}\\
  & (\num{0.010}) & (\num{0.010}) & (\num{0.005}) & (\num{0.005})\\
 Covariates &  & X &  & X\\
 \bottomrule
@@ -887,24 +969,24 @@ Covariates &  & X &  & X\\
 \cmidrule(l{3pt}r{3pt}){2-3}
   & (1) & (2)\\
 \midrule
-Altruistic & \num{0.199}*** & \num{-0.115}\\
+Altruistic & \num{0.199}*** & \num{-0.104}\\
  & (\num{0.068}) & (\num{0.112})\\
-Altruistic $\times$ Handicap & \num{-0.120} & \\
- & (\num{0.081}) & \\
-Altruistic $\times$ Generosity &  & \num{0.079}**\\
+Altruistic $\times$ Handicap & \num{-0.126} & \\
+ & (\num{0.082}) & \\
+Altruistic $\times$ Generosity &  & \num{0.075}**\\
  &  & (\num{0.035})\\
-Other nudges & \num{0.034} & \num{0.031}\\
+Other nudges & \num{0.038} & \num{0.033}\\
  & (\num{0.039}) & (\num{0.040})\\
 \addlinespace[0.3em]
 \multicolumn{3}{l}{\textbf{Linear combination test}}\\
-\hspace{1em}Altruistic + Altruistic $\times$ Handicap & \num{0.079} & \\
+\hspace{1em}Altruistic + Altruistic $\times$ Handicap & \num{0.073} & \\
 \hspace{1em} & (\num{0.063}) & \\
-\hspace{1em}Altruistic + Altruistic $\times$ Most generous &  & \num{0.280}***\\
-\hspace{1em} &  & (\num{0.088})\\
+\hspace{1em}Altruistic + Altruistic $\times$ Most generous &  & \num{0.270}***\\
+\hspace{1em} &  & (\num{0.089})\\
 \midrule
 Covariates & X & X\\
 Num.Obs. & \num{797} & \num{797}\\
-R2 & \num{0.136} & \num{0.150}\\
+R2 & \num{0.128} & \num{0.148}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}

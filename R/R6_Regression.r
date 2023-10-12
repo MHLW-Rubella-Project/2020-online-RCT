@@ -35,33 +35,59 @@ Regression <- R6::R6Class("Regression",
       private$hypo <- hypo
       private$treat_labels <- treat_labels
     },
-    reg_tab = function(title = "", notes = "") {
+    reg_tab = function(title = "", notes = "", show_lh = TRUE) {
       main <- c(private$treat_labels[-1], "Opt-in")
       names(main) <- c(paste0("nudge", LETTERS[2:7]), "I(1 - coupon2019)")
       interaction <- paste(private$treat_labels[-1], "$\\times$ Opt-in")
       names(interaction) <- paste0("nudge", LETTERS[2:7], ":I(1 - coupon2019)")
+      coef_map <- c(main, interaction)
+
+      len <- 2 * (length(main) + length(interaction))
+      if (attr(self$reg, "exclude_A")) len <- len - 4
+
+      if (show_lh) {
+        lh <- paste(private$treat_labels[-1], "(Opt-in incentive)")
+        if (attr(self$reg, "exclude_A")) lh <- lh[-1]
+        names(lh) <- private$hypo
+        coef_map <- c(coef_map, lh)
+
+        len <- len + 2 * length(lh)
+      }
 
       addtab <- tribble(
         ~term, ~mod1, ~mod2, ~mod3, ~mod4,
         "Covariates", "", "X", "", "X"
       )
-
-      len <- 2 * (length(main) + length(interaction))
-      len <- if (attr(self$reg, "exclude_A")) len - 4 else len
       attr(addtab, "position") <- c(len + 1, len + 2)
 
-      self$reg %>%
-        map(~ .$lm_robust) %>%
+      use <- self$reg
+      if (!show_lh) use <- map(use, ~ .$lm_robust)
+
+      kbl <- use %>%
         modelsummary(
           title = title,
-          coef_map = c(main, interaction),
+          coef_map = coef_map,
           stars = c("***" = 0.01, "**" = 0.05, "*" = 0.1),
-          gof_omit = "R2 Adj.|AIC|BIC|RMSE",
+          gof_omit = "R2 Adj.|AIC|BIC|RMSE|Std.Errors",
           add_rows = addtab,
           escape = FALSE
         ) %>%
         kable_styling(font_size = 9) %>%
-        add_header_above(c(" " = 1, "Testing" = 2, "Vaccination" = 2)) %>%
+        add_header_above(c(" " = 1, "Testing" = 2, "Vaccination" = 2))
+      
+      if (show_lh) {
+        from <- 2 * (length(main) + length(interaction))
+        if (attr(self$reg, "exclude_A")) from <- from - 4
+        
+        kbl <- kbl %>%
+          kableExtra::group_rows(
+            "Linear combination test: Treatment + Opt-in $\\times$ Treatment",
+            from + 1, len,
+            escape = FALSE
+          )
+      }
+
+      kbl %>%
         kableExtra::footnote(
           general_title = "",
           general = notes,

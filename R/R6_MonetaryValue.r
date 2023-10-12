@@ -70,7 +70,7 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
           booktabs = TRUE,
           linesep = ""
         ) %>%
-        kable_styling(font_size = 9, latex_options = "scale_down") %>%
+        kable_styling(font_size = 9) %>%
         add_header_above(c(" " = 3, "Monetary value (JPY)" = 2, "Monetary value (USD)" = 2)) %>%
         kableExtra::footnote(
           general_title = "",

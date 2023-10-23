@@ -356,6 +356,8 @@ So far, we have examined the effects of combining financial incentives and nudge
 
 We use willingness to pay (WTP) for the rubella vaccine.[^other-studies] We estimate the demand function using willingness to pay (WTP) for rubella vaccine. We then examine the extent to which the corresponding price (WTP) changes when the baseline vaccination coverage is increased by the effect of the text reminder. This price change is the additional subsidy equivalent to the effect of the text reminder. Since we want to estimate the monetary value of the text reminder in the *default incentive* group, the baseline vaccination rate is the vaccination rate when the vaccination price is zero. Furthermore, since vaccination requires an exogenous condition that men do not have antibodies, we use the effect on the uptake of antibody testing. Since those willing to be vaccinated must undergo antibody testing, the effect on antibody testing should be viewed as the true intention to vaccinate inferred from behavior. See Appendix \@ref(method-value) for detail estimation method.
 
+[^other-studies]: Several studies calculate the monetary value of text reminders. For example,\cite{Bursztyn2019} calculated it using the two relative effects of financial incentives and text message treatment groups. \cite{Moriwaki2020} also surveyed WTP amounts and calculated monetary value. The latter study is similar to our approach.
+
 ```{r monetary-value}
 value <- main$monetary_value()
 value$value_table(

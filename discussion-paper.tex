@@ -5,16 +5,19 @@
 \documentclass[
 ]{article}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -94,7 +97,7 @@
 \bibliographystyle{agsm}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination},
   pdfauthor={Hiroki Kato; Shusaku Sasaki; Fumio Ohtake},
@@ -103,7 +106,7 @@
 
 \title{Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination\thanks{This study is conducted as a part of the Project ``Implementation of EBPM in Japan'' undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank participants of the EBPM Study Group and the Discussion Paper Study Group of RIETI for their insightful comments. Prior to conducting a randomized controlled trial on an online survey, this study was approved by the Institutional Review Board of the Graduate School of Economics, Osaka University {[}approval number R020114{]}. Declarations of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science {[}grant number 20H05632 (F., Ohtake){]}; and Japan Science and Technology Agency {[}grant number JPMJPR21R4 (S., Sasaki){]}.}}
 \author{Hiroki Kato \and Shusaku Sasaki \and Fumio Ohtake}
-\date{Last updated on 10月 13, 2023}
+\date{Last updated on October 23, 2023}
 
 \begin{document}
 \maketitle
@@ -427,7 +430,7 @@ Convenient $\times$ Opt-in & \num{-0.032} & \num{-0.031} & \num{-0.018} & \num{-
 \hspace{1em}Deadline (Opt-in incentive) & \num{0.009} & \num{0.008} & \num{0.004} & \num{0.005}\\
 \hspace{1em} & (\num{0.009}) & (\num{0.009}) & (\num{0.004}) & (\num{0.005})\\
 \hspace{1em}Convenient (Opt-in incentive) & \num{0.005} & \num{0.007} & \num{0.000} & \num{0.000}\\
-\hspace{1em} & (\num{0.008}) & (\num{0.009}) &  & (\num{0.001})\\
+\hspace{1em} & (\num{0.008}) & (\num{0.009}) & (\num{0.000}) & (\num{0.001})\\
 \midrule
 Covariates &  & X &  & X\\
 Num.Obs. & \num{2272} & \num{2272} & \num{2272} & \num{2272}\\
@@ -468,7 +471,7 @@ Unlike the intention case, the effect of the Altruistic message on the uptake ra
 
 So far, we have examined the effects of combining financial incentives and nudges. The results show that the Altruistic (and possibly Social Comparison) messages encourage men who received free vouchers by default (who already received monetary incentives) to get an antibody test and be vaccinated. Here, we evaluate the monetary value of adding nudges by examining how much more monetary compensation would be required if the effects of the combination were achieved by monetary compensation alone.
 
-We use willingness to pay (WTP) for the rubella vaccine.{[}\^{}other-studies{]} We estimate the demand function using willingness to pay (WTP) for rubella vaccine. We then examine the extent to which the corresponding price (WTP) changes when the baseline vaccination coverage is increased by the effect of the text reminder. This price change is the additional subsidy equivalent to the effect of the text reminder. Since we want to estimate the monetary value of the text reminder in the \emph{default incentive} group, the baseline vaccination rate is the vaccination rate when the vaccination price is zero. Furthermore, since vaccination requires an exogenous condition that men do not have antibodies, we use the effect on the uptake of antibody testing. Since those willing to be vaccinated must undergo antibody testing, the effect on antibody testing should be viewed as the true intention to vaccinate inferred from behavior. See Appendix \ref{method-value} for detail estimation method.
+We use willingness to pay (WTP) for the rubella vaccine.\footnote{Several studies calculate the monetary value of text reminders. For example,\cite{Bursztyn2019} calculated it using the two relative effects of financial incentives and text message treatment groups. \cite{Moriwaki2020} also surveyed WTP amounts and calculated monetary value. The latter study is similar to our approach.} We estimate the demand function using willingness to pay (WTP) for rubella vaccine. We then examine the extent to which the corresponding price (WTP) changes when the baseline vaccination coverage is increased by the effect of the text reminder. This price change is the additional subsidy equivalent to the effect of the text reminder. Since we want to estimate the monetary value of the text reminder in the \emph{default incentive} group, the baseline vaccination rate is the vaccination rate when the vaccination price is zero. Furthermore, since vaccination requires an exogenous condition that men do not have antibodies, we use the effect on the uptake of antibody testing. Since those willing to be vaccinated must undergo antibody testing, the effect on antibody testing should be viewed as the true intention to vaccinate inferred from behavior. See Appendix \ref{method-value} for detail estimation method.
 
 \begin{table}
 

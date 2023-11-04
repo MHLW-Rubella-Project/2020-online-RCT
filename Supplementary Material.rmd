@@ -1,0 +1,173 @@
+---
+title: |
+  Supplementary Material
+  "Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Mitigate the Spread of Rubella"
+biblio-style: agsm
+bibliography: text-message-2020RCT.bib
+output:
+  bookdown::pdf_document2:
+    latex_engine: lualatex
+    keep_tex: true
+    toc: true
+    number_sections: true
+    citation_package: natbib
+header-includes:
+  - \usepackage{setspace}
+  - \renewcommand{\baselinestretch}{1.5}
+---
+
+```{r chunk-option, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  message = FALSE,
+  dev = "pdf",
+  fig.width = 15,
+  fig.height = 8,
+  fig.pos = "t",
+  out.extra = ""
+)
+```
+
+```{r define-class}
+library(here)
+source(here("R/R6_StartAnalysis.r"))
+
+options(
+  knitr.table.format = "latex",
+  knitr.kable.NA = "",
+  modelsummary_stars_note = FALSE,
+  modelsummary_factory_default = "latex"
+)
+```
+
+```{r setup}
+ctrl <- c(
+  "age", "married", "education",
+  "income", "noinfo_income",
+  "exercise_w1", "health_check", "flushot", "norm_waiting_line", "selfish_anonymous",
+  "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
+)
+
+setup <- StartAnalysis$new(here("data/2020-online-survey/shape_survey.csv"))
+setup$add_control(ctrl)
+main <- setup$main()
+```
+
+```{r ttest-act-test, include=FALSE}
+
+main$ttest(
+  outcome_intention = FALSE,
+  label_y_pos = 20,
+  breaks_by = 5
+)
+```
+
+# (APPENDIX) Appendix {-}
+
+# Antibody Testing and Vaccination Questions {#question}
+
+In Wave 2, the participants were asked if they had undertaken antibody testing and been vaccinated since Wave 1. The antibody testing question asked, "Have you undertaken rubella antibody testing since the end of the last survey?" The participants were given the following choices:
+
+- (a) Yes, I have undertaken antibody testing;
+- (b) No, I have not undertaken antibody testing;
+- (c) I underwent antibody testing before the last survey.
+
+We created a binary variable coded 1 if the respondent chose option (a) and used it as an outcome variable for the actual uptake of antibody testing. Meanwhile, the vaccination question was "Have you been vaccinated against rubella since the end of the last survey?" The respondents were given five options:
+
+- (a) I have been vaccinated; 
+- (b) I do not need the vaccine due to a positive test or infection experience;
+- (c) I have undertaken antibody testing but have not been vaccinated yet;
+- (d) I have not undertaken antibody testing or gotten vaccinated;
+- (e) I was vaccinated before the last survey.
+
+We created a binary variable coded 1 if the participant chose option (a) for both the antibody testing and the vaccination questions. Then, we used it as the outcome variable for vaccination rates.
+
+\clearpage
+
+# Estimation of the Monetary Value of the Text Message Reminders {#method-value}
+
+To determine the extent to which the text message reminders increase the monetary value of the rubella vaccination, we use the WTP for the vaccination. Let $WTP_i$ be an individual's WTP that follows a cumulative distribution $F$. Then, for a given cost $C$, men will be vaccinated if $WTP_i \ge C$. The vaccination rate is $F_0 = 1-F(C)$. Suppose that our treated text message reminders change the WTP by $\beta$. An individual who receives a treated text message reminder will be vaccinated if $WTP_i\ge C-\beta$. The vaccination rate of the treated group is $F_1 = 1-F(C-\beta)$. Thus, the treatment effect is $\tau = F_1-F_0=F(C)-F(C-\beta)$. From the perspective of government subsidies, the subsidy equal to the effect of the text message reminder $\tau$ is $\beta$. We want to estimate $\beta$.
+
+```{r demand-function, fig.cap = "Demand Curve of the Rubella Vaccination for the \\emph{Default Incentive} Group. Notes: Black triangles indicate the baseline vaccination rate $F_0$ and corresponding WTP."}
+value <- main$monetary_value()
+value$demand_curve()
+```
+
+Once $F$, $C$, and $\tau$ are determined, we obtain $\beta$. We first discuss the estimation of $F$ (demand function). We elicit the WTP for the vaccination in Wave 1 before the participants read their message. If the vaccination costs JPY 5,000, we ask the respondents if they would be vaccinated if the local government pays $s_j$. The subsidy amounts are $s_j \in \{0, 1000, 2000, \ldots , 10000\}$. Let $s_i^{\text{min}}$ be the lowest subsidy at which the respondents indicate that they would be vaccinated. Let $s_i^{\text{max}}$ be the highest subsidy that the respondents indicate they would not be vaccinated. We can identify the WTP for the vaccination within the range $[5000 - s_i^{\text{max}}, 5000 - s_i^{\text{min}})$. Thus, without additional assumptions, the demand curve is step-wise, and we estimate the monetary value of the effect of the text message reminders with bounds. If the respondents indicate that they would not be vaccinated at all the subsidy amounts, then $s_i^{\text{max}} = 10000$. However, we cannot define $s_i^{\text{min}}$ in the data. Therefore, we assume $s_i^{\text{min}} = 11000$. This assumption does not affect the monetary value of the text message reminders. To obtain a point estimate, we assume that the true WTP is uniformly distributed within the range $[5000 - s_i^{\text{max}}, 5000 - s_i^{\text{min}})$. The vaccination demand curve can then be linearly interpolated (see Figure \@ref(fig:demand-function)).
+
+In the *default incentive* group, eligible men receive a free vaccination. Therefore, the natural setting is $C=0$. In addition, we use the effect on the actual uptake of antibody testing as the effect of the text message reminders $\tau$. The person taking the antibody test wants to obtain the antibody against rubella. However, the effect of the text message reminder on vaccination rates differs from the effect on the (true) intention to be vaccinated because people with a positive antibody test result cannot be vaccinated. Therefore, $\tau$ is the effect on antibody testing rather than on vaccination rates.
+
+In our framework, $F_0=1-F(0)$, but one potential concern remains. The effect of the text message reminders $\tau$ is estimated as the difference from the MHLW (Control) group. Assuming that everyone who did not participate in our survey did not take the antibody test after the survey, the actual uptake of antibody testing of MHLW (Control) can be considered as an effect of providing the message in the survey. To remove this effect, we instead use $F_0=(1-F(0))+(F(0)-F(-\alpha))$. The second term is the antibody testing rate of the control group ($3.5$%) under no vaccination cost. The demand function is estimated to be $F_0=0.7$ and $\alpha=394$. Finally, we find $\beta$ holding that $\tau=F(-\alpha)-F(-\beta)$.
+
+\clearpage
+
+# Tables {#fig-tab}
+
+```{r covariate-list}
+setup$summary_control(here("assets/vars_descript.csv"))
+```
+
+```{r balance-int-default}
+main$balance_control(
+  title = "Balance Tests for the \\emph{Default Incentive} Group (Sample for Estimating the Effect on Intention)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
+)
+```
+
+```{r balance-int-optin}
+main$balance_control(
+  default_voucher = FALSE,
+  title = "Balance Tests for the \\emph{Opt-In Incentive} Group (Sample for Estimating the Effect on Intention)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
+)
+```
+
+```{r reg-int-woA}
+reg_woA <- main$lm(exclude_A = TRUE)
+reg_woA$reg_tab(
+  title = "Effect of the Message Content on Intention Compared with MHLW (Age)",
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
+)
+```
+
+```{r balance-act-default}
+main$balance_control(
+  outcome_intention = FALSE,
+  title = "Balance Tests for the \\emph{Default Incentive} group (Sample for Estimating the Effect on Behavior)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
+)
+```
+
+```{r balance-act-optin}
+main$balance_control(
+  outcome_intention = FALSE,
+  default_voucher = FALSE,
+  title = "Balance Tests for the \\emph{Opt-in Incentive} Group (Sample for Estimating the Effect on Behavior)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
+)
+```
+
+```{r reg-act-woA}
+reg_act_woA <- main$lm(outcome_intention = FALSE, exclude_A = TRUE)
+reg_act_woA$reg_tab(
+  title = "Effect of the Message Content on Behavior Compared with MHLW (Age)",
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
+)
+```
+
+```{r reg-mechanism}
+mechanism <- main$lm_mechanism()
+mechanism$reg_tab(
+  title = "Heterogeneous Effects of the Altruistic Message Content",
+  outcome_label = "Intention to undertake antibody testing",
+  notes = "* $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). The covariate ``Other nudges'' is a dummy indicating the respondent is assigned to the Selfish, Social Comparison, Deadline, and Convenient message groups. the covariate ``Handicap'' is a dummy indicating that the respondent knows that infants born to infected pregnant women may have disabilities. The covariate ``Generosity'' indicates on a 5-point scale the degree to which the respondent feels pleasure in taking actions for others. Those respondents who give a score of 5 to this are the most generous. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions)."
+)
+```
+
+```{r summary-behavior-default}
+main$summary_behavior(
+  title = "Number of Antibody Testing, Negative Tests, and Vaccinations in the \\emph{Default Incentive} group"
+)
+```

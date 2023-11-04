@@ -1,53 +1,36 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
+  % lualatex,
+  11pt,
+  a4paper
 ]{article}
+
+% ------------------------------ font
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+
+\setmainfont{Times New Roman}
+\setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}
+
+% ------------------------------ math
 \usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\usepackage[margin=1in]{geometry}
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-\usepackage{graphicx}
+\usepackage{siunitx}
+
+% ------------------------------ author & natbib
+\usepackage{authblk}
+\usepackage[semicolon]{natbib}
+\bibliographystyle{newapa.bst}
+
+% ------------------------------ appendix
+\usepackage[title]{appendix}
+
+% ------------------------------ tables
+\usepackage{here}
+\usepackage{longtable, booktabs, array}
+\usepackage{threeparttable, threeparttablex, multirow}
+% \newcolumntype{d}{S[input-symbols = ()]}
+
+% ------------------------------- figures
+\usepackage{graphics, graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -56,16 +39,18 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
+
+% ------------------------------ page settings
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
 \usepackage{setspace}
 \renewcommand{\baselinestretch}{1.5}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% ------------------------------ hyperlink
+\usepackage{hyperref}
+
+% ------------------------------ other packages
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -90,22 +75,11 @@
     table-align-text-post=false
   ]}
   
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\usepackage[]{natbib}
-\bibliographystyle{newapa.bst}
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  pdftitle={Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Mitigate the Spread of Rubella},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
 
-\title{Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Mitigate the Spread of Rubella\thanks{This study was conducted as a part of the ``Implementation of EBPM in Japan'\,' project undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank the participants of the EBPM Study Group and Discussion Paper Study Group of RIETI for their insightful comments. Before conducting the randomized controlled trial on the online survey, this study was approved by the institutional review board of the Graduate School of Economics, Osaka University {[}approval number R020114{]}. Conflict of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science {[}grant number 20H05632 (F., Ohtake){]}; and the Japan Science and Technology Agency {[}grant number JPMJPR21R4 (S., Sasaki){]}.}}
+% ------------------------------ paper information
+\title{Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Mitigate the Spread of Rubella\thanks{This study was conducted as a part of the ``Implementation of EBPM in Japan'' project undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank the participants of the EBPM Study Group and Discussion Paper Study Group of RIETI for their insightful comments. Before conducting the randomized controlled trial on the online survey, this study was approved by the institutional review board of the Graduate School of Economics, Osaka University {[}approval number R020114{]}. Conflict of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science {[}grant number 20H05632 (F., Ohtake){]}; and the Japan Science and Technology Agency {[}grant number JPMJPR21R4 (S., Sasaki){]}.}}
 \author{}
-\date{\vspace{-2.5em}}
+\date{}
 
 \begin{document}
 \maketitle
@@ -115,6 +89,12 @@ We study the effects of combining financial incentives with nudges to promote an
 \noindent
 \textit{Keywords}: behavioral economics, health behavior, online field experiment, rubella, vaccination, antibody test, text message reminders, free vouchers
 \end{abstract}
+
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
 
 \hypertarget{intro}{%
 \section{Introduction}\label{intro}}
@@ -516,6 +496,10 @@ The second direction concerns the channels of the effect on vaccination rates. W
 
 This argument is related to targeting interventions \citep[e.g.,][]{Finkelstein2019}. The question is whether marginal individuals whose behavior is changed by an intervention receive significant benefits from a policy. In our context, the Altruistic message increases the number of individuals receiving negative antibody test results , who receive a large benefit from the FY2019 vaccination campaign. Thus, the Altruistic message improves targeting. However, since we cannot test the difference in the rates of negative antibody tests because of our small sample, this remains a topic for future research.
 
-  \bibliography{text-message-2020RCT.bib}
+\clearpage
+
+\bibliography{text-message-2020RCT.bib}
+
+
 
 \end{document}

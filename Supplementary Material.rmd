@@ -2,18 +2,16 @@
 title: |
   Supplementary Material
   "Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Mitigate the Spread of Rubella"
-biblio-style: agsm
+biblio-style: newapa.bst
 bibliography: text-message-2020RCT.bib
 output:
   bookdown::pdf_document2:
     latex_engine: lualatex
+    template: template/my-template.tex
     keep_tex: true
-    toc: true
-    number_sections: true
     citation_package: natbib
-header-includes:
-  - \usepackage{setspace}
-  - \renewcommand{\baselinestretch}{1.5}
+    toc: true
+base-strech: 1.5
 ---
 
 ```{r chunk-option, include=FALSE}

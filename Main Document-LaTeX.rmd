@@ -16,6 +16,7 @@ output:
     template: template/my-template.tex
     keep_tex: true
     citation_package: natbib
+    toc: false
 base-strech: 1.5
 ---
 

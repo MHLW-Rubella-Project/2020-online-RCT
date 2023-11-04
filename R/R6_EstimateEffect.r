@@ -134,7 +134,8 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           linesep = ""
         ) %>%
         kable_styling(font_size = 9) %>%
-        add_header_above(c(" " = 2, "Anitbody test" = 2, "Negatives" = 3, "Vaccination" = 3)) %>%
+        add_header_above(c(" " = 2, "Antibody testing" = 2, "Negative tests" = 3, "Vaccination" = 3)) %>%
+        column_spec(-1, width = "3.5em") %>%
         kableExtra::footnote(
           general_title = "",
           general = notes,

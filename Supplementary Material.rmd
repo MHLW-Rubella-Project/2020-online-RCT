@@ -6,7 +6,7 @@ biblio-style: newapa.bst
 bibliography: text-message-2020RCT.bib
 output:
   bookdown::pdf_document2:
-    latex_engine: lualatex
+    latex_engine: pdflatex
     template: template/my-template.tex
     keep_tex: true
     citation_package: natbib

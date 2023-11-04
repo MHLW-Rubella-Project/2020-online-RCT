@@ -281,7 +281,7 @@ reg <- main$lm()
 
 reg$reg_tab(
   title = "Regressions of Intention",
-  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \*opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 
@@ -326,7 +326,7 @@ Figure \@ref(fig:ttest-act-vacc) shows the vaccination rates in each experimenta
 reg_act <- main$lm(outcome_intention = FALSE)
 reg_act$reg_tab(
   title = "Regressions of Behavior",
-  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \*opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 
@@ -438,32 +438,32 @@ setup$summary_control(here("assets/vars_descript.csv"))
 
 ```{r balance-int-default}
 main$balance_control(
-  title = "Balance Tests for Default Incentive Groups (Sample for Estimating Effect on Intention)",
-  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  title = "Balance Tests for the \\emph{Default Incentive} Group (Sample for Estimating the Effect on Intention)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
 )
 ```
 
 ```{r balance-int-optin}
 main$balance_control(
   default_voucher = FALSE,
-  title = "Balance Tests for Opt-In Incentive Group (Sample for Estimating Effect on Intention)",
-  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  title = "Balance Tests for the \\emph{Opt-In Incentive} Group (Sample for Estimating the Effect on Intention)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
 )
 ```
 
 ```{r reg-int-woA}
 reg_woA <- main$lm(exclude_A = TRUE)
 reg_woA$reg_tab(
-  title = "Massage Content Effects on Intentions Compared to MHLW (Age)",
-  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Reminder effects in the opt-in incentive group are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy."
+  title = "Effect of the Message Content on Intention Compared with MHLW (Age)",
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 
 ```{r balance-act-default}
 main$balance_control(
   outcome_intention = FALSE,
-  title = "Balance Tests for Default Incentive Group (Sample for Estimating Effect on Behavior)",
-  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  title = "Balance Tests for the \\emph{Default Incentive} group (Sample for Estimating the Effect on Behavior)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
 )
 ```
 
@@ -471,30 +471,31 @@ main$balance_control(
 main$balance_control(
   outcome_intention = FALSE,
   default_voucher = FALSE,
-  title = "Balance Tests for Opt-in Incentive Group (Sample for Estimating Effect on Behavior)",
-  notes = "Notes: Table \\\\ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test)."
+  title = "Balance Tests for the \\emph{Opt-in Incentive} Group (Sample for Estimating the Effect on Behavior)",
+  notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
 )
 ```
 
 ```{r reg-act-woA}
 reg_act_woA <- main$lm(outcome_intention = FALSE, exclude_A = TRUE)
 reg_act_woA$reg_tab(
-  title = "Message Content Effects on Behaivor Compared to MHLW (Age)",
-  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Reminder effects in the opt-in incentive group are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy."
+  title = "Effect of the Message Content on Behavior Compared with MHLW (Age)",
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 
 ```{r reg-mechanism}
 mechanism <- main$lm_mechanism()
 mechanism$reg_tab(
-  title = "Heterogeneous Effects of Altruistic Message Contents",
-  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control), The reference group is MHLW (Age). Covariate ``Other nudges'' is a dummy that indicating respondents are assigned to the Selfish, Social Comparison, Deadline, and Covenient message group. Covariate ``Handicap'' is a dummy that respondent knows that infants born to infected pregnant women may have disabilities. Covariates ``Generosity'' indicates on a 5-point scale the degree to which respondent feels pleasure in actionts for others. Respondents who give a score of 5 to this are the most generous. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm."
+  title = "Heterogeneous Effects of the Altruistic Message Content",
+  outcome_label = "Intention to undertake antibody testing",
+  notes = "* $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). The covariate ``Other nudges'' is a dummy indicating the respondent is assigned to the Selfish, Social Comparison, Deadline, and Convenient message groups. the covariate ``Handicap'' is a dummy indicating that the respondent knows that infants born to infected pregnant women may have disabilities. The covariate ``Generosity'' indicates on a 5-point scale the degree to which the respondent feels pleasure in taking actions for others. Those respondents who give a score of 5 to this are the most generous. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions)."
 )
 ```
 
 ```{r summary-behavior-default}
 main$summary_behavior(
-  title = "Number of Anitbody Testing, Negatives, and Vaccinations in Default Incentive Group"
+  title = "Number of Antibody Testing, Negative Tests, and Vaccinations in the \\emph{Default Incentive} group"
 )
 ```
 

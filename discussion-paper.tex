@@ -106,7 +106,7 @@
 
 \title{Adding Nudge-based Reminders to Monetary Incentives for Promoting Rubella Antibody Testing and Vaccination\thanks{This study is conducted as a part of the Project ``Implementation of EBPM in Japan'' undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank participants of the EBPM Study Group and the Discussion Paper Study Group of RIETI for their insightful comments. Prior to conducting a randomized controlled trial on an online survey, this study was approved by the Institutional Review Board of the Graduate School of Economics, Osaka University {[}approval number R020114{]}. Declarations of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science {[}grant number 20H05632 (F., Ohtake){]}; and Japan Science and Technology Agency {[}grant number JPMJPR21R4 (S., Sasaki){]}.}}
 \author{Hiroki Kato \and Shusaku Sasaki \and Fumio Ohtake}
-\date{Last updated on October 23, 2023}
+\date{Last updated on November 04, 2023}
 
 \begin{document}
 \maketitle
@@ -158,91 +158,99 @@ The rest of this paper is structured as follows. Section \ref{background} provid
 \hypertarget{background}{%
 \section{Background of Rubella Vaccination in Japan}\label{background}}
 
-Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe.\footnote{According to the NIID, subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15--30\% of cases. Fever is observed in approximately 50\% of patients. Adults may also experience transient arthritis (5--30\%). Rarely, complications such as thrombocytopenic purpura (\(0.02\)--\(0.03\)\%) and acute encephalitis (\(0.01\)--\(0.03\)\%) may require hospitalization (\url{https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html}. Japanese. Access date: September 22, 2023).} The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization to prevent its spread. According to \citet{Kinoshita2016}, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations.\footnote{According to \citet{Plans-Rubio2012}, antibody prevalence of 83\% to 95\% achieves herd immunity against rubella. \citet{Nishiura2015} found that the antibody prevalence for herd immunity is 83.6\%.}
+Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe.\footnote{According to the National Institute of Infectious Diseases (NIID), the subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15--30\% of cases. Fever is observed in approximately 50\% of patients. Adults may also experience transient arthritis (5--30\%). Rarely, complications such as thrombocytopenic purpura (\(0.02\)--\(0.03\)\%) and acute encephalitis (\(0.01\)--\(0.03\)\%) may require hospitalization (\url{https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html}. Japanese. Accessed September 22, 2023).} The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization. According to \citet{Kinoshita2016}, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations.\footnote{According to \citet{Plans-Rubio2012}, an antibody prevalence of 83--95\% achieves herd immunity against rubella. \citet{Nishiura2015} found that the antibody prevalence for herd immunity is 83.6\%.}
 
 \begin{figure}[t]
-\includegraphics{discussion-paper_files/figure-latex/antibody-1} \caption{Percentage of Rubella Antibody Carriers at Each Age by Gender. Data: NIID "2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases (NESVPD)."}\label{fig:antibody}
+\includegraphics{discussion-paper_files/figure-latex/antibody-1} \caption{Percentage of Rubella Antibody Prevalence by Age and Gender. Data: 2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases, NIID}\label{fig:antibody}
 \end{figure}
 
-However, due to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Figure \ref{fig:antibody} plots the prevalence of rubella antibodies by age and gender from the National Institute of Infectious Diseases (NIID) ``2018 Infectious Disease Epidemic Prediction Survey.'' The antibody prevalence among men aged 39--56 years (as of 2018) is approximately 81.5\%, which is lower than that of women of the same generation (about 97.9\%) and other generations because they have not received routine rubella vaccination and have not had less opportunity to infect naturally.\footnote{The prevalence of antibodies in men and women aged 57 and older is 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of rubella vaccine administered as part of routine immunization.} Thus, influx of virus of Southeast Asian origin caused rubella epidemic, mainly among males with relatively low antibody prevalence in 2013 and 2018 \citep{NIID2019}.\footnote{In the 2018 epidemic, U.S. CDC advised pregnant women to travel to Japan (The Japan Times, October 24, 2018. \url{https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/}. Access date: 2023/9/22).} As cross-border traffic is increasing, achieving herd immunity against rubella becomes increasingly important for Japan.\footnote{If transmission to pregnant women is the most important issue, one might think that vaccinating pregnant women would be the optimal strategy. However, Japan has already implemented measures for pregnant women in advance of the 2019 vaccination campaign. Pregnant women (average age 30) have received at least one vaccination. In addition, since 2014, pregnant women and women who want to become pregnant, including their partners, have been offered free antibody testing. However, during the 2013 and 2018 epidemics, some infants were affected by CRS. Therefore, to eradicate CRS, interventions for pregnant women alone are not sufficient; interventions to achieve hard immunity are needed.}
+However, owing to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Figure \ref{fig:antibody} shows that the antibody prevalence among men aged 39--56 years (as of 2018) is approximately 81.5\%, which is lower than that of women of the same generation (about 97.9\%) and other generations because they have not received their routine rubella vaccination and have not had less opportunity to infect naturally.\footnote{The prevalence rates of antibodies in men and women aged 57 and older are 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of the rubella vaccine administered as part of routine immunization.} Thus, the influx of viruses of Southeast Asian origin caused rubella epidemics in 2013 and 2018, mainly among men with relatively low antibody prevalence \citep{NIID2019}.\footnote{In the 2018 epidemic, the U.S. Centers for Disease Control and Prevention advised pregnant women not to travel to Japan (The Japan Times, October 24, 2018. \url{https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/}. Accessed September 22, 2023).} As cross-border traffic is increasing, achieving herd immunity against rubella is becoming increasingly important for Japan.\footnote{If transmission to pregnant women is the most important issue, one might think that vaccinating pregnant women would be the optimal strategy. However, Japan implemented measures for pregnant women in advance of the 2019 vaccination campaign, as they were already receiving at least one vaccination. In addition, since 2014, pregnant women and women who want to become pregnant as well as their partners have been offered free antibody testing. However, during the 2013 and 2018 epidemics, some infants were affected by CRS. Therefore, to eradicate CRS, interventions for pregnant women alone are insufficient; interventions to achieve hard immunity are needed.}
 
-To achieve herd immunity, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, MHLW has provided the rubella vaccine as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022.\footnote{More precisely, eligible men were born between April 2, 1962, and April 1, 1979.} For efficient utilization of vaccination, eligible men must first get antibody testing. Men who have a negative test can then be vaccinated against rubella.
+To achieve herd immunity, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, the MHLW provided the rubella vaccination as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022.\footnote{More precisely, eligible men were born between April 2, 1962 and April 1, 1979.} Eligible men had to first receive antibody testing. Men who returned a negative test were then vaccinated.
 
-Following the Immunization Act, eligible men can receive free antibody testing and vaccinations. MHLW requested local governments to send free vouchers for a rubella antibody test and vaccine to eligible men over a three-year period. Concerning whether they automatically receive the voucher in FY2019, we can divide eligible men into the following two age groups:
+Under the Immunization Act, eligible men receive free antibody testing and vaccinations. The MHLW requested local governments to send free vouchers for a rubella antibody test and vaccine to eligible men over a three-year period. This setting provides a natural experimental setting under which we can divide eligible men into the following two age groups depending on whether they automatically received the voucher in FY2019:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  40--46 years old: they automatically received the free voucher in FY2019;
+  40--46 years old: automatically received the free voucher in FY2019;
 \item
-  47--57 years old: they automatically received the free voucher after FY2020 but had to apply to obtain it in FY2019.
+  47--57 years old: automatically received the free voucher in FY2020 or FY2021 but had to apply to obtain it in FY2019.
 \end{enumerate}
 
-Thus, transaction costs for the monetary incentives in FY2019 differ between the two age groups. In particular, 40-to-46-year-old men have no transaction costs because they obtained monetary incentives by default in the form of free vouchers in FY2019 (\emph{default incentive} group). However, 47-to-57-year-old men have high transaction costs such as travering cost to a city hall because they must contact their local government to obtain the free vouchers in FY2019 (\emph{opt-in incentive} group).\footnote{One local government has posted the application forms on its website. To obtain a vaccination ticket, eligible men must download the forms from the website, complete them, and either mail them to the local government or visit the city hall in person. The cost of obtaining the documents and traveling to the city hall seems to be significant.}
+Thus, the transaction costs for the financial incentives in FY2019 differ between the age groups. In particular, 40--46-year-old men incur no transaction costs because they obtained the financial incentives by default in the form of free vouchers in FY2019 (\emph{default incentive} group). However, 47--57-year-old men have high transaction costs (e.g., travel costs to a city hall) because they had to contact their local government to obtain the free vouchers in FY2019 (\emph{opt-in incentive} group).\footnote{One local government posted the application forms on its website. To obtain a vaccination voucher, eligible men had to download and complete the forms, and either mail them to the local government or visit the city hall in person. The cost of obtaining the documents and traveling to the city hall thus seems to be significant.}
 
-Although men aged 40--46 years automatically received monetary incentives, the uptake rate of antibody testing with vouchers remained as low as 18\% as of January 2020.\footnote{More than half of eligible men are 40--46 years old (6.46 million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96\% of local governments planned to send them by October 2019. The cumulative number of antibody tests using vouchers through January 2019 was 1.17 million. We calculate antibody testing uptake by dividing the cumulative number of antibody tests using vouchers up to January 2019 (1.17 million) by the population of 40-to-46-year-old men (6.46 million).} Given adequate financial incentives, non-monetary interventions should be considered to increase antibody testing. Therefore, we developed reminders with nudge-based text reminders for those who were not tested and vaccinated. Using a nationwide online survey, we tested how well those reminders improve antibody testing and vaccination rates among default voucher recipients (and the effect on those who incur a transaction cost to obtain them).
+However, although men aged 40--46 years automatically received the financial incentives, the actual uptake of antibody testing with vouchers remained as low as 18\% as of January 2020.\footnote{More than half of eligible men are 40--46 years old (\(6.46\) million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96\% of local governments planned to send the vouchers by October 2019. The cumulative number of antibody tests using vouchers by January 2019 was 1.17 million. We calculate the actual uptake of antibody testing by dividing the cumulative number of antibody tests using vouchers to January 2019 (\(1.17\) million) by the population of 40--46-year-old men (\(6.46\) million).}
 
 \hypertarget{experiment}{%
 \section{Nationwide Online Survey Experiment}\label{experiment}}
 
-In collaboration with MHLW, we commissioned MyVoiceCome Co.~Ltd.~to conduct two nationwide online surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (wave 1) of 4,200 Japanese men aged 40--59 years living throughout Japan. Wave 1 randomizes seven text reminders to test how they affect antibody testing and vaccination intentions. On March 17--25, 2020, we surveyed wave 1 respondents again for the second survey (wave 2). We received responses from 3,963 individuals (attrition rate = 5.64\%).\footnote{The seven experimental arms have similar attrition rates. We linearly regress an attrition dummy on treatment group dummies. F-test for joint null hypothesis is statistically insignificant (F-value = \(1.434\); p-value = \(0.197\)).} Wave 2 aims to test how the randomly assigned text reminders in wave 1 affect the actual uptake of antibody testing and vaccination. We obtained prior approval from the IRB of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
+\hypertarget{intervention}{%
+\subsection{Non-Monetary Interventions: Text Message Reminders}\label{intervention}}
 
-\hypertarget{wave1}{%
-\subsection{Wave 1: Treatments and Outcome Variables on Intention}\label{wave1}}
+When the financial incentives offered are adequate, as in the presented case, non-monetary interventions should be considered to increase antibody testing. In this study, we developed seven nudge-based text message reminders for those who remained untested and unvaccinated (see Table \ref{tab:message-list}).
 
 \begin{table}
 
-\caption{\label{tab:message-list}List of Text Message Reminders}
+\caption{\label{tab:message-list}List of the Text Message Reminders}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{20em}cccccc}
 \toprule
-\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Age (as of Apr 2019)} & \multicolumn{1}{c}{ } \\
+\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Age (as of April 2019)} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){4-7}
-Message & Contents &   & 39 & 40--46 & 47--56 & 57--59 & All\\
+Message & Content &   & 39 & 40--46 & 47--56 & 57--59 & All\\
 \midrule
-MHLW (Control) & Dear all men born between 1962 and 1979. Get rubella antibody testing and be vaccinated to protect yourself and the upcoming generation! & N & 20 & 210 & 321 & 49 & 600\\
+MHLW (Control) & Dear men born between 1962 and 1979. Undertake rubella antibody testing and be vaccinated to protect yourself and the future generation! & N & 20 & 210 & 321 & 49 & 600\\
 \addlinespace
-MHLW (Age) & Dear men in their 40s and 50s (all men born between 1962 and 1979). Get rubella antibody testing and be vaccinated to protect yourself and the upcoming generation! & N & 23 & 205 & 309 & 63 & 600\\
+MHLW (Age) & Dear men in their 40s and 50s (all men born between 1962 and 1979). Undertake rubella antibody testing and be vaccinated to protect yourself and the future generation! & N & 23 & 205 & 309 & 63 & 600\\
 \addlinespace
-Altruistic & Dear men in their 40s and 50s (all men born between 1962 and 1979). If you get a pregnant woman infected with rubella, she may give birth to a child with a serious disability. Get rubella antibody testing and be vaccinated! & N & 24 & 214 & 296 & 66 & 600\\
+Altruistic & Dear men in their 40s and 50s (all men born between 1962 and 1979). If you get a pregnant woman infected with rubella, she may give birth to a child with a serious disability. Undertake rubella antibody testing and be vaccinated! & N & 24 & 214 & 296 & 66 & 600\\
 \addlinespace
-Selfish & Dear men in their 40s and 50s (all men born between 1962 and 1979). Rubella infection in adult men may have serious complications such as encephalitis and thrombocytopenic purpura. Get rubella antibody testing and be vaccinated! & N & 16 & 225 & 302 & 57 & 600\\
+Selfish & Dear men in their 40s and 50s (all men born between 1962 and 1979). Rubella infection in adult men may have serious complications such as encephalitis and thrombocytopenic purpura. Undertake rubella antibody testing and be vaccinated! & N & 16 & 225 & 302 & 57 & 600\\
 \addlinespace
-Social Comparison & Dear men in their 40s and 50s (all men born between 1962 and 1979). Compared to other generations, more than twice as many people in your generation can get rubella because one in five of you does not have rubella antibodies. Get rubella antibody testing and be vaccinated! & N & 18 & 204 & 321 & 57 & 600\\
+Social Comparison & Dear men in their 40s and 50s (all men born between 1962 and 1979). Compared with other generations, more than twice as many people in your generation can contract rubella because one in five of you does not have rubella antibodies. Undertake rubella antibody testing and be vaccinated! & N & 18 & 204 & 321 & 57 & 600\\
 \addlinespace
-Deadline & Dear men in their 40s and 50s (all men born between 1962 and 1979). The voucher for a free rubella antibody test and vaccine is valid on March 31, 2020. Get rubella antibody testing and be vaccinated! & N & 18 & 216 & 299 & 67 & 600\\
+Deadline & Dear men in their 40s and 50s (all men born between 1962 and 1979). The voucher for a free rubella antibody test and vaccine is valid until March 31, 2020 . Undertake rubella antibody testing and be vaccinated! & N & 18 & 216 & 299 & 67 & 600\\
 \addlinespace
-Convenient & Dear men in their 40s and 50s (all men born between 1962 and 1979). You can use your coupon for a rubella antibody test at a growing number of workplaces and government agencies, in addition to your usual health examinations. Get rubella antibody testing and be vaccinated! & N & 19 & 213 & 307 & 61 & 600\\
+Convenient & Dear men in their 40s and 50s (all men born between 1962 and 1979). You can use your voucher for a rubella antibody test at a growing number of workplaces and government agencies, in addition to your usual health examinations. Undertake rubella antibody testing and be vaccinated! & N & 19 & 213 & 307 & 61 & 600\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-We randomly sent one of the text reminders in Table \ref{tab:message-list}. The \emph{MHLW (Control)} message is the control. Using this message, MHLW promotes antibody testing and rubella vaccination against rubella on its website (business-as-usual control). We developed six additional text reminders based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages \citep[e.g.,][]{Dai2021, Milkman2021}, similar to this study.
+Using the \emph{MHLW (Control)} message, the MHLW promotes antibody testing and vaccination against rubella on its website (business-as-usual control). We developed six additional text message reminders based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages \citep[e.g.,][\citet{Milkman2021}]{Dai2021}, similar to this study.
 
-The six treated text reminders alter the MHLW (Control) message to (1) a simple age expression (first sentence) and (2) message content (following sentences). In addition to the precise target age for the additional rubella measures, the \emph{MHLW (Age)} message includes the simple phrase ``men in their 40s and 50s,'' which helps the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content is identical to the control. The other five messages both add simplified age expressions and change message content based on behavioral economics.
+The six additional text message reminders altered the MHLW (Control) message in two ways: (1) using a simple age expression (first sentence) and (2) adapting the message content (subsequent sentences). In addition to the precise target age for the additional rubella measures, the \emph{MHLW (Age)} message included the simple phrase ``men in their 40s and 50s,'''' which helped the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message's content was identical to the control.
 
-The \emph{Altruistic} message describes how one's infection can harm others, particularly pregnant women and their children. As previously stated, vaccination has positive externalities. In the case of rubella, having antibodies through vaccination prevents infection in pregnant women, thus protecting their children. The Altruistic message is the inverse of this positive externality, emphasizing the negative externality of not being vaccinated. This message is intended to help altruistic readers imagine the negative externalities caused by the infection and change their behavior.\footnote{We define an altruistic person as someone who considers social benefits, including externalities.}
+The \emph{Altruistic} message described how one's infection can harm others, particularly pregnant women and their children. As previously stated, vaccination has positive externalities. In the case of rubella, having antibodies through vaccination prevents infection in pregnant women, thus protecting their children. The Altruistic message is the inverse of this positive externality, emphasizing the negative externality of not being vaccinated. This message was intended to help altruistic readers imagine the negative externalities caused by the infection and change their behavior.\footnote{We defined an altruistic person as someone who considers social benefits, including externalities.}
 
-The \emph{Selfish} message and \emph{Social Comparison} message aim to change behavior by increasing the importance of having rubella antibodies. The Selfish one describes in detail the damage caused by the infection to the individual, making it easier for the reader to imagine it. Meanwhile, the Social Comparison informs the reader that antibody prevalence is low and reminds them that they are susceptible to infection. This message can help people avoid underestimating the likelihood of infection and undervaluing vaccination.
+The \emph{Selfish} and \emph{Social Comparison} messages aimed to change behavior by increasing the importance of having rubella antibodies. The first message described the damage caused by the infection to the individual, making it easier for the reader to imagine it. The second message informed the reader that antibody prevalence is low and reminded them that they are susceptible to infection to help people avoid underestimating the likelihood of infection and undervaluing vaccination.
 
-The \emph{Deadline} message and \emph{Convenient} message describe detail system of the 2019 vaccination campaign. Deadline emphasizes that the FY2019 vouchers are valid until the end of March. This message aims to prevent people from postponing antibody testing and vaccination due to the present bias, which is one of behavioral economics' key findings. Meanwhile, Convenient states that some people can get antibody testing as part of a regular health examination and emphasizes its convenience. This message aims to reduce the subjective cost of antibody testing.
+The \emph{Deadline} and \emph{Convenient} messages described the 2019 vaccination campaign. The first message emphasized that the FY2019 vouchers were valid until the end of March. This message aimed to prevent people from postponing antibody testing and vaccination due to present bias \citep{ODonoghue2001}. Meanwhile, the second message stated that some people can obtain antibody testing as part of a regular health examination and emphasized its convenience to reduce the subjective testing cost.
 
-We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned messages within each stratum. The sample size for each group is 1,050, with 150 for one experimental arm within each group. Thus, the sample size for one experimental group is 600.\footnote{The ages shown in Table \ref{tab:message-list} are as of April 2019, calculated using the year and month of respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive coupons for the first year. We assume that those born in April have not yet reached their birthday. Also, some men aged 39 years as of April 2019 were 40 years old at the time of the survey.}
+\hypertarget{survey}{%
+\subsection{Nationwide Online Survey}\label{survey}}
 
-In wave 1, after viewing a randomly assigned message, participants expressed their intention to get antibody testing and vaccinated on a 5-point Likert scale (5 = definitely yes; 1 = absolutely no). The question of willingness to take antibody testing is, ``Are you willing to take an antibody test for rubella now?'' Meanwhile, the intention to get vaccinated question asks, ``If the antibody testing reveals that you have no antibodies, are you willing to get vaccinated?'' We create a binary variable taking the value of 1 if the participant responds 4 or 5 for each question and use it as the outcome variable for intentions.
+Using a nationwide online survey, we then tested the extent to which those text message reminders improved the actual uptake of antibody testing and vaccination rate in the \emph{default incentive} group and the effect on those who incurred transaction costs to obtain them. In collaboration with the MHLW, we commissioned MyVoiceCome to conduct two surveys at the end of FY2019. On February 15--17, 2020, we conducted the first survey (Wave 1) of 4,200 Japanese men aged 40--59 years living across Japan. Wave 1 randomized the seven text message reminders. On March 17--25, 2020, we surveyed Wave 1 respondents again for the second survey (Wave 2). We received responses from 3,963 individuals (attrition rate = \(5.64\)\%).\footnote{The seven experimental arms had similar attrition rates. We linearly regressed an attrition dummy on the treatment group dummies. The F-test result for the joint null hypothesis was not statistically significant (F-value = \(1.434\); p-value = \(0.197\)).} Wave 2 aimed to test how the randomly assigned text message reminders in Wave 1 affected the actual uptake of antibody testing and vaccination rates. We obtained prior approval from the institutional review board of the Graduate School of Economics, Osaka University (approval number: R020114) for conducting the RCT on the online survey.
 
-Note that, before reading a randomly assigned message, participants were asked about economic preferences such as altruistic preference, daily health behaviors, rubella knowledge, and the willingness to pay for the rubella vaccination. At the end of survey, they were asked about socio-economic status. We use these variables to perform regressions and balance checks and to explore mechanisms. See Table \ref{tab:covariate-list} in Appendix \ref{fig-tab} for variables used in regression analysis and balance checks.
+\hypertarget{wave1}{%
+\subsubsection{Wave 1: Outcome Variables for Intention}\label{wave1}}
+
+In Wave 1, we randomly sent one of the text message reminders in Table \ref{tab:message-list}. We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned the messages within each group. The sample size for each group was 1,050, with 150 for one experimental arm within a group. Thus, the sample size for one experimental group was 600.\footnote{The ages shown in Table \ref{tab:message-list} are as of April 2019, calculated using the year and month of the respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive vouchers for the first year. We assume that those born in April have not yet reached their birthday. In addition, some men aged 39 years as of April 2019 were 40 years at the time of the survey.}
+
+After viewing their randomly assigned message, the participants expressed their intention to undertake antibody testing and be vaccinated on a 5-point Likert scale (5 = definitely yes; 1 = absolutely no). The question on the willingness to undertake antibody testing was, ``Are you willing to take an antibody test for rubella now?'' Meanwhile, the intention to be vaccinated question asked, ``If the antibody testing reveals that you have no antibodies, are you willing to be vaccinated?'' We created a binary variable coded 1 if the participant responded 4 or 5 to each question and used it as the outcome variable for intention.
+
+Before reading the randomly assigned message, the participants were asked about their economic preferences such as their altruism, daily health behavior, rubella knowledge, and willingness to pay (WTP) for the rubella vaccination. At the end of survey, they were asked about their socioeconomic status. We used these variables to perform regressions and balance checks as well as explore influencing mechanisms. See Table \ref{tab:covariate-list} in Appendix \ref{fig-tab} for variables used in the regression analysis and balance checks.
 
 \hypertarget{wave2}{%
-\subsection{Wave 2: Outcome Variables on Behavior}\label{wave2}}
+\subsubsection{Wave 2: Outcome Variables for Behavior}\label{wave2}}
 
-Wave 2 investigates actual antibody testing and vaccination behavior since wave 1. We present exact questions and choices about antibody testing and vaccination in Appendix \ref{question}. We create a binary variable taking 1 if the respondent has taken antibody testing since the end of wave 1.
+In Wave 2, we investigated the actual uptake of antibody testing and vaccination rates after Wave 1. Appendix \ref{question} presents the questions on antibody testing and vaccination and the multiple-choice answers. We created a binary variable coded 1 if the respondent had undertaken antibody testing after Wave 1.
 
-To receive rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we create a binary variable taking 1 if respondents have been tested and vaccinated since the end of wave 1. Then, we use it as the outcome variable on vaccination coverage.
+As stated earlier, to receive the rubella vaccination through routine immunization, eligible men must first undergo antibody testing. However, they may have been vaccinated against rubella at their own expense without having their antibodies tested. To eliminate this possibility, we created a binary variable coded 1 if the respondents had been tested and vaccinated after Wave 1, which we used as the outcome variable for vaccination.
 
-Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addresses these biases in the following two ways. First, because this study is a randomized controlled trial and if these biases exist to the same extent in each group, they are not fatal to the identification of treatment effects. Second, even if these biases are heterogeneous across groups, our analysis directly controls for respondents' psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions) and then estimates treatment effects.
+Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addressed these biases in the following two ways. First, because this study is an RCT, these biases, if they exist to the same extent in each group, are not fatal to the identification of treatment effects. Second, even if these biases differ by group, our analysis directly controlled for the respondents' psychological factors potentially associated with these biases (e.g., following social norms, accepting bad behavior in anonymous conditions) and then estimated the treatment effects .
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -250,43 +258,41 @@ Although self-reported behavioral measures may be subject to the experimenter de
 \hypertarget{sample}{%
 \subsection{Study Population}\label{sample}}
 
-Our target population consists of men who did not have antibody testing or vaccinations. We exclude respondents who stated in wave 1 that they had already received either antibody testing or vaccination. In wave 2, we again asked respondents whether they had already received either testing or vaccination until wave 1 because they may check vaccination history after wave 1. Thus, when estimating the effect on behavior, we exclude respondents who stated in either wave that they had received either antibody testing or vaccination prior to wave 1.
-
-Our aim is to estimate the effect of text reminders in situations where men received monetary incentives as vouchers by default and where they had to incur transaction costs to obtain them. To accomplish this, we create a subsample of men aged 40--46 years and another of men aged 47--56 years. Men in the former subsample automatically received the free vouchers (\emph{default incentive} group). Meanwhile, men in the latter subsample received no incentives or required a costly procedure to get it (\emph{opt-in incentive} group). Thus, in the \emph{default incentive} group, monetary incentives and text message reminders are more closely combined than in the \emph{opt-in incentive} group.
+Our target population is men who did not undertake antibody testing or receive a vaccination. We thus exclude those respondents who stated in Wave 1 that they had already undertaken antibody testing or been vaccinated. In Wave 2, we again ask the respondents whether they had already undergone testing or received a vaccination by Wave 1. This is because they respondents may check vaccination history after wave 1 and their responses may be different from Wave 1. Thus, when estimating the effect on behavior, we exclude the respondents who stated in either wave that they had received antibody testing or been vaccinated before Wave 1.
 
 \hypertarget{intention}{%
-\subsection{Effect of Text Reminders on Intentions}\label{intention}}
+\subsection{Effect of the Text Message Reminders on Intention}\label{intention}}
 
-This subsection estimates the effect of text reminders on intentions. We find that individuals' observable characteristics are balanced across experimental arms in both \emph{default incentive} and \emph{opt-in incentive} group (See Table \ref{tab:balance-int-default} and \ref{tab:balance-int-optin} in Appendix \ref{fig-tab}). Thus, we first report the difference-in-mean test (t-test) for each group.
+The participants' observable characteristics are balanced across the experimental arms in both \emph{default incentive} and \emph{opt-in incentive} group (Table \ref{tab:balance-int-default} and \ref{tab:balance-int-optin} in Appendix \ref{fig-tab}). Thus, we first report the difference-in-mean test (t-test) for each group.
 
 \hypertarget{difference-in-mean-test}{%
 \subsubsection{Difference-in-mean Test}\label{difference-in-mean-test}}
 
 \begin{figure}[t]
-\includegraphics{discussion-paper_files/figure-latex/ttest-int-test-1} \caption{Effect of Text Reminders on Intention for Antibody Testing Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-test}
+\includegraphics{discussion-paper_files/figure-latex/ttest-int-test-1} \caption{Effect of the Text Message Reminders on the Intention to Undertake Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-test}
 \end{figure}
 
-We show the proportion of intention for antibody testing in each experimental arm for the \emph{default incentive} group (Panel A) and the \emph{opt-in incentive} group (Panel B) in Figure \ref{fig:ttest-int-test}. The results show that, in the \emph{default incentive} group only, the Altruistic message increases the intention for antibody testing by a statistically significant \(14.3\) pp compared to the MHLW (Control) message (\(35.1\)\% in the Altrustic message group versus \(20.8\)\% in the MHLW (Control) message group). On the other hand, in the \emph{opt-in incentive} group, the Altruistic message increased intention by \(5.3\) pp, which is not statistically significant (\(32.9\)\% in the Altrustic message group versus \(27.6\)\% in the MHLW (Control) message group). The Altruistic message effects could differ between the two groups, as the regression analysis also suggests later.
+Figure \ref{fig:ttest-int-test} shows the intention to undertake antibody testing in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In the \emph{default incentive} group, the Altruistic message increases the intention to undertake antibody testing by a statistically significant \(14.3\) pp compared with the MHLW (Control) message (\(35.1\)\% in the Altruistic message group versus \(20.8\)\% in the MHLW (Control) message group). On the contrary , in the \emph{opt-in incentive} group, the Altruistic message increases the intention to undertake antibody testing by \(5.3\) pp, which is not statistically significant (\(32.9\)\% in the Altruistic message group versus \(27.6\)\% in the MHLW (Control) message group). The effect of the Altruistic message could differ between the two groups, as the subsequent regression analysis also suggests.
 
 \begin{figure}[t]
-\includegraphics{discussion-paper_files/figure-latex/ttest-int-vacc-1} \caption{Effect of Text Reminders on Intention for Vaccination Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-vacc}
+\includegraphics{discussion-paper_files/figure-latex/ttest-int-vacc-1} \caption{Effect of the Text Message Reminders on the Intention to be Vaccinated. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-vacc}
 \end{figure}
 
-Figure \ref{fig:ttest-int-vacc} depicts the proportions of intention for vaccination for the \emph{default incentive} group (Panel A) and the \emph{opt-in incentive} group (Panel B). Results show that in the two incentive groups, most text reminders, including the Altruistic messages, do not statistically significantly increase vaccination intentions compared to NHLW (control). In the \emph{opt-in incentive} group, the Social Comparison message may lower vaccination intention than the MHLW (Control) message (\(44.6\)\% in the Social Comparison message group versus \(52.8\)\% in the MHLW (Control) message group).\footnote{Free-riding may explain why the Social Comparison message content does not increase intention. The Social Comparison message emphasizes that ``one in five people do not have antibodies.'' Conversely, four out of five individuals have antibodies. The readers of such a message may have believed that even if they lacked rubella antibodies, the likelihood of infection would be low because 80\% of the population possesses them. When eligible men were required to undergo costly procedures to receive free vouchers, this belief may have made vaccination less beneficial.}
+Figure \ref{fig:ttest-int-vacc} depicts the intention to be vaccinated for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In both incentive groups, most of the text message reminders, including the Altruistic message, do not statistically significantly increase the intention to be vaccinated compared with MHLW (Control). In the \emph{opt-in incentive} group, the Social Comparison message may lower the intention to be vaccinated compared with the MHLW (Control) message (\(44.6\)\% in the Social Comparison message group versus \(52.8\)\% in the MHLW (Control) message group).\footnote{Free-riding may explain why the Social Comparison message does not increase the intention to be vaccinated. The Social Comparison message emphasizes that ``one in five people do not have antibodies.'' Conversely, four out of five individuals have antibodies. The readers of such a message may have believed that even if they lacked rubella antibodies, the likelihood of infection would be low because 80\% of the population possesses them. When eligible men were required to undergo costly procedures to receive free vouchers, this belief may have made vaccination less beneficial.}
 
-Note that the intention ratio of vaccination in all experimental arms is higher than that of antibody testing in both incentive groups. This result may be explained by the stimulus of the question eliciting the vaccination intention. We asked respondents to report their willingness to vaccinate if they did not have antibodies. This condition may strongly stimulate the need for vaccination. Thus, when assessed by actual behavior, the results may differ.
+The intention to be vaccinated in all the experimental arms is higher than that to undertake antibody testing in both the incentive groups. This result may be explained by the stimulus of the question eliciting the intention to be vaccinated. We asked respondents to report their willingness to be vaccinated if they did not have antibodies. This condition may strongly stimulate the need for vaccination. Thus, when assessed by actual behavior, the results may differ.
 
 \hypertarget{regression-analysis}{%
 \subsubsection{Regression Analysis}\label{regression-analysis}}
 
-Since age determines whether eligible men received the free vouchers automatically in FY2019, the different effect of text reminders for two groups is influenced by the presence or absence of monetary incentives, and by the differences of other dimentions (especially, age) between the two groups. This motivates us to estimate a following linear probability model:
+Since age determines whether eligible men received the free vouchers automatically in FY2019, the different effects of the text message reminders for the two groups are influenced by the presence or absence of financial incentives as well as the differences in other factors (especially age). This motivates us to estimate the following linear probability model:
 \begin{equation}
 \begin{split}
 Y_{ij} = &\alpha + \sum_j \beta_j \text{Message}_j + \sum_j \gamma_j (\text{Message}_j \times \text{Opt-in}_i) + \delta \text{Opt-in}_i \\
 &+ \lambda X'_{ij} + \epsilon_{ij},
 \end{split} \label{eq:regression}
 \end{equation}
-where \(\text{Message}_j\) is a treatment dummy (the reference group is MHLW (Control) message), \(\text{Opt-in}_i\) is a binary variable indicating the \emph{opt-in incentive} group (47--56 years old), and \(X\) is a set of covariates including age. Our parameter of interest is \(\beta_j\) and \(\gamma_j\). The parameter \(\beta_j\) represents a text message effect for the \emph{default incentive} group. The linear combination of parameters, \(\beta_j + \gamma_j\), is a text message effect for the \emph{opt-in incentive} group. The parameter \(\gamma_j\) shows a difference in the message effect between the two groups.
+where \(\text{Message}_j\) is a treatment dummy (the reference group is MHLW (Control)), \(\text{Opt-in}_i\) is a binary variable indicating the \emph{opt-in incentive} group, and \(X\) is a set of covariates including age. Our parameters of interest are \(\beta_j\) and \(\gamma_j\). \(\beta_j\) represents the effect of the text message reminders for the \emph{default incentive} group. The linear combination of the parameters, \(\beta_j + \gamma_j\), is the effect of the text message reminders for the \emph{opt-in incentive} group. The parameter \(\gamma_j\) shows the difference in the effect of the text message reminders between the two groups.
 
 \begin{table}
 
@@ -347,34 +353,34 @@ R2 & \num{0.009} & \num{0.109} & \num{0.005} & \num{0.128}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Reminder effects in the opt-in incentive group are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-The regression analysis also shows that the Altruistic messages increase the intention to take the antibody test only in the \emph{default incentive} group (Table \ref{tab:reg-int}). Controlling for covariates, the Altruistic message increases the intention to take the antibody test by \(16.6\) pp in the \emph{default incentive} group (column (2)). Furthermore, although marginally statistically significant, the effect of this message weakens by \(12.1\) pp as the cost of obtaining a free vaccination ticket becomes more expensive. As a result, the effect of the Altruistic message in the \emph{opt-in incentive} group is \(4.5 (=16.6-12.1)\) pp, which is not statistically significant. Also statistically insignificant or marginal, the effect of other text reminders change in a negative direction as the cost of obtaining free vaccination tickets increases.
+The regression analysis also shows that the Altruistic message increases the intention to undertake antibody testing only in the \emph{default incentive} group (Table \ref{tab:reg-int}). Controlling for the covariates, the Altruistic message increases the intention to undertake antibody testing by \(16.6\) pp in this group (column (2)). Furthermore, although only marginally statistically significant, the effect of this message weakens by \(12.1\) pp as the cost of obtaining a free vaccination voucher rises. As a result, the effect of the Altruistic message in the *opt-in incentive\} group is \(4.5 (=16.6-12.1)\) pp, which is not statistically significant. Similarly, the effect of the other text message reminders change in a negative direction as the cost of obtaining free vaccination vouchers increases (not significant or marginally significant).
 
 \hypertarget{behavior}{%
 \subsection{Effect of Text Reminders on Behavior}\label{behavior}}
 
-This subsection estimates the effect of text reminders on behavior. We tested a balance of individual characteristics again because a few respondents dropped out between waves 1 and 2. The results show that the observable characteristics are balanced across experimental arms in both \emph{default incentive} and \emph{opt-in incentive} group (see Table \ref{tab:balance-act-default} and \ref{tab:balance-act-optin} in the Appendix \ref{fig-tab}). Therefore, we first present the difference-in-mean test (t-test) for each group.
+Since a few respondents dropped out between waves 1 and 2, We again test a balance check and find that the observable characteristics are balanced across the experimental arms in both the \emph{default incentive} and the \emph{opt-in incentive} groups (see Tables \ref{tab:balance-act-default} and \ref{tab:balance-act-optin} in Appendix \ref{fig-tab}). Therefore, we present the difference-in-mean test (t-test) for each group first.
 
 \hypertarget{difference-in-mean-test-1}{%
 \subsubsection{Difference-in-mean Test}\label{difference-in-mean-test-1}}
 
 \begin{figure}[t]
-\includegraphics{discussion-paper_files/figure-latex/ttest-act-test-1} \caption{Effect of Text Reminders on Behavior for Antibody Testing Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-test}
+\includegraphics{discussion-paper_files/figure-latex/ttest-act-test-1} \caption{Effect of the Text Message Reminders on the Actual Uptake of Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-test}
 \end{figure}
 
-We show the uptake rate of antibody testing in each experimental arm for the \emph{default incentive} group (Panel A) and the \emph{opt-in incentive} group (Panel B) in Figure \ref{fig:ttest-act-test}. We find that, as in the intention case, the Altruistic message statistically significantly increases the antibody test uptake rate compared to the MHLW (Control) message by \(7.4\) pp in the \emph{default incentive} group only (\(10.9\)\% in the Altruistic message group versus \(3.5\)\% in the MHLW (Control) message group).
+Figure \ref{fig:ttest-act-test} shows the actual uptake of antibody testing in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). As in the intention case, the Altruistic message statistically significantly increases the actual uptake of antibody testing compared with the MHLW (Control) message by \(7.4\) pp in the \emph{default incentive} group (\(10.9\)\% in the Altruistic message group versus \(3.5\)\% in the MHLW (Control) message group).
 
-Selfish messages may boost antibody testing uptake in the \emph{default incentive} group by \(5.5\) pp (9\% in the Selfish message group versus \(3.5\)\% in the MHLW (Control) message group). Moreover, Social Comparison message may also increase antibody testing uptake in the \emph{opt-in incentive} group (\(4.9\)\% in the Social Comparison message group versus \(3.5\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.
+The Selfish message may boost the actual uptake of antibody testing in the \emph{default incentive} group by \(5.5\) pp (9\% in the Selfish message group versus \(3.5\)\% in the MHLW (Control) message group). Moreover, the Social Comparison message may also increase the actual uptake of antibody testing in the \emph{opt-in incentive} group (\(4.9\)\% in the Social Comparison message group versus \(3.5\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.
 
 \begin{figure}[t]
-\includegraphics{discussion-paper_files/figure-latex/ttest-act-vacc-1} \caption{Effect of Text Reminders on Behavior for Vaccination. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-vacc}
+\includegraphics{discussion-paper_files/figure-latex/ttest-act-vacc-1} \caption{Effect of the Text Message Reminders on Vaccination Rates. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-vacc}
 \end{figure}
 
-Figure \ref{fig:ttest-act-vacc} shows the vaccination rates in each experimental arm for the \emph{default incentive} group (Panel A) and the \emph{opt-in incentive} group (Panel B).\footnote{Vaccination is a dummy variable that takes the value of 1 if respondents have been tested and vaccinated. Thus, the vaccination rate can be regarded as the proportion of newly acquired antibodies through vaccination. This outcome variable matches MHLW's policy goal.} In the \emph{default incentive} group, the Altruistic message may increase the vaccination rate by \(3.8\) pp (\(4.7\)\% in the Altruistic message group versus \(0.9\)\% in the MHLW (Control) message group). In the same group, the Social Comparison message may also increase vaccination rate by 4 pp (\(4.9\)\% in the Social Comparison message group versus \(0.9\)\% in the MHLW (Control) message group). These effects are statistically siginificant at 10\% level.
+Figure \ref{fig:ttest-act-vacc} shows the vaccination rates in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B).\footnote{Vaccination is a dummy variable coded 1 if the respondents were both tested and vaccinated. Thus, the vaccination rate can be regarded as the proportion of newly acquired antibodies through vaccination. This outcome variable matches the MHLW's policy goal.} In the \emph{default incentive} group, the Altruistic message may increase the vaccination rate by \(3.8\) pp (\(4.7\)\% in the Altruistic message group versus \(0.9\)\% in the MHLW (Control) message group). In the same group, the Social Comparison message may also increase vaccination rate by 4 pp (\(4.9\)\% in the Social Comparison message group versus \(0.9\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.
 
 \hypertarget{regression-analysis-1}{%
 \subsubsection{Regression Analysis}\label{regression-analysis-1}}
@@ -438,44 +444,42 @@ R2 & \num{0.030} & \num{0.047} & \num{0.019} & \num{0.029}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Reminder effects in the opt-in incentive group are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-As in the case of intention, the different effects of text reminders for two incentive group is influenced by dimentions including age difference other than the presence or absence free vouchers. Thus, we estimate a linear probability model \eqref{eq:regression} and shows results in Table \ref{tab:reg-act}.
+As in the intention case, the different effects of the text message reminders for the two incentive groups are influenced by factors other than the presence or absence of free vouchers, including the age difference. Thus, we estimate the linear probability model \eqref{eq:regression}. Table \ref{tab:reg-act} shows the results.
 
-Regression analysis also shows that the Altruistic message increases antibody test uptake only in the \emph{default incentive} group. Controlling for covariates, the Altruistic messages increase antibody test uptake by a statistically significant \(7.3\) pp in the \emph{default incentive} group (column (2)). Furthermore, although the statistical significance is weak, the effect of this message weakens by \(5.7\) pp as the cost of obtaining a free vaccination ticket becomes more expensive. As a result, the effect of the Altruistic message in the \emph{opt-in incentive} group is \(1.6 (=7.3-5.7)\) pp, which is not statistically significant. A same trend is observed for the effect on vaccination, but statistical significance becomes weak.
+The regression analysis also shows that the Altruistic message increases the actual uptake of antibody testing only in the \emph{default incentive} group. Controlling for the covariates, the Altruistic message increases the actual uptake of antibody testing by a statistically significant \(7.3\) pp in this group (column (2)). Furthermore, although the statistical significance is weak, the effect of this message falls by \(5.7\) pp as the cost of obtaining a free vaccination voucher increases. Hence, the effect of the Altruistic message in the \emph{opt-in incentive} group is \(1.6 (=7.3-5.7)\) pp, which is not statistically significant. The same trend is observed for the effect on vaccination rates, but statistical significance becomes weak.
 
-We summarize the results for the other messages. As confirmed by the difference-in-means test, controlling for covariates, the Selfish message may have increased the antibody test-taking rate in the \emph{default incentive} group, although the statistical significance is weak (column (2) in Table \ref{tab:reg-act}). We also find that the Social Comparison message may have increased antibody testing rates in the two incentive groups, controlling for covariates (column (2) in Table \ref{tab:reg-act}). However, the effect size is larger in the \emph{default incentive} group than in the \emph{opt-in incentive} group (not a statistically significant difference).
+As confirmed by the difference-in-means test, controlling for the covariates, the Selfish message increases the actual uptake of antibody testing in the \emph{default incentive} group, although the statistical significance is weak (column (2) in Table \ref{tab:reg-act}). In addition, the Social Comparison message may increases the actual uptake of antibody testing in both incentive groups, controlling for the covariates (column (2) in Table \ref{tab:reg-act}). However, the effect size is larger in the \emph{default incentive} group than in the \emph{opt-in incentive} group (not a statistically significant difference).
 
-As confirmed by the difference-in-means test, the Social Comparison message may increase vaccination rates in the \emph{default incentive} group (column (4) in Table \ref{tab:reg-act}). Although weakly statistically significant, the effect of this message weakens by \(5.7\) pp as the cost of obtaining vaccination tickets increases. As a result, the Social Comparison message does not increase vaccination rates in the \emph{opt-in incentive} group. Again, the effect of the Altruistic message follows a similar trend.
+As confirmed by the difference-in-means test, the Social Comparison message may increase the vaccination rate in the \emph{default incentive} group (column (4) in Table \ref{tab:reg-act}). Although weakly statistically significant, the effect of this message lowers by \(5.7\) pp as the cost of obtaining vaccination vouchers increases. Hence, the Social Comparison message does not increase the vaccination rate in the \emph{opt-in incentive} group. Again, the effect of the Altruistic message follows a similar trend.
 
-\hypertarget{mechanisms-of-altruistic-message}{%
-\subsection{Mechanisms of Altruistic Message}\label{mechanisms-of-altruistic-message}}
+\hypertarget{influencing-mechanisms-of-the-altruistic-message}{%
+\subsection{Influencing Mechanisms of the Altruistic Message}\label{influencing-mechanisms-of-the-altruistic-message}}
 
-The reminders with nudge-based messages other than the MHLW (Age) message modify the age expression and the message content. Thus, the effect of these text reminders relative to MHLW (Control) should be interpreted as the combined effect of the two modifications. Here, we examine which modification is more effective in the Altrustic message, which has a positive effect on antibody test intention and uptake in the \emph{default incentive} group. The only difference between the MHLW (Age) message and the MHLW (Control) message is the age expression, while the only difference between the Altruistic message and the MHLW (Age) message is the message content. Therefore, by estimating the effect of each difference, we can decompose the combined effect of the Altruistic message.
+The text message reminders other than MHLW (Age) modify the age expression and message content. Thus, their effect relative to MHLW (Control) should be interpreted as the combined effect of the two modifications. Here, we examine which modification is more effective in the Altruistic message, which has a positive effect on both the intention to undertake antibody testing and the actual uptake of antibody testing in the \emph{default incentive} group. The only difference between the MHLW (Age) and MHLW (Control) messages is the age expression, while the only difference between the Altruistic and MHLW (Age) messages is the message content. Therefore, by estimating the effect of each difference, we can decompose the combined effect of the Altruistic message.
 
-Compared to MHLW (Control), MHLW (Age) increases the intention to test for antibodies in the default incentive group by only \(2.1\) pp (\(22.9\)\% in the MHLW (Age) message group versus \(20.8\)\% in the MHLW (Control) message group in Figure \ref{fig:ttest-int-test}), but this effect is not statistically significant. On the other hand, compared to MHLW (Age), the Altruistic message increases the intention for antibody testing by \(12.2\) pp (\(35.1\)\% in the Altruistic message group versus \(22.9\)\% in the MHLW (Age) message group in Figure \ref{fig:ttest-int-test}), which is statistically significant (see Table \ref{tab:reg-int-woA} in the Appendix \ref{fig-tab}).\footnote{Even in the \emph{opt-in incentive} group, the Altruistic message content may increase testing intention. Compared to the MHLW (Age) message group, the Altruistic messages increased the intention to take the antibody test by \(7.7\) pp (\(32.9\)\% in the Altruistic message group versus \(25.2\)\% in the MHLW (Age) message group), which is statistically significant at the 10\% level. Moreover, an interesting finding is that only in the \emph{opt-in incentive} group did the content of the Convinient message statistically significantly increase the intention to take the antibody test by about 9 pp.~This group may not have a full understanding of the routine immunization campaign. In fact, the Wave 1 survey shows that only about 20\% of the \emph{opt-in incentive} group are aware of routine vaccination (see Table \ref{tab:reg-int-woA} in the Appendix \ref{fig-tab}).} Therefore, in terms of effect size and statistical significance, the effect of the Altruistic message on antibody testing intentions is strongly influenced by changing the message content.
+Compared with MHLW (Control), MHLW (Age) increases the intention to intention to undertake antibody testing in the \emph{default incentive} group by only \(2.1\) pp (\(22.9\)\% in the MHLW (Age) message group versus \(20.8\)\% in the MHLW (Control) message group; see Figure \ref{fig:ttest-int-test}), but this effect is not statistically significant. On the contrary, compared with MHLW (Age), the Altruistic message increases the intention to undertake antibody testing by \(12.2\) pp (\(35.1\)\% in the Altruistic message group versus \(22.9\)\% in the MHLW (Age) message group; see Figure \ref{fig:ttest-int-test}), which is statistically significant (Table \ref{tab:reg-int-woA} in Appendix \ref{fig-tab}).\footnote{Even in the \emph{opt-in incentive} group, the Altruistic message content may increase the intention to undertake antibody testing. Compared with the MHLW (Age) message group, the Altruistic message increases the intention to undertake antibody testing by \(7.7\) pp (\(32.9\)\% in the Altruistic message group versus \(25.2\)\% in the MHLW (Age) message group), which is statistically significant at the 10\% level. Moreover, only in the \emph{opt-in incentive} group does the content of the Convenient message statistically significantly increase the intention to undertake antibody testing by about 9 pp (Table \ref{tab:reg-int-woA} in Appendix \ref{fig-tab}). This group may lack an understanding of the routine immunization campaign. In fact, the Wave 1 survey shows that only about 20\% of the \emph{opt-in incentive} group were aware of the availability of routine vaccination.} Therefore, the effect of the Altruistic message on the intention to undertake antibody testing is strongly influenced by changing the message content.
 
-Which individuals were influenced by the content of the Altruistic message? Since this message emphasizes the possibility that infected pregnant women may give birth to children with disabilities (CRS), we examine heterogeneity in terms of CRS knowledge and altruistic preferences.
+Which individuals were influenced by the content of the Altruistic message? Since this message emphasizes the possibility that infected pregnant women may give birth to children with disabilities (CRS), we examine the differences in CRS knowledge and altruistic preferences. First, in Wave 1, we examine CRS knowledge and test the heterogeneity of the effect of the Altruistic message on the intention to undertake antibody testing depending on whether the respondents possessed such knowledge (see column (1) of Table \ref{tab:reg-mechanism} in Appendix \ref{fig-tab}). The results show that the Altruistic message content may be relatively more effective for those lacking such knowledge. Thus, the Altruistic message content may modify knowledge on the negative externalities of infection.
 
-First, in Wave 1, we examine the CRS knowledge and test the heterogeneity of the effect of the Altruistic message on antibody testing intentions depending on whether respondents possessed the knowledge (see column (1) of Table \ref{tab:reg-mechanism} in the Appendix \ref{fig-tab}). The results show that the effect of the Altruistic message content may be more effective for those who do not possess the knowledge than for those who do. Although there are no statistically significant difference between the effects with and without knowledge, the effects of message content for those with knowledge are not statistically significant. Thus, Altruistic message content may modify knowledge about the negative externalities of infection.
+Second, we investigate whether the respondents feel pleasure in taking actions for others in Wave 1 and test the heterogeneous effects of the Altruistic message content (see column (2) of Table \ref{tab:reg-mechanism} in Appendix \ref{fig-tab}). The results show that the more altruistic a participant is, the stronger the effect of the Altruistic message content (this trend is statistically significant). Thus, the Altruistic message may be ineffective for those who do not care about others, even if they perceive negative externalities from reading messages.
 
-Second, we investigate whether he feels pleasure in actions for others on a 5 scale in Wave 1 and test the heterogeneous effect of the Altruistic message content by the extent to which he does (see column (2) of Table \ref{tab:reg-mechanism} in the Appendix \ref{fig-tab}). The results show that the more altruistic one is, the stronger the effect of the Altruistic message content (this trend is statistically significant). Thus, the Altruistic message may not be effective for those who do not care about others, even if they perceive negative externalities from reading messages.
+Unlike in the intention case, the effect of the Altruistic message on the actual uptake of antibody testing is not solely due to the message content. Compared with MHLW (Age), which only changed the age expression, the Altruistic message increases the actual uptake of antibody testing by \(4.2\) pp (\(10.9\)\% in the Altruistic message group versus \(6.7\)\% in the MHLW (Age) message group). However, the regression analysis indicates that this increase is not statistically significant (Table \ref{tab:reg-act-woA} in Appendix \ref{fig-tab}). Further, modifying the age expression increases the actual uptake of antibody testing by \(3.2\) pp (\(6.7\)\% in the MHLW (Age) message group versus \(3.5\)\% in the MHLW (Control) message group), but not significantly. Thus, the effect of the Altruistic message on behavior is a combination of the addition of a simple age expression and revision of the message content.
 
-Unlike the intention case, the effect of the Altruistic message on the uptake rate of antibody testing is not solely due to the content of the message. Compared to MHLW (Age), which only changed the expression of age, the Altruistic message group increases the antibody test uptake rate by \(4.2\) pp (\(10.9\)\% in the Altruistic message group versus \(6.7\)\% in the MHLW (Age) message group). However, regression analysis indicates that this increase is not statistically significant (see Table \ref{tab:reg-act-woA} in the Appendix \ref{fig-tab}). Also, although the regression analysis is not statistically significant, modifying the age expression increases the antibody test uptake rate by \(3.2\) pp (\(6.7\)\% in the MHLW (Age) message group versus \(3.5\)\% in the MHLW (Control) message group). Thus, the effect of the Altruistic message on behavior is a combination of the addition of a simple age expression and the revision of the message content.
+\hypertarget{monetary-value-of-the-text-message-reminders}{%
+\subsection{Monetary Value of the Text Message Reminders}\label{monetary-value-of-the-text-message-reminders}}
 
-\hypertarget{monetary-value-of-text-reminders}{%
-\subsection{Monetary Value of Text Reminders}\label{monetary-value-of-text-reminders}}
+So far, we have examined the effects of combining financial incentives and nudges. The results show that the Altruistic message (and possibly the Social Comparison message) encourages men who received free vouchers by default (i.e., those who already received financial incentives) to undertake antibody testing and be vaccinated. Here, we evaluate the monetary value of adding nudges by examining how much more monetary compensation would be required if the effects of the combination were achieved by monetary compensation alone.
 
-So far, we have examined the effects of combining financial incentives and nudges. The results show that the Altruistic (and possibly Social Comparison) messages encourage men who received free vouchers by default (who already received monetary incentives) to get an antibody test and be vaccinated. Here, we evaluate the monetary value of adding nudges by examining how much more monetary compensation would be required if the effects of the combination were achieved by monetary compensation alone.
-
-We use willingness to pay (WTP) for the rubella vaccine.\footnote{Several studies calculate the monetary value of text reminders. For example,\cite{Bursztyn2019} calculated it using the two relative effects of financial incentives and text message treatment groups. \cite{Moriwaki2020} also surveyed WTP amounts and calculated monetary value. The latter study is similar to our approach.} We estimate the demand function using willingness to pay (WTP) for rubella vaccine. We then examine the extent to which the corresponding price (WTP) changes when the baseline vaccination coverage is increased by the effect of the text reminder. This price change is the additional subsidy equivalent to the effect of the text reminder. Since we want to estimate the monetary value of the text reminder in the \emph{default incentive} group, the baseline vaccination rate is the vaccination rate when the vaccination price is zero. Furthermore, since vaccination requires an exogenous condition that men do not have antibodies, we use the effect on the uptake of antibody testing. Since those willing to be vaccinated must undergo antibody testing, the effect on antibody testing should be viewed as the true intention to vaccinate inferred from behavior. See Appendix \ref{method-value} for detail estimation method.
+We first estimate the demand function using the WTP for the rubella vaccination.\footnote{Several studies calculate the monetary value of text message reminders. For example, \citet{Bursztyn2019} calculated it using the relative effects of financial incentives and text message treatment groups. \citet{Moriwaki2020} also surveyed WTP amounts and calculated monetary value. The latter study is similar to our approach.} We then examine the extent to which the corresponding cost (WTP) changes when the baseline vaccination rate is increased by the effect of the text message reminder. This cost change is the additional subsidy equivalent to the effect of the text message reminder. Since we want to estimate the monetary value of the text message reminder in the \emph{default incentive} group, the baseline vaccination rate is that when the vaccination cost is zero. Furthermore, since vaccination requires an exogenous condition that men do not have antibodies, we use the effect on the actual uptake of antibody testing. Since those willing to be vaccinated must undergo antibody testing, the effect on antibody testing should be viewed as the true intention to be vaccinated inferred from behavior. See Appendix \ref{method-value} for the detailed estimation method.
 
 \begin{table}
 
-\caption{\label{tab:monetary-value}Estimated Monetary Value of Text Reminders}
+\caption{\label{tab:monetary-value}Estimated Monetary Value of the Text Message Reminders}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -483,7 +487,7 @@ We use willingness to pay (WTP) for the rubella vaccine.\footnote{Several studie
 \toprule
 \multicolumn{3}{c}{ } & \multicolumn{2}{c}{Monetary value (JPY)} & \multicolumn{2}{c}{Monetary value (USD)} \\
 \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
-Text messages & Effect & Baseline + effect & pp & total & pp & total\\
+Text message reminder & Effect & Baseline + effect & pp & total & pp & total\\
 \midrule
 MHLW (Age) & 0.032 & 0.732 & 367.854 & 1.946 & 3.679 & 17.690\\
 Altruistic & 0.075 & 0.774 & 2037.553 & 10.779 & 20.376 & 97.988\\
@@ -494,31 +498,27 @@ Convenient & 0.037 & 0.737 & 422.789 & 2.237 & 4.228 & 20.332\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: We use the effect size of each text reminder on antibody testing. Baseline is the sum of the rate of antibody test in the control and the free vaccination rates. The monetary value is the amount per person multiplied by the number of people who received the coupon in 2019 but did not use it until January 2020 ($5.29$ million). We valued it in Japanese Yen and US Dollars (1 USD = 110 JPY). The unit of monetary value per person is 1 JPY and 1 USD, respectively. The unit of total monetary value is 1 billion JPY and 1 million USD, respectively.
+\item We use the effect size of each text message reminder on the actual update of antibody testing. Baseline is the sum of the actual uptake of antibody testing in the control group and the vaccination rates under no vaccination cost estimated by the demand function. The monetary value is the amount per person multiplied by the number of people who received the voucher in 2019 but did not use it until January 2020 ($5.29$ million). USD 1 = JPY 110. The unit of monetary value per person is 1 JPY and 1 USD, respectively. The unit of total monetary value is 1 billion JPY and 1 million USD, respectively.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-Table \ref{tab:monetary-value} shows the estimated message value. The second and third columns show the effect of text reminders on antibody testing and baseline vaccination rates plus the effect of text reminders, respectively. The fourth column shows monetary value of text reminders in terms of the value of the Japanese yen (in U.S. dollar value, shown in the sixth column). The Altruistic and Social Comparison message, which promotes antibody testing, value about 2,000 JPY (about 18 USD; 40\% of assumed vaccination price) and 600 JPY (about \(5.5\) USD; 12\% of assumed vaccination price), respectively. The total monetary value is the product of the per capita value and the number of people who have not yet used the free vouchers issued in FY2019 (\(5.29\) million as of January 2020). In the fifth column, the Altruistic and Social Comparison messages are worth 10 billion JPY (about 98 million USD) and 3 billion JPY (about 28 million USD), respectively.
+Table \ref{tab:monetary-value} shows the estimated monetary value of the text message reminders. The second and third columns show their effect on the actual uptake of antibody testing and the baseline vaccination rates plus the reminder effect, respectively. As shown in the fourth column, the Altruistic and Social Comparison messages, which promote antibody testing, have monetary values of about JPY 2,000 (about USD 18; 40\% of the assumed vaccination cost) and JPY 600 (USD \(5.5\); 12\%), respectively.\footnote{We elicit the WTP for the vaccination, assuming the vaccination costs JPY 5,000.} The total monetary value is the product of the per capita value and number of people who have not yet used the free vouchers issued in FY2019 (\(5.29\) million as of January 2020). As shown in the fifth column, the Altruistic and Social Comparison messages are worth JPY 10 billion (about USD 98 million) and JPY 3 billion (about USD 28 million), respectively.
 
 \hypertarget{conclusion}{%
 \section{Discussion and Conclusions}\label{conclusion}}
 
-This study uses RCTs to investigate effective messages for promoting rubella antibody testing and vaccination in two situations regarding financial incentives. Our experiment reveals that the Altruistic message, which emphasizes the negative externality of infection, increases the intention for antibody testing uptake by \(14.3\) pp among men who already received free vaccination tickets in FY2019. This message was particularly effective for those who were unaware of the negative externalities of infection and for altruistic individuals who consider the benefits of others.
+This study uses RCTs to investigate effective messages for promoting rubella antibody testing and vaccination in two situations using financial incentives. Our experiment reveals that the Altruistic message, which emphasizes the negative externality of infection, increases the intention to undertake antibody testing by \(14.3\) pp among men who received free vaccination vouchers in FY2019. This message is particularly effective for those unaware of the negative externalities of infection and for altruistic individuals who consider the benefits of others. Moreover, the Altruistic message also has a positive effect on the actual uptake of antibody testing. Among men who received vaccination vouchers in FY2019, the Altruistic message increases the actual uptake of antibody testing by \(7.5\) pp, which is equivalent to subsidizing 40\% of the vaccination cost.
 
-The Altruistic message has a positive effect on the antibody test uptake. Among men who had already received vaccination vouchers in FY 2019, the Altruistic message increases the antibody test uptake by \(7.5\) pp, which is equivalent to a subsidy of 40\% of the vaccination price.
+However, the Altruistic message is less effective for men who incur transaction costs to obtain the vaccination vouchers. There may be a statistically significant difference in the effect of this message between the two groups. This finding suggests that text message reminders are effective when closely combined with financial incentives. In addition to the Altruistic message, the Selfish and Social Comparison messages raise the intention to undertake antibody testing and actual uptake of antibody testing among men who already received the vaccination vouchers by default. However, these effect sizes are insufficiently large to maintain statistical power, thereby requiring re-examination with a larger sample size.
 
-However, the Altruistic message is less effective for men who incur transaction costs to obtain the vaccination tickets. There may be a statistically significant difference in the effect of this message between the two groups. This finding suggests that text message reminders are effective when financial incentives and reminders are closely combined. In addition to the Altruistic message, the Selfish and the Social Comparison message may also raise the intention and the acutual uptake rate for the antibody testing among men who already received the vaccination tickets by default. However, these effect sizes are not large enough to maintain statistical power, requiring a re-examination with a large sample size.
+One potential concern in this study is that all the behavior-related outcomes were self-reported and may contain recall bias; however, these biases are less problematic because Wave 2 measures behavior within the last month. The self-reported behavioral outcomes may also be subject to the experimenter demand effect and social desirability bias. To address these biases, our regression analysis directly controls for the respondents' psychological factors potentially associated with these biases (e.g., following social norms, accepting bad behavior in anonymous conditions). Even if these biases cannot be eliminated, they are not fatal to identifying the effect of the text message reminders since this study is an RCT and these biases exist to the same extent in each group.
 
-One potential concern is that all behavior-related outcomes were self-reported. These outcomes may contain recall bias. We believe that these biases are less problematic because Wave 2 measures behavior within the last month (the time of Wave 1). The self-reported behavioral outcomes may also be subject to the experimenter demand effect and social desirability bias. To address these biases, our regression analysis directly controls for respondents' psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Even if these biases cannot be eliminated perfectly, they are not fatal to the identification of message effects since this study is a RCT and if these biased exist to the same extent in each group.
+Finally, we offer two directions for future research. First, why are text message reminders ineffective in groups that must incur transaction costs to obtain the free vaccination vouchers? Our messages may not increase the value of antibody testing and vaccination sufficiently to outweigh their cost. Another possibility is the low awareness of the rubella immunization campaign (approximately 77.5\% of the respondents were unaware of the campaign). Thus, even if they read the messages and realized the importance of antibody testing and vaccination, they would have believed they had to pay for these preventive actions.\footnote{The fact that many people are unaware of the additional routine rubella vaccination precludes the possibility that they stopped getting antibody testing and were vaccinated in the first year (FY2019) because they expected to automatically receive the voucher the following year.}
 
-Finally, we offer two arguments for future research. First, why are text reminders are ineffective in groups that must incur transaction costs to obtain the free vaccination tickets? Our messages may not increase the value of antibody testing and vaccination sufficiently to outweigh their cost. In addition, another possibility is low awareness of rubella immunization campaign beginning in FY2019. Before presenting the messages, we inquire about the MHLW's policy in Wave 1. As a result, approximately 77.5\% are unaware of the vaccination campaign Thus, even if they read the messages and realized the importance of rubella antibody testing and vaccination, they would believe they had to pay for these preventive actions.\footnote{The fact that many people are unaware of the additional routine rubella vaccinations precludes the possibility that they stopped getting antibody testing and were vaccinated in the first year (FY2019) because they expected to automatically receive the voucher the following year.}
+The second direction concerns the channels of the effect on vaccination rates. We find that the Altruistic and Social Comparison messages may increase vaccination rates among men who received free vaccination vouchers by default. The effect of the text message reminders on vaccination rates is created through two channels. First, the messages increase the number of negative individuals who need to be vaccinated. Second, the messages encourage unvaccinated negative individuals to be vaccinated. Our data suggest that the first channel is more important than the second. Table \ref{tab:summary-behavior-default} in the Appendix \ref{fig-tab} shows the number of men who underwent antibody testing, who had a negative antibody test, and who were vaccinated in each experimental arm in the \emph{default incentive} group. Most of those with negative antibody test results were vaccinated in all the experimental arms. Furthermore, the number of negative antibody tests varied between the experimental arms. In particular, 25\% of the antibody tests were negative in the MHLW (Control) message group compared with 50\% (\(=7/14\)) and 56\% (\(=5/9\)) for the Altruistic and Social Comparison messages, respectively, which may have a positive effect on vaccination rates.\footnote{The negative rate of antibody testing for the Selfish message, which is only effective for the actual uptake of antibody testing, was 30\% (\(=3/10\)). This value is similar to that for the MHLW (Control) message.} Thus, the experimental arms with higher vaccination rates have a greater negative antibody testing rate, resulting in a positive effect on vaccination.
 
-The second argument is channels of effect on vaccination. Our experiment reveals that the Altruistic and the Social Comparison messages may increase vaccination rates among men who received free vaccination tickets by default. The message effect on vaccination is created through two channels. First, the messages increase the number of negative individuals who need to be vaccinated. Second, the messages encourage unvaccinated negative individuals to vaccinate.
-
-Our data suggest that the first channel is more important than the second. Table \ref{tab:summary-behavior-default} in the Appendix shows the number of men who had antibody testing, who had a negative antibody test, and who were vaccinated in each experimental arm in the \emph{default incentive} group. This table shows that most of those with negative antibody test results were vaccinated in all experimental arms. Furthermore, the number of negative antibody tests varied between experimental arms. Especially, the 25\% (\(=1/4\)) antibody tests are negative in the MHLW (Control) message group. In contrast, the negative ratios of antibody tests for the Altruistic and Social Comparison messages, which may have a positive effect on vaccination, are 50\% (\(=7/14\)) and 56\% (\(=5/9\)), respectively.\footnote{The negative ratio of antibody testing for the Selfish message, which is only effective for antibody test uptake, is 30\% (\(=3/10\)). This value is similar to the MHLW (Control) message.} Thus, the experimental arms with higher vaccination rates have a greater negative ratio, resulting in a positive effect on vaccination.
-
-This argument is related with the targeting of interventions \citep[e.g.,][]{Finkelstein2019}. That is, the question is whether marginal individuals whose behavior is changed by intervention receive significant benefits from a policy. In our context, we suggest that the Altruistic message increases the number of negative individuals who receive a large benefit (vaccination) from the FY2019 vaccination campaign. Thus, the Altruistic message improves targeting. However, since we cannot test the difference in the ratio of negative antibody tests due to small sample, the experimental data in this study alone do not allow us to fully explore this argument, and this is a topic for future research.
+This argument is related to targeting interventions \citep[e.g.,][]{Finkelstein2019}. The question is whether marginal individuals whose behavior is changed by an intervention receive significant benefits from a policy. In our context, the Altruistic message increases the number of individuals receiving negative antibody test results , who receive a large benefit from the FY2019 vaccination campaign. Thus, the Altruistic message improves targeting. However, since we cannot test the difference in the rates of negative antibody tests because of our small sample, this remains a topic for future research.
 
 \clearpage
 
@@ -529,8 +529,7 @@ This argument is related with the targeting of interventions \citep[e.g.,][]{Fin
 \hypertarget{question}{%
 \section{Antibody Testing and Vaccination Questions}\label{question}}
 
-In wave 2, participants are asked if they have had antibody testing and vaccination since wave 1. The antibody testing question asks, ``Have you had rubella antibody testing since the end of the last survey?''
-Participants were given the following choices:
+In Wave 2, the participants were asked if they had undertaken antibody testing and been vaccinated since Wave 1. The antibody testing question asked, ``Have you undertaken rubella antibody testing since the end of the last survey?'' The participants were given the following choices:
 
 \begin{itemize}
 \item
@@ -538,7 +537,7 @@ Participants were given the following choices:
   \def\labelenumi{(\alph{enumi})}
   \tightlist
   \item
-    Yes, I have taken antibody testing;
+    Yes, I have undertaken antibody testing;
   \end{enumerate}
 \item
   \begin{enumerate}
@@ -546,7 +545,7 @@ Participants were given the following choices:
   \setcounter{enumi}{1}
   \tightlist
   \item
-    No, I have not taken antibody testing;
+    No, I have not undertaken antibody testing;
   \end{enumerate}
 \item
   \begin{enumerate}
@@ -554,11 +553,11 @@ Participants were given the following choices:
   \setcounter{enumi}{2}
   \tightlist
   \item
-    I have taken antibody testing before the last survey.
+    I underwent antibody testing before the last survey.
   \end{enumerate}
 \end{itemize}
 
-We create a binary variable taking 1 if the respondent chooses option (a) and use it as an outcome variable for the uptake rate of antibody testing. Meanwhile, the vaccination question is ``Have you been vaccinated against rubella since the end of the last survey?'' Respondents were given one of five options:
+We created a binary variable coded 1 if the respondent chose option (a) and used it as an outcome variable for the actual uptake of antibody testing. Meanwhile, the vaccination question was ``Have you been vaccinated against rubella since the end of the last survey?'' The respondents were given five options:
 
 \begin{itemize}
 \item
@@ -582,7 +581,7 @@ We create a binary variable taking 1 if the respondent chooses option (a) and us
   \setcounter{enumi}{2}
   \tightlist
   \item
-    I have taken antibody testing but have not been vaccinated yet;
+    I have undertaken antibody testing but have not been vaccinated yet;
   \end{enumerate}
 \item
   \begin{enumerate}
@@ -590,7 +589,7 @@ We create a binary variable taking 1 if the respondent chooses option (a) and us
   \setcounter{enumi}{3}
   \tightlist
   \item
-    I have not taken antibody testing or gotten vaccinated;
+    I have not undertaken antibody testing or gotten vaccinated;
   \end{enumerate}
 \item
   \begin{enumerate}
@@ -598,37 +597,37 @@ We create a binary variable taking 1 if the respondent chooses option (a) and us
   \setcounter{enumi}{4}
   \tightlist
   \item
-    I have been vaccinated before the last survey.
+    I was vaccinated before the last survey.
   \end{enumerate}
 \end{itemize}
 
-We create a binary variable taking 1 if the participant chooses option (a) for both the antibody testing and vaccination questions. Then, we use it as the outcome variable on vaccination.
+We created a binary variable coded 1 if the participant chose option (a) for both the antibody testing and the vaccination questions. Then, we used it as the outcome variable for vaccination rates.
 
 \clearpage
 
 \hypertarget{method-value}{%
-\section{Estimation Method of Monetary Value of Test Reminders}\label{method-value}}
+\section{Estimation of the Monetary Value of the Text Message Reminders}\label{method-value}}
 
-We seek to determine the extent to which the text reminders increase the monetary value of the rubella vaccination. We use willingness to pay (WTP) for the rubella vaccine. Let \(WTP_i\) be an individual's willingness to pay and follow a cumulative distribution \(F\). Then, for a given cost \(C\), men will be vaccinated if \(WTP_i \ge C\). The vaccination rate is \(F_0 = 1-F(C)\). Suppose that our treated text reminders change WTP by \(\beta\). An individual who receives a treated text reminder will be vaccinated if \(WTP_i\ge C-\beta\). The vaccination rate of the treated group is \(F_1 = 1-F(C-\beta)\). Thus, the treatment effect is \(\tau = F_1-F_0=F(C)-F(C-\beta)\). From the perspective of government subsidies, the amount of subsidy equal to the effect of the nudge message \(\tau\) is \(\beta\). We want to estimate \(\beta\).
+To determine the extent to which the text message reminders increase the monetary value of the rubella vaccination, we use the WTP for the vaccination. Let \(WTP_i\) be an individual's WTP that follows a cumulative distribution \(F\). Then, for a given cost \(C\), men will be vaccinated if \(WTP_i \ge C\). The vaccination rate is \(F_0 = 1-F(C)\). Suppose that our treated text message reminders change the WTP by \(\beta\). An individual who receives a treated text message reminder will be vaccinated if \(WTP_i\ge C-\beta\). The vaccination rate of the treated group is \(F_1 = 1-F(C-\beta)\). Thus, the treatment effect is \(\tau = F_1-F_0=F(C)-F(C-\beta)\). From the perspective of government subsidies, the subsidy equal to the effect of the text message reminder \(\tau\) is \(\beta\). We want to estimate \(\beta\).
 
 \begin{figure}[t]
-\includegraphics{discussion-paper_files/figure-latex/demand-function-1} \caption{Demand Curve of Rubella Vaccination for Default Incentive Group. Notes: Black triangles indicate the baseline vaccination rate $F_0$ and the corresponding WTP.}\label{fig:demand-function}
+\includegraphics{discussion-paper_files/figure-latex/demand-function-1} \caption{Demand Curve of the Rubella Vaccination for the \emph{Default Incentive} Group. Notes: Black triangles indicate the baseline vaccination rate $F_0$ and corresponding WTP.}\label{fig:demand-function}
 \end{figure}
 
-Once \(F\), \(C\), and \(\tau\) are determined, we obtain \(\beta\). To begin, let us discuss the estimation of \(F\) (demand function). We elicit the WTP for vaccination in the first wave before participants read messages. If the vaccination costs 5,000 JPY, we ask respondents if they will get it if the local government pays \(s_j\). The subsidy amounts are \(s_j \in \{0, 1000, 2000, \ldots , 10000\}\). Let \(s_i^{\text{min}}\) be the lowest subsidy at which respondents indicate that they would vaccinate. Let \(s_i^{\text{max}}\) be the highest subsidy that respondents indicate they would not vaccinate. We can identify the willingness to pay for vaccination within the range \([5000 - s_i^{\text{max}}, 5000 - s_i^{\text{min}})\). Thus, without additional assumptions, the demand curve is step-wise, and we estimate the monetary value of the message effect with bounds. Note that if respondents indicated that they would not vaccinate at all subsidy amounts, then \(s_i^{\text{max}} = 10000\). However, we cannot define \(s_i^{\text{min}}\) in the data. Therefore, we assume \(s_i^{\text{min}} = 11000\). This assumption does not affect the monetary value of the messages. To obtain a point estimate, we assume that the true WTP is uniformly distributed within the range \([5000 - s_i^{\text{max}}, 5000 - s_i^{\text{min}})\). Then, The vaccination demand curve can then be linearly interpolated (see Figure \ref{fig:demand-function}).
+Once \(F\), \(C\), and \(\tau\) are determined, we obtain \(\beta\). We first discuss the estimation of \(F\) (demand function). We elicit the WTP for the vaccination in Wave 1 before the participants read their message. If the vaccination costs JPY 5,000, we ask the respondents if they would be vaccinated if the local government pays \(s_j\). The subsidy amounts are \(s_j \in \{0, 1000, 2000, \ldots , 10000\}\). Let \(s_i^{\text{min}}\) be the lowest subsidy at which the respondents indicate that they would be vaccinated. Let \(s_i^{\text{max}}\) be the highest subsidy that the respondents indicate they would not be vaccinated. We can identify the WTP for the vaccination within the range \([5000 - s_i^{\text{max}}, 5000 - s_i^{\text{min}})\). Thus, without additional assumptions, the demand curve is step-wise, and we estimate the monetary value of the effect of the text message reminders with bounds. If the respondents indicate that they would not be vaccinated at all the subsidy amounts, then \(s_i^{\text{max}} = 10000\). However, we cannot define \(s_i^{\text{min}}\) in the data. Therefore, we assume \(s_i^{\text{min}} = 11000\). This assumption does not affect the monetary value of the text message reminders. To obtain a point estimate, we assume that the true WTP is uniformly distributed within the range \([5000 - s_i^{\text{max}}, 5000 - s_i^{\text{min}})\). The vaccination demand curve can then be linearly interpolated (see Figure \ref{fig:demand-function}).
 
-In the \emph{default incentive} group, eligible males receive free vaccination at no cost. Therefore, the natural setting is \(C=0\). In addition, the message effect \(\tau\) is used for the effect on antibody test uptake. The person taking the antibody test wants to get the antibody, i.e.~the vaccination, against rubella. However, the effect of the message on vaccination is different from the effect on (true) vaccination intention, because people with a positive antibody test result cannot be vaccinated. Therefore, \(\tau\) is not the effect on vaccination, but the effect on antibody testing.
+In the \emph{default incentive} group, eligible men receive a free vaccination. Therefore, the natural setting is \(C=0\). In addition, we use the effect on the actual uptake of antibody testing as the effect of the text message reminders \(\tau\). The person taking the antibody test wants to obtain the antibody against rubella. However, the effect of the text message reminder on vaccination rates differs from the effect on the (true) intention to be vaccinated because people with a positive antibody test result cannot be vaccinated. Therefore, \(\tau\) is the effect on antibody testing rather than on vaccination rates.
 
-In our framework, \(F_0=1-F(0)\), but one potential concern remains. The message effect \(\tau\) is estimated by the difference from the MHLW (Control) group. Assuming that everyone who did not participate in our survey did not take the antibody test after the survey, the uptake rate of MHLW (Control) can be considered as an effect of providing the message in the survey. To remove this effect, we instead use \(F_0=(1-F(0))+(F(0)-F(-\alpha))\). The second term is the antibody testing rate of the control group (\(3.5\)\%) under no vaccination cost. The demand function is estimated to be \(F_0=0.7\) and \(\alpha=394\). Finally, we find \(\beta\) holding that \(\tau=F(-\alpha)-F(-\beta)\).
+In our framework, \(F_0=1-F(0)\), but one potential concern remains. The effect of the text message reminders \(\tau\) is estimated as the difference from the MHLW (Control) group. Assuming that everyone who did not participate in our survey did not take the antibody test after the survey, the actual uptake of antibody testing of MHLW (Control) can be considered as an effect of providing the message in the survey. To remove this effect, we instead use \(F_0=(1-F(0))+(F(0)-F(-\alpha))\). The second term is the antibody testing rate of the control group (\(3.5\)\%) under no vaccination cost. The demand function is estimated to be \(F_0=0.7\) and \(\alpha=394\). Finally, we find \(\beta\) holding that \(\tau=F(-\alpha)-F(-\beta)\).
 
 \clearpage
 
 \hypertarget{fig-tab}{%
-\section{Tables and Figures}\label{fig-tab}}
+\section{Tables}\label{fig-tab}}
 
 \begin{table}[!h]
 
-\caption{\label{tab:covariate-list}List of Covariates}
+\caption{\label{tab:covariate-list}List of the Covariates}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{30em}cc}
@@ -638,25 +637,25 @@ In our framework, \(F_0=1-F(0)\), but one potential concern remains. The message
 age & (Wave1) Age as of April 2019 based on year of birth and month of birth. & \num{48.66} & \num{5.69}\\
 married & (Wave1) Dummy variable taking one if a respondent is married. & \num{0.58} & \num{0.49}\\
 education & (Wave1) Years of education. & \num{14.75} & \num{2.31}\\
-income & (Wave1) Household income. For those who did not respond with household income, the overall average was substituted. & \num{684.90} & \num{375.74}\\
+income & (Wave1) Household income. For those who did not respond with household income, the overall average was used. & \num{684.90} & \num{375.74}\\
 noinfo\_income & (Wave1) Dummy variable taking one if a respondent did not answer household income. & \num{0.15} & \num{0.36}\\
 exercise\_w1 & (Wave1) Dummy variable taking one if a respondent exercises or plays sports more than once a week. & \num{0.22} & \num{0.42}\\
-health\_check & (Wave1) Dummy variable taking one if a respondent has had a medical examination at his/her city or place of employment in the past year from the time of the wave 1. & \num{0.68} & \num{0.46}\\
+health\_check & (Wave1) Dummy variable taking one if a respondent has had a medical examination in their city or place of employment in the past year from the time of Wave 1. & \num{0.68} & \num{0.46}\\
 flushot & (Wave1) Dummy variable taking one if a respondent is vaccinated against influenza every year. & \num{0.27} & \num{0.45}\\
-norm\_waiting\_line & (Wave2) Five-point Likert scale for the question "I wash my hands and gargle frequently during the period from the end of the previous questionnaire response to today." & \num{4.07} & \num{0.96}\\
-selfish\_anonymous & (Wave2) Five-point Likert scale for the question "I take my temperature frequently during the period from the end of the previous questionnaire response to today." & \num{2.33} & \num{0.98}\\
-handwash & (Wave2) Five-point Likert scale for the question "I am refraining from going out during the end of the previous questionnaire response to today." & \num{3.91} & \num{1.04}\\
-temp\_check & (Wave2) Five-point Likert scale for the question "I avoid crowded places when I go out from the end of the previous questionnaire response to today." & \num{2.26} & \num{1.22}\\
-avoid\_out & (Wave2) Five-point Likert scale for the question "I always wear a medical mask when I go out or meet people during the period from the end of the previous questionnaire response to today." & \num{2.96} & \num{1.20}\\
-avoid\_crowd & (Wave1) Five-point Likert scale for the question "I never interrupt someone in line." & \num{3.38} & \num{1.10}\\
-wear\_mask & (Wave1) Five-point Likert scale for the question "If I can never find it, I can do bad things (littering, parking tickets, etc.)." & \num{3.14} & \num{1.38}\\
+norm\_waiting\_line & (Wave1) Five-point Likert scale for the question "I never interrupt someone in line." & \num{4.07} & \num{0.96}\\
+selfish\_anonymous & (Wave1) Five-point Likert scale for the question "If I can never find it, I can do bad things (littering, parking tickets, etc.)." & \num{2.33} & \num{0.98}\\
+handwash & (Wave2) Five-point Likert scale for the question "I washed my hands and gargled frequently from the end of the previous survey to today." & \num{3.91} & \num{1.04}\\
+temp\_check & (Wave2) Five-point Likert scale for the question "I took my temperature frequently from the end of the previous survey to today." & \num{2.26} & \num{1.22}\\
+avoid\_out & (Wave2) Five-point Likert scale for the question "I refrained from going out from the end of the previous survey to today." & \num{2.96} & \num{1.20}\\
+avoid\_crowd & (Wave2) Five-point Likert scale for the question "I avoided crowded places when I went out from the end of the previous survey to today." & \num{3.38} & \num{1.10}\\
+wear\_mask & (Wave2) Five-point Likert scale for the question "I always wore a medical mask when I went out or met people from the end of the previous survey to today." & \num{3.14} & \num{1.38}\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[!h]
 
-\caption{\label{tab:balance-int-default}Balance Tests for Default Incentive Groups (Sample for Estimating Effect on Intention)}
+\caption{\label{tab:balance-int-default}Balance Tests for the \emph{Default Incentive} Group (Sample for Estimating the Effect on Intention)}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -677,14 +676,14 @@ selfish\_anonymous & 2.377 & 2.435 & 2.331 & 2.371 & 2.446 & 2.355 & 2.425 & 0.9
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}[!h]
 
-\caption{\label{tab:balance-int-optin}Balance Tests for Opt-In Incentive Group (Sample for Estimating Effect on Intention)}
+\caption{\label{tab:balance-int-optin}Balance Tests for the \emph{Opt-In Incentive} Group (Sample for Estimating the Effect on Intention)}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -705,14 +704,14 @@ selfish\_anonymous & 2.416 & 2.231 & 2.325 & 2.374 & 2.223 & 2.337 & 2.368 & 0.2
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}
 
-\caption{\label{tab:reg-int-woA}Massage Content Effects on Intentions Compared to MHLW (Age)}
+\caption{\label{tab:reg-int-woA}Effect of the Message Content on Intention Compared with MHLW (Age)}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -763,14 +762,14 @@ R2 & \num{0.008} & \num{0.105} & \num{0.004} & \num{0.121}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Reminder effects in the opt-in incentive group are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}[!h]
 
-\caption{\label{tab:balance-act-default}Balance Tests for Default Incentive Group (Sample for Estimating Effect on Behavior)}
+\caption{\label{tab:balance-act-default}Balance Tests for the \emph{Default Incentive} group (Sample for Estimating the Effect on Behavior)}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -796,14 +795,14 @@ wear\_mask & 2.930 & 3.076 & 3.109 & 3.009 & 3.010 & 3.144 & 3.207 & 0.794\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}[!h]
 
-\caption{\label{tab:balance-act-optin}Balance Tests for Opt-in Incentive Group (Sample for Estimating Effect on Behavior)}
+\caption{\label{tab:balance-act-optin}Balance Tests for the \emph{Opt-in Incentive} Group (Sample for Estimating the Effect on Behavior)}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -829,14 +828,14 @@ wear\_mask & 3.082 & 3.176 & 3.116 & 3.144 & 2.977 & 2.942 & 3.010 & 0.533\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: Table \ref{tab:covariate-list} describles variables. Columns 2--8 show sample averages for each experimental arm. Column 9 shows p-value of the joint null hypothesis (F-test).
+\item Notes: Table \ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}
 
-\caption{\label{tab:reg-act-woA}Message Content Effects on Behaivor Compared to MHLW (Age)}
+\caption{\label{tab:reg-act-woA}Effect of the Message Content on Behavior Compared with MHLW (Age)}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
@@ -887,20 +886,20 @@ R2 & \num{0.029} & \num{0.047} & \num{0.019} & \num{0.031}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and psychological factors potentially associated with these biases (following social norm, accepting bad behavior in anonymous conditions). Reminder effects in the opt-in incentive group are estimated by a sum of main term of treatment dummy and cross term between treatment dummy and opt-in dummy.
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}
 
-\caption{\label{tab:reg-mechanism}Heterogeneous Effects of Altruistic Message Contents}
+\caption{\label{tab:reg-mechanism}Heterogeneous Effects of the Altruistic Message Content}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
 \begin{tabular}[t]{lcc}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Intention for testing} \\
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Intention to undertake antibody testing} \\
 \cmidrule(l{3pt}r{3pt}){2-3}
   & (1) & (2)\\
 \midrule
@@ -925,20 +924,20 @@ R2 & \num{0.128} & \num{0.148}\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control), The reference group is MHLW (Age). Covariate ``Other nudges'' is a dummy that indicating respondents are assigned to the Selfish, Social Comparison, Deadline, and Covenient message group. Covariate ``Handicap'' is a dummy that respondent knows that infants born to infected pregnant women may have disabilities. Covariates ``Generosity'' indicates on a 5-point scale the degree to which respondent feels pleasure in actionts for others. Respondents who give a score of 5 to this are the most generous. Covariates are age, education year, annual income, usual health behavior (exercise, medical checkup and ful shot habit) and preference for compliance with social norm.
+\item * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). The covariate ``Other nudges'' is a dummy indicating the respondent is assigned to the Selfish, Social Comparison, Deadline, and Convenient message groups. the covariate ``Handicap'' is a dummy indicating that the respondent knows that infants born to infected pregnant women may have disabilities. The covariate ``Generosity'' indicates on a 5-point scale the degree to which the respondent feels pleasure in taking actions for others. Those respondents who give a score of 5 to this are the most generous. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 \begin{table}
 
-\caption{\label{tab:summary-behavior-default}Number of Anitbody Testing, Negatives, and Vaccinations in Default Incentive Group}
+\caption{\label{tab:summary-behavior-default}Number of Antibody Testing, Negative Tests, and Vaccinations in the \emph{Default Incentive} group}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{threeparttable}
 \begin{tabular}[t]{l>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}>{\centering\arraybackslash}p{3.5em}}
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Anitbody test} & \multicolumn{3}{c}{Negatives} & \multicolumn{3}{c}{Vaccination} \\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Antibody testing} & \multicolumn{3}{c}{Negative tests} & \multicolumn{3}{c}{Vaccination} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-7} \cmidrule(l{3pt}r{3pt}){8-10}
 Text message & Sample size & N & \% of sample & N & \% of test & \% of sample & N & \% of negatives & \% of sample\\
 \midrule

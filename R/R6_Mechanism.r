@@ -55,7 +55,7 @@ Mechanism <- R6::R6Class("Mechanism",
       )
       attr(addtab, "position") <- 13
 
-      self$reg %>%
+      tbl <- self$reg %>%
         modelsummary(
           title = title,
           coef_map = coef_label,
@@ -64,8 +64,13 @@ Mechanism <- R6::R6Class("Mechanism",
           add_rows = addtab,
           escape = FALSE
         ) %>%
-        kableExtra::kable_styling(font_size = 9) %>%
-        kableExtra::add_header_above(c(" " = 1, "Intention for testing" = 2)) %>%
+        kableExtra::kable_styling(font_size = 9)
+      
+      header <- c(1, 2)
+      names(header) <- c(" ", outcome_label)
+
+      tbl %>%
+        kableExtra::add_header_above(header) %>%
         kableExtra::pack_rows("Linear combination test", 9, 12) %>%
         kableExtra::footnote(
           general_title = "",

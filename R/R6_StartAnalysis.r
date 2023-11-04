@@ -16,6 +16,7 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
     summary_control = function(description_path) {
       description <- read_csv(description_path, locale = locale(encoding = "cp932")) %>%
         dplyr::filter(vars %in% private$covs) %>%
+        arrange(match(vars, private$covs)) %>%
         select(Description)
       
       attr(description, "position") <- 2
@@ -27,7 +28,7 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
           data = self$data,
           add_columns = description,
           align = "llcc",
-          title = "List of Covariates"
+          title = "List of the Covariates"
         ) %>%
         kableExtra::kable_styling(
           font_size = 9, latex_options = "hold_position"
@@ -36,7 +37,7 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
     },
     summary_assign = function(message_path) {
       message_list <- read_csv(message_path, locale = locale(encoding = "cp932")) %>%
-        select(Contents)
+        select(Content)
 
       attr(message_list, "position") <- 2
 
@@ -55,13 +56,13 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
           add_columns = message_list,
           align = "llcccccc",
           data = .,
-          title = "List of Text Message Reminders",
+          title = "List of the Text Message Reminders",
           linesep = "\\addlinespace"
         ) %>%
         kableExtra::kable_styling(font_size = 9) %>%
         kableExtra::column_spec(2, width = "20em") %>%
         kableExtra::add_header_above(
-          c(" " = 3, "Age (as of Apr 2019)" = 4, " " = 1)
+          c(" " = 3, "Age (as of April 2019)" = 4, " " = 1)
         )
     },
     balance_attrition = function() {

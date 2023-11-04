@@ -62,7 +62,7 @@ MonetaryValue <- R6::R6Class("MonetaryValue",
         knitr::kable(
           caption = title,
           col.names = c(
-            "Text messages", "Effect", "Baseline + effect",
+            "Text message reminder", "Effect", "Baseline + effect",
             "pp", "total", "pp", "total"
           ),
           digits = 3,

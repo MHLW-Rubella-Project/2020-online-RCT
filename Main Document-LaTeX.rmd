@@ -8,7 +8,7 @@ abstract: |
   \vskip\baselineskip
   \noindent
   \textit{Keywords}: behavioral economics, health behavior, online field experiment, rubella, vaccination, antibody test, text message reminders, free vouchers
-biblio-style: agsm
+biblio-style: newapa.bst
 bibliography: text-message-2020RCT.bib
 output:
   bookdown::pdf_document2:

@@ -1,6 +1,6 @@
 ---
 title: |
-  Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Mitigate the Spread of Rubella
+  Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella
 thanks: |
   This study was conducted as a part of the "Implementation of EBPM in Japan" project undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank the participants of the EBPM Study Group and Discussion Paper Study Group of RIETI for their insightful comments. Before conducting the randomized controlled trial on the online survey, this study was approved by the institutional review board of the Graduate School of Economics, Osaka University [approval number R020114]. Conflict of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science [grant number 20H05632 (F., Ohtake)]; and the Japan Science and Technology Agency [grant number JPMJPR21R4 (S., Sasaki)].
 abstract: |

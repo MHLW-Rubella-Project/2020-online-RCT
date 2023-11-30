@@ -226,8 +226,8 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
       dta <- private$choose_wave(outcome_intention)
 
       g <- dta$coupon2019
-      test <- dta$outcome_test
-      vacc <- dta$outcome_vacc
+      test <- dta$outcome_test * 100
+      vacc <- dta$outcome_vacc * 100
       d <- dta$nudge
 
       default <- private$diff_in_mean_test(
@@ -256,7 +256,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           booktabs = TRUE,
           linesep = ""
         ) %>%
-        kable_styling() %>%
+        kable_styling(font_size = 9) %>%
         add_header_above(c(" " = 2, "P-values" = 2, " ", "P-values" = 2)) %>%
         add_header_above(c(" " = 1, "Antibody testing" = 3, "Vaccination" = 3)) %>%
         pack_rows("A. Default incentive group", 1, 6) %>%

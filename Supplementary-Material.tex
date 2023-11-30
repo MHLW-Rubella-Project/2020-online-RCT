@@ -276,6 +276,44 @@ selfish\_anonymous & 2.416 & 2.231 & 2.325 & 2.374 & 2.223 & 2.337 & 2.368 & 0.2
 
 \begin{table}
 
+\caption{\label{tab:diff-in-mean-int}Difference-in-means Test of Intention}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Antibody testing} & \multicolumn{3}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{P-values} & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{P-values} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){6-7}
+Treatment & Effect & T-test & Exact test & Effect & T-test & Exact test\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{7}{l}{\textbf{A. Default incentive group}}\\
+\hspace{1em}MHLW (Age) & 2.132 & 0.678 & 0.775 & 1.973 & 0.748 & 0.825\\
+\hspace{1em}Altruistic & 14.366 & 0.007 & 0.005 & 2.380 & 0.690 & 0.720\\
+\hspace{1em}Selfish & 7.261 & 0.172 & 0.210 & 3.916 & 0.524 & 0.540\\
+\hspace{1em}Social Comparison & 4.024 & 0.450 & 0.485 & 1.437 & 0.819 & 0.920\\
+\hspace{1em}Deadline & 3.144 & 0.538 & 0.545 & -0.959 & 0.874 & 0.890\\
+\hspace{1em}Convenient & 5.215 & 0.325 & 0.425 & 1.769 & 0.775 & 0.800\\
+\addlinespace[0.3em]
+\multicolumn{7}{l}{\textbf{B. Opt-in incentive group}}\\
+\hspace{1em}MHLW (Age) & -2.390 & 0.550 & 0.605 & -6.582 & 0.147 & 0.145\\
+\hspace{1em}Altruistic & 5.306 & 0.205 & 0.190 & -2.800 & 0.539 & 0.570\\
+\hspace{1em}Selfish & 4.139 & 0.323 & 0.380 & -2.800 & 0.541 & 0.585\\
+\hspace{1em}Social Comparison & -3.696 & 0.345 & 0.400 & -8.178 & 0.067 & 0.085\\
+\hspace{1em}Deadline & 2.888 & 0.480 & 0.430 & -2.800 & 0.534 & 0.560\\
+\hspace{1em}Convenient & 6.291 & 0.133 & 0.180 & -3.009 & 0.507 & 0.510\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item Notes: The unit of effect is a percentage point. Fisher's exact p-values test sharp null hypotheses. To calculate p-values, we create 200 simulated assignment vector keeping the number of treated and contrl units fixed.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+
 \caption{\label{tab:reg-int-woA}Effect of the Message Content on Intention Compared with MHLW (Age)}
 \centering
 \fontsize{9}{11}\selectfont
@@ -394,6 +432,44 @@ wear\_mask & 3.082 & 3.176 & 3.116 & 3.144 & 2.977 & 2.942 & 3.010 & 0.533\\
 \end{tabular}
 \begin{tablenotes}
 \item Notes: Table \ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:diff-in-mean-act}Difference-in-means Test of Behavior}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Antibody testing} & \multicolumn{3}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{P-values} & \multicolumn{1}{c}{ } & \multicolumn{2}{c}{P-values} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){6-7}
+Treatment & Effect & T-test & Exact test & Effect & T-test & Exact test\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{7}{l}{\textbf{A. Default incentive group}}\\
+\hspace{1em}MHLW (Age) & 3.244 & 0.260 & 0.385 & 0.811 & 0.581 & 1.000\\
+\hspace{1em}Altruistic & 7.459 & 0.023 & 0.030 & 3.818 & 0.066 & 0.115\\
+\hspace{1em}Selfish & 5.531 & 0.088 & 0.115 & 1.833 & 0.303 & 0.420\\
+\hspace{1em}Social Comparison & 5.260 & 0.111 & 0.170 & 3.985 & 0.085 & 0.135\\
+\hspace{1em}Deadline & 0.759 & 0.765 & 1.000 & -0.022 & 0.985 & 1.000\\
+\hspace{1em}Convenient & 3.729 & 0.216 & 0.295 & 1.833 & 0.303 & 0.380\\
+\addlinespace[0.3em]
+\multicolumn{7}{l}{\textbf{B. Opt-in incentive group}}\\
+\hspace{1em}MHLW (Age) & 0.471 & 0.554 & 0.615 & 0.463 & 0.318 & 0.530\\
+\hspace{1em}Altruistic & 1.651 & 0.148 & 0.200 & 0.526 & 0.319 & 0.460\\
+\hspace{1em}Selfish & 1.038 & 0.286 & 0.390 & 0.498 & 0.319 & 0.475\\
+\hspace{1em}Social Comparison & 2.349 & 0.055 & 0.080 & 0.000 &  & 1.000\\
+\hspace{1em}Deadline & 0.891 & 0.321 & 0.695 & 0.448 & 0.318 & 1.000\\
+\hspace{1em}Convenient & 0.531 & 0.523 & 0.640 & 0.000 &  & 1.000\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item Notes: The unit of effect is a percentage point. Fisher's exact p-values test sharp null hypotheses. To calculate p-values, we create 200 simulated assignment vector keeping the number of treated and contrl units fixed.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

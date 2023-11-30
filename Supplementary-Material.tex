@@ -318,64 +318,6 @@ Treatment & Effect & T-test & Exact test & Effect & T-test & Exact test\\
 \end{threeparttable}
 \end{table}
 
-\begin{table}
-
-\caption{\label{tab:reg-int-woA}Effect of the Message Content on Intention Compared with MHLW (Age)}
-\centering
-\fontsize{9}{11}\selectfont
-\begin{threeparttable}
-\begin{tabular}[t]{lcccc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Testing} & \multicolumn{2}{c}{Vaccination} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-  & (1) & (2) & (3) & (4)\\
-\midrule
-Altruistic & \num{0.122}** & \num{0.124}** & \num{0.004} & \num{-0.001}\\
- & (\num{0.054}) & (\num{0.051}) & (\num{0.060}) & (\num{0.057})\\
-Selfish & \num{0.051} & \num{0.077} & \num{0.019} & \num{0.041}\\
- & (\num{0.054}) & (\num{0.051}) & (\num{0.061}) & (\num{0.058})\\
-Social Comparison & \num{0.019} & \num{0.037} & \num{-0.005} & \num{0.004}\\
- & (\num{0.054}) & (\num{0.052}) & (\num{0.063}) & (\num{0.059})\\
-Deadline & \num{0.010} & \num{0.003} & \num{-0.029} & \num{-0.041}\\
- & (\num{0.052}) & (\num{0.049}) & (\num{0.060}) & (\num{0.058})\\
-Convenient & \num{0.031} & \num{0.022} & \num{-0.002} & \num{-0.015}\\
- & (\num{0.054}) & (\num{0.051}) & (\num{0.062}) & (\num{0.058})\\
-Opt-in & \num{0.023} & \num{0.019} & \num{0.027} & \num{-0.038}\\
- & (\num{0.046}) & (\num{0.052}) & (\num{0.054}) & (\num{0.060})\\
-Altruistic $\times$ Opt-in & \num{-0.045} & \num{-0.044} & \num{0.034} & \num{0.040}\\
- & (\num{0.068}) & (\num{0.065}) & (\num{0.075}) & (\num{0.071})\\
-Selfish $\times$ Opt-in & \num{0.014} & \num{-0.022} & \num{0.018} & \num{-0.012}\\
- & (\num{0.068}) & (\num{0.064}) & (\num{0.077}) & (\num{0.072})\\
-Social Comparison $\times$ Opt-in & \num{-0.032} & \num{-0.046} & \num{-0.011} & \num{-0.011}\\
- & (\num{0.067}) & (\num{0.063}) & (\num{0.077}) & (\num{0.072})\\
-Deadline $\times$ Opt-in & \num{0.043} & \num{0.066} & \num{0.067} & \num{0.100}\\
- & (\num{0.066}) & (\num{0.063}) & (\num{0.076}) & (\num{0.071})\\
-Convenient $\times$ Opt-in & \num{0.056} & \num{0.077} & \num{0.038} & \num{0.069}\\
- & (\num{0.068}) & (\num{0.065}) & (\num{0.077}) & (\num{0.072})\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Linear combination test: Treatment + Opt-in $\times$ Treatment}}\\
-\hspace{1em}Altruistic (Opt-in incentive) & \num{0.077}* & \num{0.080}** & \num{0.038} & \num{0.040}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.040}) & (\num{0.046}) & (\num{0.043})\\
-\hspace{1em}Selfish (Opt-in incentive) & \num{0.065} & \num{0.055} & \num{0.038} & \num{0.029}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
-\hspace{1em}Social Comparison (Opt-in incentive) & \num{-0.013} & \num{-0.008} & \num{-0.016} & \num{-0.007}\\
-\hspace{1em} & (\num{0.039}) & (\num{0.036}) & (\num{0.045}) & (\num{0.042})\\
-\hspace{1em}Deadline (Opt-in incentive) & \num{0.053} & \num{0.068}* & \num{0.038} & \num{0.059}\\
-\hspace{1em} & (\num{0.041}) & (\num{0.038}) & (\num{0.046}) & (\num{0.042})\\
-\hspace{1em}Convenient (Opt-in incentive) & \num{0.087}** & \num{0.099}** & \num{0.036} & \num{0.054}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.042})\\
-\midrule
-Covariates &  & X &  & X\\
-Num.Obs. & \num{2235} & \num{2235} & \num{2235} & \num{2235}\\
-R2 & \num{0.008} & \num{0.105} & \num{0.004} & \num{0.121}\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
 \begin{table}[!h]
 
 \caption{\label{tab:balance-act-default}Balance Tests for the \emph{Default Incentive} group (Sample for Estimating the Effect on Behavior)}
@@ -482,6 +424,102 @@ Treatment & Effect & T-test & Exact test & Effect & T-test & Exact test\\
 
 \begin{table}
 
+\caption{\label{tab:reg-int-woA}Effect of the Message Content on Intention Compared with MHLW (Age)}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Testing} & \multicolumn{2}{c}{Vaccination} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+  & (1) & (2) & (3) & (4)\\
+\midrule
+Altruistic & \num{0.122}** & \num{0.124}** & \num{0.004} & \num{-0.001}\\
+ & (\num{0.054}) & (\num{0.051}) & (\num{0.060}) & (\num{0.057})\\
+Selfish & \num{0.051} & \num{0.077} & \num{0.019} & \num{0.041}\\
+ & (\num{0.054}) & (\num{0.051}) & (\num{0.061}) & (\num{0.058})\\
+Social Comparison & \num{0.019} & \num{0.037} & \num{-0.005} & \num{0.004}\\
+ & (\num{0.054}) & (\num{0.052}) & (\num{0.063}) & (\num{0.059})\\
+Deadline & \num{0.010} & \num{0.003} & \num{-0.029} & \num{-0.041}\\
+ & (\num{0.052}) & (\num{0.049}) & (\num{0.060}) & (\num{0.058})\\
+Convenient & \num{0.031} & \num{0.022} & \num{-0.002} & \num{-0.015}\\
+ & (\num{0.054}) & (\num{0.051}) & (\num{0.062}) & (\num{0.058})\\
+Opt-in & \num{0.023} & \num{0.019} & \num{0.027} & \num{-0.038}\\
+ & (\num{0.046}) & (\num{0.052}) & (\num{0.054}) & (\num{0.060})\\
+Altruistic $\times$ Opt-in & \num{-0.045} & \num{-0.044} & \num{0.034} & \num{0.040}\\
+ & (\num{0.068}) & (\num{0.065}) & (\num{0.075}) & (\num{0.071})\\
+Selfish $\times$ Opt-in & \num{0.014} & \num{-0.022} & \num{0.018} & \num{-0.012}\\
+ & (\num{0.068}) & (\num{0.064}) & (\num{0.077}) & (\num{0.072})\\
+Social Comparison $\times$ Opt-in & \num{-0.032} & \num{-0.046} & \num{-0.011} & \num{-0.011}\\
+ & (\num{0.067}) & (\num{0.063}) & (\num{0.077}) & (\num{0.072})\\
+Deadline $\times$ Opt-in & \num{0.043} & \num{0.066} & \num{0.067} & \num{0.100}\\
+ & (\num{0.066}) & (\num{0.063}) & (\num{0.076}) & (\num{0.071})\\
+Convenient $\times$ Opt-in & \num{0.056} & \num{0.077} & \num{0.038} & \num{0.069}\\
+ & (\num{0.068}) & (\num{0.065}) & (\num{0.077}) & (\num{0.072})\\
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{Linear combination test: Treatment + Opt-in $\times$ Treatment}}\\
+\hspace{1em}Altruistic (Opt-in incentive) & \num{0.077}* & \num{0.080}** & \num{0.038} & \num{0.040}\\
+\hspace{1em} & (\num{0.042}) & (\num{0.040}) & (\num{0.046}) & (\num{0.043})\\
+\hspace{1em}Selfish (Opt-in incentive) & \num{0.065} & \num{0.055} & \num{0.038} & \num{0.029}\\
+\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
+\hspace{1em}Social Comparison (Opt-in incentive) & \num{-0.013} & \num{-0.008} & \num{-0.016} & \num{-0.007}\\
+\hspace{1em} & (\num{0.039}) & (\num{0.036}) & (\num{0.045}) & (\num{0.042})\\
+\hspace{1em}Deadline (Opt-in incentive) & \num{0.053} & \num{0.068}* & \num{0.038} & \num{0.059}\\
+\hspace{1em} & (\num{0.041}) & (\num{0.038}) & (\num{0.046}) & (\num{0.042})\\
+\hspace{1em}Convenient (Opt-in incentive) & \num{0.087}** & \num{0.099}** & \num{0.036} & \num{0.054}\\
+\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.042})\\
+\midrule
+Covariates &  & X &  & X\\
+Num.Obs. & \num{2235} & \num{2235} & \num{2235} & \num{2235}\\
+R2 & \num{0.008} & \num{0.105} & \num{0.004} & \num{0.121}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:reg-mechanism}Heterogeneous Effects of the Altruistic Message Content}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{lcc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Intention to undertake antibody testing} \\
+\cmidrule(l{3pt}r{3pt}){2-3}
+  & (1) & (2)\\
+\midrule
+Altruistic & \num{0.199}*** & \num{-0.104}\\
+ & (\num{0.068}) & (\num{0.112})\\
+Altruistic $\times$ Handicap & \num{-0.126} & \\
+ & (\num{0.082}) & \\
+Altruistic $\times$ Generosity &  & \num{0.075}**\\
+ &  & (\num{0.035})\\
+Other nudges & \num{0.038} & \num{0.033}\\
+ & (\num{0.039}) & (\num{0.040})\\
+\addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Linear combination test}}\\
+\hspace{1em}Altruistic + Altruistic $\times$ Handicap & \num{0.073} & \\
+\hspace{1em} & (\num{0.063}) & \\
+\hspace{1em}Altruistic + Altruistic $\times$ Most generous &  & \num{0.270}***\\
+\hspace{1em} &  & (\num{0.089})\\
+\midrule
+Covariates & X & X\\
+Num.Obs. & \num{797} & \num{797}\\
+R2 & \num{0.128} & \num{0.148}\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). The covariate ``Other nudges'' is a dummy indicating the respondent is assigned to the Selfish, Social Comparison, Deadline, and Convenient message groups. the covariate ``Handicap'' is a dummy indicating that the respondent knows that infants born to infected pregnant women may have disabilities. The covariate ``Generosity'' indicates on a 5-point scale the degree to which the respondent feels pleasure in taking actions for others. Those respondents who give a score of 5 to this are the most generous. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+
 \caption{\label{tab:reg-act-woA}Effect of the Message Content on Behavior Compared with MHLW (Age)}
 \centering
 \fontsize{9}{11}\selectfont
@@ -534,44 +572,6 @@ R2 & \num{0.029} & \num{0.047} & \num{0.019} & \num{0.031}\\
 \end{tabular}
 \begin{tablenotes}
 \item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}
-
-\caption{\label{tab:reg-mechanism}Heterogeneous Effects of the Altruistic Message Content}
-\centering
-\fontsize{9}{11}\selectfont
-\begin{threeparttable}
-\begin{tabular}[t]{lcc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Intention to undertake antibody testing} \\
-\cmidrule(l{3pt}r{3pt}){2-3}
-  & (1) & (2)\\
-\midrule
-Altruistic & \num{0.199}*** & \num{-0.104}\\
- & (\num{0.068}) & (\num{0.112})\\
-Altruistic $\times$ Handicap & \num{-0.126} & \\
- & (\num{0.082}) & \\
-Altruistic $\times$ Generosity &  & \num{0.075}**\\
- &  & (\num{0.035})\\
-Other nudges & \num{0.038} & \num{0.033}\\
- & (\num{0.039}) & (\num{0.040})\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Linear combination test}}\\
-\hspace{1em}Altruistic + Altruistic $\times$ Handicap & \num{0.073} & \\
-\hspace{1em} & (\num{0.063}) & \\
-\hspace{1em}Altruistic + Altruistic $\times$ Most generous &  & \num{0.270}***\\
-\hspace{1em} &  & (\num{0.089})\\
-\midrule
-Covariates & X & X\\
-Num.Obs. & \num{797} & \num{797}\\
-R2 & \num{0.128} & \num{0.148}\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). The covariate ``Other nudges'' is a dummy indicating the respondent is assigned to the Selfish, Social Comparison, Deadline, and Convenient message groups. the covariate ``Handicap'' is a dummy indicating that the respondent knows that infants born to infected pregnant women may have disabilities. The covariate ``Generosity'' indicates on a 5-point scale the degree to which the respondent feels pleasure in taking actions for others. Those respondents who give a score of 5 to this are the most generous. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

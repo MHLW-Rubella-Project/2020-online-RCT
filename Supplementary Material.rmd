@@ -61,7 +61,6 @@ main <- setup$main()
 ```
 
 ```{r ttest-act-test, include=FALSE}
-
 main$ttest(
   outcome_intention = FALSE,
   label_y_pos = 20,
@@ -142,14 +141,6 @@ int <- cache_rds({
 int
 ```
 
-```{r reg-int-woA}
-reg_woA <- main$lm(exclude_A = TRUE)
-reg_woA$reg_tab(
-  title = "Effect of the Message Content on Intention Compared with MHLW (Age)",
-  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
-)
-```
-
 ```{r balance-act-default}
 main$balance_control(
   outcome_intention = FALSE,
@@ -179,10 +170,10 @@ act <- cache_rds({
 act
 ```
 
-```{r reg-act-woA}
-reg_act_woA <- main$lm(outcome_intention = FALSE, exclude_A = TRUE)
-reg_act_woA$reg_tab(
-  title = "Effect of the Message Content on Behavior Compared with MHLW (Age)",
+```{r reg-int-woA}
+reg_woA <- main$lm(exclude_A = TRUE)
+reg_woA$reg_tab(
+  title = "Effect of the Message Content on Intention Compared with MHLW (Age)",
   notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
@@ -193,6 +184,14 @@ mechanism$reg_tab(
   title = "Heterogeneous Effects of the Altruistic Message Content",
   outcome_label = "Intention to undertake antibody testing",
   notes = "* $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). The covariate ``Other nudges'' is a dummy indicating the respondent is assigned to the Selfish, Social Comparison, Deadline, and Convenient message groups. the covariate ``Handicap'' is a dummy indicating that the respondent knows that infants born to infected pregnant women may have disabilities. The covariate ``Generosity'' indicates on a 5-point scale the degree to which the respondent feels pleasure in taking actions for others. Those respondents who give a score of 5 to this are the most generous. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions)."
+)
+```
+
+```{r reg-act-woA}
+reg_act_woA <- main$lm(outcome_intention = FALSE, exclude_A = TRUE)
+reg_act_woA$reg_tab(
+  title = "Effect of the Message Content on Behavior Compared with MHLW (Age)",
+  notes = "Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. We exclude from the sample those assigned to MHLW (Control). The reference group is MHLW (Age). Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 

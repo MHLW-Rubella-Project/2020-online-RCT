@@ -122,6 +122,19 @@ main$balance_control(
 )
 ```
 
+```{r diff-in-mean-int}
+library(xfun)
+int <- cache_rds({
+  main$diff_in_mean(
+    outcome_intention = TRUE,
+    title = "Difference-in-means Test of Intention",
+    notes = "Notes: The unit of effect is a percentage point. Fisher's exact p-values test sharp null hypotheses. To calculate p-values, we create 200 simulated assignment vector keeping the number of treated and contrl units fixed."
+  )
+})
+
+int
+```
+
 ```{r reg-int-woA}
 reg_woA <- main$lm(exclude_A = TRUE)
 reg_woA$reg_tab(
@@ -145,6 +158,18 @@ main$balance_control(
   title = "Balance Tests for the \\emph{Opt-in Incentive} Group (Sample for Estimating the Effect on Behavior)",
   notes = "Notes: Table \\\\ref{tab:covariate-list} describes the variables. Columns (2)--(8) show the sample averages for each experimental arm. Column (9) shows the p-value of the joint null hypothesis (F-test)."
 )
+```
+
+```{r diff-in-mean-act}
+act <- cache_rds({
+  main$diff_in_mean(
+    outcome_intention = FALSE,
+    title = "Difference-in-means Test of Behavior",
+    notes = "Notes: The unit of effect is a percentage point. Fisher's exact p-values test sharp null hypotheses. To calculate p-values, we create 200 simulated assignment vector keeping the number of treated and contrl units fixed."
+  )
+})
+
+act
 ```
 
 ```{r reg-act-woA}

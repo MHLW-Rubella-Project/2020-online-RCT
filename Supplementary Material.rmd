@@ -12,6 +12,13 @@ output:
     citation_package: natbib
     toc: true
 base-strech: 1.5
+header-includes:
+  - \makeatletter
+  - \@addtoreset{table}{section}
+  - \@addtoreset{figure}{section}
+  - \makeatother
+  - \renewcommand\thetable{\thesection\arabic{table}}
+  - \renewcommand\thefigure{\thesection\arabic{figure}}
 ---
 
 ```{r chunk-option, include=FALSE}

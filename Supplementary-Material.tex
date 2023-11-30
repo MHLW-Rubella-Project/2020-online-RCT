@@ -47,6 +47,12 @@
 \usepackage{hyperref}
 
 % ------------------------------ other packages
+\makeatletter
+\@addtoreset{table}{section}
+\@addtoreset{figure}{section}
+\makeatother
+\renewcommand\thetable{\thesection\arabic{table}}
+\renewcommand\thefigure{\thesection\arabic{figure}}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}

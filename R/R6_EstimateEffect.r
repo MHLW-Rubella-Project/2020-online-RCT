@@ -217,6 +217,57 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           strip.text = element_text(size = 16, hjust = 0)
         )
     },
+    diff_in_mean = function(
+      outcome_intention = TRUE,
+      exact_p_B = 200,
+      title = "",
+      notes = ""
+    ) {
+      dta <- private$choose_wave(outcome_intention)
+
+      g <- dta$coupon2019
+      test <- dta$outcome_test
+      vacc <- dta$outcome_vacc
+      d <- dta$nudge
+
+      default <- private$diff_in_mean_test(
+        test[g == 1],
+        vacc[g == 1],
+        d[g == 1],
+        B = 200
+      )
+
+      opt_in <- private$diff_in_mean_test(
+        test[g == 0],
+        vacc[g == 0],
+        d[g == 0],
+        B = 200
+      )
+
+      bind_rows(default, opt_in) %>%
+        bind_cols(treat = rep(private$treat_labels[-1], 2), .) %>%
+        kable(
+          caption = title,
+          col.names = c(
+            "Treatment", rep(c("Effect", "T-test", "Exact test"), 2)
+          ),
+          digits = 3,
+          align = "lcccccc",
+          booktabs = TRUE,
+          linesep = ""
+        ) %>%
+        kable_styling() %>%
+        add_header_above(c(" " = 2, "P-values" = 2, " ", "P-values" = 2)) %>%
+        add_header_above(c(" " = 1, "Antibody testing" = 3, "Vaccination" = 3)) %>%
+        pack_rows("A. Default incentive group", 1, 6) %>%
+        pack_rows("B. Opt-in incentive group", 7, 12) %>%
+        kableExtra::footnote(
+          general_title = "",
+          general = notes,
+          threeparttable = TRUE,
+          escape = FALSE
+        )
+    },
     lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
       dta <- private$choose_wave(outcome_intention)
       dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
@@ -249,6 +300,39 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         pivot_longer(everything()) %>%
         dplyr::filter(value == 0) %>%
         .$name
+    },
+    exact_p = function(Y, D, B, seed = 120511) {
+      set.seed(seed)
+      diff <- abs(mean(Y[D == 1]) - mean(Y[D == 0]))
+      placebo_diff <- sapply(1:B, function(x) {
+        placebo <- sample(D, length(D))
+        abs(mean(Y[placebo == 1]) - mean(Y[placebo == 0]))
+      })
+      mean(placebo_diff >= diff)
+    },
+    diff_in_mean_test = function(test, vacc, D, B) {
+      LETTERS[2:7] %>%
+        purrr::map(function(treated) {
+          arms <- c("A", treated)
+          D_s <- ifelse(D[D %in% arms] == "A", 0, 1)
+          test_s <- test[D %in% arms]
+          vacc_s <- vacc[D %in% arms]
+
+          diff_test <- mean(test_s[D_s == 1]) - mean(test_s[D_s == 0])
+          diff_vacc <- mean(vacc_s[D_s == 1]) - mean(vacc_s[D_s == 0])
+
+          t_p_test <- t.test(test_s ~ D_s)$p.value
+          t_p_vacc <- t.test(vacc_s ~ D_s)$p.value
+
+          exact_p_test <- private$exact_p(test_s, D_s, B)
+          exact_p_vacc <- private$exact_p(vacc_s, D_s, B)
+
+          tibble(
+            diff_test, t_p_test, exact_p_test,
+            diff_vacc, t_p_vacc, exact_p_vacc
+          )
+        }) %>%
+        reduce(bind_rows)
     }
   )
 )

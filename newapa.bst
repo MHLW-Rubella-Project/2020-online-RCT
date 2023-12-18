@@ -212,7 +212,7 @@ FUNCTION {output.year.check}
 { year empty$
      { "empty year in " cite$ * warning$ }
      { write$
-        " (" year * extra.label * ")" *
+        " " year * extra.label * "" *
         mid.sentence 'output.state :=
      }
   if$
@@ -354,9 +354,9 @@ FUNCTION {format.names}
                   if$
                   t "others" =
                         { " et~al." * }
-%                       { " and " * t * }
+                       { " " * t * }
 %                       { ", \& " * t * }
-                        { " \& " * t * }
+%                        { " \& " * t * }
                       if$
                 }
                if$
@@ -387,8 +387,8 @@ FUNCTION {format.names.fml}
                   if$
                   t "others" =
                         { " et~al." * }
-%                        { " and " * t * }
-                        { " \& " * t * }
+                        { " " * t * }
+%                        { " \& " * t * }
                       if$
                 }
                if$
@@ -1210,8 +1210,8 @@ FUNCTION {format.lab.names}
           'skip$
           { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
                 { "et~al. " * }
-%               { " and " * s #2 "{vv~}{ll}" format.name$ * }
-                { " \& " * s #2 "{vv~}{ll}" format.name$ * }
+               { " and " * s #2 "{vv~}{ll}" format.name$ * }
+%                { " \& " * s #2 "{vv~}{ll}" format.name$ * }
              if$
             }
        if$

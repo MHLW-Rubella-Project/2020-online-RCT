@@ -1,13 +1,8 @@
 ---
 title: |
   Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella
-thanks: |
-  This study was conducted as a part of the "Implementation of EBPM in Japan" project undertaken at the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank the participants of the EBPM Study Group and Discussion Paper Study Group of RIETI for their insightful comments. Before conducting the randomized controlled trial on the online survey, this study was approved by the institutional review board of the Graduate School of Economics, Osaka University [approval number R020114]. Conflict of interest: none. Funding: This research was financially supported by the Ministry of Health, Labour and Welfare, Japan; the Japan Society for the Promotion of Science [grant number 20H05632 (F., Ohtake)]; and the Japan Science and Technology Agency [grant number JPMJPR21R4 (S., Sasaki)].
 abstract: |
   We study the effects of combining financial incentives with nudges to promote antibody testing and vaccination to prevent the spread of rubella. In FY2019, the Japanese government began providing vouchers for free antibody testing and vaccination to men aged 40--57 years. Vouchers were automatically mailed to 40--46-year-old men in FY2019. While those aged 47--57 received vouchers after FY2020, they could obtain vouchers for undertaking antibody testing and being vaccinated in FY2019 by applying. Focusing on this policy distinction, we conduct a late-FY2019 online field experiment with Japanese 40--57-year-old men. We randomly send nudge-based text message reminders recommending antibody testing and vaccination and track self-reported behavior until the end of FY2019. One nudge-based reminder with an altruistic message on fetal harm through infection from men to pregnant women significantly promotes antibody testing and vaccination among those who have already received vouchers as a financial incentive. By contrast, nudge-based reminders have no promoting effect for those who must apply for vouchers.
-  \vskip\baselineskip
-  \noindent
-  \textit{Keywords}: behavioral economics, health behavior, online field experiment, rubella, vaccination, antibody test, text message reminders, free vouchers
 biblio-style: newapa.bst
 bibliography: text-message-2020RCT.bib
 output:
@@ -46,6 +41,7 @@ options(
 )
 ```
 
+\newpage
 # Introduction {#intro}
 
 
@@ -188,7 +184,7 @@ When the financial incentives offered are adequate, as in the presented case, no
 setup$summary_assign(here("assets/nudge_descript.csv"))
 ```
 
-Using the *MHLW (Control)* message, the MHLW promotes antibody testing and vaccination against rubella on its website (business-as-usual control). We developed six additional text message reminders based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages [e.g., @Dai2021, @Milkman2021], similar to this study.
+Using the *MHLW (Control)* message, the MHLW promotes antibody testing and vaccination against rubella on its website (business-as-usual control). We developed six additional text message reminders based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages [e.g., @Dai2021; @Milkman2021], similar to this study.
 
 The six additional text message reminders altered the MHLW (Control) message in two ways: (1) using a simple age expression (first sentence) and (2) adapting the message content (subsequent sentences). In addition to the precise target age for the additional rubella measures, the *MHLW (Age)* message included the simple phrase "men in their 40s and 50s," which helped the reader understand if they are eligible for vaccination and pay attention to the message. The MHLW (Age) message only changed the age expression; the message content was identical to the control.
 
@@ -388,3 +384,7 @@ The second direction concerns the channels of the effect on vaccination rates. W
 [^negative-selfish]: The negative rate of antibody testing for the Selfish message, which is only effective for the actual uptake of antibody testing, was 30% ($=3/10$). This value is similar to that for the MHLW (Control) message.
 
 This argument is related to targeting interventions [e.g., @Finkelstein2019]. The question is whether marginal individuals whose behavior is changed by an intervention receive significant benefits from a policy. In our context, the Altruistic message increases the number of individuals receiving negative antibody test results, who receive a large benefit from the FY2019 vaccination campaign. Thus, the Altruistic message improves targeting. However, since we cannot test the difference in the rates of negative antibody tests because of our small sample, this remains a topic for future research.
+
+# Acknowledgements {-}
+
+This study was conducted as a part of the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank the participants of the EBPM Study Group and Discussion Paper Study Group of RIETI for their insightful comments. Funding: This work was supported by the Ministry of Health, Labour and Welfare (MHLW); the Japan Society for the Promotion of Science (JSPS) [grant number 20H05632]; and the Japan Science and Technology Agency (JST) [grant number JPMJPR21R4]. The MHLW, JSPS and JST had no role in study design, data collection and analysis, writing of the articles or the decision to submit the articles for publication.

@@ -163,6 +163,7 @@ When the financial incentives offered are adequate, as in the presented case, no
 \caption{\label{tab:message-list}List of the Text Message Reminders}
 \centering
 \fontsize{9}{11}\selectfont
+\begin{threeparttable}
 \begin{tabular}[t]{l>{\raggedright\arraybackslash}p{20em}cccccc}
 \toprule
 \multicolumn{3}{c}{ } & \multicolumn{4}{c}{Age (as of April 2019)} & \multicolumn{1}{c}{ } \\
@@ -184,6 +185,10 @@ Deadline & Dear men in their 40s and 50s (all men born between 1962 and 1979). T
 Convenient & Dear men in their 40s and 50s (all men born between 1962 and 1979). You can use your voucher for a rubella antibody test at a growing number of workplaces and government agencies, in addition to your usual health examinations. Undertake rubella antibody testing and be vaccinated! & N & 19 & 213 & 307 & 61 & 600\\
 \bottomrule
 \end{tabular}
+\begin{tablenotes}
+\item Notes: The ages are as of April 2019, calculated using the year and month of the respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive vouchers for the first year. We assume that those born in April have not yet reached their birthday. In addition, some men aged 39 years as of April 2019 were 40 years at the time of the survey.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 Using the \emph{MHLW (Control)} message, the MHLW promotes antibody testing and vaccination against rubella on its website (business-as-usual control). We developed six additional text message reminders based on the MHLW (Control) message to explore what elements to use and how to emphasize them. Recent behavioral science research has increasingly investigated the efficacy of multiple candidate messages \citep[e.g.,][]{Dai2021, Milkman2021}, similar to this study.
@@ -204,7 +209,7 @@ Using a nationwide online survey, we then tested the extent to which those text 
 \hypertarget{wave1}{%
 \subsubsection{Wave 1: Outcome Variables for Intention}\label{wave1}}
 
-In Wave 1, we randomly sent one of the text message reminders in Table \ref{tab:message-list}. We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned the messages within each group. The sample size for each group was 1,050, with 150 for one experimental arm within a group. Thus, the sample size for one experimental group was 600.\footnote{The ages shown in Table \ref{tab:message-list} are as of April 2019, calculated using the year and month of the respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive vouchers for the first year. We assume that those born in April have not yet reached their birthday. In addition, some men aged 39 years as of April 2019 were 40 years at the time of the survey.}
+In Wave 1, we randomly sent one of the text message reminders in Table \ref{tab:message-list}. We employed stratified randomization. The survey firm divided respondents into four age groups (40--44, 45--49, 50--54, and 55--59) and equally assigned the messages within each group. The sample size for each group was 1,050, with 150 for one experimental arm within a group. Thus, the sample size for one experimental group was 600.
 
 After viewing their randomly assigned message, the participants expressed their intention to undertake antibody testing and be vaccinated on a 5-point Likert scale (5 = definitely yes; 1 = absolutely no). As already mentioned, the MHLW has adopted the antibody test as the primary policy intervention to effectively deliver vaccinations to the 20\% of eligible men who do not have antibodies. The current study also follows the policy and sets an intention to undertake the antibody testing as the primary outcome and an intention to be vaccinated as the secondary outcome. The question on the willingness to undertake antibody testing was, ``Are you willing to take an antibody test for rubella now?'' Meanwhile, the intention to be vaccinated question asked, ``If the antibody testing reveals that you have no antibodies, are you willing to be vaccinated?'' We created a binary variable coded 1 if the participant responded 4 or 5 to each question and used it as the outcome variable for intention.
 
@@ -463,7 +468,7 @@ Convenient & 0.037 & 0.737 & 422.789 & 2.237 & 4.228 & 20.332\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item We use the effect size of each text message reminder on the actual update of antibody testing. Baseline is the sum of the actual uptake of antibody testing in the control group and the vaccination rates under no vaccination cost estimated by the demand function. The monetary value is the amount per person multiplied by the number of people who received the voucher in 2019 but did not use it until January 2020 ($5.29$ million). USD 1 = JPY 110. The unit of monetary value per person is 1 JPY and 1 USD, respectively. The unit of total monetary value is 1 billion JPY and 1 million USD, respectively.
+\item Notes: We use the effect size of each text message reminder on the actual update of antibody testing. Baseline is the sum of the actual uptake of antibody testing in the control group and the vaccination rates under no vaccination cost estimated by the demand function. The monetary value is the amount per person multiplied by the number of people who received the voucher in 2019 but did not use it until January 2020 ($5.29$ million). USD 1 = JPY 110. The unit of monetary value per person is 1 JPY and 1 USD, respectively. The unit of total monetary value is 1 billion JPY and 1 million USD, respectively.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

@@ -35,7 +35,7 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
         ) %>%
         kableExtra::column_spec(2, width = "30em")
     },
-    summary_assign = function(message_path) {
+    summary_assign = function(message_path, notes = "") {
       message_list <- read_csv(message_path, locale = locale(encoding = "cp932")) %>%
         select(Content)
 
@@ -63,6 +63,12 @@ StartAnalysis <- R6::R6Class("StartAnalysis",
         kableExtra::column_spec(2, width = "20em") %>%
         kableExtra::add_header_above(
           c(" " = 3, "Age (as of April 2019)" = 4, " " = 1)
+        ) %>%
+        kableExtra::footnote(
+          general_title = "",
+          general = notes,
+          threeparttable = TRUE,
+          escape = FALSE
         )
     },
     balance_attrition = function() {

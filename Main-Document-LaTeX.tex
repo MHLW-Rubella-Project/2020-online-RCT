@@ -1,8 +1,4 @@
-\documentclass[
-  % lualatex,
-  11pt,
-  a4paper
-]{article}
+\documentclass[11pt, a4paper]{article}
 
 % ------------------------------ font
 \usepackage{times}
@@ -44,7 +40,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % ------------------------------ hyperlink
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 % ------------------------------ other packages
 \usepackage{booktabs}
@@ -128,7 +124,7 @@ The rest of this paper is structured as follows. Section \ref{background} provid
 Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe. The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization. According to \citet{Kinoshita2016}, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations.
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/antibody-1} \caption{Percentage of Rubella Antibody Prevalence by Age and Gender. Data: 2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases, NIID}\label{fig:antibody}
+\includegraphics{antibody-1} \caption{Percentage of Rubella Antibody Prevalence by Age and Gender. Data: 2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases, NIID}\label{fig:antibody}
 \end{figure}
 
 However, owing to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. Figure \ref{fig:antibody} shows that the antibody prevalence among men aged 39--56 years (as of 2018) is approximately \(81.5\)\%, which is lower than that of women of the same generation (about \(97.9\)\%) and other generations because they have not received their routine rubella vaccination and have not had less opportunity to infect naturally. Thus, the influx of viruses of Southeast Asian origin caused rubella epidemics in 2013 and 2018, mainly among men with relatively low antibody prevalence \citep{NIID2019}. As cross-border traffic is increasing, achieving herd immunity against rubella is becoming increasingly important for Japan. See Supplementary Material A for detailed background.
@@ -239,13 +235,13 @@ The participants' observable characteristics are balanced across the experimenta
 \subsubsection{Difference-in-mean Test}\label{difference-in-mean-test}}
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-int-test-1} \caption{Effect of the Text Message Reminders on the Intention to Undertake Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-test}
+\includegraphics{ttest-int-test-1} \caption{Effect of the Text Message Reminders on the Intention to Undertake Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-test}
 \end{figure}
 
 Figure \ref{fig:ttest-int-test} shows the intention to undertake antibody testing, which is our primary outcome, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In the \emph{default incentive} group, the Altruistic message increases the intention to undertake antibody testing by a statistically significant \(14.3\) pp compared with the MHLW (Control) message (\(35.1\)\% in the Altruistic message group versus \(20.8\)\% in the MHLW (Control) message group). On the contrary , in the \emph{opt-in incentive} group, the Altruistic message increases the intention to undertake antibody testing by \(5.3\) pp, which is not statistically significant (\(32.9\)\% in the Altruistic message group versus \(27.6\)\% in the MHLW (Control) message group). The effect of the Altruistic message could differ between the two groups, as the subsequent regression analysis also suggests.
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-int-vacc-1} \caption{Effect of the Text Message Reminders on the Intention to be Vaccinated. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-vacc}
+\includegraphics{ttest-int-vacc-1} \caption{Effect of the Text Message Reminders on the Intention to be Vaccinated. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-vacc}
 \end{figure}
 
 Figure \ref{fig:ttest-int-vacc} depicts the intention to be vaccinated, which is our secondary outcome, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In both incentive groups, most of the text message reminders, including the Altruistic message, do not statistically significantly increase the intention to be vaccinated compared with MHLW (Control). In the \emph{opt-in incentive} group, the Social Comparison message may lower the intention to be vaccinated compared with the MHLW (Control) message (\(44.6\)\% in the Social Comparison message group versus \(52.8\)\% in the MHLW (Control) message group).
@@ -339,7 +335,7 @@ Since a few respondents dropped out between waves 1 and 2, We again test a balan
 \subsubsection{Difference-in-mean Test}\label{difference-in-mean-test-1}}
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-act-test-1} \caption{Effect of the Text Message Reminders on the Actual Uptake of Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-test}
+\includegraphics{ttest-act-test-1} \caption{Effect of the Text Message Reminders on the Actual Uptake of Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-test}
 \end{figure}
 
 Figure \ref{fig:ttest-act-test} shows the actual uptake of antibody testing, which is our primary outcome for behavior, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). As in the intention case, the Altruistic message statistically significantly increases the actual uptake of antibody testing compared with the MHLW (Control) message by \(7.4\) pp in the \emph{default incentive} group (\(10.9\)\% in the Altruistic message group versus \(3.5\)\% in the MHLW (Control) message group). On the contray, in the \emph{opt-in incentive} group, the Altrustic message does not affect the actual uptake of antibody testing. The effect of the Altrustic message could differ as the subsequent regression analysis also suggests.
@@ -347,7 +343,7 @@ Figure \ref{fig:ttest-act-test} shows the actual uptake of antibody testing, whi
 The Selfish message may boost the actual uptake of antibody testing in the \emph{default incentive} group by \(5.5\) pp (9\% in the Selfish message group versus \(3.5\)\% in the MHLW (Control) message group). Moreover, the Social Comparison message may also increase the actual uptake of antibody testing in the \emph{opt-in incentive} group (\(4.9\)\% in the Social Comparison message group versus \(3.5\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-act-vacc-1} \caption{Effect of the Text Message Reminders on Vaccination Rates. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-vacc}
+\includegraphics{ttest-act-vacc-1} \caption{Effect of the Text Message Reminders on Vaccination Rates. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-vacc}
 \end{figure}
 
 Figure \ref{fig:ttest-act-vacc} shows the vaccination rates, which is our secondary outcome for behavior, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In the \emph{default incentive} group, the Altruistic message may increase the vaccination rate by \(3.8\) pp (\(4.7\)\% in the Altruistic message group versus \(0.9\)\% in the MHLW (Control) message group). In the same group, the Social Comparison message may also increase vaccination rate by 4 pp (\(4.9\)\% in the Social Comparison message group versus \(0.9\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.
@@ -490,11 +486,14 @@ The second direction concerns the channels of the effect on vaccination rates. W
 
 This argument is related to targeting interventions \citep[e.g.,][]{Finkelstein2019}. The question is whether marginal individuals whose behavior is changed by an intervention receive significant benefits from a policy. In our context, the Altruistic message increases the number of individuals receiving negative antibody test results, who receive a large benefit from the FY2019 vaccination campaign. Thus, the Altruistic message improves targeting. However, since we cannot test the difference in the rates of negative antibody tests because of our small sample, this remains a topic for future research.
 
+%TC:ignore
+\clearpage
 \hypertarget{acknowledgements}{%
 \section*{Acknowledgements}\label{acknowledgements}}
 \addcontentsline{toc}{section}{Acknowledgements}
 
 This study was conducted as a part of the Research Institute of Economy, Trade and Industry (RIETI). In completing this paper, we thank the participants of the EBPM Study Group and Discussion Paper Study Group of RIETI for their insightful comments. Funding: This work was supported by the Ministry of Health, Labour and Welfare (MHLW); the Japan Society for the Promotion of Science (JSPS) {[}grant number 20H05632{]}; and the Japan Science and Technology Agency (JST) {[}grant number JPMJPR21R4{]}. The MHLW, JSPS and JST had no role in study design, data collection and analysis, writing of the articles or the decision to submit the articles for publication.
+%TC:endignore
 
 \clearpage
 

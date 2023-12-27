@@ -189,7 +189,7 @@ Before reading the randomly assigned message, the participants were asked about 
 
 ### Wave 2: Outcome Variables for Behavior {#wave2}
 
-In Wave 2, we investigated the actual uptake of antibody testing and vaccination rates after Wave 1. As with intention, we set a behavior of undertaking the antibody testing as the primary outcome and a behavior of being vaccinated as the secondary outcome. Supplementary Material A presents the questions on antibody testing and vaccination and the multiple-choice answers. We created a binary variable coded 1 if the respondent had undertaken antibody testing (got vaccinated) after Wave 1.
+In Wave 2, we investigated the actual uptake of antibody testing and vaccination rates after Wave 1. As with intention, we set a behavior of undertaking the antibody testing as the primary outcome and a behavior of being vaccinated as the secondary outcome. Supplementary Material B presents the questions on antibody testing and vaccination and the multiple-choice answers. We created a binary variable coded 1 if the respondent had undertaken antibody testing (got vaccinated) after Wave 1.
 
 Although self-reported behavioral measures may be subject to the experimenter demand effect and social desirability bias, the design and analysis of the current study addressed these biases in the following two ways. First, because this study is an RCT, these biases, if they exist to the same extent in each group, are not fatal to the identification of treatment effects. Second, even if these biases differ by group, our analysis directly controlled for the respondents' psychological factors potentially associated with these biases (e.g., following social norms, accepting bad behavior in anonymous conditions) and then estimated the treatment effects .
 
@@ -318,7 +318,7 @@ value$value_table(
 )
 ```
 
-Table \@ref(tab:monetary-value) shows the estimated monetary value of the text message reminders. The second and third columns show their effect on the actual uptake of antibody testing and the baseline vaccination rates plus the reminder effect, respectively. As shown in the fourth column, the Altruistic and Social Comparison messages, which promote antibody testing, have monetary values of about JPY 2,000 (about USD 18; 40% of the assumed vaccination cost) and JPY 600 (USD $5.5$; 12%), respectively. The total monetary value is the product of the per capita value and number of people who have not yet used the free vouchers issued in FY2019 ($5.29$ million as of January 2020). As shown in the fifth column, the Altruistic messages are worth JPY 10 billion (about USD 98 million).
+Table \@ref(tab:monetary-value) shows the estimated monetary value of the text message reminders. The second and third columns show their effect on the actual uptake of antibody testing and the baseline vaccination rates plus the reminder effect, respectively. As shown in the fourth column, the Altruistic has monetary values of about JPY 2,000 (about USD 18; 40% of the assumed vaccination cost). The total monetary value is the product of the per capita value and number of people who have not yet used the free vouchers issued in FY2019 ($5.29$ million as of January 2020). As shown in the fifth column, the Altruistic messages are worth JPY 10 billion (about USD 98 million).
 
 # Discussion and Conclusions {#conclusion}
 

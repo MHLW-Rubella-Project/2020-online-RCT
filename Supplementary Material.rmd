@@ -67,7 +67,7 @@ ctrl <- c(
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
 )
 
-setup <- StartAnalysis$new(here("data/2020-online-survey/shape_survey.csv"))
+setup <- StartAnalysis$new(here("public/online_survey.csv"))
 setup$add_control(ctrl)
 main <- setup$main()
 ```
@@ -116,7 +116,7 @@ In Wave 2, the participants were asked if they had undertaken antibody testing a
 
 We created a binary variable coded 1 if the respondent chose option (a) and used it as an outcome variable for the actual uptake of antibody testing. Meanwhile, the vaccination question was "Have you been vaccinated against rubella since the end of the last survey?" The respondents were given five options:
 
-- (a) I have been vaccinated; 
+- (a) I have been vaccinated;
 - (b) I do not need the vaccine due to a positive test or infection experience;
 - (c) I have undertaken antibody testing but have not been vaccinated yet;
 - (d) I have not undertaken antibody testing or gotten vaccinated;
@@ -146,7 +146,7 @@ In our framework, $F_0=1-F(0)$, but one potential concern remains. The effect of
 # Tables {#fig-tab}
 
 ```{r covariate-list}
-setup$summary_control(here("assets/vars_descript.csv"))
+setup$summary_control(here("public/vars_descript.csv"))
 ```
 
 ```{r balance-int-default}

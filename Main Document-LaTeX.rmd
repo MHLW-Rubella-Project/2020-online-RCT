@@ -111,9 +111,7 @@ The rest of this paper is structured as follows. Section \@ref(background) provi
 Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe. The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization. According to @Kinoshita2016, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90% in all generations.
 
 ```{r antibody, fig.cap = 'Percentage of Rubella Antibody Prevalence by Age and Gender. Data: 2018 National Epidemiological Surveillance of Vaccine-Preventable Diseases, NIID'}
-niid_path <- "data/2018-NIID-survey"
-
-antibody <- read_csv(here(niid_path, "shape_prevalence.csv")) %>%
+antibody <- read_csv(here("public/niid_prevalence.csv")) %>%
   dplyr::filter(gender != "all") %>%
   mutate(
     antibody_rate_8 =
@@ -180,7 +178,7 @@ ctrl <- c(
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
 )
 
-setup <- StartAnalysis$new(here("data/2020-online-survey/shape_survey.csv"))
+setup <- StartAnalysis$new(here("public/online_survey.csv"))
 setup$add_control(ctrl)
 main <- setup$main()
 ```
@@ -191,7 +189,7 @@ When the financial incentives offered are adequate, as in the presented case, no
 
 ```{r message-list}
 setup$summary_assign(
-  here("assets/nudge_descript.csv"),
+  here("public/nudge_descript.csv"),
   notes = "Notes: The ages are as of April 2019, calculated using the year and month of the respondents' birth. Men aged 40--56 years as of April 2019 are eligible for the MHLW's additional measures. Those aged 40--46 years automatically receive vouchers for the first year. We assume that those born in April have not yet reached their birthday. In addition, some men aged 39 years as of April 2019 were 40 years at the time of the survey."
 )
 ```

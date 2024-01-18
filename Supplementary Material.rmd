@@ -2,7 +2,19 @@
 title: |
   Supplementary Material
   "Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella"
-biblio-style: newapa.bst
+author:
+  - name: Hiroki Kato
+    inst-id: a
+  - name: Shusaku Sasaki
+    inst-id: b
+  - name: Fumio Ohtake
+    inst-id: b
+inst:
+  - id: a
+    name: Graduate School of Economics, Osaka University
+  - id: b
+    name: Center for Infectious Disease Education and Research (CiDER), Osaka University
+biblio-style: agsm
 bibliography: text-message-2020RCT.bib
 output:
   bookdown::pdf_document2:
@@ -69,6 +81,30 @@ main$ttest(
 ```
 
 # (APPENDIX) Appendix {-}
+
+# Detail Background of Rubella
+
+Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe. According to the National Institute of Infectious Diseases (NIID), the subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15--30% of cases. Fever is observed in approximately 50% of patients. Adults may also experience transient arthritis (5--30%). Rarely, complications such as thrombocytopenic purpura ($0.02$--$0.03$%) and acute encephalitis ($0.01$--$0.03$%) may require hospitalization.[^web-cite]
+
+[^web-cite]: <https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html>. Japanese. Accessed September 22, 2023.
+
+The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization.
+
+According to @Kinoshita2016, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90% in all generations. Some researches show relatively weak conditions to obtain herd immunity. For example, according to @Plans-Rubio2012, an antibody prevalence of 83--95% achieves herd immunity against rubella. @Nishiura2015 found that the antibody prevalence for herd immunity is 83.6%.
+
+Anyway, owing to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. According to @NIIDdata2019, the antibody prevalence among men aged 39--56 years (as of 2018) is approximately $81.5$%. This value is lower than that of women of the same generation (about $97.9$%) who have had at least one dose of the rubella vaccine administered as part of routine immunization. The prevalence rates of antibodies in men and women aged 57 and older are 91.1% and 89.3%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3% and 94.0%, respectively. They have had at least one dose of the rubella vaccine administered as part of routine immunization.
+
+Thus, the influx of viruses of Southeast Asian origin caused rubella epidemics in 2013 and 2018, mainly among men with relatively low antibody prevalence [@NIID2019]. In the 2018 epidemic, the U.S. Centers for Disease Control and Prevention advised pregnant women not to travel to Japan.[^news-cite] As cross-border traffic is increasing, achieving herd immunity against rubella is becoming increasingly important for Japan.
+
+[^news-cite]: The Japan Times, October 24, 2018. <https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/>. Accessed September 22, 2023.
+
+To achieve herd immunity, Japan must raise the antibody prevalence among men in their 40s and 50s from 80% to 90%. To achieve this goal, The Ministry of Health, Labour and Welfare (MHLW) provided the rubella antibody test and vaccination as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022. More precisely, eligible men were born between April 2, 1962 and April 1, 1979.
+
+If transmission to pregnant women is the most important issue, one might think that vaccinating pregnant women would be the optimal strategy. However, Japan implemented measures for pregnant women in advance of the 2019 vaccination campaign, as they were already receiving at least one vaccination. In addition, since 2014, pregnant women and women who want to become pregnant as well as their partners have been offered free antibody testing. However, during the 2013 and 2018 epidemics, some infants were affected by CRS. Therefore, to eradicate CRS, interventions for pregnant women alone are insufficient; interventions to achieve hard immunity are needed.
+
+The MHLW requested local governments to send free vouchers for a rubella antibody test and vaccine to eligible men over a three-year period. More than half of eligible men are 40--46 years old ($6.46$ million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96% of local governments planned to send the vouchers by October 2019. The cumulative number of antibody tests using vouchers by January 2019 was 1.17 million. We calculate the actual uptake of antibody testing by dividing the cumulative number of antibody tests using vouchers to January 2020 ($1.17$ million) by the population of 40--46-year-old men ($6.46$ million). Thus, although men aged 40--46 years automatically received the financial incentives, the actual uptake of antibody testing with vouchers remained as low as 18% as of January 2020. When the financial incentives offered are adequate, as in the presented case, non-monetary interventions should be considered to increase antibody testing.
+
+\clearpage
 
 # Antibody Testing and Vaccination Questions {#question}
 

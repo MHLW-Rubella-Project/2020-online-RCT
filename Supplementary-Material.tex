@@ -1,7 +1,6 @@
 \documentclass[
   % lualatex,
-  11pt,
-  a4paper
+    a4paper
 ]{article}
 
 % ------------------------------ font
@@ -14,7 +13,7 @@
 % ------------------------------ author & natbib
 \usepackage{authblk}
 \usepackage[semicolon]{natbib}
-\bibliographystyle{newapa.bst}
+\bibliographystyle{agsm}
 
 % ------------------------------ appendix
 \usepackage[title]{appendix}
@@ -81,11 +80,21 @@
 % ------------------------------ paper information
 \title{Supplementary Material
 ``Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella''}
-\author{}
+\author[a]{Hiroki Kato}
+\author[b]{Shusaku Sasaki}
+\author[b]{Fumio Ohtake}
+\affil[a]{Graduate School of Economics, Osaka University}
+\affil[b]{Center for Infectious Disease Education and Research (CiDER), Osaka University}
 \date{}
 
+\makeatletter
+\let\@fnsymbol\@arabic
+\makeatother
+
 \begin{document}
+\begin{spacing}{1}
 \maketitle
+\end{spacing}
 
 
 {
@@ -93,9 +102,31 @@
 \tableofcontents
 }
 
+\setcounter{footnote}{0}
 \hypertarget{appendix-appendix}{%
 \appendix}
 
+
+\hypertarget{detail-background-of-rubella}{%
+\section{Detail Background of Rubella}\label{detail-background-of-rubella}}
+
+Rubella is a highly contagious disease spread through droplet transmission. The most common symptoms are fever and rashes, but the disease is rarely severe. According to the National Institute of Infectious Diseases (NIID), the subclinical transmission of rubella (the state in which a person is infected but has no symptoms) occurs in approximately 15--30\% of cases. Fever is observed in approximately 50\% of patients. Adults may also experience transient arthritis (5--30\%). Rarely, complications such as thrombocytopenic purpura (\(0.02\)--\(0.03\)\%) and acute encephalitis (\(0.01\)--\(0.03\)\%) may require hospitalization.\footnote{\url{https://www.niid.go.jp/niid/ja/kansennohanashi/430-rubella-intro.html}. Japanese. Accessed September 22, 2023.}
+
+The most serious problem is that women infected with rubella during early pregnancy may have children with congenital rubella syndrome (CRS), which includes eye and ear defects. Because the spread of rubella tends to increase the CRS incidence, the Japanese government has designated rubella as a disease requiring immunization.
+
+According to \citet{Kinoshita2016}, Japan can obtain herd immunity against rubella if the antibody prevalence exceeds 90\% in all generations. Some researches show relatively weak conditions to obtain herd immunity. For example, according to \citet{Plans-Rubio2012}, an antibody prevalence of 83--95\% achieves herd immunity against rubella. \citet{Nishiura2015} found that the antibody prevalence for herd immunity is 83.6\%.
+
+Anyway, owing to low antibody prevalence among men in their 40s and 50s, Japan has not achieved herd immunity to rubella. According to \citet{NIIDdata2019}, the antibody prevalence among men aged 39--56 years (as of 2018) is approximately \(81.5\)\%. This value is lower than that of women of the same generation (about \(97.9\)\%) who have had at least one dose of the rubella vaccine administered as part of routine immunization. The prevalence rates of antibodies in men and women aged 57 and older are 91.1\% and 89.3\%, respectively. Despite not having received routine vaccination, men and women aged 57 and older grew up during a time when rubella was common and people are likely to have antibodies from natural infection. The antibody prevalence of men and women aged 38 years and younger is 91.3\% and 94.0\%, respectively. They have had at least one dose of the rubella vaccine administered as part of routine immunization.
+
+Thus, the influx of viruses of Southeast Asian origin caused rubella epidemics in 2013 and 2018, mainly among men with relatively low antibody prevalence \citep{NIID2019}. In the 2018 epidemic, the U.S. Centers for Disease Control and Prevention advised pregnant women not to travel to Japan.\footnote{The Japan Times, October 24, 2018. \url{https://www.japantimes.co.jp/news/2018/10/24/national/science-health/u-s-cdc-warns-pregnant-women-traveling-japan-amid-rubella-outbreak/}. Accessed September 22, 2023.} As cross-border traffic is increasing, achieving herd immunity against rubella is becoming increasingly important for Japan.
+
+To achieve herd immunity, Japan must raise the antibody prevalence among men in their 40s and 50s from 80\% to 90\%. To achieve this goal, The Ministry of Health, Labour and Welfare (MHLW) provided the rubella antibody test and vaccination as an additional free routine immunization for men aged 40--57 years (as of 2019) between April 2019 and March 2022. More precisely, eligible men were born between April 2, 1962 and April 1, 1979.
+
+If transmission to pregnant women is the most important issue, one might think that vaccinating pregnant women would be the optimal strategy. However, Japan implemented measures for pregnant women in advance of the 2019 vaccination campaign, as they were already receiving at least one vaccination. In addition, since 2014, pregnant women and women who want to become pregnant as well as their partners have been offered free antibody testing. However, during the 2013 and 2018 epidemics, some infants were affected by CRS. Therefore, to eradicate CRS, interventions for pregnant women alone are insufficient; interventions to achieve hard immunity are needed.
+
+The MHLW requested local governments to send free vouchers for a rubella antibody test and vaccine to eligible men over a three-year period. More than half of eligible men are 40--46 years old (\(6.46\) million). They received the free vouchers from April 2019 to March 2020. According to interviews conducted by the MHLW, approximately 96\% of local governments planned to send the vouchers by October 2019. The cumulative number of antibody tests using vouchers by January 2019 was 1.17 million. We calculate the actual uptake of antibody testing by dividing the cumulative number of antibody tests using vouchers to January 2020 (\(1.17\) million) by the population of 40--46-year-old men (\(6.46\) million). Thus, although men aged 40--46 years automatically received the financial incentives, the actual uptake of antibody testing with vouchers remained as low as 18\% as of January 2020. When the financial incentives offered are adequate, as in the presented case, non-monetary interventions should be considered to increase antibody testing.
+
+\clearpage
 
 \hypertarget{question}{%
 \section{Antibody Testing and Vaccination Questions}\label{question}}
@@ -434,40 +465,40 @@ Treatment & Effect & T-test & Exact test & Effect & T-test & Exact test\\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-Altruistic & \num{0.122}** & \num{0.124}** & \num{0.004} & \num{-0.001}\\
- & (\num{0.054}) & (\num{0.051}) & (\num{0.060}) & (\num{0.057})\\
-Selfish & \num{0.051} & \num{0.077} & \num{0.019} & \num{0.041}\\
- & (\num{0.054}) & (\num{0.051}) & (\num{0.061}) & (\num{0.058})\\
-Social Comparison & \num{0.019} & \num{0.037} & \num{-0.005} & \num{0.004}\\
- & (\num{0.054}) & (\num{0.052}) & (\num{0.063}) & (\num{0.059})\\
-Deadline & \num{0.010} & \num{0.003} & \num{-0.029} & \num{-0.041}\\
- & (\num{0.052}) & (\num{0.049}) & (\num{0.060}) & (\num{0.058})\\
-Convenient & \num{0.031} & \num{0.022} & \num{-0.002} & \num{-0.015}\\
- & (\num{0.054}) & (\num{0.051}) & (\num{0.062}) & (\num{0.058})\\
-Opt-in & \num{0.023} & \num{0.019} & \num{0.027} & \num{-0.038}\\
- & (\num{0.046}) & (\num{0.052}) & (\num{0.054}) & (\num{0.060})\\
-Altruistic $\times$ Opt-in & \num{-0.045} & \num{-0.044} & \num{0.034} & \num{0.040}\\
- & (\num{0.068}) & (\num{0.065}) & (\num{0.075}) & (\num{0.071})\\
-Selfish $\times$ Opt-in & \num{0.014} & \num{-0.022} & \num{0.018} & \num{-0.012}\\
- & (\num{0.068}) & (\num{0.064}) & (\num{0.077}) & (\num{0.072})\\
-Social Comparison $\times$ Opt-in & \num{-0.032} & \num{-0.046} & \num{-0.011} & \num{-0.011}\\
- & (\num{0.067}) & (\num{0.063}) & (\num{0.077}) & (\num{0.072})\\
-Deadline $\times$ Opt-in & \num{0.043} & \num{0.066} & \num{0.067} & \num{0.100}\\
- & (\num{0.066}) & (\num{0.063}) & (\num{0.076}) & (\num{0.071})\\
-Convenient $\times$ Opt-in & \num{0.056} & \num{0.077} & \num{0.038} & \num{0.069}\\
- & (\num{0.068}) & (\num{0.065}) & (\num{0.077}) & (\num{0.072})\\
+Altruistic & \num{0.122} (\num{0.054}) & \num{0.124} (\num{0.051}) & \num{0.004} (\num{0.060}) & \num{-0.001} (\num{0.057})\\
+ & {}[\num{0.023}] & {}[\num{0.016}] & {}[\num{0.946}] & {}[\num{0.990}]\\
+Selfish & \num{0.051} (\num{0.054}) & \num{0.077} (\num{0.051}) & \num{0.019} (\num{0.061}) & \num{0.041} (\num{0.058})\\
+ & {}[\num{0.340}] & {}[\num{0.133}] & {}[\num{0.752}] & {}[\num{0.475}]\\
+Social Comparison & \num{0.019} (\num{0.054}) & \num{0.037} (\num{0.052}) & \num{-0.005} (\num{0.063}) & \num{0.004} (\num{0.059})\\
+ & {}[\num{0.725}] & {}[\num{0.469}] & {}[\num{0.932}] & {}[\num{0.947}]\\
+Deadline & \num{0.010} (\num{0.052}) & \num{0.003} (\num{0.049}) & \num{-0.029} (\num{0.060}) & \num{-0.041} (\num{0.058})\\
+ & {}[\num{0.845}] & {}[\num{0.955}] & {}[\num{0.627}] & {}[\num{0.478}]\\
+Convenient & \num{0.031} (\num{0.054}) & \num{0.022} (\num{0.051}) & \num{-0.002} (\num{0.062}) & \num{-0.015} (\num{0.058})\\
+ & {}[\num{0.565}] & {}[\num{0.664}] & {}[\num{0.974}] & {}[\num{0.793}]\\
+Opt-in & \num{0.023} (\num{0.046}) & \num{0.019} (\num{0.052}) & \num{0.027} (\num{0.054}) & \num{-0.038} (\num{0.060})\\
+ & {}[\num{0.619}] & {}[\num{0.710}] & {}[\num{0.617}] & {}[\num{0.523}]\\
+Altruistic $\times$ Opt-in & \num{-0.045} (\num{0.068}) & \num{-0.044} (\num{0.065}) & \num{0.034} (\num{0.075}) & \num{0.040} (\num{0.071})\\
+ & {}[\num{0.506}] & {}[\num{0.496}] & {}[\num{0.655}] & {}[\num{0.574}]\\
+Selfish $\times$ Opt-in & \num{0.014} (\num{0.068}) & \num{-0.022} (\num{0.064}) & \num{0.018} (\num{0.077}) & \num{-0.012} (\num{0.072})\\
+ & {}[\num{0.837}] & {}[\num{0.734}] & {}[\num{0.811}] & {}[\num{0.864}]\\
+Social Comparison $\times$ Opt-in & \num{-0.032} (\num{0.067}) & \num{-0.046} (\num{0.063}) & \num{-0.011} (\num{0.077}) & \num{-0.011} (\num{0.072})\\
+ & {}[\num{0.631}] & {}[\num{0.467}] & {}[\num{0.891}] & {}[\num{0.875}]\\
+Deadline $\times$ Opt-in & \num{0.043} (\num{0.066}) & \num{0.066} (\num{0.063}) & \num{0.067} (\num{0.076}) & \num{0.100} (\num{0.071})\\
+ & {}[\num{0.518}] & {}[\num{0.295}] & {}[\num{0.375}] & {}[\num{0.163}]\\
+Convenient $\times$ Opt-in & \num{0.056} (\num{0.068}) & \num{0.077} (\num{0.065}) & \num{0.038} (\num{0.077}) & \num{0.069} (\num{0.072})\\
+ & {}[\num{0.410}] & {}[\num{0.234}] & {}[\num{0.624}] & {}[\num{0.336}]\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Linear combination test: Treatment + Opt-in $\times$ Treatment}}\\
-\hspace{1em}Altruistic (Opt-in incentive) & \num{0.077}* & \num{0.080}** & \num{0.038} & \num{0.040}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.040}) & (\num{0.046}) & (\num{0.043})\\
-\hspace{1em}Selfish (Opt-in incentive) & \num{0.065} & \num{0.055} & \num{0.038} & \num{0.029}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
-\hspace{1em}Social Comparison (Opt-in incentive) & \num{-0.013} & \num{-0.008} & \num{-0.016} & \num{-0.007}\\
-\hspace{1em} & (\num{0.039}) & (\num{0.036}) & (\num{0.045}) & (\num{0.042})\\
-\hspace{1em}Deadline (Opt-in incentive) & \num{0.053} & \num{0.068}* & \num{0.038} & \num{0.059}\\
-\hspace{1em} & (\num{0.041}) & (\num{0.038}) & (\num{0.046}) & (\num{0.042})\\
-\hspace{1em}Convenient (Opt-in incentive) & \num{0.087}** & \num{0.099}** & \num{0.036} & \num{0.054}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.042})\\
+\hspace{1em}Altruistic (Opt-in incentive) & \num{0.077} (\num{0.042}) & \num{0.080} (\num{0.040}) & \num{0.038} (\num{0.046}) & \num{0.040} (\num{0.043})\\
+\hspace{1em} & {}[\num{0.066}] & {}[\num{0.045}] & {}[\num{0.412}] & {}[\num{0.357}]\\
+\hspace{1em}Selfish (Opt-in incentive) & \num{0.065} (\num{0.042}) & \num{0.055} (\num{0.039}) & \num{0.038} (\num{0.046}) & \num{0.029} (\num{0.043})\\
+\hspace{1em} & {}[\num{0.118}] & {}[\num{0.154}] & {}[\num{0.414}] & {}[\num{0.501}]\\
+\hspace{1em}Social Comparison (Opt-in incentive) & \num{-0.013} (\num{0.039}) & \num{-0.008} (\num{0.036}) & \num{-0.016} (\num{0.045}) & \num{-0.007} (\num{0.042})\\
+\hspace{1em} & {}[\num{0.738}] & {}[\num{0.815}] & {}[\num{0.724}] & {}[\num{0.858}]\\
+\hspace{1em}Deadline (Opt-in incentive) & \num{0.053} (\num{0.041}) & \num{0.068} (\num{0.038}) & \num{0.038} (\num{0.046}) & \num{0.059} (\num{0.042})\\
+\hspace{1em} & {}[\num{0.196}] & {}[\num{0.074}] & {}[\num{0.406}] & {}[\num{0.164}]\\
+\hspace{1em}Convenient (Opt-in incentive) & \num{0.087} (\num{0.042}) & \num{0.099} (\num{0.039}) & \num{0.036} (\num{0.046}) & \num{0.054} (\num{0.042})\\
+\hspace{1em} & {}[\num{0.037}] & {}[\num{0.011}] & {}[\num{0.436}] & {}[\num{0.205}]\\
 \midrule
 Covariates &  & X &  & X\\
 Num.Obs. & \num{2235} & \num{2235} & \num{2235} & \num{2235}\\
@@ -530,40 +561,40 @@ R2 & \num{0.128} & \num{0.148}\\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-Altruistic & \num{0.042} & \num{0.045} & \num{0.030} & \num{0.032}\\
- & (\num{0.036}) & (\num{0.036}) & (\num{0.022}) & (\num{0.022})\\
-Selfish & \num{0.023} & \num{0.032} & \num{0.010} & \num{0.014}\\
- & (\num{0.036}) & (\num{0.035}) & (\num{0.019}) & (\num{0.019})\\
-Social Comparison & \num{0.020} & \num{0.028} & \num{0.032} & \num{0.035}\\
- & (\num{0.036}) & (\num{0.036}) & (\num{0.024}) & (\num{0.025})\\
-Deadline & \num{-0.025} & \num{-0.024} & \num{-0.008} & \num{-0.007}\\
- & (\num{0.030}) & (\num{0.029}) & (\num{0.015}) & (\num{0.014})\\
-Convenient & \num{0.005} & \num{0.010} & \num{0.010} & \num{0.013}\\
- & (\num{0.034}) & (\num{0.034}) & (\num{0.019}) & (\num{0.020})\\
-Opt-in & \num{-0.058}** & \num{-0.045}* & \num{-0.012} & \num{-0.001}\\
- & (\num{0.024}) & (\num{0.027}) & (\num{0.013}) & (\num{0.015})\\
-Altruistic $\times$ Opt-in & \num{-0.030} & \num{-0.032} & \num{-0.029} & \num{-0.031}\\
- & (\num{0.038}) & (\num{0.038}) & (\num{0.023}) & (\num{0.024})\\
-Selfish $\times$ Opt-in & \num{-0.017} & \num{-0.028} & \num{-0.010} & \num{-0.012}\\
- & (\num{0.037}) & (\num{0.037}) & (\num{0.021}) & (\num{0.021})\\
-Social Comparison $\times$ Opt-in & \num{-0.001} & \num{-0.009} & \num{-0.036} & \num{-0.039}\\
- & (\num{0.038}) & (\num{0.039}) & (\num{0.025}) & (\num{0.025})\\
-Deadline $\times$ Opt-in & \num{0.029} & \num{0.030} & \num{0.008} & \num{0.008}\\
- & (\num{0.031}) & (\num{0.031}) & (\num{0.016}) & (\num{0.016})\\
-Convenient $\times$ Opt-in & \num{-0.004} & \num{-0.005} & \num{-0.015} & \num{-0.017}\\
- & (\num{0.035}) & (\num{0.035}) & (\num{0.020}) & (\num{0.020})\\
+Altruistic & \num{0.042} (\num{0.036}) & \num{0.045} (\num{0.036}) & \num{0.030} (\num{0.022}) & \num{0.032} (\num{0.022})\\
+ & {}[\num{0.242}] & {}[\num{0.212}] & {}[\num{0.175}] & {}[\num{0.154}]\\
+Selfish & \num{0.023} (\num{0.036}) & \num{0.032} (\num{0.035}) & \num{0.010} (\num{0.019}) & \num{0.014} (\num{0.019})\\
+ & {}[\num{0.522}] & {}[\num{0.361}] & {}[\num{0.599}] & {}[\num{0.484}]\\
+Social Comparison & \num{0.020} (\num{0.036}) & \num{0.028} (\num{0.036}) & \num{0.032} (\num{0.024}) & \num{0.035} (\num{0.025})\\
+ & {}[\num{0.578}] & {}[\num{0.438}] & {}[\num{0.192}] & {}[\num{0.158}]\\
+Deadline & \num{-0.025} (\num{0.030}) & \num{-0.024} (\num{0.029}) & \num{-0.008} (\num{0.015}) & \num{-0.007} (\num{0.014})\\
+ & {}[\num{0.401}] & {}[\num{0.420}] & {}[\num{0.567}] & {}[\num{0.626}]\\
+Convenient & \num{0.005} (\num{0.034}) & \num{0.010} (\num{0.034}) & \num{0.010} (\num{0.019}) & \num{0.013} (\num{0.020})\\
+ & {}[\num{0.886}] & {}[\num{0.775}] & {}[\num{0.599}] & {}[\num{0.514}]\\
+Opt-in & \num{-0.058} (\num{0.024}) & \num{-0.045} (\num{0.027}) & \num{-0.012} (\num{0.013}) & \num{-0.001} (\num{0.015})\\
+ & {}[\num{0.016}] & {}[\num{0.088}] & {}[\num{0.338}] & {}[\num{0.923}]\\
+Altruistic $\times$ Opt-in & \num{-0.030} (\num{0.038}) & \num{-0.032} (\num{0.038}) & \num{-0.029} (\num{0.023}) & \num{-0.031} (\num{0.024})\\
+ & {}[\num{0.425}] & {}[\num{0.405}] & {}[\num{0.205}] & {}[\num{0.185}]\\
+Selfish $\times$ Opt-in & \num{-0.017} (\num{0.037}) & \num{-0.028} (\num{0.037}) & \num{-0.010} (\num{0.021}) & \num{-0.012} (\num{0.021})\\
+ & {}[\num{0.645}] & {}[\num{0.448}] & {}[\num{0.632}] & {}[\num{0.557}]\\
+Social Comparison $\times$ Opt-in & \num{-0.001} (\num{0.038}) & \num{-0.009} (\num{0.039}) & \num{-0.036} (\num{0.025}) & \num{-0.039} (\num{0.025})\\
+ & {}[\num{0.972}] & {}[\num{0.807}] & {}[\num{0.142}] & {}[\num{0.124}]\\
+Deadline $\times$ Opt-in & \num{0.029} (\num{0.031}) & \num{0.030} (\num{0.031}) & \num{0.008} (\num{0.016}) & \num{0.008} (\num{0.016})\\
+ & {}[\num{0.353}] & {}[\num{0.344}] & {}[\num{0.607}] & {}[\num{0.630}]\\
+Convenient $\times$ Opt-in & \num{-0.004} (\num{0.035}) & \num{-0.005} (\num{0.035}) & \num{-0.015} (\num{0.020}) & \num{-0.017} (\num{0.020})\\
+ & {}[\num{0.903}] & {}[\num{0.877}] & {}[\num{0.458}] & {}[\num{0.387}]\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Linear combination test: Treatment + Opt-in $\times$ Treatment}}\\
-\hspace{1em}Altruistic (Opt-in incentive) & \num{0.012} & \num{0.013} & \num{0.001} & \num{0.001}\\
-\hspace{1em} & (\num{0.012}) & (\num{0.013}) & (\num{0.007}) & (\num{0.007})\\
-\hspace{1em}Selfish (Opt-in incentive) & \num{0.006} & \num{0.004} & \num{0.000} & \num{0.001}\\
-\hspace{1em} & (\num{0.011}) & (\num{0.011}) & (\num{0.007}) & (\num{0.007})\\
-\hspace{1em}Social Comparison (Opt-in incentive) & \num{0.019} & \num{0.019} & \num{-0.005} & \num{-0.004}\\
-\hspace{1em} & (\num{0.013}) & (\num{0.013}) & (\num{0.005}) & (\num{0.005})\\
-\hspace{1em}Deadline (Opt-in incentive) & \num{0.004} & \num{0.006} & \num{0.000} & \num{0.001}\\
-\hspace{1em} & (\num{0.010}) & (\num{0.010}) & (\num{0.006}) & (\num{0.007})\\
-\hspace{1em}Convenient (Opt-in incentive) & \num{0.001} & \num{0.004} & \num{-0.005} & \num{-0.005}\\
-\hspace{1em} & (\num{0.010}) & (\num{0.010}) & (\num{0.005}) & (\num{0.005})\\
+\hspace{1em}Altruistic (Opt-in incentive) & \num{0.012} (\num{0.012}) & \num{0.013} (\num{0.013}) & \num{0.001} (\num{0.007}) & \num{0.001} (\num{0.007})\\
+\hspace{1em} & {}[\num{0.339}] & {}[\num{0.288}] & {}[\num{0.928}] & {}[\num{0.941}]\\
+\hspace{1em}Selfish (Opt-in incentive) & \num{0.006} (\num{0.011}) & \num{0.004} (\num{0.011}) & \num{0.000} (\num{0.007}) & \num{0.001} (\num{0.007})\\
+\hspace{1em} & {}[\num{0.599}] & {}[\num{0.715}] & {}[\num{0.959}] & {}[\num{0.851}]\\
+\hspace{1em}Social Comparison (Opt-in incentive) & \num{0.019} (\num{0.013}) & \num{0.019} (\num{0.013}) & \num{-0.005} (\num{0.005}) & \num{-0.004} (\num{0.005})\\
+\hspace{1em} & {}[\num{0.151}] & {}[\num{0.167}] & {}[\num{0.318}] & {}[\num{0.412}]\\
+\hspace{1em}Deadline (Opt-in incentive) & \num{0.004} (\num{0.010}) & \num{0.006} (\num{0.010}) & \num{0.000} (\num{0.006}) & \num{0.001} (\num{0.007})\\
+\hspace{1em} & {}[\num{0.679}] & {}[\num{0.570}] & {}[\num{0.982}] & {}[\num{0.917}]\\
+\hspace{1em}Convenient (Opt-in incentive) & \num{0.001} (\num{0.010}) & \num{0.004} (\num{0.010}) & \num{-0.005} (\num{0.005}) & \num{-0.005} (\num{0.005})\\
+\hspace{1em} & {}[\num{0.950}] & {}[\num{0.684}] & {}[\num{0.318}] & {}[\num{0.339}]\\
 \midrule
 Covariates &  & X &  & X\\
 Num.Obs. & \num{1937} & \num{1937} & \num{1937} & \num{1937}\\

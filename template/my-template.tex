@@ -1,6 +1,8 @@
 \documentclass[
   % lualatex,
-  11pt,
+  $if(fontsize)$
+    $fontsize$,
+  $endif$
   a4paper
 ]{article}
 
@@ -58,16 +60,27 @@ $endif$
 $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
-\author{$for(author)$$author.name$$if(author.note)$\thanks{$author.note$}$endif$ \and $endfor$}
+$for(author)$
+\author[$author.inst-id$]{$author.name$$if(author.note)$\thanks{$author.note$}$endif$}
+$endfor$
+$for(inst)$
+\affil[$inst.id$]{$inst.name$}
+$endfor$
 \date{$date$}
 
+\makeatletter
+\let\@fnsymbol\@arabic
+\makeatother
+
 \begin{document}
+\begin{spacing}{1}
 \maketitle
 $if(abstract)$
 \begin{abstract}
 $abstract$
 \end{abstract}
 $endif$
+\end{spacing}
 
 $for(include-before)$
 $include-before$
@@ -86,6 +99,7 @@ $endif$
 }
 $endif$
 
+\setcounter{footnote}{0}
 $body$
 
 \clearpage

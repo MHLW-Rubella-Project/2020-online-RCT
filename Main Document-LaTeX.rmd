@@ -24,7 +24,7 @@ inst:
     name: Graduate School of Economics, Osaka University, 1-7, Machikaneyama, Toyonaka, Osaka 560-0043, Japan
   - id: b
     name: Center for Infectious Disease Education and Research (CiDER), Osaka University, Osaka, Japan
-biblio-style: newapa.bst
+biblio-style: agsm
 bibliography: text-message-2020RCT.bib
 output:
   bookdown::pdf_document2:

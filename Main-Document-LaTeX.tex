@@ -61,16 +61,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\usepackage{siunitx}
-
-  \newcolumntype{d}{S[
-    input-open-uncertainty=,
-    input-close-uncertainty=,
-    parse-numbers = false,
-    table-align-text-pre=false,
-    table-align-text-post=false
-  ]}
-  
 
 % ------------------------------ paper information
 \title{Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella}
@@ -248,13 +238,13 @@ The participants' observable characteristics are balanced across the experimenta
 \subsubsection{Difference-in-mean Test}\label{difference-in-mean-test}}
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-int-test-1} \caption{Effect of the Text Message Reminders on the Intention to Undertake Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-test}
+\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-int-test-1} \caption{Effect of the Text Message Reminders on the Intention to Undertake Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. P-values of t-tests for the difference-in-mean are in square brackets.}\label{fig:ttest-int-test}
 \end{figure}
 
 Figure \ref{fig:ttest-int-test} shows the intention to undertake antibody testing, which is our primary outcome, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In the \emph{default incentive} group, the Altruistic message increases the intention to undertake antibody testing by a statistically significant \(14.3\) pp compared with the MHLW (Control) message (\(35.1\)\% in the Altruistic message group versus \(20.8\)\% in the MHLW (Control) message group). On the contrary , in the \emph{opt-in incentive} group, the Altruistic message increases the intention to undertake antibody testing by \(5.3\) pp, which is not statistically significant (\(32.9\)\% in the Altruistic message group versus \(27.6\)\% in the MHLW (Control) message group).\footnote{These results are robust to an alternative statistical test (Fisher's exact test). See Table C4 in the Supplementary Material C.} The effect of the Altruistic message could differ between the two groups, as the subsequent regression analysis also suggests.
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-int-vacc-1} \caption{Effect of the Text Message Reminders on the Intention to be Vaccinated. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-int-vacc}
+\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-int-vacc-1} \caption{Effect of the Text Message Reminders on the Intention to be Vaccinated. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. P-values of t-tests for the difference-in-mean are in square brackets.}\label{fig:ttest-int-vacc}
 \end{figure}
 
 Figure \ref{fig:ttest-int-vacc} depicts the intention to be vaccinated, which is our secondary outcome, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). In both incentive groups, most of the text message reminders, including the Altruistic message, do not statistically significantly increase the intention to be vaccinated compared with MHLW (Control). In the \emph{opt-in incentive} group, the Social Comparison message may lower the intention to be vaccinated compared with the MHLW (Control) message (\(44.6\)\% in the Social Comparison message group versus \(52.8\)\% in the MHLW (Control) message group).\footnote{Free-riding may explain why the Social Comparison message does not increase the intention to be vaccinated. The Social Comparison message emphasizes that ``one in five people do not have antibodies.'' Conversely, four out of five individuals have antibodies. The readers of such a message may have believed that even if they lacked rubella antibodies, the likelihood of infection would be low because 80\% of the population possesses them. When eligible men were required to undergo costly procedures to receive free vouchers, this belief may have made vaccination less beneficial.}
@@ -285,54 +275,54 @@ where \(\text{Message}_j\) is a treatment dummy (the reference group is MHLW (Co
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-MHLW (Age) & \num{0.021} & \num{0.038} & \num{0.020} & \num{0.049}\\
- & (\num{0.051}) & (\num{0.048}) & (\num{0.061}) & (\num{0.058})\\
-Altruistic & \num{0.144}*** & \num{0.161}*** & \num{0.024} & \num{0.048}\\
- & (\num{0.053}) & (\num{0.050}) & (\num{0.060}) & (\num{0.057})\\
-Selfish & \num{0.073} & \num{0.115}** & \num{0.039} & \num{0.091}\\
- & (\num{0.053}) & (\num{0.050}) & (\num{0.061}) & (\num{0.057})\\
-Social Comparison & \num{0.040} & \num{0.075} & \num{0.014} & \num{0.052}\\
- & (\num{0.053}) & (\num{0.050}) & (\num{0.063}) & (\num{0.058})\\
-Deadline & \num{0.031} & \num{0.041} & \num{-0.010} & \num{0.010}\\
- & (\num{0.051}) & (\num{0.048}) & (\num{0.060}) & (\num{0.057})\\
-Convenient & \num{0.052} & \num{0.060} & \num{0.018} & \num{0.034}\\
- & (\num{0.053}) & (\num{0.050}) & (\num{0.062}) & (\num{0.058})\\
-Opt-in & \num{0.068} & \num{0.083}* & \num{0.113}** & \num{0.081}\\
- & (\num{0.046}) & (\num{0.050}) & (\num{0.054}) & (\num{0.059})\\
-MHLW (Age) $\times$ Opt-in & \num{-0.045} & \num{-0.078} & \num{-0.086} & \num{-0.132}*\\
- & (\num{0.065}) & (\num{0.061}) & (\num{0.076}) & (\num{0.071})\\
-Altruistic $\times$ Opt-in & \num{-0.091} & \num{-0.120}* & \num{-0.052} & \num{-0.091}\\
- & (\num{0.068}) & (\num{0.064}) & (\num{0.075}) & (\num{0.071})\\
-Selfish $\times$ Opt-in & \num{-0.031} & \num{-0.098} & \num{-0.067} & \num{-0.143}**\\
- & (\num{0.068}) & (\num{0.063}) & (\num{0.077}) & (\num{0.072})\\
-Social Comparison $\times$ Opt-in & \num{-0.077} & \num{-0.124}** & \num{-0.096} & \num{-0.141}**\\
- & (\num{0.066}) & (\num{0.062}) & (\num{0.077}) & (\num{0.072})\\
-Deadline $\times$ Opt-in & \num{-0.003} & \num{-0.012} & \num{-0.018} & \num{-0.033}\\
- & (\num{0.065}) & (\num{0.062}) & (\num{0.075}) & (\num{0.071})\\
-Convenient $\times$ Opt-in & \num{0.011} & \num{-0.001} & \num{-0.048} & \num{-0.062}\\
- & (\num{0.067}) & (\num{0.064}) & (\num{0.077}) & (\num{0.071})\\
+MHLW (Age) & $0.021$ ($0.051$) & $0.038$ ($0.048$) & $0.020$ ($0.061$) & $0.049$ ($0.058$)\\
+ & {}[$0.678$] & {}[$0.437$] & {}[$0.748$] & {}[$0.391$]\\
+Altruistic & $0.144$ ($0.053$) & $0.161$ ($0.050$) & $0.024$ ($0.060$) & $0.048$ ($0.057$)\\
+ & {}[$0.007$] & {}[$0.001$] & {}[$0.690$] & {}[$0.395$]\\
+Selfish & $0.073$ ($0.053$) & $0.115$ ($0.050$) & $0.039$ ($0.061$) & $0.091$ ($0.057$)\\
+ & {}[$0.171$] & {}[$0.021$] & {}[$0.523$] & {}[$0.113$]\\
+Social Comparison & $0.040$ ($0.053$) & $0.075$ ($0.050$) & $0.014$ ($0.063$) & $0.052$ ($0.058$)\\
+ & {}[$0.449$] & {}[$0.133$] & {}[$0.818$] & {}[$0.374$]\\
+Deadline & $0.031$ ($0.051$) & $0.041$ ($0.048$) & $-0.010$ ($0.060$) & $0.010$ ($0.057$)\\
+ & {}[$0.537$] & {}[$0.391$] & {}[$0.874$] & {}[$0.864$]\\
+Convenient & $0.052$ ($0.053$) & $0.060$ ($0.050$) & $0.018$ ($0.062$) & $0.034$ ($0.058$)\\
+ & {}[$0.324$] & {}[$0.227$] & {}[$0.775$] & {}[$0.560$]\\
+Opt-in & $0.068$ ($0.046$) & $0.083$ ($0.050$) & $0.113$ ($0.054$) & $0.081$ ($0.059$)\\
+ & {}[$0.134$] & {}[$0.098$] & {}[$0.036$] & {}[$0.167$]\\
+MHLW (Age) $\times$ Opt-in & $-0.045$ ($0.065$) & $-0.078$ ($0.061$) & $-0.086$ ($0.076$) & $-0.132$ ($0.071$)\\
+ & {}[$0.487$] & {}[$0.202$] & {}[$0.262$] & {}[$0.062$]\\
+Altruistic $\times$ Opt-in & $-0.091$ ($0.068$) & $-0.120$ ($0.064$) & $-0.052$ ($0.075$) & $-0.091$ ($0.071$)\\
+ & {}[$0.180$] & {}[$0.063$] & {}[$0.490$] & {}[$0.200$]\\
+Selfish $\times$ Opt-in & $-0.031$ ($0.068$) & $-0.098$ ($0.063$) & $-0.067$ ($0.077$) & $-0.143$ ($0.072$)\\
+ & {}[$0.644$] & {}[$0.121$] & {}[$0.380$] & {}[$0.046$]\\
+Social Comparison $\times$ Opt-in & $-0.077$ ($0.066$) & $-0.124$ ($0.062$) & $-0.096$ ($0.077$) & $-0.141$ ($0.072$)\\
+ & {}[$0.242$] & {}[$0.047$] & {}[$0.211$] & {}[$0.050$]\\
+Deadline $\times$ Opt-in & $-0.003$ ($0.065$) & $-0.012$ ($0.062$) & $-0.018$ ($0.075$) & $-0.033$ ($0.071$)\\
+ & {}[$0.969$] & {}[$0.851$] & {}[$0.807$] & {}[$0.640$]\\
+Convenient $\times$ Opt-in & $0.011$ ($0.067$) & $-0.001$ ($0.064$) & $-0.048$ ($0.077$) & $-0.062$ ($0.071$)\\
+ & {}[$0.873$] & {}[$0.991$] & {}[$0.533$] & {}[$0.385$]\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Linear combination test: Treatment + Opt-in $\times$ Treatment}}\\
-\hspace{1em}MHLW (Age) (Opt-in incentive) & \num{-0.024} & \num{-0.040} & \num{-0.066} & \num{-0.083}**\\
-\hspace{1em} & (\num{0.040}) & (\num{0.037}) & (\num{0.045}) & (\num{0.041})\\
-\hspace{1em}Altruistic (Opt-in incentive) & \num{0.053} & \num{0.041} & \num{-0.028} & \num{-0.043}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.041}) & (\num{0.046}) & (\num{0.043})\\
-\hspace{1em}Selfish (Opt-in incentive) & \num{0.041} & \num{0.017} & \num{-0.028} & \num{-0.053}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.039}) & (\num{0.046}) & (\num{0.043})\\
-\hspace{1em}Social Comparison (Opt-in incentive) & \num{-0.037} & \num{-0.049} & \num{-0.082}* & \num{-0.089}**\\
-\hspace{1em} & (\num{0.039}) & (\num{0.037}) & (\num{0.045}) & (\num{0.041})\\
-\hspace{1em}Deadline (Opt-in incentive) & \num{0.029} & \num{0.029} & \num{-0.028} & \num{-0.023}\\
-\hspace{1em} & (\num{0.041}) & (\num{0.039}) & (\num{0.045}) & (\num{0.042})\\
-\hspace{1em}Convenient (Opt-in incentive) & \num{0.063} & \num{0.060} & \num{-0.030} & \num{-0.028}\\
-\hspace{1em} & (\num{0.042}) & (\num{0.040}) & (\num{0.045}) & (\num{0.042})\\
+\hspace{1em}MHLW (Age) (Opt-in incentive) & $-0.024$ ($0.040$) & $-0.040$ ($0.037$) & $-0.066$ ($0.045$) & $-0.083$ ($0.041$)\\
+\hspace{1em} & {}[$0.550$] & {}[$0.277$] & {}[$0.146$] & {}[$0.045$]\\
+\hspace{1em}Altruistic (Opt-in incentive) & $0.053$ ($0.042$) & $0.041$ ($0.041$) & $-0.028$ ($0.046$) & $-0.043$ ($0.043$)\\
+\hspace{1em} & {}[$0.205$] & {}[$0.311$] & {}[$0.539$] & {}[$0.315$]\\
+\hspace{1em}Selfish (Opt-in incentive) & $0.041$ ($0.042$) & $0.017$ ($0.039$) & $-0.028$ ($0.046$) & $-0.053$ ($0.043$)\\
+\hspace{1em} & {}[$0.323$] & {}[$0.670$] & {}[$0.541$] & {}[$0.219$]\\
+\hspace{1em}Social Comparison (Opt-in incentive) & $-0.037$ ($0.039$) & $-0.049$ ($0.037$) & $-0.082$ ($0.045$) & $-0.089$ ($0.041$)\\
+\hspace{1em} & {}[$0.345$] & {}[$0.190$] & {}[$0.067$] & {}[$0.032$]\\
+\hspace{1em}Deadline (Opt-in incentive) & $0.029$ ($0.041$) & $0.029$ ($0.039$) & $-0.028$ ($0.045$) & $-0.023$ ($0.042$)\\
+\hspace{1em} & {}[$0.480$] & {}[$0.453$] & {}[$0.534$] & {}[$0.578$]\\
+\hspace{1em}Convenient (Opt-in incentive) & $0.063$ ($0.042$) & $0.060$ ($0.040$) & $-0.030$ ($0.045$) & $-0.028$ ($0.042$)\\
+\hspace{1em} & {}[$0.132$] & {}[$0.133$] & {}[$0.507$] & {}[$0.499$]\\
 \midrule
 Covariates &  & X &  & X\\
-Num.Obs. & \num{2615} & \num{2615} & \num{2615} & \num{2615}\\
-R2 & \num{0.009} & \num{0.109} & \num{0.005} & \num{0.128}\\
+Num.Obs. & $2615$ & $2615$ & $2615$ & $2615$\\
+R2 & $0.009$ & $0.109$ & $0.005$ & $0.128$\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
+\item Notes: Robust standard errors are in parentheses. P-values are in square brackets. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -348,7 +338,7 @@ Since a few respondents dropped out between waves 1 and 2, We again test a balan
 \subsubsection{Difference-in-mean Test}\label{difference-in-mean-test-1}}
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-act-test-1} \caption{Effect of the Text Message Reminders on the Actual Uptake of Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-test}
+\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-act-test-1} \caption{Effect of the Text Message Reminders on the Actual Uptake of Antibody Testing. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. P-values of t-tests for the difference-in-mean are in square brackets.}\label{fig:ttest-act-test}
 \end{figure}
 
 Figure \ref{fig:ttest-act-test} shows the actual uptake of antibody testing, which is our primary outcome for behavior, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B). As in the intention case, the Altruistic message statistically significantly increases the actual uptake of antibody testing compared with the MHLW (Control) message by \(7.4\) pp in the \emph{default incentive} group (\(10.9\)\% in the Altruistic message group versus \(3.5\)\% in the MHLW (Control) message group). On the contray, in the \emph{opt-in incentive} group, the Altrustic message does not affect the actual uptake of antibody testing.\footnote{These results are robust to an alternative statistical test (Fisher's exact test). See Table C7 in the Supplementary Material C.} The effect of the Altrustic message could differ as the subsequent regression analysis also suggests.
@@ -356,7 +346,7 @@ Figure \ref{fig:ttest-act-test} shows the actual uptake of antibody testing, whi
 The Selfish message may boost the actual uptake of antibody testing in the \emph{default incentive} group by \(5.5\) pp (9\% in the Selfish message group versus \(3.5\)\% in the MHLW (Control) message group).\footnote{This result is not robust to alternative statistical test (Fisher's exact test). See Table C7 in Supplementary Material C.} Moreover, the Social Comparison message may also increase the actual uptake of antibody testing in the \emph{opt-in incentive} group (\(4.9\)\% in the Social Comparison message group versus \(3.5\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.
 
 \begin{figure}[t]
-\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-act-vacc-1} \caption{Effect of the Text Message Reminders on Vaccination Rates. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. Asterisks are p-values of t-tests for the difference-in-mean: * $p < 0.1$, ** $p < 0.05$, *** $p < 0.01$.}\label{fig:ttest-act-vacc}
+\includegraphics{Main-Document-LaTeX_files/figure-latex/ttest-act-vacc-1} \caption{Effect of the Text Message Reminders on Vaccination Rates. Notes: Numbers in the figure indicate the proportion of each experimental arm. Error bars indicate the standard error of the mean. P-values of t-tests for the difference-in-mean are in square brackets.}\label{fig:ttest-act-vacc}
 \end{figure}
 
 Figure \ref{fig:ttest-act-vacc} shows the vaccination rates, which is our secondary outcome for behavior, in each experimental arm for the \emph{default incentive} group (Panel A) and \emph{opt-in incentive} group (Panel B).\footnote{Vaccination is a dummy variable coded 1 if the respondents were both tested and vaccinated. Thus, the vaccination rate can be regarded as the proportion of newly acquired antibodies through vaccination. This outcome variable matches the MHLW's policy goal.} In the \emph{default incentive} group, the Altruistic message may increase the vaccination rate by \(3.8\) pp (\(4.7\)\% in the Altruistic message group versus \(0.9\)\% in the MHLW (Control) message group). In the same group, the Social Comparison message may also increase vaccination rate by 4 pp (\(4.9\)\% in the Social Comparison message group versus \(0.9\)\% in the MHLW (Control) message group). These effects are statistically significant at the 10\% level.\footnote{These results are not robust to alternative statistical test (Fisher's exact test). See Table C7 in Supplementary Material C.}
@@ -376,54 +366,54 @@ Figure \ref{fig:ttest-act-vacc} shows the vaccination rates, which is our second
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & (1) & (2) & (3) & (4)\\
 \midrule
-MHLW (Age) & \num{0.032} & \num{0.028} & \num{0.008} & \num{0.005}\\
- & (\num{0.029}) & (\num{0.028}) & (\num{0.015}) & (\num{0.015})\\
-Altruistic & \num{0.075}** & \num{0.072}** & \num{0.038}* & \num{0.037}*\\
- & (\num{0.033}) & (\num{0.032}) & (\num{0.021}) & (\num{0.020})\\
-Selfish & \num{0.055}* & \num{0.060}* & \num{0.018} & \num{0.018}\\
- & (\num{0.032}) & (\num{0.032}) & (\num{0.018}) & (\num{0.017})\\
-Social Comparison & \num{0.053} & \num{0.056}* & \num{0.040}* & \num{0.039}*\\
- & (\num{0.033}) & (\num{0.033}) & (\num{0.023}) & (\num{0.023})\\
-Deadline & \num{0.008} & \num{0.005} & \num{0.000} & \num{-0.002}\\
- & (\num{0.025}) & (\num{0.025}) & (\num{0.012}) & (\num{0.012})\\
-Convenient & \num{0.037} & \num{0.037} & \num{0.018} & \num{0.017}\\
- & (\num{0.030}) & (\num{0.030}) & (\num{0.018}) & (\num{0.018})\\
-Opt-in & \num{-0.030}* & \num{-0.019} & \num{-0.009} & \num{-0.004}\\
- & (\num{0.018}) & (\num{0.020}) & (\num{0.009}) & (\num{0.012})\\
-MHLW (Age) $\times$ Opt-in & \num{-0.028} & \num{-0.026} & \num{-0.003} & \num{-0.001}\\
- & (\num{0.030}) & (\num{0.030}) & (\num{0.015}) & (\num{0.016})\\
-Altruistic $\times$ Opt-in & \num{-0.058}* & \num{-0.057}* & \num{-0.033} & \num{-0.032}\\
- & (\num{0.034}) & (\num{0.034}) & (\num{0.021}) & (\num{0.021})\\
-Selfish $\times$ Opt-in & \num{-0.045} & \num{-0.054} & \num{-0.013} & \num{-0.013}\\
- & (\num{0.034}) & (\num{0.033}) & (\num{0.018}) & (\num{0.018})\\
-Social Comparison $\times$ Opt-in & \num{-0.029} & \num{-0.034} & \num{-0.040}* & \num{-0.039}*\\
- & (\num{0.035}) & (\num{0.035}) & (\num{0.023}) & (\num{0.023})\\
-Deadline $\times$ Opt-in & \num{0.001} & \num{0.004} & \num{0.005} & \num{0.007}\\
- & (\num{0.027}) & (\num{0.026}) & (\num{0.013}) & (\num{0.013})\\
-Convenient $\times$ Opt-in & \num{-0.032} & \num{-0.031} & \num{-0.018} & \num{-0.018}\\
- & (\num{0.031}) & (\num{0.031}) & (\num{0.018}) & (\num{0.018})\\
+MHLW (Age) & $0.032$ ($0.029$) & $0.028$ ($0.028$) & $0.008$ ($0.015$) & $0.005$ ($0.015$)\\
+ & {}[$0.258$] & {}[$0.319$] & {}[$0.580$] & {}[$0.734$]\\
+Altruistic & $0.075$ ($0.033$) & $0.072$ ($0.032$) & $0.038$ ($0.021$) & $0.037$ ($0.020$)\\
+ & {}[$0.022$] & {}[$0.024$] & {}[$0.065$] & {}[$0.074$]\\
+Selfish & $0.055$ ($0.032$) & $0.060$ ($0.032$) & $0.018$ ($0.018$) & $0.018$ ($0.017$)\\
+ & {}[$0.086$] & {}[$0.057$] & {}[$0.301$] & {}[$0.300$]\\
+Social Comparison & $0.053$ ($0.033$) & $0.056$ ($0.033$) & $0.040$ ($0.023$) & $0.039$ ($0.023$)\\
+ & {}[$0.108$] & {}[$0.087$] & {}[$0.083$] & {}[$0.087$]\\
+Deadline & $0.008$ ($0.025$) & $0.005$ ($0.025$) & $0.000$ ($0.012$) & $-0.002$ ($0.012$)\\
+ & {}[$0.764$] & {}[$0.855$] & {}[$0.985$] & {}[$0.862$]\\
+Convenient & $0.037$ ($0.030$) & $0.037$ ($0.030$) & $0.018$ ($0.018$) & $0.017$ ($0.018$)\\
+ & {}[$0.214$] & {}[$0.209$] & {}[$0.301$] & {}[$0.325$]\\
+Opt-in & $-0.030$ ($0.018$) & $-0.019$ ($0.020$) & $-0.009$ ($0.009$) & $-0.004$ ($0.012$)\\
+ & {}[$0.088$] & {}[$0.352$] & {}[$0.317$] & {}[$0.760$]\\
+MHLW (Age) $\times$ Opt-in & $-0.028$ ($0.030$) & $-0.026$ ($0.030$) & $-0.003$ ($0.015$) & $-0.001$ ($0.016$)\\
+ & {}[$0.352$] & {}[$0.389$] & {}[$0.821$] & {}[$0.955$]\\
+Altruistic $\times$ Opt-in & $-0.058$ ($0.034$) & $-0.057$ ($0.034$) & $-0.033$ ($0.021$) & $-0.032$ ($0.021$)\\
+ & {}[$0.092$] & {}[$0.097$] & {}[$0.123$] & {}[$0.136$]\\
+Selfish $\times$ Opt-in & $-0.045$ ($0.034$) & $-0.054$ ($0.033$) & $-0.013$ ($0.018$) & $-0.013$ ($0.018$)\\
+ & {}[$0.182$] & {}[$0.107$] & {}[$0.468$] & {}[$0.494$]\\
+Social Comparison $\times$ Opt-in & $-0.029$ ($0.035$) & $-0.034$ ($0.035$) & $-0.040$ ($0.023$) & $-0.039$ ($0.023$)\\
+ & {}[$0.405$] & {}[$0.331$] & {}[$0.083$] & {}[$0.093$]\\
+Deadline $\times$ Opt-in & $0.001$ ($0.027$) & $0.004$ ($0.026$) & $0.005$ ($0.013$) & $0.007$ ($0.013$)\\
+ & {}[$0.961$] & {}[$0.886$] & {}[$0.716$] & {}[$0.594$]\\
+Convenient $\times$ Opt-in & $-0.032$ ($0.031$) & $-0.031$ ($0.031$) & $-0.018$ ($0.018$) & $-0.018$ ($0.018$)\\
+ & {}[$0.304$] & {}[$0.319$] & {}[$0.301$] & {}[$0.317$]\\
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Linear combination test: Treatment + Opt-in $\times$ Treatment}}\\
-\hspace{1em}MHLW (Age) (Opt-in incentive) & \num{0.005} & \num{0.003} & \num{0.005} & \num{0.004}\\
-\hspace{1em} & (\num{0.008}) & (\num{0.009}) & (\num{0.005}) & (\num{0.005})\\
-\hspace{1em}Altruistic (Opt-in incentive) & \num{0.017} & \num{0.016} & \num{0.005} & \num{0.005}\\
-\hspace{1em} & (\num{0.011}) & (\num{0.011}) & (\num{0.005}) & (\num{0.005})\\
-\hspace{1em}Selfish (Opt-in incentive) & \num{0.010} & \num{0.007} & \num{0.005} & \num{0.005}\\
-\hspace{1em} & (\num{0.010}) & (\num{0.010}) & (\num{0.005}) & (\num{0.005})\\
-\hspace{1em}Social Comparison (Opt-in incentive) & \num{0.023}* & \num{0.021}* & \num{0.000} & \num{0.000}\\
-\hspace{1em} & (\num{0.012}) & (\num{0.013}) &  & (\num{0.001})\\
-\hspace{1em}Deadline (Opt-in incentive) & \num{0.009} & \num{0.008} & \num{0.004} & \num{0.005}\\
-\hspace{1em} & (\num{0.009}) & (\num{0.009}) & (\num{0.004}) & (\num{0.005})\\
-\hspace{1em}Convenient (Opt-in incentive) & \num{0.005} & \num{0.007} & \num{0.000} & \num{0.000}\\
-\hspace{1em} & (\num{0.008}) & (\num{0.009}) & (\num{0.000}) & (\num{0.001})\\
+\hspace{1em}MHLW (Age) (Opt-in incentive) & $0.005$ ($0.008$) & $0.003$ ($0.009$) & $0.005$ ($0.005$) & $0.004$ ($0.005$)\\
+\hspace{1em} & {}[$0.554$] & {}[$0.760$] & {}[$0.318$] & {}[$0.393$]\\
+\hspace{1em}Altruistic (Opt-in incentive) & $0.017$ ($0.011$) & $0.016$ ($0.011$) & $0.005$ ($0.005$) & $0.005$ ($0.005$)\\
+\hspace{1em} & {}[$0.148$] & {}[$0.166$] & {}[$0.318$] & {}[$0.375$]\\
+\hspace{1em}Selfish (Opt-in incentive) & $0.010$ ($0.010$) & $0.007$ ($0.010$) & $0.005$ ($0.005$) & $0.005$ ($0.005$)\\
+\hspace{1em} & {}[$0.285$] & {}[$0.517$] & {}[$0.318$] & {}[$0.301$]\\
+\hspace{1em}Social Comparison (Opt-in incentive) & $0.023$ ($0.012$) & $0.021$ ($0.013$) & $0.000$ ($$) & $0.000$ ($0.001$)\\
+\hspace{1em} & {}[$0.054$] & {}[$0.092$] & {}[$NA$] & {}[$0.865$]\\
+\hspace{1em}Deadline (Opt-in incentive) & $0.009$ ($0.009$) & $0.008$ ($0.009$) & $0.004$ ($0.004$) & $0.005$ ($0.005$)\\
+\hspace{1em} & {}[$0.321$] & {}[$0.363$] & {}[$0.318$] & {}[$0.312$]\\
+\hspace{1em}Convenient (Opt-in incentive) & $0.005$ ($0.008$) & $0.007$ ($0.009$) & $0.000$ ($0.000$) & $0.000$ ($0.001$)\\
+\hspace{1em} & {}[$0.523$] & {}[$0.457$] & {}[$1.000$] & {}[$0.796$]\\
 \midrule
 Covariates &  & X &  & X\\
-Num.Obs. & \num{2272} & \num{2272} & \num{2272} & \num{2272}\\
-R2 & \num{0.030} & \num{0.047} & \num{0.019} & \num{0.029}\\
+Num.Obs. & $2272$ & $2272$ & $2272$ & $2272$\\
+R2 & $0.030$ & $0.047$ & $0.019$ & $0.029$\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes: * $p < 0.1$; ** $p < 0.05$; *** $p < 0.01$. Robust standard errors are in parentheses. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
+\item Notes: Robust standard errors are in parentheses. P-values are in square brackets. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

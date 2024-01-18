@@ -189,18 +189,16 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         mutate(
           nudge = factor(nudge, labels = private$treat_labels),
           coupon2019 = factor(coupon2019, levels = c(1, 0), labels = coupon2019_labels),
-          label = case_when(
-            p <= 0.01 ~ sprintf("%1.1f%%***", mu),
-            p <= 0.05 ~ sprintf("%1.1f%%**", mu),
-            p <= 0.1 ~ sprintf("%1.1f%%*", mu),
-            TRUE ~ sprintf("%1.1f%%", mu)
-          )
+          mu_label = sprintf("%1.1f%%", mu),
+          p_label = sprintf("[p=%1.3f]", p),
+          p_label = if_else(p_label == "[p=0.000]", "[p<0.001]", p_label),
+          label = paste(mu_label, p_label)
         )
-      
+
       if (outcome_intention == FALSE & outcome_test == TRUE) {
         private$ttest_for_value <- subset(plot_data, coupon2019 == levels(plot_data$coupon2019)[1])
       }
-      
+
       plot_data %>%
         ggplot(aes(x = fct_rev(nudge), y = mu, ymin = mu - se, ymax = mu + se)) +
         geom_hline(aes(yintercept = 0)) +

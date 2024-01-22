@@ -1,37 +1,22 @@
----
-title: Description of Data and Codes
-author: Hiroki Kato
-output:
-  bookdown::pdf_document2:
-    latex_engine: pdflatex
-    keep_tex: false
-    toc: false
-base-strech: 1.5
-fontsize: 12pt
----
+# 2020-online-RCT
 
-# Folder Structure
+This repository provides data and code to reproduce findings of papers: "Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella"
 
-Figures and tables and the manuscript were prepared in Rmarkdown. All codes to output figures and tables are in `Main Document-LaTeX.rmd` (main manuscript) and `Supplementary Material.rmd` (supplementary material). The analysis and other internal codes are in the `R` folder. The data used for the analysis are in the `data` folder. You can try all the codes in `Main Document-LaTeX.rmd` by placing them in the folder structure as shown below.
+# Structure
 
-```
-C:.
-|  Main Document-LaTeX.rmd
-|  Supplementary Material.rmd
-|
-|-data
-|     niid_prevalence.csv
-|     nudge_descript.csv
-|     online_survey.csv
-|     vars_descript.csv
-|
-|-R
-      misc.r
-      R6_EstimateEffect.r
-      R6_Mechanism.r
-      R6_MonetaryValue.r
-      R6_Regression.r
-      R6_StartAnalysis.r
+Manuscripts including tables and figures were prepared in [Rmarkdown](https://bookdown.org/yihui/rmarkdown-cookbook/).
+
+- All codes to output figures and tables are in `Main Document-LaTeX.rmd` (main manuscript) and `Supplementary Material.rmd` (supplementary material).
+- `R` folder contains analysis and other internal codes.
+- `data` folder contains data used for the analysis.
+
+# Codes
+
+We use object-oriented programming with the [`R6` package](https://r6.r-lib.org/index.html). All R files in the R folder define classes (R6 classes). `misc.r` defines custom functions such as graph templates. Analytical code such as regression analysis is defined as methods of objects. To reproduce, you need to read all the source files in the R folder, using following code.
+
+```r
+library(here)
+source(here("R/R6_StartAnalysis.r"))
 ```
 
 # Data
@@ -93,12 +78,3 @@ C:.
 - `aw1_testvaccine`: (Wave 2) Dummy variable taking one if `act_test = 1` and `act_vaccine = 1` (Respondents had undertaken antibody testing and been vaccination Wave 1 and Wave 2).
 - `abw1_testvaccine`: (Wave 2) Dummy variable taking one if `act_test = 1 or 2` and `act_vaccine = 1 or 2` (Respondents had undertaken antibody testing and been vaccination before Wave 2).
 - `follow`: Dummy variable taking one if a respondent participated in Wave 2.
-
-# Codes
-
-We use object-oriented programming with the `R6` package. All R files in the R folder define classes (R6 classes). `misc.r` defines custom functions such as graph templates. Analytical code such as regression analysis is defined as methods of objects. To reproduce, you need to read all the source files in the R folder, using following code.
-
-```r
-library(here)
-source(here("R/R6_StartAnalysis.r"))
-```

@@ -1,2 +1,7 @@
 *.log
+*.docx
+Main-Document-LaTeX.pdf
+Main-Document-LaTeX.tex
+Supplementary-Material.pdf
+Supplementary-Material.tex
 git-worktree/

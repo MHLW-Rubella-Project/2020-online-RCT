@@ -2,7 +2,19 @@
 title: |
   Supplementary Material
   "Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella"
-biblio-style: newapa.bst
+author:
+  - name: Hiroki Kato
+    inst-id: a
+  - name: Shusaku Sasaki
+    inst-id: b
+  - name: Fumio Ohtake
+    inst-id: b
+inst:
+  - id: a
+    name: Graduate School of Economics, Osaka University
+  - id: b
+    name: Center for Infectious Disease Education and Research (CiDER), Osaka University
+biblio-style: agsm
 bibliography: text-message-2020RCT.bib
 output:
   bookdown::pdf_document2:
@@ -55,7 +67,7 @@ ctrl <- c(
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
 )
 
-setup <- StartAnalysis$new(here("data/2020-online-survey/shape_survey.csv"))
+setup <- StartAnalysis$new(here("public/online_survey.csv"))
 setup$add_control(ctrl)
 main <- setup$main()
 ```
@@ -134,7 +146,7 @@ In our framework, $F_0=1-F(0)$, but one potential concern remains. The effect of
 # Tables {#fig-tab}
 
 ```{r covariate-list}
-setup$summary_control(here("assets/vars_descript.csv"))
+setup$summary_control(here("public/vars_descript.csv"))
 ```
 
 ```{r balance-int-default}

@@ -60,6 +60,8 @@ Mechanism <- R6::R6Class("Mechanism",
           title = title,
           coef_map = coef_label,
           stars = c("***" = 0.01, "**" = 0.05, "*" = 0.1),
+          estimate = "{estimate} ({std.error})",
+          statistic = "[{p.value}]",
           gof_omit = "R2 Adj.|AIC|BIC|RMSE|Std.Errors",
           add_rows = addtab,
           escape = FALSE

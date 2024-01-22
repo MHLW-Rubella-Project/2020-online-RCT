@@ -67,7 +67,7 @@ ctrl <- c(
   "handwash", "temp_check", "avoid_out", "avoid_crowd", "wear_mask"
 )
 
-setup <- StartAnalysis$new(here("public/online_survey.csv"))
+setup <- StartAnalysis$new(here("data/online_survey.csv"))
 setup$add_control(ctrl)
 main <- setup$main()
 ```
@@ -146,7 +146,7 @@ In our framework, $F_0=1-F(0)$, but one potential concern remains. The effect of
 # Tables {#fig-tab}
 
 ```{r covariate-list}
-setup$summary_control(here("public/vars_descript.csv"))
+setup$summary_control(here("data/vars_descript.csv"))
 ```
 
 ```{r balance-int-default}

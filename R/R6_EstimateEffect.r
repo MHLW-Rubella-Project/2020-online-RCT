@@ -604,7 +604,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
 
       # Multiple hypothesis
       nh <- numy * numg * numpc
-      statsall <- matrix(0, nrow = nh, ncol = 8 + B)
+      statsall <- matrix(0, nrow = nh, ncol = 9 + B)
       counter <- 1
 
       for (i in 1:numy) {
@@ -617,6 +617,7 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
               pc[k, ],
               diff[i, j, k],
               p[i, j, k],
+              stats[i, j, k],
               prev[i, j, k],
               prevboot[, i, j, k]
             )
@@ -625,12 +626,14 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
         }
       }
 
+      statsall <- statsall[!is.nan(statsall[, 8]), ]
+      use_nh <- nrow(statsall)
       statsrank <- statsall[order(statsall[, 7]), ]
       alphamul <- numeric(nh)
 
-      for (i in 1:nh) {
-        maxstats <- apply(statsrank[i:nh, 9:ncol(statsall), drop = FALSE], 2, max)
-        alphamul[i] <- mean(statsrank[i, 8] < maxstats)
+      for (i in 1:use_nh) {
+        maxstats <- apply(statsrank[i:use_nh, 10:ncol(statsall), drop = FALSE], 2, max)
+        alphamul[i] <- mean(statsrank[i, 9] < maxstats)
       }
 
       # Bonferroni correction and Holm correction

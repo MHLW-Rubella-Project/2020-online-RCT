@@ -266,6 +266,139 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           escape = FALSE
         )
     },
+    multiple_h_test = function(
+      outcome_intention = c("int", "behavior", "both"),
+      outcome_test = c("test", "vacc", "both"),
+      remove_bonf = TRUE,
+      remove_holm = TRUE,
+      title = "",
+      notes = "",
+      seed = 120511,
+      B = 3000
+    ) {
+      if (outcome_intention %in% c("behavior", "both")) {
+        data <- private$choose_wave(FALSE)
+      } else if (outcome_intention %in% c("int")) {
+        data <- private$choose_wave()
+      } else {
+        stop('Choose one of c("int", "behavior", "both")')
+      }
+
+      data <- data %>%
+        mutate(
+          nudge = factor(nudge, labels = private$treat_labels),
+          coupon2019 = factor(
+            coupon2019,
+            levels = c(1, 0),
+            labels = c("Default incentive", "Opt-in incentive")
+          )
+        )
+
+      if (outcome_test == "test") {
+        if (outcome_intention == "both") {
+          y <- c("test_int", "outcome_test")
+          ylab <- c("Intention", "Behavior")
+          names(ylab) <- y
+        } else {
+          y <- "outcome_test"
+        }
+      } else if (outcome_test == "vacc") {
+        if (outcome_intention == "both") {
+          y <- c("vaccine_int", "outcome_vacc")
+          ylab <- c("Intention", "Behavior")
+          names(ylab) <- y
+        } else {
+          y <- "outcome_vacc"
+        }
+      } else if (outcome_test == "both") {
+        if (outcome_intention == "both") {
+          y <- c(
+            "test_int", "vaccine_int",
+            "outcome_test", "outcome_vacc"
+          )
+          ylab <- c(
+            "Antibody testing (intention)", "Vaccination (intention)",
+            "Antibody testing (behavior)", "Vaccination (behavior)"
+          )
+          names(ylab) <- y
+        } else {
+          y <- c("outcome_test", "outcome_vacc")
+          ylab <- c("Antibody testing", "Vaccination")
+          names(ylab) <- y
+        }
+      } else {
+        stop('Choose one of c("test", "vacc", "both")')
+      }
+
+      res <- private$mht(
+        data,
+        y,
+        "nudge",
+        "coupon2019",
+        seed,
+        B
+      )
+
+      keep <- c(
+        "Outcome.id", "Subgroup.id", "Treated.id", "Diff", "Single.p",
+        "List.p", "Bonf.p", "Holm.p"
+      )
+      label <- c(
+        "Outcome", "Subgroup", "Treatment", "Effect", "Single",
+        "List", "Bonf", "Holm"
+      )
+      names(label) <- keep
+
+      if (remove_bonf) keep <- keep[which(!(keep %in% "Bonf.p"))]
+      if (remove_holm) keep <- keep[which(!(keep %in% "Holm.p"))]
+      if (length(unique(res[, 2])) == 1) {
+        keep <- keep[which(!(keep %in% "Outcome.id"))]
+      }
+
+      tab <- res[, keep]
+      tab[, "Diff"] <- tab[, "Diff"] * 100
+      if ("Outcome.id" %in% keep) {
+        tab[, "Outcome.id"] <- sapply(
+          tab[, "Outcome.id"],
+          function(x) ylab[names(ylab) == x]
+        )
+      }
+
+      align <- paste0(
+        c(
+          rep("l", sum(str_detect(keep, "id"))),
+          rep("c", sum(!str_detect(keep, "id")))
+        ),
+        collapse = ""
+      )
+
+      colname <- sapply(
+        names(tab),
+        function(x) label[which(x == names(label))]
+      )
+      colname <- unname(colname)
+
+      tab %>%
+        kable(
+          caption = title,
+          col.names = colname,
+          digits = 3,
+          align = align,
+          booktabs = TRUE,
+          linesep = ""
+        ) %>%
+        kable_styling(font_size = 9) %>%
+        add_header_above(c(
+          " " = sum(str_detect(keep, "id")) + 1,
+          "Bootstrap p-values" = sum(!str_detect(keep, "id")) - 1
+        )) %>%
+        kableExtra::footnote(
+          general_title = "",
+          general = notes,
+          threeparttable = TRUE,
+          escape = FALSE
+        )
+    },
     lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
       dta <- private$choose_wave(outcome_intention)
       dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
@@ -331,6 +464,210 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           )
         }) %>%
         reduce(bind_rows)
+    },
+    mht = function(data, Y, D, G = NULL, seed = 120511, B = 3000) {
+      # setup
+      y <- as.matrix(data[, Y])
+      ylab <- 1:length(Y)
+      names(ylab) <- Y
+
+      dcol <- data[, D, drop = TRUE]
+
+      if (class(dcol) == "character") {
+        dlab <- 1:length(unique(dcol))
+        dlab <- dlab - 1
+        names(dlab) <- unique(dcol)
+        dcol <- sapply(dcol, function(x) dlab[names(dlab) == x])
+        dcol <- unname(dcol)
+      } else if (class(dcol) == "factor") {
+        dlab <- 1:length(levels(dcol))
+        dlab <- dlab - 1
+        names(dlab) <- levels(dcol)
+        dcol <- sapply(dcol, function(x) dlab[names(dlab) == x])
+        dcol <- unname(dcol)
+      } else {
+        dlab <- NULL
+      }
+
+      d <- matrix(dcol, ncol = 1)
+
+      if (is.null(G)) {
+        g <- matrix(rep(1, nrow(data)), ncol = 1)
+        glab <- 1
+        names(glab) <- "Full sample"
+      } else {
+        gcol <- data[, G, drop = TRUE]
+
+        if (class(gcol) == "character") {
+          glab <- 1:length(unique(gcol))
+          names(glab) <- unique(gcol)
+          gcol <- sapply(gcol, function(x) glab[names(glab) == x])
+          gcol <- unname(gcol)
+        } else if (class(gcol) == "factor") {
+          glab <- 1:length(levels(gcol))
+          names(glab) <- levels(gcol)
+          gcol <- sapply(gcol, function(x) glab[names(glab) == x])
+          gcol <- unname(gcol)
+        } else {
+          glab <- NULL
+        }
+
+        g <- matrix(gcol, ncol = 1)
+      }
+
+      # combination of pair-wise comparison
+      pc <- t(combn(sort(unique(d)), m = 2))
+      pc <- pc[pc[, 1] == 0, , drop = FALSE]
+
+      # check dimension
+      num <- nrow(y)
+      numy <- ncol(y)
+      numg <- length(unique(g))
+      numd1 <- length(unique(d)) - 1
+      numpc <- nrow(pc)
+
+      # Mean, variance, and sample size
+      mu <- array(0, dim = c(numy, numg, numd1 + 1))
+      v <- array(0, dim = c(numy, numg, numd1 + 1))
+      n <- array(0, dim = c(numy, numg, numd1 + 1))
+
+      for (j in 1:numg) {
+        for (k in 0:numd1) {
+          idx <- which(g == j & d == k)
+          mu[, j, k + 1] <- apply(y[idx, , drop = FALSE], 2, mean)
+          v[, j, k + 1] <- apply(y[idx, , drop = FALSE], 2, var)
+          n[, j, k + 1] <- rep(length(idx), numy)
+        }
+      }
+
+      # Test statistics
+      pc_d0 <- pc[, 1] + 1
+      pc_d1 <- pc[, 2] + 1
+      diff <- mu[, , pc_d1, drop = FALSE] - mu[, , pc_d0, drop = FALSE]
+      v1 <- v[, , pc_d1, drop = FALSE] / n[, , pc_d1, drop = FALSE]
+      v0 <- v[, , pc_d0, drop = FALSE] / n[, , pc_d0, drop = FALSE]
+      absdiff <- abs(diff)
+      stats <- absdiff / sqrt(v1 + v0)
+
+      # bootstrap
+      set.seed(seed)
+      idxboot <- matrix(
+        sample(1:num, num * B, replace = TRUE),
+        nrow = num,
+        ncol = B
+      )
+
+      statsboot <- array(0, dim = c(B, numy, numg, numpc))
+
+      for (i in 1:B) {
+        yboot <- y[idxboot[, i], , drop = FALSE]
+        gboot <- g[idxboot[, i], , drop = FALSE]
+        dboot <- d[idxboot[, i], , drop = FALSE]
+
+        muboot <- array(0, dim = c(numy, numg, numd1 + 1))
+        vboot <- array(0, dim = c(numy, numg, numd1 + 1))
+        nboot <- array(0, dim = c(numy, numg, numd1 + 1))
+
+        for (k in 1:numg) {
+          for (l in 0:numd1) {
+            idx <- which(gboot == k & dboot == l)
+            muboot[, k, l + 1] <- apply(yboot[idx, , drop = FALSE], 2, mean)
+            vboot[, k, l + 1] <- apply(yboot[idx, , drop = FALSE], 2, var)
+            nboot[, k, l + 1] <- rep(length(idx), numy)
+          }
+        }
+
+        diffboot <- muboot[, , pc_d1, drop = FALSE] - muboot[, , pc_d0, drop = FALSE]
+        v1boot <- vboot[, , pc_d1, drop = FALSE] / nboot[, , pc_d1, drop = FALSE]
+        v0boot <- vboot[, , pc_d0, drop = FALSE] / nboot[, , pc_d0, drop = FALSE]
+        statsboot[i, , , ] <- abs(diffboot - diff) / sqrt(v1boot + v0boot)
+      }
+
+      # Single hypothesis test
+      p <- array(0, dim = c(numy, numg, numpc))
+      prev <- array(0, dim = c(numy, numg, numpc))
+      prevboot <- array(0, dim = c(B, numy, numg, numpc))
+
+      for (i in 1:numy) {
+        for (j in 1:numg) {
+          for (k in 1:numpc) {
+            statsboot_sub <- statsboot[, i, j, k]
+            prev[i, j, k] <- mean(statsboot_sub < stats[i, j, k])
+            prevboot[, i, j, k] <- sapply(
+              statsboot_sub,
+              function(x) mean(statsboot_sub < x)
+            )
+            p[i, j, k] <- 1 - prev[i, j, k]
+          }
+        }
+      }
+
+      # Multiple hypothesis
+      nh <- numy * numg * numpc
+      statsall <- matrix(0, nrow = nh, ncol = 8 + B)
+      counter <- 1
+
+      for (i in 1:numy) {
+        for (j in 1:numg) {
+          for (k in 1:numpc) {
+            statsall[counter, ] <- c(
+              counter,
+              i,
+              j,
+              pc[k, ],
+              diff[i, j, k],
+              p[i, j, k],
+              prev[i, j, k],
+              prevboot[, i, j, k]
+            )
+            counter <- counter + 1
+          }
+        }
+      }
+
+      statsrank <- statsall[order(statsall[, 7]), ]
+      alphamul <- numeric(nh)
+
+      for (i in 1:nh) {
+        maxstats <- apply(statsrank[i:nh, 9:ncol(statsall), drop = FALSE], 2, max)
+        alphamul[i] <- mean(statsrank[i, 8] < maxstats)
+      }
+
+      # Bonferroni correction and Holm correction
+      bon <- pmin(statsrank[, 7] * nh, 1)
+      holm <- pmin(statsrank[, 7] * (nh:1), 1)
+
+      # Return results
+      show <- statsrank[, 1:7]
+      show <- cbind(show, alphamul, bon, holm)
+      show <- show[order(show[, 1]), ]
+      colnames(show) <- c(
+        "id",
+        "Outcome id",
+        "Subgroup id",
+        "Control id",
+        "Treated id",
+        "Diff",
+        "Single p",
+        "List p",
+        "Bonf p",
+        "Holm p"
+      )
+
+      show <- data.frame(show)
+
+      show[, 2] <- sapply(show[, 2], function(x) names(which(ylab == x)))
+
+      if (!is.null(glab)) {
+        show[, 3] <- sapply(show[, 3], function(x) names(which(glab == x)))
+      }
+
+      if (!is.null(dlab)) {
+        show[, 4] <- sapply(show[, 4], function(x) names(which(dlab == x)))
+        show[, 5] <- sapply(show[, 5], function(x) names(which(dlab == x)))
+      }
+
+      return(show)
     }
   )
 )

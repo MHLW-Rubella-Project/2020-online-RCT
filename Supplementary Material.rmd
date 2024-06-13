@@ -177,6 +177,22 @@ int <- cache_rds({
 int
 ```
 
+```{r multiple-adjust-test-int}
+main$multiple_h_test(
+  "int", "test",
+  title = "Adjustment of Multiple Testing (Intention of Andibody Testing)",
+  notes = "Notes: The unit of effect is a percentage point."
+)
+```
+
+```{r multiple-adjust-vacc-int}
+main$multiple_h_test(
+  "int", "vacc",
+  title = "Adjustment of Multiple Testing (Intention of Vaccination)",
+  notes = "Notes: The unit of effect is a percentage point."
+)
+```
+
 ```{r balance-act-default}
 main$balance_control(
   outcome_intention = FALSE,
@@ -204,6 +220,22 @@ act <- cache_rds({
 })
 
 act
+```
+
+```{r multiple-adjust-test-act}
+main$multiple_h_test(
+  "behavior", "test",
+  title = "Adjustment of Multiple Testing (Uptake of Andibody Testing)",
+  notes = "Notes: The unit of effect is a percentage point."
+)
+```
+
+```{r multiple-adjust-vacc-act}
+main$multiple_h_test(
+  "behavior", "vacc",
+  title = "Adjustment of Multiple Testing (Vaccination Rates)",
+  notes = "Notes: The unit of effect is a percentage point."
+)
 ```
 
 ```{r reg-int-woA}

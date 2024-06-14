@@ -1,7 +1,7 @@
 *.log
 *.docx
 Main-Document-LaTeX.pdf
-Main-Document-LaTeX.tex
+# Main-Document-LaTeX.tex
 Supplementary-Material.pdf
-Supplementary-Material.tex
+# Supplementary-Material.tex
 git-worktree/

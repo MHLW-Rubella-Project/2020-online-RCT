@@ -399,11 +399,11 @@ EstimateEffect <- R6::R6Class("EstimateEffect",
           escape = FALSE
         )
     },
-    lm = function(outcome_intention = TRUE, exclude_A = FALSE) {
+    lm = function(outcome_intention = TRUE, exclude_A = FALSE, rdd_like = TRUE) {
       dta <- private$choose_wave(outcome_intention)
       dta <- if (!exclude_A) dta else subset(dta, nudge != "A")
       covariate <- private$noNA_control(private$covs, dta)
-      Regression$new(dta, covariate, private$treat_labels)
+      Regression$new(dta, covariate, rdd_like, private$treat_labels)
     },
     monetary_value = function() {
       if (is.null(private$ttest_for_value)) stop("Run ttest(outcome_intention = FALSE)")

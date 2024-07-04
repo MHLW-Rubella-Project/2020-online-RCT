@@ -5,8 +5,13 @@ Regression <- R6::R6Class("Regression",
   public = list(
     reg = NULL,
     data = NULL,
-    initialize = function(data, covariate, treat_labels) {
+    initialize = function(data, covariate, rdd_like = TRUE, treat_labels) {
       exclude_A <- !("A" %in% unique(data$nudge))
+
+      if (rdd_like) {
+        covariate <- covariate[!(covariate == "age")]
+        covariate <- c(covariate, "I(age - 47)", "I(age - 47):I(1 - coupon2019)")
+      }
 
       mod <- list(
         "(1)" = reformulate("nudge * I(1 - coupon2019)", "outcome_test"),

@@ -10,7 +10,7 @@ Regression <- R6::R6Class("Regression",
 
       if (rdd_like) {
         covariate <- covariate[!(covariate == "age")]
-        covariate <- c(covariate, "I(age - 47)", "I(age - 47):I(1 - coupon2019)")
+        covariate <- c(covariate, "I(age - 47)")
       }
 
       mod <- list(

@@ -261,7 +261,7 @@ reg <- main$lm()
 
 reg$reg_tab(
   title = "Regressions of Intention",
-  notes = "Notes: Robust standard errors are in parentheses. P-values are in square brackets. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
+  notes = "Notes: Robust standard errors are in parentheses. P-values are in square brackets. Covariates are age (standarized so that 47 years old is zero), years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 
@@ -306,7 +306,7 @@ Figure \@ref(fig:ttest-act-vacc) shows the vaccination rates, which is our secon
 reg_act <- main$lm(outcome_intention = FALSE)
 reg_act$reg_tab(
   title = "Regressions of Behavior",
-  notes = "Notes: Robust standard errors are in parentheses. P-values are in square brackets. Covariates are age, years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
+  notes = "Notes: Robust standard errors are in parentheses. P-values are in square brackets. Covariates are age (standarized so that 47 years old is zero), years of education, annual income, usual health behavior (exercise, medical checkup, and annual influenza vaccination), and psychological factors potentially associated with the experimenter demand effect and social desirability bias (following social norms, accepting bad behavior in anonymous conditions). Effect of the text message reminders in the \\\\emph{opt-in incentive} group is estimated by summing the main term of the treatment dummy and the cross-term between the treatment dummy and opt-in dummy."
 )
 ```
 

@@ -1,0 +1,35 @@
+---
+title: |
+  Supplementary Material (Not for Publication):
+  "Adding Nudge-based Reminders to Financial Incentives for Promoting Antibody Testing and Vaccination to Prevent the Spread of Rubella"
+author:
+  - name: Hiroki Kato
+    inst-id: a
+  - name: Shusaku Sasaki
+    inst-id: b
+  - name: Fumio Ohtake
+    inst-id: b
+inst:
+  - id: a
+    name: Graduate School of Economics, Osaka University
+  - id: b
+    name: Center for Infectious Disease Education and Research (CiDER), Osaka University
+biblio-style: agsm
+bibliography: text-message-2020RCT.bib
+output:
+  bookdown::pdf_document2:
+    latex_engine: pdflatex
+    template: template/my-template.tex
+    keep_tex: true
+    citation_package: natbib
+    toc: true
+base-strech: 1.5
+header-includes:
+  - \makeatletter
+  - \@addtoreset{table}{section}
+  - \@addtoreset{figure}{section}
+  - \makeatother
+  - \renewcommand\thetable{\thesection\arabic{table}}
+  - \renewcommand\thefigure{\thesection\arabic{figure}}
+---
+

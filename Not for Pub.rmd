@@ -127,11 +127,64 @@ est %>%
     booktabs = TRUE,
     linesep = ""
   ) %>%
-  kableExtra::kable_styling(font_size = 10) %>%
+  kableExtra::kable_styling(font_size = 10, latex_options = "HOLD_position") %>%
   kableExtra::add_header_above(c(" " = 1, "Testing" = 4, "Vaccination" = 4)) %>%
   kableExtra::footnote(
     general_title = "",
-    general = "Notes: We use respondents whose age is 46 or 47 years old.",
+    general = "Notes: We used respondents aged 46 or 47 years old.",
+    threeparttable = TRUE,
+    escape = FALSE
+  )
+```
+
+```{r rdd-act}
+est <- main$wave2 %>%
+  dplyr::filter(age %in% 45:48) %>%
+  group_by(nudge) %>%
+  nest() %>%
+  ungroup() %>%
+  mutate(
+    test = map(
+      data,
+      ~ lm_robust(outcome_test ~ coupon2019, data = ., se_type = "stata")
+    ),
+    vacc = map(
+      data,
+      ~ lm_robust(outcome_vacc ~ coupon2019, data = ., se_type = "stata")
+    )
+  ) %>%
+  mutate(
+    test_tidy = map(test, broom::tidy),
+    test_glan = map(test, broom::glance),
+    test_coef = map_dbl(test_tidy, ~ .[2, "estimate"]),
+    test_se = map_dbl(test_tidy, ~ .[2, "std.error"]),
+    test_p = map_dbl(test_tidy, ~ .[2, "p.value"]),
+    test_n = map_int(test_glan, ~ .[1, "nobs"]),
+    vacc_tidy = map(vacc, broom::tidy),
+    vacc_glan = map(vacc, broom::glance),
+    vacc_coef = map_dbl(vacc_tidy, ~ .[2, "estimate"]),
+    vacc_se = map_dbl(vacc_tidy, ~ .[2, "std.error"]),
+    vacc_p = map_dbl(vacc_tidy, ~ .[2, "p.value"]),
+    vacc_n = map_int(vacc_glan, ~ .[1, "nobs"])
+  ) %>%
+  select(nudge, test_coef:test_n, vacc_coef:vacc_n)
+
+est %>%
+  arrange(nudge) %>%
+  mutate(nudge = factor(nudge, levels = LETTERS[1:7], labels = nudge_labels)) %>%
+  knitr::kable(
+    caption = "Effect of Default Incentive on Behavior near Threshold",
+    col.names = c("Group", rep(c("Est", "SE", "P", "N"), 2)),
+    digits = 3,
+    align = "lcccccccc",
+    booktabs = TRUE,
+    linesep = ""
+  ) %>%
+  kableExtra::kable_styling(font_size = 10, latex_options = "HOLD_position") %>%
+  kableExtra::add_header_above(c(" " = 1, "Testing" = 4, "Vaccination" = 4)) %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = "Notes: We used respondents aged 45--48 years old.",
     threeparttable = TRUE,
     escape = FALSE
   )

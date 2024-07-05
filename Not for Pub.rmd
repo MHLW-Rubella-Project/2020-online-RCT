@@ -304,3 +304,45 @@ plot_data %>%
     strip.text = element_text(size = 16, hjust = 0)
   )
 ```
+
+# Attrition Check
+
+```{r attrition-follow}
+dt <- setup$data %>%
+  dplyr::filter(40 <= age & age <= 56) %>%
+  mutate(
+    wave1 = if_else(exp_antibody != 1 & exp_vaccine != 1, "Yes", "No"),
+    wave2 = if_else(act_test != 2 & act_vaccine != 2, "Yes", "No")
+  )
+
+subset(dt, follow == 1) %>%
+  datasummary_crosstab(
+    wave1 ~ wave2,
+    title = "Have you not been both tested for antibodies and vaccinated before Wave 1?",
+    data = .
+  ) %>%
+  kableExtra::kable_styling(latex_options = "HOLD_position") %>%
+  kableExtra::add_header_above(c(" " = 2, "wave 2" = 2, " " = 1)) %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = "Notes: We used respondents who participated in Wave 2.",
+    threeparttable = TRUE,
+    escape = FALSE
+  )
+```
+
+```{r attrition-not-follow}
+subset(dt, follow == 0) %>%
+  datasummary(
+    wave1 ~ N + Percent("col"),
+    title = "Have you not been both tested for antibodies and vaccinated before Wave 1?",
+    data = .
+  ) %>%
+  kableExtra::kable_styling(latex_options = "HOLD_position") %>%
+  kableExtra::footnote(
+    general_title = "",
+    general = "Notes: We used respondents who did not participated in Wave 2.",
+    threeparttable = TRUE,
+    escape = FALSE
+  )
+```

@@ -305,7 +305,7 @@ plot_data %>%
   )
 ```
 
-# Attrition Check
+# Investigate Consistent Response
 
 ```{r attrition-follow}
 dt <- setup$data %>%
@@ -344,5 +344,66 @@ subset(dt, follow == 0) %>%
     general = "Notes: We used respondents who did not participated in Wave 2.",
     threeparttable = TRUE,
     escape = FALSE
+  )
+```
+
+# Effect on Looking over Program
+
+```{r effect-program, fig.pos = "H", fig.cap = "Effect on Looking over Vaccination Program"}
+stats <- main$wave2 %>%
+  mutate(outcome = check_program * 100) %>%
+  select(outcome, nudge, coupon2019) %>%
+  group_by(coupon2019, nudge) %>%
+  summarize(
+    mu = mean(outcome),
+    se = se(outcome)
+  )
+
+x <- main$wave2$nudge
+y <- main$wave2$check_program
+default <- main$wave2$coupon2019
+
+t_optin <- LETTERS[1:7] %>%
+  sapply(function(i) t.test(y[x == "A" & default == 0], y[x == i & default == 0])$p.value)
+
+t_default <- LETTERS[1:7] %>%
+  sapply(function(i) t.test(y[x == "A" & default == 1], y[x == i & default == 1])$p.value)
+
+t_res <- tibble(
+  nudge = c(names(t_optin), names(t_default)),
+  coupon2019 = c(rep(0, length(t_optin)), rep(1, length(t_default))),
+  p = c(t_optin, t_default)
+)
+
+coupon2019_labels <- c(
+  sprintf("A. Default incentive group (N = %1d)", sum(default == 1)),
+  sprintf("B. Opt-in incentive group (N = %1d)", sum(default == 0))
+)
+
+plot_data <- stats %>%
+  left_join(t_res, by = c("nudge", "coupon2019")) %>%
+  mutate(
+    nudge = factor(nudge, labels = nudge_labels),
+    coupon2019 = factor(coupon2019, levels = c(1, 0), labels = coupon2019_labels),
+    mu_label = sprintf("%1.1f%%", mu),
+    p_label = sprintf("[p=%1.3f]", p),
+    p_label = if_else(p_label == "[p=0.000]", "[p<0.001]", p_label),
+    label = paste(mu_label, p_label)
+  )
+
+plot_data %>%
+  ggplot(aes(x = fct_rev(nudge), y = mu, ymin = mu - se, ymax = mu + se)) +
+  geom_hline(aes(yintercept = 0)) +
+  geom_bar(stat = "identity", fill = "grey80", color = "black") +
+  geom_errorbar(width = 0.5) +
+  geom_text(aes(y = 45, label = label), size = 5) +
+  labs(x = "Treatments", y = "Proportion (%)") +
+  facet_wrap(~coupon2019, ncol = 1, scales = "free") +
+  scale_y_continuous(limits = c(0, 70), breaks = seq(0, 70, by = 10)) +
+  coord_flip() +
+  theme_classic(base_size = 15) +
+  theme(
+    strip.background = element_blank(),
+    strip.text = element_text(size = 16, hjust = 0)
   )
 ```

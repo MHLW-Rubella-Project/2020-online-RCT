@@ -77,6 +77,49 @@ nudge_labels <- c(
 )
 ```
 
+# Awarness of Program
+
+```{r awarness-program}
+main$wave1 %>%
+  mutate(
+    coupon2019 = dplyr::recode(
+      coupon2019,
+      "1" = "Default incentive",
+      "0" = "Opt-in incentive"
+    ),
+    know_coupon = dplyr::recode(
+      know_coupon,
+      "1" = "Yes",
+      "0" = "No"
+    )
+  ) %>%
+  datasummary_crosstab(
+    coupon2019 ~ know_coupon,
+    data = .,
+    title = "Cross Tab between Mailing Vouchers and Program Awarness"
+  ) %>%
+  kable_styling(latex_options = "HOLD_position") %>%
+  add_header_above(c(" " = 2, "Program Awareness" = 2, " " = 1))
+```
+
+```{r awarness-intention}
+main$wave1 %>%
+  mutate(
+    know_coupon = dplyr::recode(
+      know_coupon,
+      "1" = "Yes",
+      "0" = "No"
+    )
+  ) %>%
+  datasummary_crosstab(
+    know_coupon ~ outcome_vacc,
+    data = .,
+    title = "Cross Tab between Program Awarness and Vaccination Intention"
+  ) %>%
+  kable_styling(latex_options = "HOLD_position") %>%
+  add_header_above(c(" " = 2, "Vaccination intention" = 2, " " = 1))
+```
+
 # RDD
 
 ```{r rdd-int}
